@@ -32,4 +32,5 @@ public class ingresoPrivado {
 	public ingresoPrivado() {
 		super();
 	}		
+	
 }
