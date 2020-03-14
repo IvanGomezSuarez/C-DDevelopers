@@ -5,7 +5,7 @@ public class herencia {
 	String nombreOrganizacion;
 	Direccion direccion;
 	float importe;
-	String Descripcion;
+	String descripcion;
 	
 	public String getNombreOrganizacion() {
 		return nombreOrganizacion;
@@ -32,22 +32,22 @@ public class herencia {
 	}
 	
 	public String getDescripcion() {
-		return Descripcion;
+		return descripcion;
 	}
 	
 	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
+		this.descripcion = descripcion;
 	}
-	
-	public herencia(String nombreOrganizacion,Direccion direccion, float importe, String descripcion) {
+
+	public herencia(String nombreOrganizacion, Direccion direccion, float importe, String descripcion) {
 		super();
 		this.nombreOrganizacion = nombreOrganizacion;
 		this.direccion = direccion;
 		this.importe = importe;
-		Descripcion = descripcion;
+		this.descripcion = descripcion;
 	}
-	
+
 	public herencia() {
 		super();
-	}		
+	}	
 }

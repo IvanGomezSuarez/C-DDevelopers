@@ -5,7 +5,7 @@ public class UE {
 	String nombreOrganizacion;
 	Direccion direccion;
 	float importe;
-	String Descripcion;
+	String descripcion;
 	
 	public String getNombreOrganizacion() {
 		return nombreOrganizacion;
@@ -32,23 +32,23 @@ public class UE {
 	}
 	
 	public String getDescripcion() {
-		return Descripcion;
+		return descripcion;
 	}
 	
 	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
+		this.descripcion = descripcion;
 	}
-	
-	public UE(String nombreOrganizacion,Direccion direccion, float importe, String descripcion) { 
+
+	public UE(String nombreOrganizacion, Direccion direccion, float importe, String descripcion) {
 		super();
 		this.nombreOrganizacion = nombreOrganizacion;
 		this.direccion = direccion;
 		this.importe = importe;
-		Descripcion = descripcion;
+		this.descripcion = descripcion;
 	}
-	
+
 	public UE() {
 		super();
-	}		
+	}	
 
 }
