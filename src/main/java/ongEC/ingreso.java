@@ -1,5 +1,5 @@
 package ongEC;
 
-public class ingreso {
+public interface ingreso {
 
 }
