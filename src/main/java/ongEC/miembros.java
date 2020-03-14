@@ -10,7 +10,7 @@ import java.util.GregorianCalendar;
  * 
  * */
 
-public class miembros {
+public class Miembros {
 
 // atributos
 	
@@ -25,7 +25,7 @@ public class miembros {
 	protected String ciudad;
 	protected String direccion;
 	protected String rol;
-	private ArrayList<miembros> ALMiembros;
+	private ArrayList<Miembros> ALMiembros;
 	
 
 	// constructores
@@ -35,7 +35,7 @@ public class miembros {
 	 * este constructor crea objeto e inicialia los atributos.
 	 *  
 	 */
-	public miembros(int idMiembro, java.util.GregorianCalendar fechaAlta,java.util.GregorianCalendar fechaBaja, String nombreMiembro, String apellido1, String apellido2,
+	public Miembros(int idMiembro, java.util.GregorianCalendar fechaAlta,java.util.GregorianCalendar fechaBaja, String nombreMiembro, String apellido1, String apellido2,
 			 String dni, String pais, String ciudad, String direccion, String rol) {
 		super();
 		this.idMiembro =idMiembro;
@@ -52,9 +52,9 @@ public class miembros {
 	}
 
 	// constructor para el arraylist
-	   public miembros()
+	   public Miembros()
 	   {
-	       ALMiembros = new ArrayList <miembros>();
+	       ALMiembros = new ArrayList <Miembros>();
 	       
 	     }
 	
@@ -155,11 +155,11 @@ public class miembros {
 
     // metodo añadir miembro al array
 	
- public void AddMiembro (miembros miembro)
+ public void AddMiembro (Miembros miembro)
  { 
      
       boolean b= true;
-     for (miembros n:ALMiembros)
+     for (Miembros n:ALMiembros)
      { if(n.getDni().equals(miembro.getDni())){
          b=false;
          System.out.println(" el miembro ya existe");
@@ -177,14 +177,14 @@ public class miembros {
 // visualiza en pantalla los miembros 
 public void mostrarMiembros() 
 {
- for(miembros miembro : ALMiembros) {
+ for(Miembros miembro : ALMiembros) {
       System.out.println(this.getDni()+'\n');  
   }    
 }
 //Lista los miebros
 public void listMiembros()
 {
- for(miembros miembro : ALMiembros) {
+ for(Miembros miembro : ALMiembros) {
        miembro.mostrarMiembros();   
   }    
 }

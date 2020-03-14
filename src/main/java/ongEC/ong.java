@@ -1,15 +1,25 @@
 package ongEC;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+
+import javax.xml.bind.JAXBException;
+
 
 /**
-* esta clase permite gestionar contiene la información de la ong
+* esta clase permite gestionar contiene la información de la ong, nos permitirá crear delegaciones, así como borrarlas
+* tb nos permitirá crear proyectos y dar de alta a miembros
 */
 
 
-public class ong {
+public class Ong {
 	private String nombreOng;
 	private String cifOng;
 	//private direccionOng Direccion;
+	
 	
 	
 	// constructor
@@ -17,7 +27,7 @@ public class ong {
 	/**
 	 * creacion de nuevo objeto con atributos no inicialiados
 	 */
-	public ong() {
+	public Ong() {
 		super();
 	}
 	
@@ -26,7 +36,7 @@ public class ong {
 	 * este constructor crea objeto e inicialia los atributos.
 	 * @param cifOng 
 	 */
-	public ong(String nombreOng, String cifOng) {
+	public Ong(String nombreOng, String cifOng) {
 		super();
 		this.nombreOng = nombreOng;
 		this.cifOng = cifOng;
@@ -55,5 +65,23 @@ public class ong {
 	 * teoria son capas donde no se junta el código estandard con las acciones sobre la base de datos
 	 * 
 	 */
+
+	// método para dar de alta una delegación
+	
+	private void addDelegacion() {
+}
+	
+	// dar de alta un proyecto
+	private void addProyecto() {
+}
+	
+	// borrar proyecto
+	private void delProyecto() {
+}
+	
+	// borrar delegacion
+	private void delDelegacion() {
+}
+	
 
 }
