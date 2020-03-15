@@ -1,6 +1,6 @@
 package ongEC;
 
-public class delegaciones {
+public class Delegaciones {
 	
 	String nombre;
 	String cip;

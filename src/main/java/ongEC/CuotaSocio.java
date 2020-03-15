@@ -1,5 +1,5 @@
 package ongEC;
 
-public enum cuotaSocio {
+public enum CuotaSocio {
 
 }

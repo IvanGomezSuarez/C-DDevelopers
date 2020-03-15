@@ -1,6 +1,6 @@
 package ongEC;
 
-public class colaborador {
+public class Colaborador {
 	
 	String nombre;
 	String apellidos;

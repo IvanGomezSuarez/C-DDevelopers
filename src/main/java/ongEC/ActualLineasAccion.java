@@ -1,5 +1,5 @@
 package ongEC;
 
-public enum actualLineasAccion {
+public enum ActualLineasAccion {
 
 }

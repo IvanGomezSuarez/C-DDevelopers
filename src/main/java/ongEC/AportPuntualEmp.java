@@ -1,6 +1,6 @@
 package ongEC;
 
-public class aportPuntualEmp {
+public class AportPuntualEmp {
 	
 	String nombreOrganizacion;
 	Direccion direccion;

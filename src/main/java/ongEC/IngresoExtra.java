@@ -1,6 +1,6 @@
 package ongEC;
 
-public class ingresoExtra {
+public class IngresoExtra {
 	
 	String nombreOrganizacion;
 	Direccion direccion;

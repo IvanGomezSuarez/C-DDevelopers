@@ -1,6 +1,6 @@
 package ongEC;
 
-public class aportPuntualPartic {
+public class AportPuntualPartic {
 	
 	String nombreOrganizacion;
 	Direccion direccion;

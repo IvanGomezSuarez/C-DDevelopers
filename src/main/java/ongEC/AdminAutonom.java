@@ -1,6 +1,6 @@
 package ongEC;
 
-public class adminAutonom {
+public class AdminAutonom {
 	
 	String nombreOrganizacion;
 	Direccion direccion;
