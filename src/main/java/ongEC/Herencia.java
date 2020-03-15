@@ -1,6 +1,6 @@
 package ongEC;
 
-public class Herencia {
+public class herencia {
 	
 	String nombreOrganizacion;
 	Direccion direccion;

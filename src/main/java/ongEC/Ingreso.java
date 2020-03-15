@@ -1,5 +1,5 @@
 package ongEC;
 
-public class Ingreso {
+public class ingreso {
 
 }

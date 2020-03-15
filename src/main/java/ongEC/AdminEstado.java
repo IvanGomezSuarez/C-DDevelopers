@@ -1,6 +1,6 @@
 package ongEC;
 
-public class AdminEstado {
+public class adminEstado {
 	
 	String nombreOrganizacion;
 	Direccion direccion;
