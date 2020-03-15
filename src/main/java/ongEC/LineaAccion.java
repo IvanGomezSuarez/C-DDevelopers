@@ -5,8 +5,11 @@ import java.util.List;
 public class LineaAccion {
 
 	ActualLineasAccion lineaAccion;
-	List<SubLineaAccion>subLineaAccion;
+	List<SubLineaAccion>listasubLineaAccion;
 	String descripcionAccion;
+	
+	SubLineaAccion subLineaAccion;
+	ActualLineasAccion actualLineasAccion;
 	
 	public ActualLineasAccion getLineaAccion() {
 		return lineaAccion;
@@ -16,12 +19,12 @@ public class LineaAccion {
 		this.lineaAccion = lineaAccion;
 	}
 	
-	public List<SubLineaAccion> getSubLineaAccion() {
-		return subLineaAccion;
+	public List<SubLineaAccion> getListasubLineaAccion() {
+		return listasubLineaAccion;
 	}
 	
-	public void setSubLineaAccion(List<SubLineaAccion> subLineaAccion) {
-		this.subLineaAccion = subLineaAccion;
+	public void setListasubLineaAccion(List<SubLineaAccion> listasubLineaAccion) {
+		this.listasubLineaAccion = listasubLineaAccion;
 	}
 	
 	public String getDescripcionAccion() {
@@ -31,16 +34,34 @@ public class LineaAccion {
 	public void setDescripcionAccion(String descripcionAccion) {
 		this.descripcionAccion = descripcionAccion;
 	}
+	
+	public SubLineaAccion getSubLineaAccion() {
+		return subLineaAccion;
+	}
+	
+	public void setSubLineaAccion(SubLineaAccion subLineaAccion) {
+		this.subLineaAccion = subLineaAccion;
+	}
+	
+	public ActualLineasAccion getActualLineasAccion() {
+		return actualLineasAccion;
+	}
+	
+	public void setActualLineasAccion(ActualLineasAccion actualLineasAccion) {
+		this.actualLineasAccion = actualLineasAccion;
+	}
 
-	public LineaAccion(ActualLineasAccion lineaAccion, List<ongEC.SubLineaAccion> subLineaAccion,
-			String descripcionAccion) {
+	public LineaAccion(ActualLineasAccion lineaAccion, List<SubLineaAccion> listasubLineaAccion,
+			String descripcionAccion, SubLineaAccion subLineaAccion, ActualLineasAccion actualLineasAccion) {
 		super();
 		this.lineaAccion = lineaAccion;
-		this.subLineaAccion = subLineaAccion;
+		this.listasubLineaAccion = listasubLineaAccion;
 		this.descripcionAccion = descripcionAccion;
+		this.subLineaAccion = subLineaAccion;
+		this.actualLineasAccion = actualLineasAccion;
 	}
 
 	public LineaAccion() {
 		super();
-	}	
+	}
 }
