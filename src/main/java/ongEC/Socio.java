@@ -12,10 +12,9 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * Esta clase representa a los socios de la ONG que pagan una cuota
  * periódica la cual puede ser mensual, trimestral o anual.
- * 
- * @author Yaiza, Teresa y Marc.
- * @version 1.0
- *
+
+Ivan
+V1.0
  */
 
 @XmlRootElement(name = "socio")
