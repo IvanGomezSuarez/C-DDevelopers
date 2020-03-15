@@ -22,6 +22,6 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
 @XmlType(propOrder={"idSocio", "periodicidadCuota"})
 
-public class Socio extends miembros implements ingreso {
+public class Socio extends Miembros implements Ingreso {
 
 }
