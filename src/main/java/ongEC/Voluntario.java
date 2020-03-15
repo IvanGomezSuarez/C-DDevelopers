@@ -1,53 +1,35 @@
 package ongEC;
 
+import java.sql.Date;
+
 public class Voluntario {
 	
-	String nombre;
-	String apellidos;
-	String dni;
-	Direccion direccion;
+	Date fechaAlta;
+	Date fechaBaja;
 	
-	public String getNombre() {
-		return nombre;
+	public Date getFechaAlta() {
+		return fechaAlta;
 	}
 	
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setFechaAlta(Date fechaAlta) {
+		this.fechaAlta = fechaAlta;
 	}
 	
-	public String getApellidos() {
-		return apellidos;
+	public Date getFechaBaja() {
+		return fechaBaja;
 	}
 	
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
-	
-	public String getDni() {
-		return dni;
-	}
-	
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-	
-	public Direccion getDireccion() {
-		return direccion;
-	}
-	
-	public void setDireccion(Direccion direccion) {
-		this.direccion = direccion;
+	public void setFechaBaja(Date fechaBaja) {
+		this.fechaBaja = fechaBaja;
 	}
 
-	public Voluntario(String nombre, String apellidos, String dni, Direccion direccion) {
+	public Voluntario(Date fechaAlta, Date fechaBaja) {
 		super();
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.dni = dni;
-		this.direccion = direccion;
+		this.fechaAlta = fechaAlta;
+		this.fechaBaja = fechaBaja;
 	}
 
 	public Voluntario() {
 		super();
-	}
+	}	
 }
