@@ -1,6 +1,6 @@
 package ongEC;
 
-public class delegaciones {
+public class Delegaciones {
 
 	public void setNombreDelegacion(String readLine) {
 		// TODO Auto-generated method stub
