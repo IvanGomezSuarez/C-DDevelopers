@@ -1,5 +1,5 @@
 package ongEC;
 
-public class ong {
+public class Ong {
 
 }

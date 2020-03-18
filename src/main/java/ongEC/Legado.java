@@ -1,5 +1,5 @@
 package ongEC;
 
-public class legado {
+public class Legado {
 int prueba;
 }
