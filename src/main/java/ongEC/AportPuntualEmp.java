@@ -1,7 +1,7 @@
 package ongEC;
 
 public class AportPuntualEmp {
-	
+
 	String nombreOrganizacion;
 	Direccion direccion;
 	float importe;
@@ -50,4 +50,5 @@ public class AportPuntualEmp {
 	public AportPuntualEmp() {
 		super();
 	}	
+
 }

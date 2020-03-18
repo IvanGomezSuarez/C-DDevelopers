@@ -1,7 +1,7 @@
 package ongEC;
 
 public class AportPuntualPartic {
-	
+
 	String nombreOrganizacion;
 	Direccion direccion;
 	float importe;

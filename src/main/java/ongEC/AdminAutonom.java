@@ -1,7 +1,7 @@
 package ongEC;
 
 public class AdminAutonom {
-	
+
 	String nombreOrganizacion;
 	Direccion direccion;
 	float importe;

@@ -32,4 +32,5 @@ public class Colaborador {
 	public Colaborador() {
 		super();
 	}	
+
 }

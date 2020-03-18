@@ -30,5 +30,4 @@ public class SubLineaAccion {
 	public SubLineaAccion() {
 		super();
 	}
-		
 }

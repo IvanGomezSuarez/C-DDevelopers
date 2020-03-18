@@ -20,5 +20,4 @@ public class Internacional {
 	public Internacional() {
 		super();
 	}
-	
 }
