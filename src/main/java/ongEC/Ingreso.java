@@ -67,6 +67,4 @@ public class Ingreso {
 	public void setIdIngreso(int idIngreso) {
 		this.idIngreso = idIngreso;
 	}
-	
-	
 }

@@ -31,5 +31,5 @@ public class Personal {
 
 	public Personal() {
 		super();
-	}	
+	}
 }

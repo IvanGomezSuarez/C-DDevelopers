@@ -1,6 +1,7 @@
 package ongEC;
 
 
+
 import java.util.ArrayList;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -11,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * Esta clase representa a los socios de la ONG que pagan una cuota
- * periódica la cual puede ser mensual, trimestral o anual.
+ * periï¿½dica la cual puede ser mensual, trimestral o anual.
 
 Ivan
 V1.0

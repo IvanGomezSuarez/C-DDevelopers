@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 /*
- * esta clase contiene la información de los miembros. los crea y añade a un array
+ * esta clase contiene la informaciï¿½n de los miembros. los crea y aï¿½ade a un array
  * 
  * 
  * */
@@ -153,7 +153,7 @@ public class Miembros {
 		this.rol = rol;
 	}
 
-    // metodo añadir miembro al array
+    // metodo aï¿½adir miembro al array
 	
  public void AddMiembro (Miembros miembro)
  { 
@@ -170,7 +170,7 @@ public class Miembros {
      
      if(b){
          this.ALMiembros.add (miembro);
-         System.out.println(" El miembro se ha añadido a la base de datos"+'\n');
+         System.out.println(" El miembro se ha aï¿½adido a la base de datos"+'\n');
        }   
    }
 
@@ -190,5 +190,5 @@ public void listMiembros()
 }
 
 }
-
+}
 

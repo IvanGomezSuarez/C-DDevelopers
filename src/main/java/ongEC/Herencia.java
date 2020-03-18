@@ -1,7 +1,7 @@
 package ongEC;
 
 public class Herencia {
-	
+
 	String nombreOrganizacion;
 	Direccion direccion;
 	float importe;

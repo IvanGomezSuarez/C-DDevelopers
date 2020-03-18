@@ -1,6 +1,7 @@
 package ongEC;
 
 public class AdminLocal {
+
 	String nombreOrganizacion;
 	Direccion direccion;
 	float importe;

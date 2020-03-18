@@ -1,7 +1,7 @@
 package ongEC;
 
 public class IngresoExtra {
-	
+
 	String nombreOrganizacion;
 	Direccion direccion;
 	float importe;

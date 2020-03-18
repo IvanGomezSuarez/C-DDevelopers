@@ -9,4 +9,5 @@ package ongEC;
 public enum ActualLineasAccion {
 
 	COOPERACION, FORTALECIMIENTO , EDUCACION, ACCIONHUMANITARIA
+
 }
