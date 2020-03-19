@@ -37,7 +37,7 @@ public class Main {
 					System.out.println("2.Dar de alta/modificar/eliminar un Proyecto");
 					opcionesSecundario();
 					seleccionSubMenu=comprobacionOpcion();	//Comprobamos si es int
-					 if (seleccionSubMenu!=0) {
+					if (seleccionSubMenu!=0) {
 						 if (seleccionSubMenu==1) {		//Pasamos dependiendo de la seleccion
 							 System.out.println("Dar de alta");
 						 }else if (seleccionSubMenu==2) {
@@ -47,7 +47,7 @@ public class Main {
 						 }else {
 							 System.out.println("Opcion no valida");
 						 }
-					 }
+					}
 				}else if (estadoAplicacion==3){
 					System.out.println("3.Dar de alta/modificar/eliminar un Miembro");
 					opcionesSecundario();
@@ -88,6 +88,7 @@ public class Main {
 		
 		
 	}
+	
 	private static void opcionesMenuPrincipal(){//Opciones del menu principal
 		 System.out.println("Seleccione la Opcion deseada");
 		 System.out.println("1.Dar de alta/modificar/eliminar un Socio");
