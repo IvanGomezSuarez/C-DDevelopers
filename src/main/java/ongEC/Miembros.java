@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import java.util.GregorianCalendar;
 
+import javax.xml.bind.JAXBException;
+
 /*
  * esta clase contiene la informaci�n de los miembros. los crea y a�ade a un array
  * 
@@ -18,6 +20,8 @@ public class Miembros {
 	private java.util.GregorianCalendar fechaAlta;
 	private java.util.GregorianCalendar fechaBaja;
 	protected String nombreMiembro;
+	protected String nombreUsuario;
+	protected String password;
 	protected String apellido1;
 	protected String apellido2;
 	protected String dni;
@@ -30,13 +34,30 @@ public class Miembros {
 
 	// constructores
 	
+	public Miembros() {
+		super();
+	}
+
 
 	/**
 	 * este constructor crea objeto e inicialia los atributos.
-	 *  
+	 * @param idMiembro
+	 * @param fechaAlta
+	 * @param fechaBaja
+	 * @param nombreMiembro
+	 * @param nombreUsuario
+	 * @param password
+	 * @param apellido1
+	 * @param apellido2
+	 * @param dni
+	 * @param pais
+	 * @param ciudad
+	 * @param direccion
+	 * 
+	 * 
 	 */
-	public Miembros(int idMiembro, java.util.GregorianCalendar fechaAlta,java.util.GregorianCalendar fechaBaja, String nombreMiembro, String apellido1, String apellido2,
-			 String dni, String pais, String ciudad, String direccion, String rol) {
+	public Miembros(int idMiembro, java.util.GregorianCalendar fechaAlta,java.util.GregorianCalendar fechaBaja, String nombreMiembro, String nombreUsuario, String password, String apellido1, String apellido2,
+			 String dni, String pais, String ciudad, String direccion) {
 		super();
 		this.idMiembro =idMiembro;
 		this.fechaAlta = fechaAlta;
@@ -48,18 +69,22 @@ public class Miembros {
 		this.pais = pais;
 		this.ciudad =ciudad;
 		this.direccion = direccion;
-		this.rol = rol;
 	}
 
 	// constructor para el arraylist
-	   public Miembros()
+	/*   public Miembros()
 	   {
 	       ALMiembros = new ArrayList <Miembros>();
 	       
 	     }
-	
+	*/
 	//metodos
 	
+	public Miembros(String nombreMiembro2, String dni2) {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public int getIdMiembro() {
 		return idMiembro;
 	}
@@ -99,6 +124,22 @@ public class Miembros {
 
 	public String getApellido1() {
 		return apellido1;
+	}
+	
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+	
+	public String getNomUsuario() {
+		return nombreUsuario;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public String getPass() {
+		return password;
 	}
 
 	public void setApellido1(String apellido1) {
@@ -145,16 +186,10 @@ public class Miembros {
 		this.ciudad = ciudad;
 	}
 	
-	public String getRol() {
-		return rol;
-	}
-	
-	public void setRol(String rol) {
-		this.rol = rol;
-	}
+
 
     // metodo a�adir miembro al array
-	
+/*	
  public void AddMiembro (Miembros miembro)
  { 
      
@@ -188,5 +223,5 @@ public void listMiembros()
        miembro.mostrarMiembros();   
   }    
 }
-
+*/
 }

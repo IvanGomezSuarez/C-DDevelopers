@@ -1,4 +1,4 @@
-
+package ongEC;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,21 +10,26 @@ import java.util.regex.Pattern;
 
 import javax.xml.bind.JAXBException;
 
+import DAO.DAOFactory;
+import DAO.XmlDelegacionesDAO;
+import DAO.XmlProyectoDAO;
+
 /**
  * Esta clase representa a la persona encargada de crear los proyectos, modificarlos y eliminarlos
  * también lo mismo con las delegaciones
  * 
  * @version 1
+ * @param <ListadoProyectos>
  *
  */
-public class AdminOng extends Miembros {
+public class AdminOng<ListadoProyectos> extends Miembros {
 	
 	// CAMPOS
 	
 	private String rootPass;
 	private DAOFactory xmlDAOFactory = DAOFactory.getDAOFactory(DAOFactory.XML);
-	private DAO<Proyecto> ProyectoDAO = (XMLTrabajadorDAO) xmlDAOFactory.getProyectoDAO();
-	private DAO<Delegaciones> DelegacionesDAO = (XMLDelegacionDAO) xmlDAOFactory.getDelegacionesDAO();
+	private XmlProyectoDAO ProyectoDAO = (XmlProyectoDAO) xmlDAOFactory.getProyectoDAO();
+	private XmlDelegacionesDAO DelegacionesDAO = (XmlDelegacionesDAO) xmlDAOFactory.getDelegacionesDAO();
 	
 	
 	// CONSTRUCTORES
@@ -41,11 +46,13 @@ public class AdminOng extends Miembros {
 
 	/**
 	 * Constructor que crea un nuevo objeto AdminOng inicializando sus campos.
-	 * 
+	 * @param nombreMiembro nombre del miembro de la clase super
+	 * @param dni miembro clase super
+	 * @param rootPass 
 	 */
-	public AdminOng(String nombre, String pass) throws JAXBException {
-		super(nombre, apellidos, id, email, telefono, direccion, delegacionAsignada, antiguedad, proyectosAsignados);
-		this.rootPass = pass;
+	public AdminOng(String nombreMiembro,String dni, String rootPass) throws JAXBException {
+		super(nombreMiembro, dni);
+		this.rootPass = rootPass;
 	}
 
 
@@ -73,36 +80,35 @@ public class AdminOng extends Miembros {
 	 * Metodo que genera el menu de acciones que puede realizar el admin
 	 * en la aplicacion cuando inicia sesion.
 	 */
-	@Override
 	public void abrirSesion() throws IOException, JAXBException {
 		    	
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int respuestaOpcion = 0;
+		int respuesta = 0;
 		Integer[] opcionesValidas = {1, 2, 3, 4, 5};
-  	    String respuestaNuevaAccion;
+  	    String nuevaRespuesta;
 		
     	System.out.println("\n***************************");
-    	System.out.println(" Opciones de administrador");
+    	System.out.println(" Administrador");
     	System.out.println("***************************");
     	
         do {
         	
         	System.out.println("\nPor favor, introduce el número de la acción que deseas realizar: ");
-        	System.out.println("1 - Dar de alta un trabajador");
-        	System.out.println("2 - Imprimir listado de trabajadores");
+        	System.out.println("1 - Dar de alta un proyecto");
+        	System.out.println("2 - Imprimir listado de proyectos");
         	System.out.println("3 - Dar de alta una delegación");
         	System.out.println("4 - Imprimir listado delegaciones");
         	System.out.println("5 - Salir");
         	
         	try {
-        		respuestaOpcion = Integer.parseInt(br.readLine());
+        		respuesta = Integer.parseInt(br.readLine());
             } catch(NumberFormatException nfe) {
-                System.out.println("Los caracteres introducidos no son válidos.");
+                System.out.println("ERROR: Carácteres introducidos no válidos.");
             }
         	
-        } while (!Arrays.asList(opcionesValidas).contains(respuestaOpcion));
+        } while (!Arrays.asList(opcionesValidas).contains(respuesta));
         
-        switch(respuestaOpcion) {
+        switch(respuesta) {
         
            case 1:
         	  darAltaTrabajador();
@@ -111,14 +117,14 @@ public class AdminOng extends Miembros {
         		  
         		  do {
         			  System.out.println("¿Deseas dar de alta otro trabajador? (S/N)");
-            		  respuestaNuevaAccion = br.readLine();
-        		  } while (!respuestaNuevaAccion.equalsIgnoreCase("s") && !respuestaNuevaAccion.equalsIgnoreCase("n"));
+            		  nuevaRespuesta = br.readLine();
+        		  } while (!nuevaRespuesta.equalsIgnoreCase("s") && !nuevaRespuesta.equalsIgnoreCase("n"));
         		  
-        		  if (respuestaNuevaAccion.equalsIgnoreCase("s")) {
+        		  if (nuevaRespuesta.equalsIgnoreCase("s")) {
         			  darAltaTrabajador();
       				}
         		  
-        	  } while (!respuestaNuevaAccion.equalsIgnoreCase("n"));
+        	  } while (!nuevaRespuesta.equalsIgnoreCase("n"));
         	  
         	  abrirSesion();
         	  
@@ -136,14 +142,14 @@ public class AdminOng extends Miembros {
         		  
         		  do {
         			  System.out.println("¿Deseas dar de alta otra delegación? (S/N)");
-            		  respuestaNuevaAccion = br.readLine();
-        		  } while (!respuestaNuevaAccion.equalsIgnoreCase("s") && !respuestaNuevaAccion.equalsIgnoreCase("n"));
+            		  nuevaRespuesta = br.readLine();
+        		  } while (!nuevaRespuesta.equalsIgnoreCase("s") && !nuevaRespuesta.equalsIgnoreCase("n"));
         		  
-        		  if (respuestaNuevaAccion.equalsIgnoreCase("s")) {
+        		  if (nuevaRespuesta.equalsIgnoreCase("s")) {
         			  darAltaDelegacion();
       				}
         		  
-        	  } while (!respuestaNuevaAccion.equalsIgnoreCase("n"));
+        	  } while (!nuevaRespuesta.equalsIgnoreCase("n"));
         	  
         	  abrirSesion();
          	  
@@ -181,7 +187,7 @@ public class AdminOng extends Miembros {
 	 * @throws JAXBException si se produce una excepción de tipo JAXB.
 	 */
 	public void imprimirListadoTrabajadores() throws JAXBException {
-		trabajadorDAO.obtenerTodos();
+		PersonalDAO.obtenerTodos();
 	}
 	
 	/**
