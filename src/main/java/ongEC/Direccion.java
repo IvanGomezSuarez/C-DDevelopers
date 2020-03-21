@@ -1,5 +1,13 @@
 package ongEC;
 
+import ongEC.
+/**
+ * Esta clase representa el conceoti de direccion
+ * 
+ * @version 1
+ * Yosu
+ *
+ */
 public class Direccion {
 	
 	String tipoVia;
