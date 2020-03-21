@@ -1,29 +1,43 @@
 package ongEC;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.regex.Pattern;
+
+//IMPORTS
+import javax.xml.bind.JAXBException;
 import java.util.GregorianCalendar;
+
+/**
+ * Esta clase representa los ingresos que se consiguen a través de los diversos organismos
+ * publico o privados
+ * @version 1
+ * Ivan
+ */
+
+//DECLARACIÓN DE LA CLASE
 
 public class Ingreso {
 	
 	//ATRIBUTOS
 	private int idIngreso;
-	private java.util.GregorianCalendar fechaIngreso;
+	private java.util.GregorianCalendar fechaRecepcionIngreso;
 	
 	
 	//CONSTRUCTORES
 	
 	/**
-	 * este constructor crea objeto e inicialia los atributos.
-	 * @param cifOng 
+	 * este constructor crea objeto INGRESO  pero NO inicialia los atributos.
+	 * @param idIngreso identifica el ingreso
+	 * @param fechaRecepcionIngreso para conocer la fecha en la cual se recibe un ingreso
 	 */
-	public Ingreso(int idIngreso, java.util.GregorianCalendar fechaIngreso) {
+	
+	public Ingreso() throws JAXBException {
+		super();
+	}
+	
+
+	public Ingreso(int idIngreso, java.util.GregorianCalendar fechaRecepcionIngreso) throws JAXBException{
 		
 		this.setIdIngreso(idIngreso);
-		this.setFechaIngreso(fechaIngreso);
+		this.setFechaIngreso(fechaRecepcionIngreso);
 	}
 	
 	
@@ -47,13 +61,13 @@ public class Ingreso {
 
 
 	public java.util.GregorianCalendar getFechaIngreso() {
-		return fechaIngreso;
+		return fechaRecepcionIngreso;
 	}
 
 
 
 	public void setFechaIngreso(java.util.GregorianCalendar fechaIngreso) {
-		this.fechaIngreso = fechaIngreso;
+		this.fechaRecepcionIngreso = fechaIngreso;
 	}
 
 
