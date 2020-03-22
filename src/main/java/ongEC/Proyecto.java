@@ -208,8 +208,6 @@ public class Proyecto {
 		
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		
-		Integer comprobacionExisteMiembro;
-		
 		System.out.println("Introduzca el id del proyecto");
 		nuevoProyecto.setIdProyecto(recuperado.nextInt());
 		System.out.println(nuevoProyecto.idProyecto);
