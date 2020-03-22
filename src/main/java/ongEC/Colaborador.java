@@ -1,36 +1,36 @@
 package ongEC;
 
+// IMPORTS
+
 import java.sql.Date;
+import java.util.GregorianCalendar;
+import javax.xml.bind.JAXBException;
+import ongEC.Miembros;
+
+/**
+ * Esta clase representa a los colaboradores de la ONG
+ *
+ * @version 1
+ * Yosu, Ivan
+ */
 
 public class Colaborador extends Miembros {
-	
-	Date fechaAlta;
-	Date fechaBaja;
-	
-	public Date getFechaAlta() {
-		return fechaAlta;
-	}
-	
-	public void setFechaAlta(Date fechaAlta) {
-		this.fechaAlta = fechaAlta;
-	}
-	
-	public Date getFechaBaja() {
-		return fechaBaja;
-	}
-	
-	public void setFechaBaja(Date fechaBaja) {
-		this.fechaBaja = fechaBaja;
+
+	// ATRIBUTOS
+
+
+	/**
+	 * Constructor que crea un nuevo objeto Loggin sin inicializar sus campos.
+	 *
+	 * @throws JAXBException si se produce una excepci�n de tipo JAXB.
+	 */
+
+
+	public Colaborador(int idMiembro,Date fechaAlta, Date fechaBaja) throws JAXBException {
+		super(idMiembro, fechaAlta, fechaBaja);
 	}
 
-	public Colaborador(Date fechaAlta, Date fechaBaja) {
-		super();
-		this.fechaAlta = fechaAlta;
-		this.fechaBaja = fechaBaja;
-	}
 
-	public Colaborador() {
-		super();
-	}	
+
 
 }
