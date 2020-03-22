@@ -16,6 +16,7 @@ public class LineaAccion extends Proyecto {
 	private String descripcionAccion;
 	
 	private SubLineaAccion defSubLineaAccion;
+	
 	private ActualLineasAccion actualLineasAccion;
 	
 	//Definicion de los constructores
