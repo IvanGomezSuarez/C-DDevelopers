@@ -15,17 +15,26 @@ public class Personal extends Miembros {
 	Date fechaAlta;
 	Date fechaBaja;		
 	
-	public Personal(Date fechaAlta, Date fechaBaja) {
-		super();
+	//Definiendo los Constructores
+	
+	public Personal(String idMiembro, String nombreMiembro, String nombreUsuario, String password, String apellido1,
+			String apellido2, String dni, String pais, String ciudad, String direccion, String telefono, Date fechaAlta,
+			Date fechaBaja) {
+		super(idMiembro, nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, pais, ciudad, direccion,
+				telefono);
 		this.fechaAlta = fechaAlta;
 		this.fechaBaja = fechaBaja;
 	}
+
 	
-	public Personal() {
-		super();
+	public Personal(String idMiembro, String nombreMiembro, String nombreUsuario, String password, String apellido1,
+			String apellido2, String dni, String pais, String ciudad, String direccion, String telefono) {
+		super(idMiembro, nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, pais, ciudad, direccion,
+				telefono);
 	}
 
 	//Defincion de los Gets y Sets
+	
 	public Date getFechaAlta() {
 		return fechaAlta;
 	}
