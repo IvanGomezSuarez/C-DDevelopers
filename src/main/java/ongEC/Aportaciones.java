@@ -1,0 +1,12 @@
+package ongEC;
+
+public enum Aportaciones {
+
+LEGADOS,
+INSTITUCIONES,
+EXTRAORDINARIAS,
+HERENCIAS,
+EMPRESAS,
+PARTICULARES
+	
+}
