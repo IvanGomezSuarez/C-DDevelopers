@@ -1,12 +1,17 @@
 package ongEC;
 
 import java.sql.Date;
-
+/*
+ * esta clase contiene la informaci�n del origen internacional del voluntario
+ * 
+ * 
+ * */
 public class Internacional extends Voluntario {
 
 	
 	//Definiendo los Atributos
-	String paisOrigen;
+	
+	private String paisOrigen;
 
 	//Definiendo los constructores
 	

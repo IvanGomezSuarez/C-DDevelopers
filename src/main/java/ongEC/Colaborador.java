@@ -1,6 +1,10 @@
 package ongEC;
 
-// IMPORTS
+/*
+ * esta clase contiene la informaci�n de los datos de fechas de los colaboradores
+ * 
+ * 
+ * */
 
 import java.sql.Date;
 import java.util.GregorianCalendar;
