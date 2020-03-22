@@ -1,67 +1,65 @@
 package ongEC;
 
+import java.sql.Date;
 import java.util.List;
+
+/*
+ * esta clase contiene las Lineas de Accion
+ * 
+ * 
+ * */
 
 public class LineaAccion extends Proyecto {
 
-	ActualLineasAccion lineaAccion;
-	List<SubLineaAccion>listasubLineaAccion;
-	String descripcionAccion;
+	//Defincion de los Atributos
 	
-	SubLineaAccion subLineaAccion;
-	ActualLineasAccion actualLineasAccion;
+	private String descripcionAccion;
 	
-	public ActualLineasAccion getLineaAccion() {
-		return lineaAccion;
+	private SubLineaAccion defSubLineaAccion;
+	private ActualLineasAccion actualLineasAccion;
+	
+	//Definicion de los constructores
+	
+	public LineaAccion(int idProyecto, String nombreProyecto, String pais, String localizacion, LineaAccion lineaAccion,
+			List<SubLineaAccion> subLineaAccion, Date fechaInicio, Date fechaFin, List<Socio> socioLocal,
+			String financiador, Double financiacionAportada, String codigoProyecto, String accionesRealizar,
+			List<Miembros> miembrosAsignados, String descripcionAccion, SubLineaAccion defSubLineaAccion,
+			ActualLineasAccion actualLineasAccion) {
+		super(idProyecto, nombreProyecto, pais, localizacion, lineaAccion, subLineaAccion, fechaInicio, fechaFin,
+				socioLocal, financiador, financiacionAportada, codigoProyecto, accionesRealizar, miembrosAsignados);
+		this.descripcionAccion = descripcionAccion;
+		this.defSubLineaAccion = defSubLineaAccion;
+		this.actualLineasAccion = actualLineasAccion;
 	}
 	
-	public void setLineaAccion(ActualLineasAccion lineaAccion) {
-		this.lineaAccion = lineaAccion;
+	public LineaAccion() {
+		super();
 	}
-	
-	public List<SubLineaAccion> getListasubLineaAccion() {
-		return listasubLineaAccion;
-	}
-	
-	public void setListasubLineaAccion(List<SubLineaAccion> listasubLineaAccion) {
-		this.listasubLineaAccion = listasubLineaAccion;
-	}
+
+	//Definicion de los Gets y sets
 	
 	public String getDescripcionAccion() {
 		return descripcionAccion;
 	}
-	
+
 	public void setDescripcionAccion(String descripcionAccion) {
 		this.descripcionAccion = descripcionAccion;
 	}
-	
-	public SubLineaAccion getSubLineaAccion() {
-		return subLineaAccion;
+
+	public SubLineaAccion getDefSubLineaAccion() {
+		return defSubLineaAccion;
 	}
-	
-	public void setSubLineaAccion(SubLineaAccion subLineaAccion) {
-		this.subLineaAccion = subLineaAccion;
+
+	public void setDefSubLineaAccion(SubLineaAccion defSubLineaAccion) {
+		this.defSubLineaAccion = defSubLineaAccion;
 	}
-	
+
 	public ActualLineasAccion getActualLineasAccion() {
 		return actualLineasAccion;
 	}
-	
+
 	public void setActualLineasAccion(ActualLineasAccion actualLineasAccion) {
 		this.actualLineasAccion = actualLineasAccion;
 	}
-
-	public LineaAccion(ActualLineasAccion lineaAccion, List<SubLineaAccion> listasubLineaAccion,
-			String descripcionAccion, SubLineaAccion subLineaAccion, ActualLineasAccion actualLineasAccion) {
-		super();
-		this.lineaAccion = lineaAccion;
-		this.listasubLineaAccion = listasubLineaAccion;
-		this.descripcionAccion = descripcionAccion;
-		this.subLineaAccion = subLineaAccion;
-		this.actualLineasAccion = actualLineasAccion;
-	}
-
-	public LineaAccion() {
-		super();
-	}
+	
 }

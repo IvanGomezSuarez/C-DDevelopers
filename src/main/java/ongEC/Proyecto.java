@@ -2,23 +2,64 @@ package ongEC;
 
 import java.sql.Date;
 import java.util.List;
+/*
+ * esta clase contiene la informaci�n de los Proyectos
+ * 
+ * 
+ * */
 
 public class Proyecto {
 	
+	//Definicion de Atributos
+	
 	int idProyecto;
+	Double financiacionAportada;
+	
 	String nombreProyecto;
 	String pais;
 	String localizacion;
-	LineaAccion lineaAccion;
-	List<SubLineaAccion> subLineaAccion;
-	Date fechaInicio;
-	Date fechaFin;
-	List<Socio> socioLocal;
 	String financiador;
-	Double financiacionAportada;
+	
 	String codigoProyecto;
 	String AccionesRealizar;
+	
+	Date fechaInicio;
+	Date fechaFin;
+	
+	LineaAccion lineaAccion;
+	
+	List<SubLineaAccion> subLineaAccion;
+	List<Socio> socioLocal;
 	List<Miembros> miembrosAsignados;
+	
+	//Definicion de Constructores
+	
+	public Proyecto(int idProyecto, String nombreProyecto, String pais, String localizacion, LineaAccion lineaAccion,
+			List<SubLineaAccion> subLineaAccion, Date fechaInicio, Date fechaFin, List<Socio> socioLocal,
+			String financiador, Double financiacionAportada, String codigoProyecto, String accionesRealizar,
+			List<Miembros> miembrosAsignados) {
+		super();
+		this.idProyecto = idProyecto;
+		this.nombreProyecto = nombreProyecto;
+		this.pais = pais;
+		this.localizacion = localizacion;
+		this.lineaAccion = lineaAccion;
+		this.subLineaAccion = subLineaAccion;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+		this.socioLocal = socioLocal;
+		this.financiador = financiador;
+		this.financiacionAportada = financiacionAportada;
+		this.codigoProyecto = codigoProyecto;
+		AccionesRealizar = accionesRealizar;
+		this.miembrosAsignados = miembrosAsignados;
+	}
+
+	public Proyecto() {
+		super();
+	}
+	
+	//Definicion de los Getters and Settes
 	
 	public int getIdProyecto() {
 		return idProyecto;
@@ -130,30 +171,5 @@ public class Proyecto {
 	
 	public void setMiembrosAsignados(List<Miembros> miembrosAsignados) {
 		this.miembrosAsignados = miembrosAsignados;
-	}
-
-	public Proyecto(int idProyecto, String nombreProyecto, String pais, String localizacion, LineaAccion lineaAccion,
-			List<SubLineaAccion> subLineaAccion, Date fechaInicio, Date fechaFin, List<Socio> socioLocal,
-			String financiador, Double financiacionAportada, String codigoProyecto, String accionesRealizar,
-			List<Miembros> miembrosAsignados) {
-		super();
-		this.idProyecto = idProyecto;
-		this.nombreProyecto = nombreProyecto;
-		this.pais = pais;
-		this.localizacion = localizacion;
-		this.lineaAccion = lineaAccion;
-		this.subLineaAccion = subLineaAccion;
-		this.fechaInicio = fechaInicio;
-		this.fechaFin = fechaFin;
-		this.socioLocal = socioLocal;
-		this.financiador = financiador;
-		this.financiacionAportada = financiacionAportada;
-		this.codigoProyecto = codigoProyecto;
-		AccionesRealizar = accionesRealizar;
-		this.miembrosAsignados = miembrosAsignados;
-	}
-
-	public Proyecto() {
-		super();
 	}
 }
