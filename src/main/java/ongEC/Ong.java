@@ -8,16 +8,24 @@ import java.util.regex.Pattern;
 
 import javax.xml.bind.JAXBException;
 
+import javax.xml.bind.annotation.*;
+
 
 /**
 * esta clase permite gestionar contiene la información de la ong, nos permitirá crear delegaciones, así como borrarlas
 * tb nos permitirá crear proyectos y dar de alta a miembros
 */
-
+@XmlRootElement(name = "ong")
+@XmlAccessorType(XmlAccessType.NONE)
 
 public class Ong {
+	@XmlAttribute(name = "nombreOng")
 	private String nombreOng;
+	
+	@XmlAttribute(name = "cifOng")
 	private String cifOng;
+	
+	
 	//private direccionOng Direccion;
 	
 	
