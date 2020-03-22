@@ -1,10 +1,12 @@
 package ongEC;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import java.util.GregorianCalendar;
-
 import javax.xml.bind.JAXBException;
+
 
 /*
  * esta clase contiene la informaciï¿½n de los miembros. los crea y aï¿½ade a un array
@@ -16,9 +18,7 @@ public class Miembros {
 
 // atributos
 	
-	protected int idMiembro;
-	private java.util.GregorianCalendar fechaAlta;
-	private java.util.GregorianCalendar fechaBaja;
+	protected String idMiembro;
 	protected String nombreMiembro;
 	protected String nombreUsuario;
 	protected String password;
@@ -29,21 +29,15 @@ public class Miembros {
 	protected String ciudad;
 	protected String direccion;
 	protected String rol;
-	private ArrayList<Miembros> ALMiembros;
+	protected String telefono;
+	private static ArrayList<Miembros> ALMiembros;
 	
 
 	// constructores
 	
-	public Miembros() {
-		super();
-	}
-
-
 	/**
 	 * este constructor crea objeto e inicialia los atributos.
 	 * @param idMiembro
-	 * @param fechaAlta
-	 * @param fechaBaja
 	 * @param nombreMiembro
 	 * @param nombreUsuario
 	 * @param password
@@ -56,28 +50,29 @@ public class Miembros {
 	 * 
 	 * 
 	 */
-	public Miembros(int idMiembro, java.util.GregorianCalendar fechaAlta,java.util.GregorianCalendar fechaBaja, String nombreMiembro, String nombreUsuario, String password, String apellido1, String apellido2,
-			 String dni, String pais, String ciudad, String direccion) {
+	public Miembros(String idMiembro, String nombreMiembro, String nombreUsuario, String password, String apellido1, String apellido2,
+			 String dni, String pais, String ciudad, String direccion, String telefono) {
 		super();
 		this.idMiembro =idMiembro;
-		this.fechaAlta = fechaAlta;
-		this.fechaBaja = fechaBaja;
 		this.nombreMiembro = nombreMiembro;
+		this.nombreUsuario = nombreUsuario;
+		this.password = password;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
 		this.dni = dni;
 		this.pais = pais;
 		this.ciudad =ciudad;
 		this.direccion = direccion;
+		this.telefono = telefono;
 	}
 
 	// constructor para el arraylist
-	/*   public Miembros()
+	public Miembros()
 	   {
 	       ALMiembros = new ArrayList <Miembros>();
 	       
 	     }
-	*/
+	
 	//metodos
 	
 	public Miembros(String nombreMiembro2, String dni2) {
@@ -85,33 +80,13 @@ public class Miembros {
 	}
 
 
-	public int getIdMiembro() {
+	public String getIdMiembro() {
 		return idMiembro;
 	}
 
 
-	public void setIdMiembro(int idMiembro) {
+	public void setIdMiembro(String idMiembro) {
 		this.idMiembro = idMiembro;
-	}
-
-
-	public java.util.GregorianCalendar getFechaAlta() {
-		return fechaAlta;
-	}
-
-
-	public void setFechaAlta(java.util.GregorianCalendar fechaAlta) {
-		this.fechaAlta = fechaAlta;
-	}
-
-
-	public java.util.GregorianCalendar getFechaBaja() {
-		return fechaBaja;
-	}
-
-
-	public void setFechaBaja(java.util.GregorianCalendar fechaBaja) {
-		this.fechaBaja = fechaBaja;
 	}
 	
 	public String getNombreMiembro() {
@@ -186,11 +161,51 @@ public class Miembros {
 		this.ciudad = ciudad;
 	}
 	
+	public String getTelefono() {
+		return telefono;
+	}
 
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+	
 
-    // metodo aï¿½adir miembro al array
-/*	
- public void AddMiembro (Miembros miembro)
+	private void altaMiembro() throws IOException, JAXBException {
+		Miembros nuevoMiembro = new Miembros();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("\nIntroduce el nombre del miembro: ");
+		nuevoMiembro.setNombreMiembro(br.readLine());
+		System.out.println("\nIntroduce el primer apellido del miembro: ");
+		nuevoMiembro.setApellido1(br.readLine());
+		System.out.println("\nIntroduce el segundo apellido del trabajador: ");
+		nuevoMiembro.setApellido1(br.readLine());
+		System.out.println("\nIntroduce el DNI del miembro: ");
+		nuevoMiembro.setDni(br.readLine());
+		System.out.println("\nIntroduce el pais de residencia: ");
+		nuevoMiembro.setPais(br.readLine());
+		System.out.println("\nIntroduce la ciudad de residencia: ");
+		nuevoMiembro.setCiudad(br.readLine());
+		System.out.println("\nIntroduce la direccion de su domicilio: ");
+		nuevoMiembro.setDireccion(br.readLine());
+		System.out.println("\nIntroduce el ID del miembro: ");
+		nuevoMiembro.setIdMiembro(br.readLine());
+		System.out.println("\nIntroduce el nombre que desee como usuario: ");
+		nuevoMiembro.setNombreUsuario(br.readLine());
+		System.out.println("\nIntroduce tu contraseña: ");
+		nuevoMiembro.setPassword(br.readLine());
+		System.out.println("\nIntroduce el numero de movil del miembro: ");
+		nuevoMiembro.setTelefono(br.readLine());
+		
+        // añadir MIEMBRO AL DAO, para ISA
+		//MiembrosDAO.;
+		
+		AddMiembro(nuevoMiembro);
+
+	}
+	
+    // metodo añadir miembro al array
+
+ static void AddMiembro (Miembros miembro)
  { 
      
       boolean b= true;
@@ -204,24 +219,29 @@ public class Miembros {
      }
      
      if(b){
-         this.ALMiembros.add (miembro);
+         ALMiembros.add (miembro);
          System.out.println(" El miembro se ha aï¿½adido a la base de datos"+'\n');
        }   
    }
 
 // visualiza en pantalla los miembros 
+ 
+@SuppressWarnings("unused")
 public void mostrarMiembros() 
 {
  for(Miembros miembro : ALMiembros) {
       System.out.println(this.getDni()+'\n');  
   }    
 }
-//Lista los miebros
-public void listMiembros()
+//Lista los miembros
+
+static void listMiembros()
 {
  for(Miembros miembro : ALMiembros) {
        miembro.mostrarMiembros();   
   }    
 }
-*/
+
+
+
 }
