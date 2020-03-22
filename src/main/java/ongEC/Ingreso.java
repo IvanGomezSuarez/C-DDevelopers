@@ -1,6 +1,6 @@
 package ongEC;
 
-
+//21/03/2020 falta implementar métodos todavia
 //IMPORTS
 import javax.xml.bind.JAXBException;
 import java.util.GregorianCalendar;
@@ -27,6 +27,7 @@ public class Ingreso {
 	 * este constructor crea objeto INGRESO  pero NO inicialia los atributos.
 	 * @param idIngreso identifica el ingreso
 	 * @param fechaRecepcionIngreso para conocer la fecha en la cual se recibe un ingreso
+	 *
 	 */
 	
 	public Ingreso() throws JAXBException {

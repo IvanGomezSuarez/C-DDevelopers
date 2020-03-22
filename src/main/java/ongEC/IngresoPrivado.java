@@ -1,100 +1,45 @@
 package ongEC;
-
-import java.sql.Date;
-
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.annotation.*;
+/**
+ * Dicha clase gestiona las aportaciones privadas que est�n contempladas
+ * en la clase enum Aportaciones
+ * @author Ivan
+ */
 
+@XmlRootElement(name ="iPrivados")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class IngresoPrivado extends Ingreso {
-	
-	int idIngreso;
-	Date fechaIngreso;
-	
-	Legado legado;
-	IngresoInstitut ingresoInstituciones;
-	IngresoExtra ingresoExtraordinario;
-	Herencia herencia;
-	AportPuntualEmp aportacionPuntualEmpresas;
-	AportPuntualPartic aportacionPuntualParticular;
-	
-	public int getIdIngreso() {
-		return idIngreso;
+    @XmlElement(name = "aportacion")
+    private Aportaciones aportacion;
+
+	//CONTRUCTORES
+
+
+    public IngresoPrivado()throws JAXBException{}
+
+    public IngresoPrivado(int idIngresoPrivado, String nombre, AdminTipo administracion, int idIngreso, java.util.GregorianCalendar fechaRecepcionIngreso )throws JAXBException{
+        super(idIngreso, fechaRecepcionIngreso);
+    	this.setId(idIngresoPrivado);
+        this.setNombre(nombre);
+        this.aportacion = aportacion;
+    }
+
+        private void setId(int id) {
+		// TODO Auto-generated method stub
+
 	}
 
-	public void setIdIngreso(int idIngreso) {
-		this.idIngreso = idIngreso;
+		private void setNombre(String nombre) {
+		// TODO Auto-generated method stub
+
 	}
 
-	public Date getFechaIngreso() {
-		return fechaIngreso;
-	}
+    public Aportaciones getAportacion(){
+        return aportacion;
+    }
 
-	public void setFechaIngreso(Date fechaIngreso) {
-		this.fechaIngreso = fechaIngreso;
-	}
-	
-	public Legado getLegado() {
-		return legado;
-	}
-
-	public void setLegado(Legado legados) {
-		this.legado = legados;
-	}
-
-	public IngresoInstitut getIngresoInstituciones() {
-		return ingresoInstituciones;
-	}
-
-	public void setIngresoInstituciones(IngresoInstitut ingresoInstituciones) {
-		this.ingresoInstituciones = ingresoInstituciones;
-	}
-
-	public IngresoExtra getIngresoExtraordinario() {
-		return ingresoExtraordinario;
-	}
-
-	public void setIngresoExtraordinario(IngresoExtra ingresoExtraordinario) {
-		this.ingresoExtraordinario = ingresoExtraordinario;
-	}
-
-	public Herencia getHerencia() {
-		return herencia;
-	}
-
-	public void setHerencias(Herencia herencias) {
-		this.herencia = herencias;
-	}
-
-	public AportPuntualEmp getAportacionPuntualEmpresas() {
-		return aportacionPuntualEmpresas;
-	}
-
-	public void setAportacionPuntualEmpresas(AportPuntualEmp aportacionPuntualEmpresas) {
-		this.aportacionPuntualEmpresas = aportacionPuntualEmpresas;
-	}
-
-	public AportPuntualPartic getAportacionPuntualParticular() {
-		return aportacionPuntualParticular;
-	}
-
-	public void setAportacionPuntualParticular(AportPuntualPartic aportacionPuntualParticular) {
-		this.aportacionPuntualParticular = aportacionPuntualParticular;
-	}
-
-	public IngresoPrivado(int idIngreso, Date fechaIngreso, Legado legado, IngresoInstitut ingresoInstituciones,
-			IngresoExtra ingresoExtraordinario, Herencia herencia, AportPuntualEmp aportacionPuntualEmpresas,
-			AportPuntualPartic aportacionPuntualParticular )throws JAXBException {
-		super();
-		this.idIngreso = idIngreso;
-		this.fechaIngreso = fechaIngreso;
-		this.legado = legado;
-		this.ingresoInstituciones = ingresoInstituciones;
-		this.ingresoExtraordinario = ingresoExtraordinario;
-		this.herencia = herencia;
-		this.aportacionPuntualEmpresas = aportacionPuntualEmpresas;
-		this.aportacionPuntualParticular = aportacionPuntualParticular;
-	}
-
-	public IngresoPrivado() throws JAXBException {
-		super();
-	}		
+    public void setAdministracion(Aportaciones a){
+        aportacion = a;
+    }
 }
