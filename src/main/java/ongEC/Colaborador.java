@@ -8,7 +8,7 @@ import javax.xml.bind.JAXBException;
 import ongEC.Miembros;
 
 /**
- * Esta clase representa a los colaboradores de la ONG
+ *  esta clase contiene la informaci�n de los datos de fechas de los colaboradores
  *
  * @version 1
  * Yosu, Ivan
@@ -18,14 +18,11 @@ public class Colaborador extends Miembros {
 
 	// ATRIBUTOS
 	
-	Date fechaAlta;
-	Date fechaBaja;
-
-	/**
-	 * Constructor que crea un nuevo objeto Loggin sin inicializar sus campos.
-	 *
-	 * @throws JAXBException si se produce una excepci�n de tipo JAXB.
-	 */
+	private Date fechaAlta;
+	private Date fechaBaja;
+	
+	
+	//Definicion de los constructores
 	
 	public Colaborador(String idMiembro, String nombreMiembro, String nombreUsuario, String password, String apellido1,
 			String apellido2, String dni, String pais, String ciudad, String direccion, String telefono, Date fechaAlta,

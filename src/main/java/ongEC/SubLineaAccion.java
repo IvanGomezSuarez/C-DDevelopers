@@ -13,7 +13,7 @@ public class SubLineaAccion extends LineaAccion {
 
 	//Incializacion de atributos
 	
-	String descripcion;
+	private String descripcion;
 
 	//Constructores
 	

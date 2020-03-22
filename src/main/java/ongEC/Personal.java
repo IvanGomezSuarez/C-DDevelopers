@@ -12,8 +12,8 @@ public class Personal extends Miembros {
 	
 	//Definicion de los Atributos
 	
-	Date fechaAlta;
-	Date fechaBaja;		
+	private Date fechaAlta;
+	private Date fechaBaja;		
 	
 	//Definiendo los Constructores
 	

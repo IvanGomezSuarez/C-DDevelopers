@@ -1,13 +1,17 @@
 package ongEC;
 
 import java.sql.Date;
-
+/*
+ * esta clase contiene la informaci�n de los datos de fechas de los voluntarios
+ * 
+ * 
+ * */
 public class Voluntario extends Miembros  {
 	
 	//Definendo los Atributos
 	
-	Date fechaAlta;
-	Date fechaBaja;
+	private Date fechaAlta;
+	private Date fechaBaja;
 	
 	
 	// Definendo los constructores
