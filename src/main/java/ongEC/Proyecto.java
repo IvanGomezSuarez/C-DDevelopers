@@ -13,13 +13,13 @@ public class Proyecto {
 	//Definicion de Atributos
 	
 	int idProyecto;
+	
 	Double financiacionAportada;
 	
 	String nombreProyecto;
 	String pais;
 	String localizacion;
-	String financiador;
-	
+	String financiador;	
 	String codigoProyecto;
 	String AccionesRealizar;
 	
