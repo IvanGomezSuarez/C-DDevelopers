@@ -2,7 +2,11 @@ package ongEC;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+/*
+ * esta clase es la funcion principal que nos permitira navegar por el menu para realizar las opciones necesarias
+ * 
+ * 
+ * */
 public class Main {
 	public static void main(String args[]){
 		
@@ -21,7 +25,7 @@ public class Main {
 					 System.out.println("1.Dar de alta/modificar/eliminar un Socio");
 					 opcionesSecundario();
 					 seleccionSubMenu=comprobacionOpcion(); //Comprobamos si es int
-					 if (seleccionSubMenu!=0) {				
+					 if (seleccionSubMenu!=0) {				//Como no devuelve 0 es un entero
 						 if (seleccionSubMenu==1) {			//Pasamos dependiendo de la seleccion
 							 System.out.println("Dar de alta");
 						 }else if (seleccionSubMenu==2) {
@@ -78,6 +82,25 @@ public class Main {
 							 System.out.println("Opcion no valida");
 						 }
 					 }
+				}else if (estadoAplicacion==5) {
+					System.out.println("Listados");
+					
+					opcionesListados();
+
+					seleccionSubMenu=comprobacionOpcion(); //Comprobamos si es int
+					 if (seleccionSubMenu!=0) {				//Como no devuelve 0 es un entero
+						 if (seleccionSubMenu==1) {			//Pasamos dependiendo de la seleccion
+							 System.out.println("Listado de Socios");
+						 }else if (seleccionSubMenu==2) {
+							 System.out.println("Listado de Proyectos");
+						 }else if (seleccionSubMenu==3) {
+							 System.out.println("Listado de Miembros");
+						 }else if (seleccionSubMenu==4) {
+							 System.out.println("Listado de Ingresos");
+					     }else {
+							 System.out.println("Opcion no valida");
+						 }
+					 }
 				}else if (estadoAplicacion==9) {
 					System.exit(0);
 				}else {
@@ -95,13 +118,24 @@ public class Main {
 		 System.out.println("2.Dar de alta/modificar/eliminar un Proyecto");
 		 System.out.println("3.Dar de alta/modificar/eliminar un Miembro");
 		 System.out.println("4.Dar de alta/modificar/eliminar un Ingreso");
+		 System.out.println("5.Listados");
 	}
+	
 	private static void opcionesSecundario(){ //Opciones del menu secundario para realizar la accion que queremos
 		System.out.println("Seleccione la Opcion deseada");
 		System.out.println("1.Dar de alta");
 		System.out.println("2.Modificar");
 		System.out.println("3.Eliminar");
 	}
+	
+	private static void opcionesListados(){ //Opciones del menu de Listados para ver los datos dados de Alta
+		System.out.println("Seleccione la Opcion deseada");
+		System.out.println("1.Ver listados de Socios");
+		System.out.println("2.Ver listados de Proyectos");
+		System.out.println("3.Ver listados de Miembros");
+		System.out.println("4.Ver listados de Ingresos");
+	}
+	
 	private static Integer comprobacionOpcion() { //Comprobamos que la opcion introducida es realmente un entero para que no de ninguna excepcion
 		
 		int accionARealizar=0;
