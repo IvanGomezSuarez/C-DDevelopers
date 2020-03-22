@@ -2,7 +2,9 @@ package ongEC;
 
 import java.sql.Date;
 
-public class IngresoPrivado {
+import javax.xml.bind.JAXBException;
+
+public class IngresoPrivado extends Ingreso {
 	
 	int idIngreso;
 	Date fechaIngreso;
@@ -80,7 +82,7 @@ public class IngresoPrivado {
 
 	public IngresoPrivado(int idIngreso, Date fechaIngreso, Legado legado, IngresoInstitut ingresoInstituciones,
 			IngresoExtra ingresoExtraordinario, Herencia herencia, AportPuntualEmp aportacionPuntualEmpresas,
-			AportPuntualPartic aportacionPuntualParticular) {
+			AportPuntualPartic aportacionPuntualParticular )throws JAXBException {
 		super();
 		this.idIngreso = idIngreso;
 		this.fechaIngreso = fechaIngreso;
@@ -92,7 +94,7 @@ public class IngresoPrivado {
 		this.aportacionPuntualParticular = aportacionPuntualParticular;
 	}
 
-	public IngresoPrivado() {
+	public IngresoPrivado() throws JAXBException {
 		super();
 	}		
 }

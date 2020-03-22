@@ -1,6 +1,6 @@
 package ongEC;
 
-public class Internacional {
+public class Internacional extends Voluntario {
 
 	String paisOrigen;
 

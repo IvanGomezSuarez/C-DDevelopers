@@ -1,6 +1,5 @@
 package ongEC;
 
-import ongEC.
 /**
  * Esta clase representa el conceoti de direccion
  * 

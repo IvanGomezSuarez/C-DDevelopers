@@ -1,6 +1,6 @@
 package ongEC;
 
-public class Sede {
+public class Sede extends Ong {
 
 	String nombre;
 	String cip;

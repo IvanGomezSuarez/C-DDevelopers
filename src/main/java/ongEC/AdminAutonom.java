@@ -29,7 +29,7 @@ public class AdminAutonom extends IngresoPublico {
 		this.descripcion = descripcion;
 	}
 	
-	public AdminAutonom() {
+	public AdminAutonom() throws JAXBException {
 		super();
 	}
 	

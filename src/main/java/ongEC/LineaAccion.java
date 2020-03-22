@@ -2,7 +2,7 @@ package ongEC;
 
 import java.util.List;
 
-public class LineaAccion {
+public class LineaAccion extends Proyecto {
 
 	ActualLineasAccion lineaAccion;
 	List<SubLineaAccion>listasubLineaAccion;

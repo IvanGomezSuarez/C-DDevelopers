@@ -1,6 +1,6 @@
 package ongEC;
 
-public class SubLineaAccion {
+public class SubLineaAccion extends LineaAccion {
 
 	String subLineaAccion;
 	String descripcion;

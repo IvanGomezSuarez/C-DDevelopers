@@ -2,7 +2,7 @@ package ongEC;
 
 import java.sql.Date;
 
-public class Colaborador {
+public class Colaborador extends Miembros {
 	
 	Date fechaAlta;
 	Date fechaBaja;
