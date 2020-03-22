@@ -242,6 +242,18 @@ static void listMiembros()
   }    
 }
 
+//Comprobar si el dni del miembro esta dado de alta
 
-
+public Integer comprobarMiembro (String dni)
+{    
+	Integer existeMiembro=0;
+	
+    for (Miembros n:ALMiembros)   	
+    { if(n.getDni().equals(dni)){        
+        return (existeMiembro);
+    }
+    existeMiembro++;
+    }
+    return(0);  
+  }
 }

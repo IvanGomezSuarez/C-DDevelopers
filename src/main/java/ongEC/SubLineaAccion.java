@@ -38,8 +38,14 @@ public class SubLineaAccion extends LineaAccion {
 				descripcionAccion, defSubLineaAccion, actualLineasAccion);
 	}
 	
+	public SubLineaAccion() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	//Defincion de Gets and Sets
 	
+	
+
 	public String getDescripcion() {
 		return descripcion;
 	}

@@ -2,6 +2,7 @@ package ongEC;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 /*
  * esta clase es la funcion principal que nos permitira navegar por el menu para realizar las opciones necesarias
  * 
@@ -44,6 +45,7 @@ public class Main {
 					if (seleccionSubMenu!=0) {
 						 if (seleccionSubMenu==1) {		//Pasamos dependiendo de la seleccion
 							 System.out.println("Dar de alta");
+							 Proyecto.addProyecto();
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
 						 }else if (seleccionSubMenu==3) {
