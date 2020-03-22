@@ -1,5 +1,10 @@
 package ongEC;
+import javax.xml.bind.annotation.*;
 
+
+
+@XmlRootElement(name ="delegacion")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Delegaciones extends Ong {
 
 	public void setNombreDelegacion(String readLine) {
