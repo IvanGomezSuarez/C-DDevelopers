@@ -10,21 +10,64 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class IngresoPublico extends Ingreso {
     @XmlElement(name = "administracion")
+    
     private AdminTipo administracion;
+    
+    String nombreOrganizacion;
+    Direccion direccion;
+    float importe;
+    String descripcion;
     
 	//CONTRUCTORES
     
     
     public IngresoPublico()throws JAXBException{}
     
-    public IngresoPublico(int idIngresoPublico, String nombre, AdminTipo administracion, int idIngreso, java.util.GregorianCalendar fechaRecepcionIngreso )throws JAXBException{
-        super(idIngreso, fechaRecepcionIngreso);
-    	this.setId(idIngresoPublico);
-        this.setNombre(nombre);
-        this.administracion = administracion;
-    }
+    public IngresoPublico(AdminTipo administracion, String nombreOrganizacion, Direccion direccion, float importe,
+		String descripcion) throws JAXBException {
+		super();
+		this.administracion = administracion;
+		this.nombreOrganizacion = nombreOrganizacion;
+		this.direccion = direccion;
+		this.importe = importe;
+		this.descripcion = descripcion;
+	}
 
-        private void setId(int id) {
+
+    	
+	public String getNombreOrganizacion() {
+		return nombreOrganizacion;
+	}
+
+	public void setNombreOrganizacion(String nombreOrganizacion) {
+		this.nombreOrganizacion = nombreOrganizacion;
+	}
+
+	public Direccion getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
+	}
+
+	public float getImporte() {
+		return importe;
+	}
+
+	public void setImporte(float importe) {
+		this.importe = importe;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+		private void setId(int id) {
 		// TODO Auto-generated method stub
 		
 	}

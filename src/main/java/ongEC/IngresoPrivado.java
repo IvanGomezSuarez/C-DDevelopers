@@ -13,19 +13,63 @@ public class IngresoPrivado extends Ingreso {
     @XmlElement(name = "aportacion")
     private Aportaciones aportacion;
 
+    String nombreOrganizacion;
+    Direccion direccion;
+    float importe;
+    String descripcion;
+    
 	//CONTRUCTORES
 
 
     public IngresoPrivado()throws JAXBException{}
+    
+    public IngresoPrivado(Aportaciones aportacion, String nombreOrganizacion, Direccion direccion, float importe,
+		String descripcion) throws JAXBException {
+		super();
+		this.aportacion = aportacion;
+		this.nombreOrganizacion = nombreOrganizacion;
+		this.direccion = direccion;
+		this.importe = importe;
+		this.descripcion = descripcion;
+	}
+    
+    public String getNombreOrganizacion() {
+		return nombreOrganizacion;
+	}
 
-    public IngresoPrivado(int idIngresoPrivado, String nombre, AdminTipo administracion, int idIngreso, java.util.GregorianCalendar fechaRecepcionIngreso )throws JAXBException{
-        super(idIngreso, fechaRecepcionIngreso);
-    	this.setId(idIngresoPrivado);
-        this.setNombre(nombre);
-        this.aportacion = aportacion;
-    }
+	public void setNombreOrganizacion(String nombreOrganizacion) {
+		this.nombreOrganizacion = nombreOrganizacion;
+	}
 
-        private void setId(int id) {
+	public Direccion getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
+	}
+
+	public float getImporte() {
+		return importe;
+	}
+
+	public void setImporte(float importe) {
+		this.importe = importe;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public void setAportacion(Aportaciones aportacion) {
+		this.aportacion = aportacion;
+	}
+
+		private void setId(int id) {
 		// TODO Auto-generated method stub
 
 	}
