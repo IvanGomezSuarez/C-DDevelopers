@@ -373,7 +373,7 @@ public class Proyecto {
 		
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		
-		System.out.println("Introduce el  id de proyecto que se va a borrar");
+		System.out.println("Introduce el  id de proyecto que se va a Modificar");
 		
 		try {
 			idProyecto=recuperado.nextInt();
