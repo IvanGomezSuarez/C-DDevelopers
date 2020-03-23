@@ -24,7 +24,7 @@ public class Miembros {
 	protected String password;
 	protected String apellido1;
 	protected String apellido2;
-	protected String dni;
+	protected static String dni;
 	protected String pais;
 	protected String ciudad;
 	protected String direccion;
@@ -137,7 +137,7 @@ public class Miembros {
 		this.direccion = direccion;
 	}
 
-	public String getDni() {
+	public static String getDni() {
 		return dni;
 	}
 
@@ -170,7 +170,7 @@ public class Miembros {
 	}
 	
 
-	private void altaMiembro() throws IOException, JAXBException {
+	static void altaMiembro() throws IOException, JAXBException {
 		Miembros nuevoMiembro = new Miembros();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("\nIntroduce el nombre del miembro: ");
@@ -200,6 +200,7 @@ public class Miembros {
 		//MiembrosDAO.;
 		
 		AddMiembro(nuevoMiembro);
+		mostrarMiembros();
 
 	}
 	
@@ -209,8 +210,8 @@ public class Miembros {
  { 
      
       boolean b= true;
-     for (Miembros n:ALMiembros)
-     { if(n.getDni().equals(miembro.getDni())){
+     for (@SuppressWarnings("unused") Miembros n:ALMiembros)
+     { if(Miembros.getDni().equals(Miembros.getDni())){
          b=false;
          System.out.println(" el miembro ya existe");
          break;
@@ -227,18 +228,18 @@ public class Miembros {
 // visualiza en pantalla los miembros 
  
 @SuppressWarnings("unused")
-public void mostrarMiembros() 
+static void mostrarMiembros() 
 {
  for(Miembros miembro : ALMiembros) {
-      System.out.println(this.getDni()+'\n');  
+      System.out.println(getDni()+'\n');  
   }    
 }
 //Lista los miembros
 
 static void listMiembros()
 {
- for(Miembros miembro : ALMiembros) {
-       miembro.mostrarMiembros();   
+ for(@SuppressWarnings("unused") Miembros miembro : ALMiembros) {
+       Miembros.mostrarMiembros();   
   }    
 }
 

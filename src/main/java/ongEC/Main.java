@@ -70,6 +70,7 @@ public class Main {
 					 if (seleccionSubMenu!=0) {
 						 if (seleccionSubMenu==1) { 	//Pasamos dependiendo de la seleccion
 							 System.out.println("Dar de alta");
+							 Miembros.altaMiembro();
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
 						 }else if (seleccionSubMenu==3) {
