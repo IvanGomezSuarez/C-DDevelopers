@@ -362,7 +362,7 @@ public class Proyecto {
 		  return;
 		}
 		
-		
+		System.out.println("Borramos el proyecto");
 			
 	}
 	
@@ -382,6 +382,6 @@ public class Proyecto {
 			System.out.println("No has introducido un id de proyecto");
 		  return;
 		}
+		System.out.println("Modificamos el proyecto");
 	}
-	
 }

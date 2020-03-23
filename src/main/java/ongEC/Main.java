@@ -53,8 +53,10 @@ public class Main {
 							 Proyecto.addProyecto();
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
+							 Proyecto.modProyecto();
 						 }else if (seleccionSubMenu==3) {
 							 System.out.println("Eliminar");
+							 Proyecto.delProyecto();
 						 }else {
 							 System.out.println("Opcion no valida");
 						 }
