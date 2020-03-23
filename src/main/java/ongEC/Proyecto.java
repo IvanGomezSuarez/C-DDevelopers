@@ -212,11 +212,24 @@ public class Proyecto {
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		
 		System.out.println("Introduzca el id del proyecto");
-		nuevoProyecto.setIdProyecto(recuperado.nextInt());
+		try {
+				nuevoProyecto.setIdProyecto(recuperado.nextInt());
+			}
+			catch(Exception e) {
+				System.out.println("No has introducido un entero");
+			  return;
+			}
+		
 		System.out.println(nuevoProyecto.idProyecto);
 		
 		System.out.println("Introduzca la financiacion aportada del proyecto");
-		nuevoProyecto.setFinanciacionAportada(recuperado.nextDouble());
+		try {
+			nuevoProyecto.setFinanciacionAportada(recuperado.nextDouble());
+		}
+		catch(Exception e) {
+			System.out.println("No has introducido un importe correcto");
+		  return;
+		}
 		System.out.println(nuevoProyecto.financiacionAportada);
 		
 		System.out.println("Introduzca el Nombre del proyecto");
@@ -248,8 +261,8 @@ public class Proyecto {
 		try {
 			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Formato Fecha incorrecto");
+			return;
 		}
 		nuevoProyecto.setFechaInicio(conversionaFecha);
 		System.out.println(nuevoProyecto.fechaInicio);
@@ -259,8 +272,8 @@ public class Proyecto {
 		try {
 			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Formato Fecha incorrecto");
+			return;
 		}
 		nuevoProyecto.setFechaFin(conversionaFecha);
 		System.out.println(nuevoProyecto.fechaFin);
@@ -271,8 +284,13 @@ public class Proyecto {
 		for (int i = 0;i<listaAcciones.size();i++) {
 			System.out.println(listaAcciones.get(i));
 		}
-	
-		seleccionLineaAccion=recuperado.nextInt();
+		
+		try {
+			seleccionLineaAccion=recuperado.nextInt();
+		} catch (Exception e) {
+			System.out.println("Opcion incorrecta: " + e.getMessage());
+			return;
+		}
 		
 		
 		if (seleccionLineaAccion!=null) {		
@@ -324,4 +342,10 @@ public class Proyecto {
 		}
 		nuevoProyecto.setMiembrosAsignados(miembros);
 	}
+	public static void delProyecto() { //Clase que añadira un nuevo proyecto
+	}
+	
+	public static void modProyecto() { //Clase que añadira un nuevo proyecto
+	}
+	
 }
