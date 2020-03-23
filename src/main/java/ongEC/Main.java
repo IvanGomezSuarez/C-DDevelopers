@@ -1,7 +1,12 @@
 package ongEC;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import javax.xml.bind.JAXBException;
+
+import ongEC.Loggin;
 
 /*
  * esta clase es la funcion principal que nos permitira navegar por el menu para realizar las opciones necesarias
@@ -9,11 +14,11 @@ import java.util.Scanner;
  * 
  * */
 public class Main {
-	public static void main(String args[]){
+	public static void main(String args[]) throws IOException, JAXBException{
 		
 		Integer estadoAplicacion=0;//Estado de la aplicacion para decidir que opcion entre todas usar
 		Integer seleccionSubMenu=0;//Seleccion del Menu Secundario
-		
+		Loggin.loggin ();
 		
 		while (estadoAplicacion!=9){            //Hasta que no se introduzca el numero 9 no se sale de la aplicacion.
 			
@@ -114,7 +119,7 @@ public class Main {
 		
 	}
 	
-	private static void opcionesMenuPrincipal(){//Opciones del menu principal
+	static void opcionesMenuPrincipal(){//Opciones del menu principal
 		 System.out.println("Seleccione la Opcion deseada");
 		 System.out.println("1.Dar de alta/modificar/eliminar un Socio");
 		 System.out.println("2.Dar de alta/modificar/eliminar un Proyecto");
