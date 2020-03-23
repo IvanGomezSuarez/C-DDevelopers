@@ -180,7 +180,8 @@ public class Proyecto {
 	}
 	public static void addProyecto() //Clase que añadira un nuevo proyecto
 	{
-
+		//Definimos Atributos
+		
 		SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
 		String antesConversionFecha;
 		Date conversionaFecha= new Date(01/01/2020);
@@ -211,6 +212,7 @@ public class Proyecto {
 		
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		
+		//Solicitamos los datos al usuario del nuevo proyecto con sus comprobaciones de errores
 		System.out.println("Introduzca el id del proyecto");
 		try {
 				nuevoProyecto.setIdProyecto(recuperado.nextInt());
@@ -339,13 +341,32 @@ public class Proyecto {
 			miembros.get(devolucionPosicionMiembro).getNomUsuario();
 			miembros.get(devolucionPosicionMiembro).getTelefono();
 		}
-		}
-		nuevoProyecto.setMiembrosAsignados(miembros);
+		}nuevoProyecto.setMiembrosAsignados(miembros);
+		
+		System.out.println("Lo escbiribmos en el Dao");
 	}
-	public static void delProyecto() { //Clase que añadira un nuevo proyecto
+	public static void delProyecto() { //Clase que borrara un proyecto
+		
+		int idProyecto=0;
+		
+		
+		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
+		
+		System.out.println("Introduce el  id de proyecto que se va a borrar");
+		
+		try {
+			idProyecto=recuperado.nextInt();
+		}
+		catch(Exception e) {
+			System.out.println("No has introducido un id de proyecto");
+		  return;
+		}
+		
+		
+			
 	}
 	
-	public static void modProyecto() { //Clase que añadira un nuevo proyecto
+	public static void modProyecto() { //Clase que modifcara un proyecto
 	}
 	
 }
