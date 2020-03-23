@@ -17,6 +17,8 @@ public interface DelegacionesDAO {
 
 	public void obtenerDelegaciones(String nombre, String cip) throws JAXBException;
 	
+	public void crearNuevo(String nomDelegacion, String idDelegacion, String cip, String telefono) throws JAXBException;
+	
 	public int eliminarDelegaciones(String cip);
 	
 	public ArrayList<Delegaciones>listadoDelegaciones();

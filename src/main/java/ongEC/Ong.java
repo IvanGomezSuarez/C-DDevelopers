@@ -3,12 +3,20 @@ package ongEC;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import javax.xml.bind.JAXBException;
 
 import javax.xml.bind.annotation.*;
+
+import ongEC.Delegaciones;
+
 
 
 /**
@@ -24,11 +32,7 @@ public class Ong {
 	
 	@XmlAttribute(name = "cifOng")
 	private String cifOng;
-	
-	
-	//private direccionOng Direccion;
-	
-	
+		
 	
 	// constructor
 	
@@ -76,20 +80,26 @@ public class Ong {
 
 	// método para dar de alta una delegación
 	
-	private void addDelegacion() {
-}
-	
-	// dar de alta un proyecto
-	private void addProyecto() {
-}
-	
-	// borrar proyecto
-	private void delProyecto() {
-}
-	
-	// borrar delegacion
-	private void delDelegacion() {
-}
-	
+	static void addDelegacion() throws IOException, JAXBException {
+		Delegaciones newDelegacion = new Delegaciones();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("\nIntroduce el nombre de la delegación: ");
+		newDelegacion.setNomDelegacion(br.readLine());
+		System.out.println("\nIntroduce el ID de la delegación: ");
+		newDelegacion.setIdDelegacion(br.readLine());
+		System.out.println("\nIntroduce el teléfono de la delegación: ");
+		newDelegacion.setTelefono(br.readLine());
+		System.out.println("\nIntroduce el CIP de la delegacion: ");
+		newDelegacion.setCip(br.readLine());
+		
+		AltaDelegacion(newDelegacion);
+		
+	}
 
+
+	private static void AltaDelegacion(Delegaciones newDelegacion) {
+		// TODO Auto-generated method stub
+		
+	}
+		
 }

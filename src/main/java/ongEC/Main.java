@@ -25,7 +25,9 @@ public class Main {
 			opcionesMenuPrincipal();			//Llamamos a la funcion que printea la sopciones principales
 			
 			estadoAplicacion=comprobacionOpcion();		//Comprobamos con una unica clase (para no tener que estar repitiendo codigo) que el caracter es entero
-			
+	    	System.out.println("\n*************");
+	    	System.out.println(" ADMINISTRADOR");
+	    	System.out.println("**************");
 			if (estadoAplicacion!=0) {							
 				if (estadoAplicacion==1) { //Despues de comprobar que el numero es correcto pasamos a comprobar que opcion a introducido el usuario
 					 System.out.println("1.Dar de alta/modificar/eliminar un Socio");
