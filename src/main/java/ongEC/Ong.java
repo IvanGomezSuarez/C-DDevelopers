@@ -81,9 +81,7 @@ public class Ong {
 	
 	// dar de alta un proyecto
 	private void addProyecto() {
-		Proyecto.addProyecto();
 }
-	
 	
 	// borrar proyecto
 	private void delProyecto() {

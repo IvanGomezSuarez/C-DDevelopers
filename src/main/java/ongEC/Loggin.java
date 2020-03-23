@@ -4,8 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import ongEC.Miembros;
-import ongEC.Main;
+
 import javax.xml.bind.JAXBException;
 
 
@@ -23,7 +22,6 @@ public class Loggin extends Miembros {
 
 	//atributos
 
-	private static final String ivan = null;
 	private String usuario;
 	private String pass;
 	
@@ -56,14 +54,14 @@ public class Loggin extends Miembros {
 
 	// metodos
 	
-	static void loggin() throws IOException, JAXBException {
+	public void loggin() throws IOException, JAXBException {
     	
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String respuestaNombre;
 		String respuestaPass;
-    	System.out.println("\n*********");
+    	System.out.println("\n***************************");
     	System.out.println(" LOGGIN");
-    	System.out.println("***********");
+    	System.out.println("***************************");
     	
         System.out.println("Introduce tu nombre de usuario:");
         respuestaNombre = br.readLine();
@@ -71,9 +69,8 @@ public class Loggin extends Miembros {
         respuestaPass = br.readLine();
         		  
         		  
-        
-		if (respuestaPass == ivan) {
-			Main.opcionesMenuPrincipal();
+        if (nuevaRespuesta.equalsIgnoreCase("s")) {
+        	iniciaSesion();
       	}
         		  
 	}
