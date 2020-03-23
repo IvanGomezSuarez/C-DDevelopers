@@ -293,7 +293,7 @@ public class Proyecto {
 		
 		System.out.println("Introduzca los dni de los Miembos asignados al proyecto(para acabar de introducir miembros pulse intro)");
 		while(recuperado!=null) {
-		System.out.println("Introduzce el Dni del miembro");
+		System.out.println("Introduce el Dni del miembro");
 		dniMiembro=recuperado.next();
 		devolucionPosicionMiembro=miembrosNuevos.comprobarMiembro(dniMiembro);
 		if (devolucionPosicionMiembro!=0) {
