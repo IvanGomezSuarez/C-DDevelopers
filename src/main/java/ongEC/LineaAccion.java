@@ -21,20 +21,22 @@ public class LineaAccion extends Proyecto {
 	
 	//Definicion de los constructores
 	
+	
+	
+	public LineaAccion() {
+		super();
+	}
+
 	public LineaAccion(int idProyecto, String nombreProyecto, String pais, String localizacion, LineaAccion lineaAccion,
-			List<SubLineaAccion> subLineaAccion, Date fechaInicio, Date fechaFin, List<Socio> socioLocal,
-			String financiador, Double financiacionAportada, String codigoProyecto, String accionesRealizar,
-			List<Miembros> miembrosAsignados, String descripcionAccion, SubLineaAccion defSubLineaAccion,
-			ActualLineasAccion actualLineasAccion) {
+			List<SubLineaAccion> subLineaAccion, java.util.Date fechaInicio, java.util.Date fechaFin,
+			List<String> socioLocal, String financiador, Double financiacionAportada, String codigoProyecto,
+			String accionesRealizar, List<Miembros> miembrosAsignados, String descripcionAccion,
+			SubLineaAccion defSubLineaAccion, ActualLineasAccion actualLineasAccion) {
 		super(idProyecto, nombreProyecto, pais, localizacion, lineaAccion, subLineaAccion, fechaInicio, fechaFin,
 				socioLocal, financiador, financiacionAportada, codigoProyecto, accionesRealizar, miembrosAsignados);
 		this.descripcionAccion = descripcionAccion;
 		this.defSubLineaAccion = defSubLineaAccion;
 		this.actualLineasAccion = actualLineasAccion;
-	}
-	
-	public LineaAccion() {
-		super();
 	}
 
 	//Definicion de los Gets y sets

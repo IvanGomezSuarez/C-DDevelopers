@@ -32,7 +32,7 @@ public class Proyecto {
 	Date fechaInicio;
 	Date fechaFin;
 	
-	LineaAccion lineaAccion;
+	static LineaAccion lineaAccion;
 	
 	List<SubLineaAccion> subLineaAccion;
 	List<String> socioLocal;
@@ -187,6 +187,7 @@ public class Proyecto {
 		Integer seleccionLineaAccion;
 		String dniMiembro;
 		int devolucionPosicionMiembro;
+		String comprobacionStr="";
 		
 		SubLineaAccion subLineaAccion = new SubLineaAccion(); 
 		
@@ -205,6 +206,8 @@ public class Proyecto {
 		
 		
 		Proyecto nuevoProyecto= new Proyecto(); //Definicion del nuevo proyecto
+		
+		LineaAccion nuevaLineaAccion=new LineaAccion(); //Nueva Linea de Accion
 		
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		
@@ -240,7 +243,7 @@ public class Proyecto {
 		nuevoProyecto.setAccionesRealizar(recuperado.next());
 		System.out.println(nuevoProyecto.AccionesRealizar);
 		
-		System.out.println("Introduzca la Fecha inicio del proyecto");
+		System.out.println("Introduzca la Fecha inicio del proyecto(porfavor introduzca la fecha en el siguiente formato --/--/----)");
 		antesConversionFecha=recuperado.next();
 		try {
 			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
@@ -251,7 +254,7 @@ public class Proyecto {
 		nuevoProyecto.setFechaInicio(conversionaFecha);
 		System.out.println(nuevoProyecto.fechaInicio);
 		
-		System.out.println("Introduzca la Fecha Fin del proyecto");
+		System.out.println("Introduzca la Fecha Fin del proyecto(porfavor introduzca la fecha en el siguiente formato --/--/----)");
 		antesConversionFecha=recuperado.next();
 		try {
 			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
@@ -272,30 +275,42 @@ public class Proyecto {
 		seleccionLineaAccion=recuperado.nextInt();
 		
 		
-		if (seleccionLineaAccion!=null) {			
-			nuevoProyecto.lineaAccion.setActualLineasAccion(ActualLineasAccion.devActions(seleccionLineaAccion));
+		if (seleccionLineaAccion!=null) {		
+			System.out.println(ActualLineasAccion.devActions(seleccionLineaAccion));
+			nuevaLineaAccion.setLineaAccion(nuevaLineaAccion);
+			nuevoProyecto.getLineaAccion().setActualLineasAccion(ActualLineasAccion.devActions(seleccionLineaAccion));
 		}
-		
-		System.out.println("Introduzca las sub linea de accion del proyecto(para acabar de meter sublineas pulse intro)");
-		while(recuperado!=null) {
-		System.out.println("Introduzca la sublinea");
-		subLineaAccion.setDescripcion(recuperado.next());
+
+		System.out.println("Introduzca las sub linea de accion del proyecto(para acabar de meter sublineas escriba exit)");
+		while(!comprobacionStr.equals("exit")) {
+		System.out.println("Introduzca la sublinea");		
+		comprobacionStr=recuperado.next();
+		subLineaAccion.setDescripcion(comprobacionStr);
 		listaSubLineaAccion.add(subLineaAccion);
 		}
+		
 		nuevoProyecto.setSubLineaAccion(listaSubLineaAccion);
 		
+		comprobacionStr="";
+		
 		System.out.println("Introduzca los socios locales del proyecto(para acabar de meter socios pulse intro)");
-		while(recuperado!=null) {
+		while(!comprobacionStr.equals("exit")) {
+			
 		System.out.println("Introduzce el Socio Local");
-		sociosLocales.add(recuperado.next());
-		}		
+		comprobacionStr=recuperado.next();
+		subLineaAccion.setDescripcion(comprobacionStr);
+		sociosLocales.add(comprobacionStr);
+		}
+		
 		nuevoProyecto.setSocioLocal(sociosLocales);
 		
+		comprobacionStr="";
+		
 		System.out.println("Introduzca los dni de los Miembos asignados al proyecto(para acabar de introducir miembros pulse intro)");
-		while(recuperado!=null) {
+		while(!comprobacionStr.equals("exit")) {
 		System.out.println("Introduzce el Dni del miembro");
-		dniMiembro=recuperado.next();
-		devolucionPosicionMiembro=miembrosNuevos.comprobarMiembro(dniMiembro);
+		comprobacionStr=recuperado.next();
+		devolucionPosicionMiembro=miembrosNuevos.comprobarMiembro(comprobacionStr);
 		if (devolucionPosicionMiembro!=0) {
 			miembros.get(devolucionPosicionMiembro).getDni();
 			miembros.get(devolucionPosicionMiembro).getApellido1();
