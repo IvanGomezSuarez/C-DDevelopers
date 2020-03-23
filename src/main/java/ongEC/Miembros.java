@@ -249,11 +249,13 @@ public Integer comprobarMiembro (String dni)
 	Integer existeMiembro=0;
 	
     for (Miembros n:ALMiembros)   	
-    { if(n.getDni().equals(dni)){        
+    { if(n.getDni().equals(dni)){
+    	System.out.println("Dni Encontrado"); 
         return (existeMiembro);
     }
     existeMiembro++;
     }
+    System.out.println("El Dni No existe"); 
     return(0);  
   }
 }

@@ -55,8 +55,10 @@ public class Main {
 							 Proyecto.addProyecto();
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
+							 Proyecto.modProyecto();
 						 }else if (seleccionSubMenu==3) {
 							 System.out.println("Eliminar");
+							 Proyecto.delProyecto();
 						 }else {
 							 System.out.println("Opcion no valida");
 						 }
@@ -82,11 +84,38 @@ public class Main {
 					seleccionSubMenu=comprobacionOpcion(); 	//Comprobamos si es int
 					 if (seleccionSubMenu!=0) {
 						 if (seleccionSubMenu==1) { 	//Pasamos dependiendo de la seleccion
-							 System.out.println("Dar de alta");
+							 System.out.println("Dar de alta");							 
+							 System.out.println("1.Publico");
+							 System.out.println("2.Privado");
+							 seleccionSubMenu=comprobacionOpcion();
+							 if(seleccionSubMenu==1) {
+								 Ingreso.addIngresoPublico();
+							 }else if(seleccionSubMenu==2) {
+								 Ingreso.addIngresoPrivado();
+							 }else
+								 System.out.println("Error"); 
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
+							 System.out.println("1.Publico");
+							 System.out.println("2.Privado");
+							 seleccionSubMenu=comprobacionOpcion();
+							 if(seleccionSubMenu==1) {
+								 Ingreso.modIngresoPublico();
+							 }else if(seleccionSubMenu==2) {
+								 Ingreso.modIngresoPrivado();
+							 }else
+								 System.out.println("Error");
 						 }else if (seleccionSubMenu==3) {
 							 System.out.println("Eliminar");
+							 System.out.println("1.Publico");
+							 System.out.println("2.Privado");
+							 seleccionSubMenu=comprobacionOpcion();
+							 if(seleccionSubMenu==1) {
+								 Ingreso.delIngresoPublico();
+							 }else if(seleccionSubMenu==2) {
+								 Ingreso.delIngresoPrivado();
+							 }else
+								 System.out.println("Error");
 						 }else {
 							 System.out.println("Opcion no valida");
 						 }

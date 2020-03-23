@@ -32,7 +32,7 @@ public class Proyecto {
 	Date fechaInicio;
 	Date fechaFin;
 	
-	LineaAccion lineaAccion;
+	static LineaAccion lineaAccion;
 	
 	List<SubLineaAccion> subLineaAccion;
 	List<String> socioLocal;
@@ -180,13 +180,15 @@ public class Proyecto {
 	}
 	public static void addProyecto() //Clase que añadira un nuevo proyecto
 	{
-
+		//Definimos Atributos
+		
 		SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
 		String antesConversionFecha;
 		Date conversionaFecha= new Date(01/01/2020);
 		Integer seleccionLineaAccion;
 		String dniMiembro;
 		int devolucionPosicionMiembro;
+		String comprobacionStr="";
 		
 		SubLineaAccion subLineaAccion = new SubLineaAccion(); 
 		
@@ -206,14 +208,30 @@ public class Proyecto {
 		
 		Proyecto nuevoProyecto= new Proyecto(); //Definicion del nuevo proyecto
 		
+		LineaAccion nuevaLineaAccion=new LineaAccion(); //Nueva Linea de Accion
+		
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		
+		//Solicitamos los datos al usuario del nuevo proyecto con sus comprobaciones de errores
 		System.out.println("Introduzca el id del proyecto");
-		nuevoProyecto.setIdProyecto(recuperado.nextInt());
+		try {
+				nuevoProyecto.setIdProyecto(recuperado.nextInt());
+			}
+			catch(Exception e) {
+				System.out.println("No has introducido un entero");
+			  return;
+			}
+		
 		System.out.println(nuevoProyecto.idProyecto);
 		
 		System.out.println("Introduzca la financiacion aportada del proyecto");
-		nuevoProyecto.setFinanciacionAportada(recuperado.nextDouble());
+		try {
+			nuevoProyecto.setFinanciacionAportada(recuperado.nextDouble());
+		}
+		catch(Exception e) {
+			System.out.println("No has introducido un importe correcto");
+		  return;
+		}
 		System.out.println(nuevoProyecto.financiacionAportada);
 		
 		System.out.println("Introduzca el Nombre del proyecto");
@@ -240,24 +258,24 @@ public class Proyecto {
 		nuevoProyecto.setAccionesRealizar(recuperado.next());
 		System.out.println(nuevoProyecto.AccionesRealizar);
 		
-		System.out.println("Introduzca la Fecha inicio del proyecto");
+		System.out.println("Introduzca la Fecha inicio del proyecto(porfavor introduzca la fecha en el siguiente formato --/--/----)");
 		antesConversionFecha=recuperado.next();
 		try {
 			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Formato Fecha incorrecto");
+			return;
 		}
 		nuevoProyecto.setFechaInicio(conversionaFecha);
 		System.out.println(nuevoProyecto.fechaInicio);
 		
-		System.out.println("Introduzca la Fecha Fin del proyecto");
+		System.out.println("Introduzca la Fecha Fin del proyecto(porfavor introduzca la fecha en el siguiente formato --/--/----)");
 		antesConversionFecha=recuperado.next();
 		try {
 			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Formato Fecha incorrecto");
+			return;
 		}
 		nuevoProyecto.setFechaFin(conversionaFecha);
 		System.out.println(nuevoProyecto.fechaFin);
@@ -268,34 +286,51 @@ public class Proyecto {
 		for (int i = 0;i<listaAcciones.size();i++) {
 			System.out.println(listaAcciones.get(i));
 		}
-	
-		seleccionLineaAccion=recuperado.nextInt();
 		
-		
-		if (seleccionLineaAccion!=null) {			
-			nuevoProyecto.lineaAccion.setActualLineasAccion(ActualLineasAccion.devActions(seleccionLineaAccion));
+		try {
+			seleccionLineaAccion=recuperado.nextInt();
+		} catch (Exception e) {
+			System.out.println("Opcion incorrecta: " + e.getMessage());
+			return;
 		}
 		
-		System.out.println("Introduzca las sub linea de accion del proyecto(para acabar de meter sublineas pulse intro)");
-		while(recuperado!=null) {
-		System.out.println("Introduzca la sublinea");
-		subLineaAccion.setDescripcion(recuperado.next());
+		
+		if (seleccionLineaAccion!=null) {		
+			System.out.println(ActualLineasAccion.devActions(seleccionLineaAccion));
+			nuevaLineaAccion.setLineaAccion(nuevaLineaAccion);
+			nuevoProyecto.getLineaAccion().setActualLineasAccion(ActualLineasAccion.devActions(seleccionLineaAccion));
+		}
+
+		System.out.println("Introduzca las sub linea de accion del proyecto(para acabar de meter sublineas escriba exit)");
+		while(!comprobacionStr.equals("exit")) {
+		System.out.println("Introduzca la sublinea");		
+		comprobacionStr=recuperado.next();
+		subLineaAccion.setDescripcion(comprobacionStr);
 		listaSubLineaAccion.add(subLineaAccion);
 		}
+		
 		nuevoProyecto.setSubLineaAccion(listaSubLineaAccion);
 		
+		comprobacionStr="";
+		
 		System.out.println("Introduzca los socios locales del proyecto(para acabar de meter socios pulse intro)");
-		while(recuperado!=null) {
+		while(!comprobacionStr.equals("exit")) {
+			
 		System.out.println("Introduzce el Socio Local");
-		sociosLocales.add(recuperado.next());
-		}		
+		comprobacionStr=recuperado.next();
+		subLineaAccion.setDescripcion(comprobacionStr);
+		sociosLocales.add(comprobacionStr);
+		}
+		
 		nuevoProyecto.setSocioLocal(sociosLocales);
 		
+		comprobacionStr="";
+		
 		System.out.println("Introduzca los dni de los Miembos asignados al proyecto(para acabar de introducir miembros pulse intro)");
-		while(recuperado!=null) {
+		while(!comprobacionStr.equals("exit")) {
 		System.out.println("Introduzce el Dni del miembro");
-		dniMiembro=recuperado.next();
-		devolucionPosicionMiembro=miembrosNuevos.comprobarMiembro(dniMiembro);
+		comprobacionStr=recuperado.next();
+		devolucionPosicionMiembro=miembrosNuevos.comprobarMiembro(comprobacionStr);
 		if (devolucionPosicionMiembro!=0) {
 			miembros.get(devolucionPosicionMiembro).getDni();
 			miembros.get(devolucionPosicionMiembro).getApellido1();
@@ -306,7 +341,47 @@ public class Proyecto {
 			miembros.get(devolucionPosicionMiembro).getNomUsuario();
 			miembros.get(devolucionPosicionMiembro).getTelefono();
 		}
+		}nuevoProyecto.setMiembrosAsignados(miembros);
+		
+		System.out.println("Lo escbiribmos en el Dao");
+	}
+	public static void delProyecto() { //Clase que borrara un proyecto
+		
+		int idProyecto=0;
+		
+		
+		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
+		
+		System.out.println("Introduce el  id de proyecto que se va a borrar");
+		
+		try {
+			idProyecto=recuperado.nextInt();
 		}
-		nuevoProyecto.setMiembrosAsignados(miembros);
+		catch(Exception e) {
+			System.out.println("No has introducido un id de proyecto");
+		  return;
+		}
+		
+		System.out.println("Borramos el proyecto");
+			
+	}
+	
+	public static void modProyecto() { //Clase que modifcara un proyecto
+		
+		int idProyecto=0;
+		
+		
+		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
+		
+		System.out.println("Introduce el  id de proyecto que se va a Modificar");
+		
+		try {
+			idProyecto=recuperado.nextInt();
+		}
+		catch(Exception e) {
+			System.out.println("No has introducido un id de proyecto");
+		  return;
+		}
+		System.out.println("Modificamos el proyecto");
 	}
 }

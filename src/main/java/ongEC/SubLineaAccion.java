@@ -17,31 +17,16 @@ public class SubLineaAccion extends LineaAccion {
 
 	//Constructores
 	
-	public SubLineaAccion(int idProyecto, String nombreProyecto, String pais, String localizacion,
-			LineaAccion lineaAccion, List<SubLineaAccion> subLineaAccion, Date fechaInicio, Date fechaFin,
-			List<Socio> socioLocal, String financiador, Double financiacionAportada, String codigoProyecto,
-			String accionesRealizar, List<Miembros> miembrosAsignados, String descripcionAccion,
-			SubLineaAccion defSubLineaAccion, ActualLineasAccion actualLineasAccion, String descripcion) {
-		super(idProyecto, nombreProyecto, pais, localizacion, lineaAccion, subLineaAccion, fechaInicio, fechaFin,
-				socioLocal, financiador, financiacionAportada, codigoProyecto, accionesRealizar, miembrosAsignados,
-				descripcionAccion, defSubLineaAccion, actualLineasAccion);
+	public SubLineaAccion(String descripcion) {
+		super();
 		this.descripcion = descripcion;
 	}
 	
-	public SubLineaAccion(int idProyecto, String nombreProyecto, String pais, String localizacion,
-			LineaAccion lineaAccion, List<SubLineaAccion> subLineaAccion, Date fechaInicio, Date fechaFin,
-			List<Socio> socioLocal, String financiador, Double financiacionAportada, String codigoProyecto,
-			String accionesRealizar, List<Miembros> miembrosAsignados, String descripcionAccion,
-			SubLineaAccion defSubLineaAccion, ActualLineasAccion actualLineasAccion) {
-		super(idProyecto, nombreProyecto, pais, localizacion, lineaAccion, subLineaAccion, fechaInicio, fechaFin,
-				socioLocal, financiador, financiacionAportada, codigoProyecto, accionesRealizar, miembrosAsignados,
-				descripcionAccion, defSubLineaAccion, actualLineasAccion);
-	}
 	
 	public SubLineaAccion() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
-	
+
 	//Defincion de Gets and Sets
 	
 	
