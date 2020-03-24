@@ -10,18 +10,6 @@ public abstract class DAOFactory {
 	public abstract ActualLineasAccionDAO 
 	getActualLineasAccionDAO();
 	
-	public abstract AdminAutonomDAO
-	getAdminAutonomDAO();
-	
-	public abstract AdminEstadoDAO
-	getAdminEstadoDAO();
-	
-	public abstract AdminLocalDAO
-	getAdminLocalDAO();
-	
-	public abstract AportPuntualEmpDAO
-	getAportPuntualEmpDAO();
-	
 	public abstract ColaboradorDAO
 	getColaboradorDAO();
 	
@@ -34,21 +22,13 @@ public abstract class DAOFactory {
 	public abstract DireccionDAO
 	getDireccionDAO();
 	
-	public abstract HerenciaDAO
-	getHerenciaDAO();
 	
 	public abstract ILogginDAO
 	getILogginDAO();
 	
 	public abstract IngresoDAO
 	getIngresoDAO();
-	
-	public abstract IngresoExtraDAO
-	getIngresoExtraDAO();
-	
-	public abstract IngresoInstitutDAO
-	getIngresoInstitutDAO();
-	
+
 	public abstract IngresoPrivadoDAO
 	getIngresoPrivadoDAO();
 	
@@ -57,9 +37,7 @@ public abstract class DAOFactory {
 	
 	public abstract InternacionalDAO
 	getInternacionalDAO();
-	
-	public abstract LegadoDAO
-	getLegadoDAO();
+
 	
 	public abstract LineaAccionDAO
 	getLineaAccionDAO();
@@ -88,8 +66,6 @@ public abstract class DAOFactory {
 	public abstract SubLineaAccionDAO
 	getSublineaAccionDAO();
 	
-	public abstract UEDAO
-	getUEDAO();
 	
 	public abstract VoluntarioDAO
 	getVoluntarioDAO();

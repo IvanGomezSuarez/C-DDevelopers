@@ -8,29 +8,6 @@ public class XmlDAOFactory extends DAOFactory {
 		 return new XmlActualLineasAccionDAO();
 	}
 
-	@Override
-	public AdminAutonomDAO getAdminAutonomDAO() {
-		// TODO Auto-generated method stub
-		 return new XmlAdminAutonomDAO();
-	}
-
-	@Override
-	public AdminEstadoDAO getAdminEstadoDAO() {
-		// TODO Auto-generated method stub
-		 return new XmlgetAdminEstadoDAO();
-	}
-
-	@Override
-	public AdminLocalDAO getAdminLocalDAO() {
-		// TODO Auto-generated method stub
-		 return new XmlAdminLocalDAO();
-	}
-
-	@Override
-	public AportPuntualEmpDAO getAportPuntualEmpDAO() {
-		// TODO Auto-generated method stub
-		 return new XmlAportPuntualEmpDAO();
-	}
 
 	@Override
 	public ColaboradorDAO getColaboradorDAO() {
@@ -44,11 +21,6 @@ public class XmlDAOFactory extends DAOFactory {
 		 return new XmlCuotaSocioDAO();
 	}
 
-	@Override
-	public DelegacionesDAO getDelegacionesDAO() {
-		// TODO Auto-generated method stub
-		 return new XmlDelegacionesDAO();
-	}
 
 	@Override
 	public DireccionDAO getDireccionDAO() {
@@ -56,11 +28,6 @@ public class XmlDAOFactory extends DAOFactory {
 		 return new XmlDireccionDAO();
 	}
 
-	@Override
-	public HerenciaDAO getHerenciaDAO() {
-		// TODO Auto-generated method stub
-		 return new XmlHerenciaDAO();
-	}
 
 	@Override
 	public ILogginDAO getILogginDAO() {
@@ -74,17 +41,6 @@ public class XmlDAOFactory extends DAOFactory {
 		 return new XmlIngresoDAO();
 	}
 
-	@Override
-	public IngresoExtraDAO getIngresoExtraDAO() {
-		// TODO Auto-generated method stub
-		 return new XmlIngresoExtraDAO();
-	}
-
-	@Override
-	public IngresoInstitutDAO getIngresoInstitutDAO() {
-		// TODO Auto-generated method stub
-		 return new XmlIngresoInstitutDAO();
-	}
 
 	@Override
 	public IngresoPrivadoDAO getIngresoPrivadoDAO() {
@@ -104,11 +60,6 @@ public class XmlDAOFactory extends DAOFactory {
 		 return new XmlInternacionalDAO();
 	}
 
-	@Override
-	public LegadoDAO getLegadoDAO() {
-		// TODO Auto-generated method stub
-		 return new XmlLegadoDAO();
-	}
 
 	@Override
 	public LineaAccionDAO getLineaAccionDAO() {
@@ -128,11 +79,6 @@ public class XmlDAOFactory extends DAOFactory {
 		 return new XmlNacionalDAO();
 	}
 
-	@Override
-	public OngDAO getOngDAO() {
-		// TODO Auto-generated method stub
-		 return new XmlOngDAO();
-	}
 
 	@Override
 	public PersonalDAO getPersonalDAO() {
@@ -165,15 +111,23 @@ public class XmlDAOFactory extends DAOFactory {
 	}
 
 	@Override
-	public UEDAO getUEDAO() {
-		// TODO Auto-generated method stub
-		return new XmlUEDAO();
-	}
-
-	@Override
 	public VoluntarioDAO getVoluntarioDAO() {
 		// TODO Auto-generated method stub
 		 return new XmlVoluntarioDAO();
+	}
+
+
+	@Override
+	public DelegacionesDAO getDelegacionesDAO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public OngDAO getOngDAO() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

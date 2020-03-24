@@ -101,5 +101,11 @@ public class Ong {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	public Object getOngs() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 		
 }
