@@ -59,7 +59,7 @@ public class Miembros {
 		this.password = password;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
-		this.dni = dni;
+		Miembros.dni = dni;
 		this.pais = pais;
 		this.ciudad =ciudad;
 		this.direccion = direccion;
