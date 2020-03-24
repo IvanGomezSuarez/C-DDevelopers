@@ -1,5 +1,7 @@
 package DAO;
 
+import javax.xml.bind.JAXBException;
+
 public abstract class DAOFactory {
 
 	// constante para acceso de datos
@@ -55,7 +57,7 @@ public abstract class DAOFactory {
 	getPersonalDAO();
 	
 	public abstract ProyectoDAO
-	getProyectoDAO();
+	getProyectoDAO() throws JAXBException;
 	
 	public abstract SedeDAO
 	getSedeDAO();

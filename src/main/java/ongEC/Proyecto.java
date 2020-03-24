@@ -14,7 +14,7 @@ import java.util.Scanner;
  * 
  * */
 
-import P5.Proyecto;
+import ongEC.Proyecto;
 
 public class Proyecto {
 	

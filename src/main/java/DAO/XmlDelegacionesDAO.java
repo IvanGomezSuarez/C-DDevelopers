@@ -53,6 +53,13 @@ public class XmlDelegacionesDAO implements DelegacionesDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	public void crearNuevo(String nomDelegacion, String idDelegacion, String cip, String telefono)
+			throws JAXBException {
+		// TODO Auto-generated method stub
+		
+	}
     
 
 

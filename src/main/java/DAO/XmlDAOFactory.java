@@ -1,5 +1,7 @@
 package DAO;
 
+import javax.xml.bind.JAXBException;
+
 public class XmlDAOFactory extends DAOFactory {
 
 	@Override
@@ -87,7 +89,7 @@ public class XmlDAOFactory extends DAOFactory {
 	}
 
 	@Override
-	public ProyectoDAO getProyectoDAO() {
+	public ProyectoDAO getProyectoDAO() throws JAXBException {
 		// TODO Auto-generated method stub
 		 return new XmlProyectoDAO();
 	}
