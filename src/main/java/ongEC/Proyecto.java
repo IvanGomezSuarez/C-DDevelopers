@@ -14,6 +14,8 @@ import java.util.Scanner;
  * 
  * */
 
+import P5.Proyecto;
+
 public class Proyecto {
 	
 	//Definicion de Atributos
@@ -384,4 +386,10 @@ public class Proyecto {
 		}
 		System.out.println("Modificamos el proyecto");
 	}
+	
+    List<Proyecto> proyectos;
+    
+    public List<Proyecto> getProyectos(){
+        return proyectos;
+    }
 }
