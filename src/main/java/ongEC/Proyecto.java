@@ -14,7 +14,15 @@ import java.util.Scanner;
  * 
  * */
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import ongEC.Proyecto;
+
+@XmlRootElement(name ="Proyecto")
+@XmlAccessorType(XmlAccessType.FIELD)
 
 public class Proyecto {
 	
@@ -23,11 +31,14 @@ public class Proyecto {
 	int idProyecto;
 	
 	static Double financiacionAportada;
-	
+	@XmlElement(name = "Nombre Proyecto")
 	String nombreProyecto;
+	@XmlElement(name = "Pais")
 	String pais;
+	@XmlElement(name = "localiacion")
 	String localizacion;
 	String financiador;	
+	@XmlElement(name = "codigo proyecto")
 	String codigoProyecto;
 	String AccionesRealizar;
 	
