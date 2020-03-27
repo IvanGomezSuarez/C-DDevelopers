@@ -101,7 +101,7 @@ public class XmlDAOFactory extends DAOFactory {
 	}
 
 	@Override
-	public SocioDAO getSocioDAO() {
+	public SocioDAO getSocioDAO() throws JAXBException {
 		// TODO Auto-generated method stub
 		 return new XmlSocioDAO();
 	}

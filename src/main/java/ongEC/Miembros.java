@@ -1,5 +1,5 @@
 package ongEC;
-
+import javax.xml.bind.annotation.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,17 +13,23 @@ import javax.xml.bind.JAXBException;
  * 
  * 
  * */
+@XmlRootElement(name ="miembro")
+@XmlAccessorType(XmlAccessType.FIELD)
 
 public class Miembros {
 
 // atributos
 	
+	
 	protected String idMiembro;
+	@XmlElement(name = "nombre")
 	protected String nombreMiembro;
 	protected String nombreUsuario;
 	protected String password;
+	@XmlElement(name = "apellidos")
 	protected String apellido1;
 	protected String apellido2;
+	@XmlElement(name = "dni")
 	protected static String dni;
 	protected String pais;
 	protected String ciudad;

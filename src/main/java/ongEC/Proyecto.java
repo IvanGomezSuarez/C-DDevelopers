@@ -19,6 +19,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.junit.Test;
+
 import ongEC.Proyecto;
 
 @XmlRootElement(name ="Proyecto")
@@ -191,6 +193,8 @@ public class Proyecto {
 	public void setMiembrosAsignados(List<Miembros> miembrosAsignados) {
 		this.miembrosAsignados = miembrosAsignados;
 	}
+	
+	@Test
 	public static void addProyecto() //Clase que añadira un nuevo proyecto
 	{
 		//Definimos Atributos
@@ -403,4 +407,9 @@ public class Proyecto {
     public List<Proyecto> getProyectos(){
         return proyectos;
     }
+
+	public List<Proyecto> getProyecto() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -1,27 +1,55 @@
 package ongEC;
-
-
-
-import java.util.ArrayList;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
+import javax.xml.bind.annotation.*;
 /**
- * Esta clase representa a los socios de la ONG que pagan una cuota
- * peri�dica la cual puede ser mensual, trimestral o anual.
-
-Ivan
-V1.0
+ *
+ * @author Ivan
  */
+@XmlRootElement(name ="socio")
+@XmlAccessorType(XmlAccessType.FIELD)
 
-@XmlRootElement(name = "socio")
-@XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
-@XmlType(propOrder={"idSocio", "periodicidadCuota"})
-
-public class Socio extends Miembros implements Ingreso {
-
+public class Socio extends Miembros {
+    @XmlElement(name = "cuota")
+    private CuotaSocio cuota;
+    @XmlElement(name = "importe")
+    private int importe;
+    
+    public Socio(String pNombre, String pApellidos, String pDni, CuotaSocio pCuota, int pImporte){
+        this.cuota = pCuota;
+        this.importe = pImporte;
+        this.setDNI(pDni);
+        this.setApellidos(pApellidos);
+        this.setNombre(pNombre);
+    }
+        private void setNombre(String pNombre) {
+		// TODO Auto-generated method stub
+		
+	}
+		private void setApellidos(String pApellidos) {
+		// TODO Auto-generated method stub
+		
+	}
+		private void setDNI(String pDni) {
+		// TODO Auto-generated method stub
+		
+	}
+	//Constructor vacío
+    public Socio(){}
+    
+    
+    public CuotaSocio getCuota(){
+        return cuota;
+    }
+    public void setCuota(CuotaSocio c){
+        cuota = c;
+    }
+    public int getImporte(){
+        return importe;
+    }
+    public void setImporte(int i){
+        importe = i;
+    }
+	public String getDNI() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -63,7 +63,7 @@ public abstract class DAOFactory {
 	getSedeDAO();
 	
 	public abstract SocioDAO
-	getSocioDAO();
+	getSocioDAO() throws JAXBException;
 	
 	public abstract SubLineaAccionDAO
 	getSublineaAccionDAO();
