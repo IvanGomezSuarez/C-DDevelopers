@@ -10,6 +10,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import ongEC.Miembros;
 import ongEC.Socio;
 import ongEC.Socios;
 
@@ -47,7 +48,7 @@ public class XmlSocioDAO implements SocioDAO {
         {
             System.out.println("---");
             System.out.println("Nombre del Socio: \t" + socio.getNombreMiembro());
-            System.out.println("DNI del Socio: \t" + socio.getDNI());
+            System.out.println("DNI del Socio: \t" + Miembros.getDni());
             System.out.println("Tipo de cuota del Socio: \t" + socio.getCuota());
             System.out.println("Cantidad aportada por el Socio: \t" + socio.getImporte());
         }

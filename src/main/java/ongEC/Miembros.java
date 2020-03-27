@@ -21,21 +21,21 @@ public class Miembros {
 // atributos
 	
 	
-	protected String idMiembro;
+	private String idMiembro;
 	@XmlElement(name = "nombre")
-	protected String nombreMiembro;
-	protected String nombreUsuario;
-	protected String password;
+	private String nombreMiembro;
+	private String nombreUsuario;
+	private String password;
 	@XmlElement(name = "apellidos")
-	protected String apellido1;
-	protected String apellido2;
+	private String apellido1;
+	private String apellido2;
 	@XmlElement(name = "dni")
-	protected static String dni;
-	protected String pais;
-	protected String ciudad;
-	protected String direccion;
-	protected String rol;
-	protected String telefono;
+	private static String dni;
+	private String pais;
+	private String ciudad;
+	private String direccion;
+	private String rol;
+	private String telefono;
 	private static ArrayList<Miembros> ALMiembros;
 	
 
@@ -251,6 +251,7 @@ static void listMiembros()
 
 //Comprobar si el dni del miembro esta dado de alta
 
+@SuppressWarnings("static-access")
 public Integer comprobarMiembro (String dni)
 {    
 	Integer existeMiembro=0;

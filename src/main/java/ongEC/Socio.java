@@ -5,6 +5,9 @@ import javax.xml.bind.annotation.*;
  * @author Ivan
  */
 @XmlRootElement(name ="socio")
+
+
+
 @XmlAccessorType(XmlAccessType.FIELD)
 
 public class Socio extends Miembros {

@@ -2,15 +2,13 @@ package testProducto2;
 
 import DAO.DAOFactory;
 import DAO.SocioDAO;
-import DAO.XmlProyectoDAO;
+
 import DAO.XmlSocioDAO;
 import ongEC.CuotaSocio;
 import ongEC.Socio;
 import ongEC.Socios;
-import ongEC.Main;
 import ongEC.Proyecto;
 import ongEC.Proyectos;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -47,31 +45,6 @@ public class checkAppTest {
      * Test método main
      */
 
-/*
-    @Test
-    public void testProyectos() throws Exception {
-        System.out.println("Proyectos");
-        
-        Proyecto proyecto1 = new Proyecto(01, "AguaPotable", "Ghana", null, null, null, null, null, null, null, null, null, null, null);
-        
-        boolean result = false; 
-        boolean expected = true;
-        
-        Proyectos proyectos = new Proyectos();
-        Proyecto proyectosRead = new Proyecto();
-        proyectos.add(proyecto1);
-        //socios.add(socio2);
-        
-        DAOFactory XmlDAOFactory = DAOFactory.getDAOFactory(DAOFactory.XML);
-        XmlProyectoDAO ProyectoDAO = (XmlProyectoDAO) XmlDAOFactory.getProyectoDAO();
-        proyectosRead = ProyectoDAO.listarProyectos();
-       if(proyectos.getProyecto().get(0).getNombreProyecto().equals(proyectosRead.getProyecto().get(0).getNombreProyecto())
-               && proyectos.getProyecto().get(1).getNombreProyecto().equals(proyectosRead.getProyecto().get(1).getNombreProyecto())){
-            result = true;
-        }
-        assertEquals(expected, result);
-    }
-*/
     
     @Test
     public void testSocios() throws Exception {
