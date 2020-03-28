@@ -311,10 +311,10 @@ public class Proyecto {
 		}
 		
 		
-		if (seleccionLineaAccion!=null) {		
-			System.out.println(ActualLineasAccion.devActions(seleccionLineaAccion));
-			//nuevaLineaAccion.setLineaAccion(nuevaLineaAccion);
+		if (seleccionLineaAccion!=null) {
+			//System.out.println(ActualLineasAccion.devActions(seleccionLineaAccion));
 			//nuevoProyecto.getLineaAccion().setActualLineasAccion(ActualLineasAccion.devActions(seleccionLineaAccion));
+			//nuevoProyecto.setLineaAccion(ActualLineasAccion[seleccionLineaAccion]);
 		}
 
 		System.out.println("Introduzca las sub linea de accion del proyecto(para acabar de meter sublineas escriba exit)");

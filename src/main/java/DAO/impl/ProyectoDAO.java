@@ -33,7 +33,7 @@ public class ProyectoDAO{
 		return null;
 	}
 
-	public static void save( Proyecto t) {
+	public static void save( Proyectos t) {
 		// TODO Auto-generated method stub
 		try {
 			File file = new File("src/main/resources/Proyecto.xml");

@@ -22,6 +22,8 @@ public class Main {
 		Integer estadoAplicacion=0;//Estado de la aplicacion para decidir que opcion entre todas usar
 		Integer seleccionSubMenu=0;//Seleccion del Menu Secundario
 		Loggin.loggin ();
+		Proyecto nuevoProyecto= new Proyecto();
+		Proyectos nuevoProyectos=new Proyectos();
 		
 		while (estadoAplicacion!=9){            //Hasta que no se introduzca el numero 9 no se sale de la aplicacion.
 			
@@ -55,9 +57,9 @@ public class Main {
 					if (seleccionSubMenu!=0) {
 						 if (seleccionSubMenu==1) {		//Pasamos dependiendo de la seleccion
 							 System.out.println("Dar de alta");
-							 Proyecto nuevoProyecto= new Proyecto();
 							 nuevoProyecto=Proyecto.addProyecto();
-							 ProyectoDAO.save(nuevoProyecto);
+							 nuevoProyectos.add(nuevoProyecto);
+							 ProyectoDAO.save(nuevoProyectos);						 
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
 							 Proyecto.modProyecto();
