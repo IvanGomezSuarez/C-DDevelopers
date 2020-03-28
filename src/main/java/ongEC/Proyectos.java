@@ -5,6 +5,7 @@ package ongEC;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -13,13 +14,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement(name = "Proyectos")
 public class Proyectos {
-
+	
 	private List<Proyecto> proyecto;
 
     public void setProyecto(List<Proyecto> proyecto) {
 		this.proyecto = proyecto;
 	}
-
+    
+	@XmlElement(name = "Proyecto")
 	public List<Proyecto> getProyecto() {
 		return proyecto;
 	}

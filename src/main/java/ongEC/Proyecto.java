@@ -20,7 +20,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.junit.Test;
 
-import DAO.impl.ProyectoDAO;
 
 @XmlRootElement(name = "Proyecto")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -312,9 +311,10 @@ public class Proyecto {
 		
 		
 		if (seleccionLineaAccion!=null) {
+			nuevoProyecto.setLineaAccion(new LineaAccion());
 			//System.out.println(ActualLineasAccion.devActions(seleccionLineaAccion));
+			//nuevaLineaAccion.setLineaAccion(nuevaLineaAccion);
 			//nuevoProyecto.getLineaAccion().setActualLineasAccion(ActualLineasAccion.devActions(seleccionLineaAccion));
-			//nuevoProyecto.setLineaAccion(ActualLineasAccion[seleccionLineaAccion]);
 		}
 
 		System.out.println("Introduzca las sub linea de accion del proyecto(para acabar de meter sublineas escriba exit)");
