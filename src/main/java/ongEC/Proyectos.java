@@ -12,27 +12,22 @@ import javax.xml.bind.annotation.*;
  */
 @XmlRootElement(name = "Proyectos")
 public class Proyectos {
-List<Proyecto> proyectos;
 
-    
-    public List<Proyecto> getProyecto(){
-        return proyectos;
-    }
-    
-    @XmlElement(name = "Proyecto")
-    public void setProyecto(List<Proyecto> proyectos){
-        this.proyectos = proyectos;
-    }
-    public void add(Proyecto proyectos){
-        if (this.proyectos == null){
-            this.proyectos = new ArrayList<Proyecto>();
+	private List<Proyecto> proyecto;
+
+    public void setProyecto(List<Proyecto> proyecto) {
+		this.proyecto = proyecto;
+	}
+
+	public List<Proyecto> getProyecto() {
+		return proyecto;
+	}
+
+	public void add(Proyecto proyecto){
+        if (this.proyecto == null){
+            this.proyecto = new ArrayList<Proyecto>();
         }
-        this.proyectos.add(proyectos);
+        this.proyecto.add(proyecto);
     }
 
-	public Object getProyectos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	}
+}

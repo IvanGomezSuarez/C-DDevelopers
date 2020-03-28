@@ -55,7 +55,7 @@ public class Main {
 					if (seleccionSubMenu!=0) {
 						 if (seleccionSubMenu==1) {		//Pasamos dependiendo de la seleccion
 							 System.out.println("Dar de alta");
-							 Proyecto.addProyecto();
+							 ProyectoDAO.save(Proyecto.addProyecto());
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
 							 Proyecto.modProyecto();

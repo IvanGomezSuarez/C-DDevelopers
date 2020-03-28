@@ -3,6 +3,7 @@ package DAO.impl;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -12,18 +13,19 @@ import javax.xml.bind.PropertyException;
 import ongEC.LineaAccion;
 import ongEC.Miembros;
 import ongEC.Proyecto;
+import ongEC.Proyectos;
 import ongEC.SubLineaAccion;
 
 public class ProyectoGuardarXmlTest {
   
 	public static void main(String[] args) {
 		try {
-			Proyecto proyecto = setupProyecto();
+			Proyectos proyectos = setupProyectos();
 			File file = new File("src/main/resources/Proyecto.xml");
-			JAXBContext contexto = JAXBContext.newInstance(proyecto.getClass());
+			JAXBContext contexto = JAXBContext.newInstance(proyectos.getClass());
 			Marshaller marshaller = contexto.createMarshaller();
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-			marshaller.marshal(proyecto, file);
+			marshaller.marshal(proyectos, file);
 		} catch (PropertyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -50,5 +52,15 @@ public class ProyectoGuardarXmlTest {
 		proyecto.setSocioLocal(new ArrayList<String>());
 		proyecto.setMiembrosAsignados(new ArrayList<Miembros>());
 		return proyecto;
+	}
+	
+	private static Proyectos setupProyectos() {
+		Proyectos proyectos = new Proyectos();
+		Proyecto proyecto1 = setupProyecto();
+		Proyecto proyecto2 = setupProyecto();
+		proyecto2.setIdProyecto(5);
+		proyectos.add(proyecto1);
+		proyectos.add(proyecto2);
+		return proyectos;
 	}
 }

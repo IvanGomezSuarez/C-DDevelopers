@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+
 /*
  * esta clase contiene la informacón de los Proyectos
  * 
@@ -18,6 +19,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.junit.Test;
+
+import DAO.impl.ProyectoDAO;
 
 @XmlRootElement(name = "Proyecto")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -192,7 +195,7 @@ public class Proyecto {
 	}
 	
 	@Test
-	public static void addProyecto() //Clase que añadira un nuevo proyecto
+	public static Proyecto addProyecto() //Clase que añadira un nuevo proyecto
 	{
 		//Definimos Atributos
 		
@@ -203,6 +206,7 @@ public class Proyecto {
 		String dniMiembro;
 		int devolucionPosicionMiembro;
 		String comprobacionStr="";
+		
 		
 		SubLineaAccion subLineaAccion = new SubLineaAccion(); 
 		
@@ -219,7 +223,7 @@ public class Proyecto {
 		
 		Miembros miembrosNuevos= new Miembros();
 		
-		
+		ProyectoDAO proyectoDAO=new ProyectoDAO();	
 		Proyecto nuevoProyecto= new Proyecto(); //Definicion del nuevo proyecto
 		
 		LineaAccion nuevaLineaAccion=new LineaAccion(); //Nueva Linea de Accion
@@ -355,8 +359,9 @@ public class Proyecto {
 			miembros.get(devolucionPosicionMiembro).getNomUsuario();
 			miembros.get(devolucionPosicionMiembro).getTelefono();
 		}
-		}nuevoProyecto.setMiembrosAsignados(miembros);
-		
+		nuevoProyecto.setMiembrosAsignados(miembros);
+		}
+		return(nuevoProyecto);
 	}
 	
 	public static void delProyecto() { //Clase que borrara un proyecto
