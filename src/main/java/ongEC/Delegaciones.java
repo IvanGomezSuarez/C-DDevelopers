@@ -75,4 +75,19 @@ public class Delegaciones {
 		this.telefono = telefono;
 	}
 
+	public static void add(Delegaciones delegacion1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Object getDelegaciones() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object getdelegaciones() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
