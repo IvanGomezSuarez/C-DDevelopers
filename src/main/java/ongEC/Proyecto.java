@@ -194,7 +194,6 @@ public class Proyecto {
 		this.miembrosAsignados = miembrosAsignados;
 	}
 	
-	@Test
 	public static Proyecto addProyecto() //Clase que añadira un nuevo proyecto
 	{
 		//Definimos Atributos
@@ -223,7 +222,6 @@ public class Proyecto {
 		
 		Miembros miembrosNuevos= new Miembros();
 		
-		ProyectoDAO proyectoDAO=new ProyectoDAO();	
 		Proyecto nuevoProyecto= new Proyecto(); //Definicion del nuevo proyecto
 		
 		LineaAccion nuevaLineaAccion=new LineaAccion(); //Nueva Linea de Accion
@@ -237,7 +235,7 @@ public class Proyecto {
 			}
 			catch(Exception e) {
 				System.out.println("No has introducido un entero");
-			  return;
+			  return null;
 			}
 		
 		System.out.println(nuevoProyecto.idProyecto);
@@ -248,7 +246,7 @@ public class Proyecto {
 		}
 		catch(Exception e) {
 			System.out.println("No has introducido un importe correcto");
-		  return;
+		  return null;
 		}
 		System.out.println(nuevoProyecto.financiacionAportada);
 		
@@ -282,7 +280,7 @@ public class Proyecto {
 			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
 		} catch (ParseException e) {
 			System.out.println("Formato Fecha incorrecto");
-			return;
+			return null;
 		}
 		nuevoProyecto.setFechaInicio(conversionaFecha);
 		System.out.println(nuevoProyecto.fechaInicio);
@@ -293,7 +291,7 @@ public class Proyecto {
 			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
 		} catch (ParseException e) {
 			System.out.println("Formato Fecha incorrecto");
-			return;
+			return null;
 		}
 		nuevoProyecto.setFechaFin(conversionaFecha);
 		System.out.println(nuevoProyecto.fechaFin);
@@ -309,14 +307,14 @@ public class Proyecto {
 			seleccionLineaAccion=recuperado.nextInt();
 		} catch (Exception e) {
 			System.out.println("Opcion incorrecta: " + e.getMessage());
-			return;
+			return null;
 		}
 		
 		
 		if (seleccionLineaAccion!=null) {		
 			System.out.println(ActualLineasAccion.devActions(seleccionLineaAccion));
-			nuevaLineaAccion.setLineaAccion(nuevaLineaAccion);
-			nuevoProyecto.getLineaAccion().setActualLineasAccion(ActualLineasAccion.devActions(seleccionLineaAccion));
+			//nuevaLineaAccion.setLineaAccion(nuevaLineaAccion);
+			//nuevoProyecto.getLineaAccion().setActualLineasAccion(ActualLineasAccion.devActions(seleccionLineaAccion));
 		}
 
 		System.out.println("Introduzca las sub linea de accion del proyecto(para acabar de meter sublineas escriba exit)");

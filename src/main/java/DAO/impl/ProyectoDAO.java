@@ -1,12 +1,9 @@
 package DAO.impl;
 
 import java.io.File;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -14,17 +11,15 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.PropertyException;
 import javax.xml.bind.Unmarshaller;
 
-import DAO.interfaces.IBaseDao;
-import ongEC.ActualLineasAccion;
 import ongEC.LineaAccion;
 import ongEC.Miembros;
 import ongEC.Proyecto;
 import ongEC.Proyectos;
 import ongEC.SubLineaAccion;
 
-public class ProyectoDAO implements IBaseDao<Proyecto> {
+public class ProyectoDAO{
   
-	public List<Proyecto> getAll() {
+	public static List<Proyecto> getAll() {
 		// TODO Auto-generated method stub
 		 try {
 		        JAXBContext context = JAXBContext.newInstance(Proyectos.class);
@@ -38,15 +33,14 @@ public class ProyectoDAO implements IBaseDao<Proyecto> {
 		return null;
 	}
 
-	public void save(Proyecto t) {
+	public static void save( Proyecto t) {
 		// TODO Auto-generated method stub
 		try {
-			Proyecto proyecto = addProyecto();
 			File file = new File("src/main/resources/Proyecto.xml");
-			JAXBContext contexto = JAXBContext.newInstance(proyecto.getClass());
+			JAXBContext contexto = JAXBContext.newInstance(t.getClass());
 			Marshaller marshaller = contexto.createMarshaller();
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-			marshaller.marshal(proyecto, file);
+			marshaller.marshal(t, file);
 		} catch (PropertyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

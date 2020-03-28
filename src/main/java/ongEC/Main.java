@@ -55,7 +55,9 @@ public class Main {
 					if (seleccionSubMenu!=0) {
 						 if (seleccionSubMenu==1) {		//Pasamos dependiendo de la seleccion
 							 System.out.println("Dar de alta");
-							 ProyectoDAO.save(Proyecto.addProyecto());
+							 Proyecto nuevoProyecto= new Proyecto();
+							 nuevoProyecto=Proyecto.addProyecto();
+							 ProyectoDAO.save(nuevoProyecto);
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
 							 Proyecto.modProyecto();
@@ -135,6 +137,7 @@ public class Main {
 							 System.out.println("Listado de Socios");
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Listado de Proyectos");
+							 ProyectoDAO.getAll();
 						 }else if (seleccionSubMenu==3) {
 							 System.out.println("Listado de Miembros");
 						 }else if (seleccionSubMenu==4) {
