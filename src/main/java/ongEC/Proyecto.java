@@ -311,7 +311,13 @@ public class Proyecto {
 		
 		
 		if (seleccionLineaAccion!=null) {
-			nuevoProyecto.setLineaAccion(new LineaAccion());
+			LineaAccion linea= new LineaAccion();
+			
+			linea.getDescripcionAccion();
+			linea.getDefSubLineaAccion();			
+			linea.setActualLineasAccion(ActualLineasAccion.devActions(seleccionLineaAccion));
+
+			nuevoProyecto.setLineaAccion(linea);
 			//System.out.println(ActualLineasAccion.devActions(seleccionLineaAccion));
 			//nuevaLineaAccion.setLineaAccion(nuevaLineaAccion);
 			//nuevoProyecto.getLineaAccion().setActualLineasAccion(ActualLineasAccion.devActions(seleccionLineaAccion));
