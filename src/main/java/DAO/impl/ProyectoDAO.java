@@ -70,12 +70,18 @@ public class ProyectoDAO{
 		System.out.println(proyecto.getAccionesRealizar());
 		System.out.println(proyecto.getFechaInicio());
 		System.out.println(proyecto.getFechaFin());
-		System.out.println(proyecto.getLineaAccion());
-		System.out.println(proyecto.getSubLineaAccion());
-		System.out.println(proyecto.getSocioLocal());
+		System.out.println(proyecto.getLineaAccion().getActualLineasAccion());
+		for(int x = 0; i < proyecto.getSubLineaAccion().size(); i++) {
+			System.out.println(proyecto.getSubLineaAccion().get(i).getSubLineaAccion());
+		}
+		for(int x = 0; i < proyecto.getSubLineaAccion().size(); i++) {
+			System.out.println(proyecto.getSubLineaAccion().get(i).getSubLineaAccion());
+		}
+		for(int x = 0; i < proyecto.getSocioLocal().size(); i++) {
+			System.out.println(proyecto.getSocioLocal().get(i));
+		}		
 		System.out.println(proyecto.getMiembrosAsignados());
-		System.out.println("==============================================");
-		
+		System.out.println("==============================================");	
 	}
 	
 	private static void printProyectos(Proyectos proyectos) {
@@ -112,5 +118,4 @@ public class ProyectoDAO{
 		proyectos.add(proyecto2);
 		return proyectos;
 	}
-
 }

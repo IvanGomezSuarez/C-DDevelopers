@@ -218,6 +218,7 @@ public class Proyecto {
 		
 		List<Miembros> miembros= new ArrayList<Miembros>();
 		
+		LineaAccion linea= new LineaAccion();
 		
 		Miembros miembrosNuevos= new Miembros();
 		
@@ -311,12 +312,9 @@ public class Proyecto {
 		
 		
 		if (seleccionLineaAccion!=null) {
-			LineaAccion linea= new LineaAccion();
-			
 			linea.getDescripcionAccion();
 			linea.getDefSubLineaAccion();			
 			linea.setActualLineasAccion(ActualLineasAccion.devActions(seleccionLineaAccion));
-
 			nuevoProyecto.setLineaAccion(linea);
 			//System.out.println(ActualLineasAccion.devActions(seleccionLineaAccion));
 			//nuevaLineaAccion.setLineaAccion(nuevaLineaAccion);
@@ -327,11 +325,13 @@ public class Proyecto {
 		while(!comprobacionStr.equals("exit")) {
 		System.out.println("Introduzca la sublinea");		
 		comprobacionStr=recuperado.next();
+		System.out.println(comprobacionStr);
 		subLineaAccion.setDescripcion(comprobacionStr);
 		listaSubLineaAccion.add(subLineaAccion);
 		}
 		
-		nuevoProyecto.setSubLineaAccion(listaSubLineaAccion);
+		//nuevoProyecto.setSubLineaAccion(listaSubLineaAccion);
+		nuevoProyecto.getLineaAccion().setSubLineaAccion(listaSubLineaAccion);
 		
 		comprobacionStr="";
 		

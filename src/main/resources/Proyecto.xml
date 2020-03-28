@@ -1,2 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Proyectos/>
+<Proyectos>
+    <Proyecto>
+        <IdProyecto>1</IdProyecto>
+        <FinanciacionAportada>1.0</FinanciacionAportada>
+        <NombreProyecto>1</NombreProyecto>
+        <Pais>1</Pais>
+        <Localizacion>1</Localizacion>
+        <Financiador>1</Financiador>
+        <CodigoProyecto>1</CodigoProyecto>
+        <AccionesRealizar>1</AccionesRealizar>
+        <FechaInicio>2020-01-01T00:00:00+01:00</FechaInicio>
+        <FechaFin>2020-02-02T00:00:00+01:00</FechaFin>
+        <LineaAccion>
+            <IdProyecto>0</IdProyecto>
+            <SubLineaAccion>
+                <IdProyecto>0</IdProyecto>
+                <descripcion>exit</descripcion>
+            </SubLineaAccion>
+            <SubLineaAccion>
+                <IdProyecto>0</IdProyecto>
+                <descripcion>exit</descripcion>
+            </SubLineaAccion>
+            <SubLineaAccion>
+                <IdProyecto>0</IdProyecto>
+                <descripcion>exit</descripcion>
+            </SubLineaAccion>
+            <SubLineaAccion>
+                <IdProyecto>0</IdProyecto>
+                <descripcion>exit</descripcion>
+            </SubLineaAccion>
+            <actualLineasAccion>EDUCACION</actualLineasAccion>
+        </LineaAccion>
+        <SocioLocal>exit</SocioLocal>
+    </Proyecto>
+</Proyectos>
