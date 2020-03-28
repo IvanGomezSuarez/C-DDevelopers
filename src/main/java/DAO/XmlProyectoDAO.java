@@ -7,7 +7,6 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import ongEC.Proyecto;
-import ongEC.Proyectos;
 
 import java.io.File;
 /**
