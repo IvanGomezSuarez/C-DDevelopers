@@ -11,19 +11,19 @@ import org.junit.Test;
 
 import ongEC.Miembros;
 
-// Test para probar si los objetos de la clase "Miembro" se suman correctamente en "ListadoMiembros".
+// Test para chequear si el objeto miembro se adjunta correctamente a la lista de miembros
 public class ListadoMiembrosTest {
 
 	@Test
 	public void testAdd() throws JAXBException {
 		
-		// Inicializamos cuatro miembros que utilizaremos para las pruebas.
+		// Iniciamos 4 miembros
 		Miembros t1 = new Miembros();
 		Miembros t2 = new Miembros();
 		Miembros t3 = new Miembros();
 		Miembros t4 = new Miembros();
 		
-		// Creamos un listado de trabajadores.
+		// Se crra el listado de miembros
 		List<Miembros> listadoMiembros = new ArrayList<Miembros>();
 		assertEquals(0, listadoMiembros.size());
 		listadoMiembros.add(t1); //se agrega los objetos pasados como parametros a la lista.

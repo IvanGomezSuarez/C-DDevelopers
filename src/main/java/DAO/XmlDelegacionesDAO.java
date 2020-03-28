@@ -49,7 +49,7 @@ public class XmlDelegacionesDAO implements DelegacionesDAO{
 	}
 
 
-	public ArrayList<ongEC.Delegaciones> listadoDelegaciones() {
+	public ongEC.Delegaciones listadoDelegaciones() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -227,7 +227,7 @@ public class Miembros {
      
      if(b){
          ALMiembros.add (miembro);
-         System.out.println(" El miembro se ha aï¿½adido a la base de datos"+'\n');
+         System.out.println(" El miembro se ha añadido a la base de datos"+'\n');
        }   
    }
 

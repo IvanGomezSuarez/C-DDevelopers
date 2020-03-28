@@ -21,5 +21,5 @@ public interface DelegacionesDAO {
 	
 	public int eliminarDelegaciones(String cip);
 	
-	public ArrayList<Delegaciones>listadoDelegaciones();
+	public ongEC.Delegaciones listadoDelegaciones();
 }
