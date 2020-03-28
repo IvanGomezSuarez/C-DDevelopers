@@ -1,15 +1,13 @@
 package ongEC;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 /*
- * esta clase contiene la informaciï¿½n de los Proyectos
+ * esta clase contiene la informacón de los Proyectos
  * 
  * 
  * */
@@ -21,45 +19,49 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.junit.Test;
 
-import ongEC.Proyecto;
-
-@XmlRootElement(name ="Proyecto")
+@XmlRootElement(name = "Proyecto")
 @XmlAccessorType(XmlAccessType.FIELD)
-
 public class Proyecto {
 	
-	//Definicion de Atributos
-	
-	int idProyecto;
-	
-	static Double financiacionAportada;
-	@XmlElement(name = "Nombre Proyecto")
-	String nombreProyecto;
+	// Definicion de Atributos
+	@XmlElement(name = "IdProyecto")
+	private int idProyecto;
+	@XmlElement(name = "FinanciacionAportada")
+	private Double financiacionAportada;
+	@XmlElement(name = "NombreProyecto")
+	private String nombreProyecto;
 	@XmlElement(name = "Pais")
-	String pais;
-	@XmlElement(name = "localiacion")
-	String localizacion;
-	String financiador;	
-	@XmlElement(name = "codigo proyecto")
-	String codigoProyecto;
-	String AccionesRealizar;
+	private String pais;
+	@XmlElement(name = "Localizacion")
+	private String localizacion;
+	@XmlElement(name = "Financiador")
+	private String financiador;
+	@XmlElement(name = "CodigoProyecto")
+	private String codigoProyecto;
+	@XmlElement(name = "AccionesRealizar")
+	private String accionesRealizar;
+	@XmlElement(name = "FechaInicio")
+	private Date fechaInicio;
+	@XmlElement(name = "FechaFin")
+	private Date fechaFin;
+	@XmlElement(name = "LineaAccion")
+	private LineaAccion lineaAccion;
+	@XmlElement(name = "SubLineaAccion")
+	private List<SubLineaAccion> subLineaAccion;
+	@XmlElement(name = "SocioLocal")
+	private List<String> socioLocal;
+	@XmlElement(name = "MiembrosAsignados")
+	private List<Miembros> miembrosAsignados =new ArrayList<Miembros>();
 	
-	Date fechaInicio;
-	Date fechaFin;
-	
-	static LineaAccion lineaAccion;
-	
-	List<SubLineaAccion> subLineaAccion;
-	List<String> socioLocal;
-	List<Miembros> miembrosAsignados =new ArrayList<Miembros>();
-	
-	//Definicion de Constructores
+	// Definicion de Constructores
+	public Proyecto() {
+		// Empty constructor
+	}
 	
 	public Proyecto(int idProyecto, String nombreProyecto, String pais, String localizacion, LineaAccion lineaAccion,
 			List<SubLineaAccion> subLineaAccion, Date fechaInicio, Date fechaFin, List<String> socioLocal,
 			String financiador, Double financiacionAportada, String codigoProyecto, String accionesRealizar,
 			List<Miembros> miembrosAsignados) {
-		super();
 		this.idProyecto = idProyecto;
 		this.nombreProyecto = nombreProyecto;
 		this.pais = pais;
@@ -72,16 +74,11 @@ public class Proyecto {
 		this.financiador = financiador;
 		this.financiacionAportada = financiacionAportada;
 		this.codigoProyecto = codigoProyecto;
-		AccionesRealizar = accionesRealizar;
+		this.accionesRealizar = accionesRealizar;
 		this.miembrosAsignados = miembrosAsignados;
 	}
-
-	public Proyecto() {
-		super();
-	}
 	
-	//Definicion de los Getters and Settes
-	
+	// Definicion de los Getters and Settes
 	public int getIdProyecto() {
 		return idProyecto;
 	}
@@ -179,11 +176,11 @@ public class Proyecto {
 	}
 	
 	public String getAccionesRealizar() {
-		return AccionesRealizar;
+		return accionesRealizar;
 	}
 	
 	public void setAccionesRealizar(String accionesRealizar) {
-		AccionesRealizar = accionesRealizar;
+		this.accionesRealizar = accionesRealizar;
 	}
 	
 	public List<Miembros> getMiembrosAsignados() {
@@ -273,7 +270,7 @@ public class Proyecto {
 		
 		System.out.println("Introduzca las acciones a realizar del proyecto");
 		nuevoProyecto.setAccionesRealizar(recuperado.next());
-		System.out.println(nuevoProyecto.AccionesRealizar);
+		System.out.println(nuevoProyecto.getAccionesRealizar());
 		
 		System.out.println("Introduzca la Fecha inicio del proyecto(porfavor introduzca la fecha en el siguiente formato --/--/----)");
 		antesConversionFecha=recuperado.next();
@@ -360,21 +357,16 @@ public class Proyecto {
 		}
 		}nuevoProyecto.setMiembrosAsignados(miembros);
 		
-		System.out.println("Lo escbiribmos en el Dao");
 	}
+	
 	public static void delProyecto() { //Clase que borrara un proyecto
-		
 		int idProyecto=0;
-		
-		
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
-		
 		System.out.println("Introduce el  id de proyecto que se va a borrar");
 		
 		try {
 			idProyecto=recuperado.nextInt();
-		}
-		catch(Exception e) {
+		} catch(Exception e) {
 			System.out.println("No has introducido un id de proyecto");
 		  return;
 		}
@@ -383,19 +375,14 @@ public class Proyecto {
 			
 	}
 	
-	public static void modProyecto() { //Clase que modifcara un proyecto
-		
+	public static void modProyecto() { //Clase que modifcara un proyecto	
 		int idProyecto=0;
-		
-		
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
-		
 		System.out.println("Introduce el  id de proyecto que se va a Modificar");
 		
 		try {
 			idProyecto=recuperado.nextInt();
-		}
-		catch(Exception e) {
+		} catch(Exception e) {
 			System.out.println("No has introducido un id de proyecto");
 		  return;
 		}

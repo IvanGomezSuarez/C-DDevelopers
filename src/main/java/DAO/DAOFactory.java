@@ -2,6 +2,8 @@ package DAO;
 
 import javax.xml.bind.JAXBException;
 
+import DAO.impl.ProyectoDAO;
+
 public abstract class DAOFactory {
 
 	// constante para acceso de datos

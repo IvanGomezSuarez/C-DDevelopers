@@ -6,6 +6,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import DAO.impl.ProyectoDAO;
 import ongEC.Proyecto;
 
 import java.io.File;
@@ -13,6 +14,7 @@ import java.io.File;
  *
  * @author Ivan
  */
+
 public class XmlProyectoDAO implements ProyectoDAO{
     private JAXBContext jaxbContext = null;
     private String nombreFichero = null;

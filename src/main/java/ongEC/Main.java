@@ -1,6 +1,8 @@
 package ongEC;
 
 import DAO.*;
+import DAO.impl.ProyectoDAO;
+
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;

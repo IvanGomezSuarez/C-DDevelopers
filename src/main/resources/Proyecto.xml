@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Proyecto>
+    <IdProyecto>26</IdProyecto>
+    <FinanciacionAportada>25.0</FinanciacionAportada>
+    <NombreProyecto>nombreProyecto</NombreProyecto>
+    <Pais>pais</Pais>
+    <Localizacion>localizacion</Localizacion>
+    <Financiador>financiador</Financiador>
+    <CodigoProyecto>codigoProyecto</CodigoProyecto>
+    <AccionesRealizar>accionesRealizar</AccionesRealizar>
+    <FechaInicio>2020-03-28T14:17:44.157+01:00</FechaInicio>
+    <FechaFin>2020-03-28T14:17:44.157+01:00</FechaFin>
+    <LineaAccion>
+        <IdProyecto>0</IdProyecto>
+    </LineaAccion>
+</Proyecto>

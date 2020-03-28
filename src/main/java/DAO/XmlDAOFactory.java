@@ -2,6 +2,8 @@ package DAO;
 
 import javax.xml.bind.JAXBException;
 
+import DAO.impl.ProyectoDAO;
+
 public class XmlDAOFactory extends DAOFactory {
 
 	@Override

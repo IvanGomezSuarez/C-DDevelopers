@@ -33,9 +33,6 @@ public class XmlDelegacionesDAO implements DelegacionesDAO{
         marshaller.marshal(Delegaciones(null, null, null, null), System.out);
         
     }
-    
-    
-
 
 	public int Delegaciones(ongEC.Delegaciones delegaciones, String cip, Direccion direccion, String nombre) {
 		// TODO Auto-generated method stub
