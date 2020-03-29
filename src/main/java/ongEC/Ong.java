@@ -107,5 +107,17 @@ public class Ong {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	public static void printDelegaciones() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public static void delDelegacion() {
+		// TODO Auto-generated method stub
+		
+	}
 		
 }
