@@ -22,14 +22,14 @@ import ongEC.Proyecto;
 import ongEC.Proyectos;
 import ongEC.SubLineaAccion;
 
-public class ProyectoDAO{
+public class IngresoDAO{
   
 	public static List<Proyecto> getAll() {
 		// TODO Auto-generated method stub
 		 try {
 		        JAXBContext context = JAXBContext.newInstance(Proyectos.class);
 		        Unmarshaller unmarshaller = context.createUnmarshaller();
-		        Proyectos proyectos = (Proyectos) unmarshaller.unmarshal(new File("src/main/resources/Proyecto.xml"));
+		        Proyectos proyectos = (Proyectos) unmarshaller.unmarshal(new File("src/main/resources/Ingreso.xml"));
 		        printProyectos(proyectos);
 		      } catch (JAXBException e) {
 		        // TODO Auto-generated catch block
@@ -41,7 +41,7 @@ public class ProyectoDAO{
 	public static void save( Proyectos t) {
 		// TODO Auto-generated method stub
 		try {
-			File file = new File("src/main/resources/Proyecto.xml");
+			File file = new File("src/main/resources/Ingreso.xml");
 			JAXBContext contexto = JAXBContext.newInstance(t.getClass());
 			Marshaller marshaller = contexto.createMarshaller();
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);

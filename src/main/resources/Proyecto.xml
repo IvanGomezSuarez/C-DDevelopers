@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Proyectos>
     <Proyecto>
-        <IdProyecto>10</IdProyecto>
+        <IdProyecto>50</IdProyecto>
         <FinanciacionAportada>1.0</FinanciacionAportada>
         <NombreProyecto>1</NombreProyecto>
         <Pais>1</Pais>
@@ -10,14 +10,18 @@
         <CodigoProyecto>1</CodigoProyecto>
         <AccionesRealizar>1</AccionesRealizar>
         <FechaInicio>2020-01-01T00:00:00+01:00</FechaInicio>
-        <FechaFin>2020-09-09T00:00:00+02:00</FechaFin>
+        <FechaFin>2020-02-02T00:00:00+01:00</FechaFin>
         <LineaAccion>
             <IdProyecto>0</IdProyecto>
             <SubLineaAccion>
-                <descripcion>2</descripcion>
+                <descripcion>1</descripcion>
             </SubLineaAccion>
-            <ActualLineasAccion>EDUCACION</ActualLineasAccion>
+            <SubLineaAccion>
+                <descripcion>1</descripcion>
+            </SubLineaAccion>
+            <ActualLineasAccion>FORTALECIMIENTO</ActualLineasAccion>
         </LineaAccion>
-        <SocioLocal>12</SocioLocal>
+        <SocioLocal>1</SocioLocal>
+        <SocioLocal>1</SocioLocal>
     </Proyecto>
 </Proyectos>
