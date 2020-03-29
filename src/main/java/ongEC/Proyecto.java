@@ -370,22 +370,6 @@ public class Proyecto {
 		}
 		return(nuevoProyecto);
 	}
-	
-
-//	public static void modProyecto() { //Clase que modifcara un proyecto	
-//		int idProyecto=0;
-//		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
-//		System.out.println("Introduce el  id de proyecto que se va a Modificar");
-//		
-//		try {
-//			idProyecto=recuperado.nextInt();
-//		} catch(Exception e) {
-//			System.out.println("No has introducido un id de proyecto");
-//		  return;
-//		}
-//		System.out.println("Modificamos el proyecto");
-//	}
-//	
 
 	List<Proyecto> proyectos;
     
