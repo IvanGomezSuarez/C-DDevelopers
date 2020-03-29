@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -52,10 +53,43 @@ public class ProyectoDAO{
 
 	public void update(Proyecto t, String[] params) {
 		// TODO Auto-generated method stub
+		try {
+			File file = new File("src/main/resources/Proyecto.xml");
+			JAXBContext contexto = JAXBContext.newInstance(t.getClass());
+			Marshaller marshaller = contexto.createMarshaller();
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+			marshaller.marshal(t, file);
+			} catch (PropertyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
 	}
 
-	public void delete(Proyecto t) {
+	public static void delete(Proyectos t) {
 		// TODO Auto-generated method stub
+		int idProyecto=0;
+		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
+		
+		System.out.println("Introduce el  id de proyecto que se va a borrar");
+		
+		try {
+			idProyecto=recuperado.nextInt();
+		} catch(Exception e) {
+			System.out.println("No has introducido un id de proyecto");
+		  return;
+		}
+		
+		for (int i = 0;i<t.getProyecto().size();i++) {
+			if (t.getProyecto().get(i).getIdProyecto()==idProyecto){
+			System.out.println(t.getProyecto().get(i).getIdProyecto());
+			t.getProyecto().remove(i);
+			System.out.println("Borrado con exito");
+			}
+		}
+		return;
 	}
 	
 	private static void printProyecto(Proyecto proyecto, int i) {

@@ -65,7 +65,8 @@ public class Main {
 							 Proyecto.modProyecto();
 						 }else if (seleccionSubMenu==3) {
 							 System.out.println("Eliminar");
-							 Proyecto.delProyecto();
+							 ProyectoDAO.delete(nuevoProyectos);
+							 ProyectoDAO.save(nuevoProyectos);
 						 }else {
 							 System.out.println("Opcion no valida");
 						 }
