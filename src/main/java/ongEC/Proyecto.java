@@ -204,6 +204,7 @@ public class Proyecto {
 		String dniMiembro;
 		int devolucionPosicionMiembro;
 		String comprobacionStr="";
+		String textoGuardado="";
 		
 		
 		SubLineaAccion subLineaAccion = new SubLineaAccion(); 
@@ -237,7 +238,6 @@ public class Proyecto {
 				System.out.println("No has introducido un entero");
 			  return null;
 			}
-		
 		System.out.println(nuevoProyecto.idProyecto);
 		
 		System.out.println("Introduzca la financiacion aportada del proyecto");
@@ -249,13 +249,14 @@ public class Proyecto {
 		  return null;
 		}
 		System.out.println(nuevoProyecto.financiacionAportada);
-		
 		System.out.println("Introduzca el Nombre del proyecto");
-		nuevoProyecto.setNombreProyecto(recuperado.next());
+		textoGuardado=recuperado.next();
+		nuevoProyecto.setNombreProyecto(textoGuardado);
 		System.out.println(nuevoProyecto.nombreProyecto);
 		
 		System.out.println("Introduzca el Pais del proyecto");
-		nuevoProyecto.setPais(recuperado.next());
+		textoGuardado=recuperado.next();
+		nuevoProyecto.setPais(textoGuardado);
 		System.out.println(nuevoProyecto.pais);
 		
 		System.out.println("Introduzca la localizacion del proyecto");
