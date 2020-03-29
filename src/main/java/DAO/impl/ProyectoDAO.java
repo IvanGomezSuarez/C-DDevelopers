@@ -68,7 +68,8 @@ public class ProyectoDAO{
 		} catch(Exception e) {
 			System.out.println("No has introducido un id de proyecto");
 		  return;
-		}	
+		}
+		if(t.getProyecto()!=null) {
 		for (int i = 0;i<t.getProyecto().size();i++) {
 			
 			SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
@@ -253,8 +254,11 @@ public class ProyectoDAO{
 				}
 			}
 		}
-		return;
+	}else {
+		System.out.println("Archivo Vacio");
 	}
+		return;
+}
 
 	public static void delete(Proyectos t) {
 		// TODO Auto-generated method stub
@@ -304,8 +308,12 @@ public class ProyectoDAO{
 	}
 	
 	private static void printProyectos(Proyectos proyectos) {
-		for(int i = 0; i < proyectos.getProyecto().size(); i++) {
-			printProyecto(proyectos.getProyecto().get(i), i);
+		if(proyectos.getProyecto()!=null){
+			for(int i = 0; i < proyectos.getProyecto().size(); i++) {
+				printProyecto(proyectos.getProyecto().get(i), i);
+			}
+		}else {		
+		System.out.println("Archivo Vacio");			
 		}
 	}
 	

@@ -38,6 +38,7 @@ public class DelegacionDAO{
 		        printDelegaciones(delegaciones);
 		      } catch (JAXBException e) {
 		        // TODO Auto-generated catch block
+		    	  System.out.println("No hay ningun registro");
 		        e.printStackTrace();
 		      }
 		return null;
@@ -135,13 +136,16 @@ public class DelegacionDAO{
 			System.out.println("No has introducido un id de delegacion");
 		  return;
 		}
-		
-		for (int i = 0;i<t.getDelegacion().size();i++) {
-			if (t.getDelegacion().get(i).getIdDelegacion().equals(idDelegacion)){
-			System.out.println(t.getDelegacion().get(i).getIdDelegacion());
-			t.getDelegacion().remove(i);
-			System.out.println("Borrado con exito");
+		if(t.getDelegacion()!=null) {
+			for (int i = 0;i<t.getDelegacion().size();i++) {
+				if (t.getDelegacion().get(i).getIdDelegacion().equals(idDelegacion)){
+					System.out.println(t.getDelegacion().get(i).getIdDelegacion());
+					t.getDelegacion().remove(i);
+					System.out.println("Borrado con exito");
+				}
 			}
+		}else {
+			System.out.println("Archivo Vacio");			
 		}
 		return;
 	}
@@ -156,10 +160,16 @@ public class DelegacionDAO{
 	}
 	
 	private static void printDelegaciones(Delegaciones delegaciones) {
-		for(int i = 0; i < delegaciones.getDelegacion().size(); i++) {
-			printDelegacion(delegaciones.getDelegacion().get(i), i);		
+		
+		if(delegaciones.getDelegacion()!=null) {
+			for(int i = 0; i < delegaciones.getDelegacion().size(); i++) {
+				printDelegacion(delegaciones.getDelegacion().get(i), i);
+			}
+		}else{
+			System.out.println("Archivo Vacio");			
 		}
 	}
+	
 	
 //	private static Proyecto setupProyecto() {
 //		Proyecto proyecto = new Proyecto();
