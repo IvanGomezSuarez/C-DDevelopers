@@ -309,32 +309,201 @@ public class ProyectoDAO{
 		}
 	}
 	
-	private static Proyecto setupProyecto() {
-		Proyecto proyecto = new Proyecto();
-		proyecto.setIdProyecto(26);
-		proyecto.setFinanciacionAportada(25.0);
-		proyecto.setNombreProyecto("nombreProyecto");
-		proyecto.setPais("pais");
-		proyecto.setLocalizacion("localizacion");
-		proyecto.setFinanciador("financiador");
-		proyecto.setCodigoProyecto("codigoProyecto");
-		proyecto.setAccionesRealizar("accionesRealizar");
-		proyecto.setFechaInicio(new Date());
-		proyecto.setFechaFin(new Date());
-		proyecto.setLineaAccion(new LineaAccion());
-		proyecto.setSubLineaAccion(new ArrayList<SubLineaAccion>());
-		proyecto.setSocioLocal(new ArrayList<String>());
-		proyecto.setMiembrosAsignados(new ArrayList<Miembros>());
-		return proyecto;
+//	private static Proyecto setupProyecto() {
+//		Proyecto proyecto = new Proyecto();
+//		proyecto.setIdProyecto(26);
+//		proyecto.setFinanciacionAportada(25.0);
+//		proyecto.setNombreProyecto("nombreProyecto");
+//		proyecto.setPais("pais");
+//		proyecto.setLocalizacion("localizacion");
+//		proyecto.setFinanciador("financiador");
+//		proyecto.setCodigoProyecto("codigoProyecto");
+//		proyecto.setAccionesRealizar("accionesRealizar");
+//		proyecto.setFechaInicio(new Date());
+//		proyecto.setFechaFin(new Date());
+//		proyecto.setLineaAccion(new LineaAccion());
+//		proyecto.setSubLineaAccion(new ArrayList<SubLineaAccion>());
+//		proyecto.setSocioLocal(new ArrayList<String>());
+//		proyecto.setMiembrosAsignados(new ArrayList<Miembros>());
+//		return proyecto;
+//	}
+//	
+//	private static Proyectos setupProyectos() {
+//		Proyectos proyectos = new Proyectos();
+//		Proyecto proyecto1 = setupProyecto();
+//		Proyecto proyecto2 = setupProyecto();
+//		proyecto2.setIdProyecto(5);
+//		proyectos.add(proyecto1);
+//		proyectos.add(proyecto2);
+//		return proyectos;
+//	}
+	public static Proyecto addProyecto() //Clase que añadira un nuevo proyecto
+	{
+		//Definimos Atributos
+		
+		SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
+		String antesConversionFecha;
+		Date conversionaFecha= new Date(01/01/2020);
+		Integer seleccionLineaAccion;
+		String dniMiembro;
+		int devolucionPosicionMiembro;
+		String comprobacionStr="";
+		String textoGuardado="";
+		
+		
+		SubLineaAccion subLineaAccion = new SubLineaAccion(); 
+		
+		List<SubLineaAccion> listaSubLineaAccion = new ArrayList<SubLineaAccion>();
+		
+		List<String> listaAcciones = new ArrayList<String>();;
+
+		List<String>sociosLocales = new ArrayList<String>();
+		
+		List<Miembros> miembrosAsignados= new ArrayList<Miembros>();
+		
+		List<Miembros> miembros= new ArrayList<Miembros>();
+		
+		LineaAccion linea= new LineaAccion();
+		
+		Miembros miembrosNuevos= new Miembros();
+		
+		Proyecto nuevoProyecto= new Proyecto(); //Definicion del nuevo proyecto
+		
+		LineaAccion nuevaLineaAccion=new LineaAccion(); //Nueva Linea de Accion
+		
+		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
+		
+		//Solicitamos los datos al usuario del nuevo proyecto con sus comprobaciones de errores
+		try {
+				nuevoProyecto.setIdProyecto(recuperado.nextInt());
+			}
+			catch(Exception e) {
+				System.out.println("No has introducido un entero");
+			  return null;
+			}
+		
+		System.out.println("Introduzca la financiacion aportada del proyecto");
+		try {
+			nuevoProyecto.setFinanciacionAportada(recuperado.nextDouble());
+		}
+		catch(Exception e) {
+			System.out.println("No has introducido un importe correcto");
+		  return null;
+		}
+		
+		System.out.println("Introduzca el Nombre del proyecto");
+		textoGuardado=recuperado.next();
+		nuevoProyecto.setNombreProyecto(textoGuardado);
+		
+		System.out.println("Introduzca el Pais del proyecto");
+		textoGuardado=recuperado.next();
+		nuevoProyecto.setPais(textoGuardado);
+		
+		System.out.println("Introduzca la localizacion del proyecto");
+		nuevoProyecto.setLocalizacion(recuperado.next());
+		
+		System.out.println("Introduzca el financiador del proyecto");
+		nuevoProyecto.setFinanciador(recuperado.next());
+		
+		System.out.println("Introduzca el codigo del proyecto");
+		nuevoProyecto.setCodigoProyecto(recuperado.next());
+		
+		System.out.println("Introduzca las acciones a realizar del proyecto");
+		nuevoProyecto.setAccionesRealizar(recuperado.next());
+		System.out.println(nuevoProyecto.getAccionesRealizar());
+		
+		System.out.println("Introduzca la Fecha inicio del proyecto(porfavor introduzca la fecha en el siguiente formato --/--/----)");
+		antesConversionFecha=recuperado.next();
+		try {
+			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
+		} catch (ParseException e) {
+			System.out.println("Formato Fecha incorrecto");
+			return null;
+		}
+		nuevoProyecto.setFechaInicio(conversionaFecha);
+		
+		System.out.println("Introduzca la Fecha Fin del proyecto(porfavor introduzca la fecha en el siguiente formato --/--/----)");
+		antesConversionFecha=recuperado.next();
+		try {
+			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
+		} catch (ParseException e) {
+			System.out.println("Formato Fecha incorrecto");
+			return null;
+		}
+		nuevoProyecto.setFechaFin(conversionaFecha);
+		
+		System.out.println("Seleccione la linea de Accion");
+		
+		listaAcciones=ActualLineasAccion.listActions();
+		for (int i = 0;i<listaAcciones.size();i++) {
+			System.out.println(listaAcciones.get(i));
+		}
+		
+		try {
+			seleccionLineaAccion=recuperado.nextInt();
+		} catch (Exception e) {
+			System.out.println("Opcion incorrecta: " + e.getMessage());
+			return null;
+		}
+		
+		
+		if (seleccionLineaAccion!=null) {
+			linea.getDescripcionAccion();
+			linea.getDefSubLineaAccion();			
+			linea.setActualLineasAccion(ActualLineasAccion.devActions(seleccionLineaAccion));
+			nuevoProyecto.setLineaAccion(linea);
+		}
+
+		System.out.println("Introduzca las sub linea de accion del proyecto(para acabar de meter sublineas escriba exit)");
+		while(!comprobacionStr.equals("exit")) {
+			subLineaAccion = new SubLineaAccion(); 
+			System.out.println("Introduzca la sublinea");		
+			comprobacionStr=recuperado.next();
+			if(!comprobacionStr.equals("exit")) {
+				subLineaAccion.setDescripcion(comprobacionStr);
+				listaSubLineaAccion.add(subLineaAccion);
+			}
+		}
+		
+		//nuevoProyecto.getLineaAccion().setSubLineaAccion(listaSubLineaAccion);
+		//nuevoProyecto.setSubLineaAccion(listaSubLineaAccion);
+		nuevoProyecto.getLineaAccion().setSubLineaAccion(listaSubLineaAccion);
+		
+		comprobacionStr="";
+		
+		System.out.println("Introduzca los socios locales del proyecto(para acabar de meter socios pulse intro)");
+		while(!comprobacionStr.equals("exit")) {		
+		System.out.println("Introduzce el Socio Local");
+		comprobacionStr=recuperado.next();
+		if(!comprobacionStr.equals("exit")) {
+			subLineaAccion.setDescripcion(comprobacionStr);
+			sociosLocales.add(comprobacionStr);
+		}
+		}
+		
+		nuevoProyecto.setSocioLocal(sociosLocales);
+		
+		comprobacionStr="";
+		
+		System.out.println("Introduzca los dni de los Miembos asignados al proyecto(para acabar de introducir miembros pulse intro)");
+		while(!comprobacionStr.equals("exit")) {
+		System.out.println("Introduzce el Dni del miembro");
+		comprobacionStr=recuperado.next();
+		devolucionPosicionMiembro=miembrosNuevos.comprobarMiembro(comprobacionStr);
+		if (devolucionPosicionMiembro!=0) {
+			miembros.get(devolucionPosicionMiembro).getDni();
+			miembros.get(devolucionPosicionMiembro).getApellido1();
+			miembros.get(devolucionPosicionMiembro).getApellido2();
+			miembros.get(devolucionPosicionMiembro).getIdMiembro();
+			miembros.get(devolucionPosicionMiembro).getNombreMiembro();
+			miembros.get(devolucionPosicionMiembro).getPass();
+			miembros.get(devolucionPosicionMiembro).getNomUsuario();
+			miembros.get(devolucionPosicionMiembro).getTelefono();
+		}
+		nuevoProyecto.setMiembrosAsignados(miembros);
+		}
+		return(nuevoProyecto);
 	}
-	
-	private static Proyectos setupProyectos() {
-		Proyectos proyectos = new Proyectos();
-		Proyecto proyecto1 = setupProyecto();
-		Proyecto proyecto2 = setupProyecto();
-		proyecto2.setIdProyecto(5);
-		proyectos.add(proyecto1);
-		proyectos.add(proyecto2);
-		return proyectos;
-	}
+
 }
+    
