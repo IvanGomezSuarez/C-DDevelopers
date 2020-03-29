@@ -9,7 +9,7 @@
         <Financiador>1</Financiador>
         <CodigoProyecto>1</CodigoProyecto>
         <AccionesRealizar>1</AccionesRealizar>
-        <FechaInicio>2020-04-10T00:00:00+02:00</FechaInicio>
+        <FechaInicio>2020-01-01T00:00:00+01:00</FechaInicio>
         <FechaFin>2020-02-02T00:00:00+01:00</FechaFin>
         <LineaAccion>
             <IdProyecto>0</IdProyecto>
@@ -19,13 +19,9 @@
             <SubLineaAccion>
                 <descripcion>1</descripcion>
             </SubLineaAccion>
-            <SubLineaAccion>
-                <descripcion>exit</descripcion>
-            </SubLineaAccion>
             <ActualLineasAccion>EDUCACION</ActualLineasAccion>
         </LineaAccion>
         <SocioLocal>2</SocioLocal>
         <SocioLocal>2</SocioLocal>
-        <SocioLocal>exit</SocioLocal>
     </Proyecto>
 </Proyectos>

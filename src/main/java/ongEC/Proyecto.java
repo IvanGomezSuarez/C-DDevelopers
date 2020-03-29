@@ -323,8 +323,10 @@ public class Proyecto {
 			subLineaAccion = new SubLineaAccion(); 
 			System.out.println("Introduzca la sublinea");		
 			comprobacionStr=recuperado.next();
-			subLineaAccion.setDescripcion(comprobacionStr);
-			listaSubLineaAccion.add(subLineaAccion);
+			if(!comprobacionStr.equals("exit")) {
+				subLineaAccion.setDescripcion(comprobacionStr);
+				listaSubLineaAccion.add(subLineaAccion);
+			}
 		}
 		
 		//nuevoProyecto.getLineaAccion().setSubLineaAccion(listaSubLineaAccion);
@@ -334,12 +336,13 @@ public class Proyecto {
 		comprobacionStr="";
 		
 		System.out.println("Introduzca los socios locales del proyecto(para acabar de meter socios pulse intro)");
-		while(!comprobacionStr.equals("exit")) {
-			
+		while(!comprobacionStr.equals("exit")) {		
 		System.out.println("Introduzce el Socio Local");
 		comprobacionStr=recuperado.next();
-		subLineaAccion.setDescripcion(comprobacionStr);
-		sociosLocales.add(comprobacionStr);
+		if(!comprobacionStr.equals("exit")) {
+			subLineaAccion.setDescripcion(comprobacionStr);
+			sociosLocales.add(comprobacionStr);
+		}
 		}
 		
 		nuevoProyecto.setSocioLocal(sociosLocales);
