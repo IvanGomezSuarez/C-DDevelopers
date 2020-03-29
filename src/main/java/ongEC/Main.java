@@ -48,7 +48,7 @@ public class Main {
 						 }
 					 }
 					 
-				} } else if (estadoAplicacion==2) {
+				 } else if (estadoAplicacion==2) {
 					System.out.println("2.Dar de alta/modificar/eliminar un Proyecto");
 					opcionesSecundario();
 					seleccionSubMenu=comprobacionOpcion();	//Comprobamos si es int
@@ -154,8 +154,8 @@ public class Main {
 				}else {
 					System.out.println("El numero que has introducido no esta dentro de las opciones posibles, vuelva a intentarlo.Gracias");
 				}
-		}
-					
+			}
+		}		
 	}
 	
 	// MÉTODOS DEL MENU PRINCIPAL Y SECUNDARIO
@@ -187,6 +187,7 @@ public class Main {
 		System.out.println("3.Ver listados de Miembros");
 		System.out.println("4.Ver listados de Ingresos");
 	}
+	
 	
 	private static Integer comprobacionOpcion() { //Comprobamos que la opcion introducida es realmente un entero para que no de ninguna excepcion
 		
