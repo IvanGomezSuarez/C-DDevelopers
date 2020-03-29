@@ -337,7 +337,7 @@ public class ProyectoDAO{
 //		proyectos.add(proyecto2);
 //		return proyectos;
 //	}
-	public static Proyecto addProyecto() //Clase que añadira un nuevo proyecto
+	public static Proyecto addProyecto() //Clase que añadira un nuevo proyectoç
 	{
 		//Definimos Atributos
 		
@@ -504,6 +504,5 @@ public class ProyectoDAO{
 		}
 		return(nuevoProyecto);
 	}
-
 }
     

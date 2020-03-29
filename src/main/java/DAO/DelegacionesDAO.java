@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.*;
 
 
 import ongEC.Direccion;
-import ongEC.Delegaciones;
+import ongEC.Delegacion;
 
 
 public interface DelegacionesDAO {
 
-	public int Delegaciones(Delegaciones delegaciones, String cip, Direccion direccion,
+	public int Delegacion(Delegacion delegacion, String cip, Direccion direccion,
 			String nombre);
 
 	public void obtenerDelegaciones(String nombre, String cip) throws JAXBException;
@@ -21,5 +21,5 @@ public interface DelegacionesDAO {
 	
 	public int eliminarDelegaciones(String cip);
 	
-	public ongEC.Delegaciones listadoDelegaciones();
+	public ongEC.Delegacion listadoDelegaciones();
 }

@@ -6,7 +6,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
 
-import ongEC.Delegaciones;
+import ongEC.Delegacion;
 import ongEC.Direccion;
 
 
@@ -17,24 +17,24 @@ public class XmlDelegacionesDAO implements DelegacionesDAO{
     private String nombreFichero = null;
     
     public XmlDelegacionesDAO() throws JAXBException {
-        JAXBContext.newInstance(Delegaciones.class);
+        JAXBContext.newInstance(Delegacion.class);
         this.nombreFichero = "Delegaciones.xml";
     }
     
     
     public void obtenerDelegaciones(String nombre, String cip) throws JAXBException {
-        JAXBContext jaxbContext = JAXBContext.newInstance(Delegaciones.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Delegacion.class);
     	Marshaller marshaller = jaxbContext.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        marshaller.marshal(Delegaciones(null, null, null, null), new File(nombreFichero));
+        marshaller.marshal(Delegacion(null, null, null, null), new File(nombreFichero));
         System.out.println();
         System.out.println("Se ha escrito el fichero " + nombreFichero + " con el siguiente contenido:");
         System.out.println();
-        marshaller.marshal(Delegaciones(null, null, null, null), System.out);
+        marshaller.marshal(Delegacion(null, null, null, null), System.out);
         
     }
 
-	public int Delegaciones(ongEC.Delegaciones delegaciones, String cip, Direccion direccion, String nombre) {
+	public int Delegacion(ongEC.Delegacion delegacion, String cip, Direccion direccion, String nombre) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -46,7 +46,7 @@ public class XmlDelegacionesDAO implements DelegacionesDAO{
 	}
 
 
-	public ongEC.Delegaciones listadoDelegaciones() {
+	public ongEC.Delegacion listadoDelegaciones() {
 		// TODO Auto-generated method stub
 		return null;
 	}

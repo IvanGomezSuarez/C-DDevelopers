@@ -7,6 +7,8 @@ import java.util.Arrays;
 import ongEC.Main;
 import javax.xml.bind.JAXBException;
 
+import DAO.impl.DelegacionDAO;
+
 
 
 /**
@@ -137,6 +139,8 @@ public static void abrirSesion() throws IOException, JAXBException {
 	int respuestaOpcion = 0;
 	Integer[] opcionesValidas = {1, 2, 3};
 	String respuestaNuevaAccion;
+	Delegacion nuevaDelegacion= new Delegacion();
+	Delegaciones nuevasDelegaciones=new Delegaciones();
 
 	System.out.println("\n************************");
 	System.out.println(" Opciones de Administrador");
@@ -161,8 +165,9 @@ public static void abrirSesion() throws IOException, JAXBException {
 	switch(respuestaOpcion) {
 
 	case 1:
-		Ong.addDelegacion();
-
+		
+		nuevaDelegacion=DelegacionDAO.addDelegacion();
+		nuevasDelegaciones.add(nuevaDelegacion);
 		do {
 
 			do {
@@ -171,7 +176,10 @@ public static void abrirSesion() throws IOException, JAXBException {
 			} while (!respuestaNuevaAccion.equalsIgnoreCase("s") && !respuestaNuevaAccion.equalsIgnoreCase("n"));
 
 			if (respuestaNuevaAccion.equalsIgnoreCase("s")) {
-				Ong.addDelegacion();
+				nuevaDelegacion=DelegacionDAO.addDelegacion();
+				nuevasDelegaciones.add(nuevaDelegacion);
+			}else {
+				DelegacionDAO.save(nuevasDelegaciones);
 			}
 
 		} while (!respuestaNuevaAccion.equalsIgnoreCase("n"));
@@ -181,15 +189,15 @@ public static void abrirSesion() throws IOException, JAXBException {
 		break;
 
 	case 2:
-		Ong.printDelegaciones();
+		DelegacionDAO.getAll();
 		abrirSesion();
 		break;
 		
 		
 	case 3:
-		Ong.delDelegacion();
+		DelegacionDAO.delete(nuevasDelegaciones);
+		DelegacionDAO.save(nuevasDelegaciones);
 		abrirSesion();
-
 		break;	
 		
 

@@ -15,7 +15,7 @@ import javax.xml.bind.JAXBException;
 
 import javax.xml.bind.annotation.*;
 
-import ongEC.Delegaciones;
+import ongEC.Delegacion;
 
 
 
@@ -77,30 +77,6 @@ public class Ong {
 	 * teoria son capas donde no se junta el código estandard con las acciones sobre la base de datos
 	 * 
 	 */
-
-	// método para dar de alta una delegación
-	
-	static void addDelegacion() throws IOException, JAXBException {
-		Delegaciones newDelegacion = new Delegaciones();
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("\nIntroduce el nombre de la delegación: ");
-		newDelegacion.setNomDelegacion(br.readLine());
-		System.out.println("\nIntroduce el ID de la delegación: ");
-		newDelegacion.setIdDelegacion(br.readLine());
-		System.out.println("\nIntroduce el teléfono de la delegación: ");
-		newDelegacion.setTelefono(br.readLine());
-		System.out.println("\nIntroduce el CIP de la delegacion: ");
-		newDelegacion.setCip(br.readLine());
-		
-		AltaDelegacion(newDelegacion);
-		
-	}
-
-
-	private static void AltaDelegacion(Delegaciones newDelegacion) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 	public Object getOngs() {
