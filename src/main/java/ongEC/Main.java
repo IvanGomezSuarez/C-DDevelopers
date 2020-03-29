@@ -62,7 +62,8 @@ public class Main {
 							 ProyectoDAO.save(nuevoProyectos);						 
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
-							 Proyecto.modProyecto();
+							 ProyectoDAO.update(nuevoProyectos);
+							 ProyectoDAO.save(nuevoProyectos);	
 						 }else if (seleccionSubMenu==3) {
 							 System.out.println("Eliminar");
 							 ProyectoDAO.delete(nuevoProyectos);

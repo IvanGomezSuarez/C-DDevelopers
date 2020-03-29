@@ -249,6 +249,7 @@ public class Proyecto {
 		  return null;
 		}
 		System.out.println(nuevoProyecto.financiacionAportada);
+		
 		System.out.println("Introduzca el Nombre del proyecto");
 		textoGuardado=recuperado.next();
 		nuevoProyecto.setNombreProyecto(textoGuardado);
@@ -371,21 +372,22 @@ public class Proyecto {
 	}
 	
 
-	public static void modProyecto() { //Clase que modifcara un proyecto	
-		int idProyecto=0;
-		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
-		System.out.println("Introduce el  id de proyecto que se va a Modificar");
-		
-		try {
-			idProyecto=recuperado.nextInt();
-		} catch(Exception e) {
-			System.out.println("No has introducido un id de proyecto");
-		  return;
-		}
-		System.out.println("Modificamos el proyecto");
-	}
-	
-    List<Proyecto> proyectos;
+//	public static void modProyecto() { //Clase que modifcara un proyecto	
+//		int idProyecto=0;
+//		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
+//		System.out.println("Introduce el  id de proyecto que se va a Modificar");
+//		
+//		try {
+//			idProyecto=recuperado.nextInt();
+//		} catch(Exception e) {
+//			System.out.println("No has introducido un id de proyecto");
+//		  return;
+//		}
+//		System.out.println("Modificamos el proyecto");
+//	}
+//	
+
+	List<Proyecto> proyectos;
     
     public List<Proyecto> getProyectos(){
         return proyectos;
