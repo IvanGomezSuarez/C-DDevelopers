@@ -316,20 +316,18 @@ public class Proyecto {
 			linea.getDefSubLineaAccion();			
 			linea.setActualLineasAccion(ActualLineasAccion.devActions(seleccionLineaAccion));
 			nuevoProyecto.setLineaAccion(linea);
-			//System.out.println(ActualLineasAccion.devActions(seleccionLineaAccion));
-			//nuevaLineaAccion.setLineaAccion(nuevaLineaAccion);
-			//nuevoProyecto.getLineaAccion().setActualLineasAccion(ActualLineasAccion.devActions(seleccionLineaAccion));
 		}
 
 		System.out.println("Introduzca las sub linea de accion del proyecto(para acabar de meter sublineas escriba exit)");
 		while(!comprobacionStr.equals("exit")) {
-		System.out.println("Introduzca la sublinea");		
-		comprobacionStr=recuperado.next();
-		System.out.println(comprobacionStr);
-		subLineaAccion.setDescripcion(comprobacionStr);
-		listaSubLineaAccion.add(subLineaAccion);
+			subLineaAccion = new SubLineaAccion(); 
+			System.out.println("Introduzca la sublinea");		
+			comprobacionStr=recuperado.next();
+			subLineaAccion.setDescripcion(comprobacionStr);
+			listaSubLineaAccion.add(subLineaAccion);
 		}
 		
+		//nuevoProyecto.getLineaAccion().setSubLineaAccion(listaSubLineaAccion);
 		//nuevoProyecto.setSubLineaAccion(listaSubLineaAccion);
 		nuevoProyecto.getLineaAccion().setSubLineaAccion(listaSubLineaAccion);
 		

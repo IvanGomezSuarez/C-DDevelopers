@@ -3,6 +3,8 @@ package ongEC;
 import java.sql.Date;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /*
  * esta clase contiene las Lineas de Accion
  * 
@@ -14,9 +16,9 @@ public class LineaAccion extends Proyecto {
 	//Defincion de los Atributos
 	
 	private String descripcionAccion;
-	
+	//@XmlElement(name = "ActualLineasAccion")
 	private SubLineaAccion defSubLineaAccion;
-	
+	@XmlElement(name = "ActualLineasAccion")
 	private ActualLineasAccion actualLineasAccion;
 	
 	//Definicion de los constructores
@@ -24,16 +26,10 @@ public class LineaAccion extends Proyecto {
 	
 	
 	public LineaAccion() {
-		super();
 	}
 
-	public LineaAccion(int idProyecto, String nombreProyecto, String pais, String localizacion, LineaAccion lineaAccion,
-			List<SubLineaAccion> subLineaAccion, java.util.Date fechaInicio, java.util.Date fechaFin,
-			List<String> socioLocal, String financiador, Double financiacionAportada, String codigoProyecto,
-			String accionesRealizar, List<Miembros> miembrosAsignados, String descripcionAccion,
-			SubLineaAccion defSubLineaAccion, ActualLineasAccion actualLineasAccion) {
-		super(idProyecto, nombreProyecto, pais, localizacion, lineaAccion, subLineaAccion, fechaInicio, fechaFin,
-				socioLocal, financiador, financiacionAportada, codigoProyecto, accionesRealizar, miembrosAsignados);
+	public LineaAccion(String descripcionAccion, SubLineaAccion defSubLineaAccion,
+			ActualLineasAccion actualLineasAccion) {
 		this.descripcionAccion = descripcionAccion;
 		this.defSubLineaAccion = defSubLineaAccion;
 		this.actualLineasAccion = actualLineasAccion;
@@ -41,6 +37,7 @@ public class LineaAccion extends Proyecto {
 
 	//Definicion de los Gets y sets
 	
+
 	public String getDescripcionAccion() {
 		return descripcionAccion;
 	}
