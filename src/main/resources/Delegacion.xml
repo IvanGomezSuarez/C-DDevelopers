@@ -1,9 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Delegaciones>
-    <Delegacion>
-        <idDelegacion>1</idDelegacion>
-        <nomDelegacion>1</nomDelegacion>
-        <cip>1</cip>
-        <telefono>1</telefono>
-    </Delegacion>
-</Delegaciones>
+<Delegaciones/>

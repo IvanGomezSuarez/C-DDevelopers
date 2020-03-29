@@ -27,6 +27,8 @@ public class Loggin extends Miembros {
 	private static final String ivan = null;
 	private String usuario;
 	private String pass;
+	static Delegacion nuevaDelegacion= new Delegacion();
+	static Delegaciones nuevasDelegaciones=new Delegaciones();
 	
 	// constructor
 	
@@ -139,8 +141,7 @@ public static void abrirSesion() throws IOException, JAXBException {
 	int respuestaOpcion = 0;
 	Integer[] opcionesValidas = {1, 2, 3};
 	String respuestaNuevaAccion;
-	Delegacion nuevaDelegacion= new Delegacion();
-	Delegaciones nuevasDelegaciones=new Delegaciones();
+
 
 	System.out.println("\n************************");
 	System.out.println(" Opciones de Administrador");
