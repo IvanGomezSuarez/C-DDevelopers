@@ -54,7 +54,7 @@ public class Loggin extends Miembros {
 	
 
 	// metodos
-	
+/*	
 	public static void loggin() throws IOException, JAXBException {
     	
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -75,19 +75,59 @@ public class Loggin extends Miembros {
       	}
         		  
 	}
+	*/
 	
-	
-	
-	
-	
-	
-	
+public static void loggin() throws IOException, JAXBException {
+		
+    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+    	int respuesta = 0;
+    	Integer[] opcionesValidas = {1, 2, 3};
+    	
+    	System.out.println("****************************");
+    	System.out.println(" Bienvenido a Entreculturas");
+    	System.out.println("****************************");
+    	
+        do {
+        	System.out.println("\nPor favor, introduce el número de la acción que deseas realizar: ");
+        	System.out.println("1 - Iniciar sesión como miembro de entreculturas");
+        	System.out.println("2 - Iniciar sesión como administrador de entreculturas");
+        	System.out.println("3 - Salir");
+        	
+        	try {
+        		respuesta = Integer.parseInt(br.readLine());
+            } catch(NumberFormatException nfe) {
+                System.out.println("Los caracteres introducidos no son válidos.");
+            }
+        	
+        } while (!Arrays.asList(opcionesValidas).contains(respuesta));
+        
+        switch(respuesta) {
+           case 1:
+        	  Main main = new Main();
+    		  String respuestaNombre;
+    		  String respuestaPass;
+              System.out.println("Introduce tu nombre de usuario:");
+              respuestaNombre = br.readLine();
+              System.out.println("Introduce tu nombre contraseña");
+              respuestaPass = br.readLine();
+              		    
+              if (respuestaPass == ivan) {
+              	Main.opcionesMenuPrincipal();
+            	}
+              break;
+           
+         case 2:
+        	  Miembros miembros = new Miembros();
+        	  Miembros.abrirSesion();
+              break;
+            
+           case 3:
+        	  System.out.println("La sesión se ha cerrado con éxito.");
+        	  System.exit(0);
+              break;
+        }
+    }
 }
-
-
-
-
-
 
 
 

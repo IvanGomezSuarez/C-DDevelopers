@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
+import java.util.Arrays;
+import ongEC.Delegaciones;
+import ongEC.Ong;
 import javax.xml.bind.JAXBException;
 
 
@@ -231,6 +233,95 @@ public class Miembros {
        }   
    }
 
+ // ABRIR SESION COMO MIEMBRO
+ 
+ public static void abrirSesion() throws IOException, JAXBException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+		int respuestaOpcion = 0;
+		Integer[] opcionesValidas = {1, 2, 3};
+		String respuestaNuevaAccion;
+
+		System.out.println("\n************************");
+		System.out.println(" Opciones de Administrador");
+		System.out.println("**************************");
+
+		do {
+
+			System.out.println("\nPor favor, introduce el número de la acción que deseas realizar: ");
+			System.out.println("1 - Dar de alta una delegacion");
+			System.out.println("2 - Imprimir listado de delegaciones");
+			System.out.println("3 - Dar de baja una delegacion");
+			System.out.println("4 - Salir");
+
+			try {
+				respuestaOpcion = Integer.parseInt(br.readLine());
+			} catch(NumberFormatException nfe) {
+				System.out.println("Los caracteres introducidos no son válidos.");
+			}
+
+		} while (!Arrays.asList(opcionesValidas).contains(respuestaOpcion));
+
+		switch(respuestaOpcion) {
+
+		case 1:
+			Ong.addDelegacion();
+
+			do {
+
+				do {
+					System.out.println("¿Deseas dar de alta otra delegacion? (S/N)");
+					respuestaNuevaAccion = br.readLine();
+				} while (!respuestaNuevaAccion.equalsIgnoreCase("s") && !respuestaNuevaAccion.equalsIgnoreCase("n"));
+
+				if (respuestaNuevaAccion.equalsIgnoreCase("s")) {
+					Ong.addDelegacion();
+				}
+
+			} while (!respuestaNuevaAccion.equalsIgnoreCase("n"));
+
+			abrirSesion();
+
+			break;
+
+		case 2:
+			Ong.printDelegaciones();
+			abrirSesion();
+
+			break;
+			
+			
+		case 3:
+			Ong.delDelegacion();
+			abrirSesion();
+
+			break;	
+			
+
+		case 4:
+			System.out.println("La sesión se ha cerrado con éxito.");
+			System.exit(0);
+
+			break;
+
+		}
+
+	}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 // visualiza en pantalla los miembros 
  
 @SuppressWarnings("unused")

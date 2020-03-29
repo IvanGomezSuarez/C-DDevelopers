@@ -21,7 +21,7 @@ public class Main {
 		
 		Integer estadoAplicacion=0;//Estado de la aplicacion para decidir que opcion entre todas usar
 		Integer seleccionSubMenu=0;//Seleccion del Menu Secundario
-		Loggin.loggin ();
+		Loggin.loggin();
 		Proyecto nuevoProyecto= new Proyecto();
 		Proyectos nuevoProyectos=new Proyectos();
 		
@@ -30,9 +30,7 @@ public class Main {
 			opcionesMenuPrincipal();			//Llamamos a la funcion que printea la sopciones principales
 			
 			estadoAplicacion=comprobacionOpcion();		//Comprobamos con una unica clase (para no tener que estar repitiendo codigo) que el caracter es entero
-	    	System.out.println("\n*************");
-	    	System.out.println(" ADMINISTRADOR");
-	    	System.out.println("**************");
+
 			if (estadoAplicacion!=0) {							
 				if (estadoAplicacion==1) { //Despues de comprobar que el numero es correcto pasamos a comprobar que opcion a introducido el usuario
 					 System.out.println("1.Dar de alta/modificar/eliminar un Socio");
@@ -50,7 +48,7 @@ public class Main {
 						 }
 					 }
 					 
-				} else if (estadoAplicacion==2) {
+				} } else if (estadoAplicacion==2) {
 					System.out.println("2.Dar de alta/modificar/eliminar un Proyecto");
 					opcionesSecundario();
 					seleccionSubMenu=comprobacionOpcion();	//Comprobamos si es int
@@ -72,6 +70,7 @@ public class Main {
 							 System.out.println("Opcion no valida");
 						 }
 					}
+					
 				}else if (estadoAplicacion==3){
 					System.out.println("3.Dar de alta/modificar/eliminar un Miembro");
 					opcionesSecundario();
@@ -150,24 +149,28 @@ public class Main {
 							 System.out.println("Opcion no valida");
 						 }
 					 }
-				}else if (estadoAplicacion==9) {
+				}else if (estadoAplicacion==6) {
 					System.exit(0);
 				}else {
 					System.out.println("El numero que has introducido no esta dentro de las opciones posibles, vuelva a intentarlo.Gracias");
 				}
-			}
 		}
-		
-		
+					
 	}
 	
+	// MÉTODOS DEL MENU PRINCIPAL Y SECUNDARIO
 	static void opcionesMenuPrincipal(){//Opciones del menu principal
+    	System.out.println("\n**********");
+    	System.out.println(" MIEMBROS");
+    	System.out.println("************");
 		 System.out.println("Seleccione la Opcion deseada");
 		 System.out.println("1.Dar de alta/modificar/eliminar un Socio");
 		 System.out.println("2.Dar de alta/modificar/eliminar un Proyecto");
 		 System.out.println("3.Dar de alta/modificar/eliminar un Miembro");
 		 System.out.println("4.Dar de alta/modificar/eliminar un Ingreso");
 		 System.out.println("5.Listados");
+		 System.out.println("6.Salir");
+		 
 	}
 	
 	private static void opcionesSecundario(){ //Opciones del menu secundario para realizar la accion que queremos
@@ -201,7 +204,3 @@ public class Main {
 	}
 		
 }
-
-
-
-
