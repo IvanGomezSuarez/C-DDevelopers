@@ -3,6 +3,10 @@ package ongEC;
 //21/03/2020 falta implementar métodos todavia
 //IMPORTS
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,11 +23,15 @@ import java.util.Scanner;
 
 //DECLARACIÓN DE LA CLASE
 
+@XmlRootElement(name = "Ingreso")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Ingreso {
 	
 	//ATRIBUTOS
+	@XmlElement(name = "IdIngreso")
 	private int idIngreso;
 	//private java.util.GregorianCalendar fechaRecepcionIngreso;
+	@XmlElement(name = "FechaRecepcionIngreso")
 	private Date fechaRecepcionIngreso;
 	
 	//CONSTRUCTORES

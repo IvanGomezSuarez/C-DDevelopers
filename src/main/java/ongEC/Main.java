@@ -47,8 +47,7 @@ public class Main {
 							 System.out.println("Opcion no valida");
 						 }
 					 }
-					 
-				} } else if (estadoAplicacion==2) {
+					 }else if (estadoAplicacion==2) {
 					System.out.println("2.Dar de alta/modificar/eliminar un Proyecto");
 					opcionesSecundario();
 					seleccionSubMenu=comprobacionOpcion();	//Comprobamos si es int
