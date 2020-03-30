@@ -67,7 +67,7 @@ public class DelegacionDAO{
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		String comprobacionStr="";
 		
-		System.out.println("Introduce el  id de proyecto que se va a modificar");
+		System.out.println("Introduce el la delegacion que se va a modificar");
 		
 		try {
 			idProyecto=recuperado.next();
@@ -75,52 +75,56 @@ public class DelegacionDAO{
 			System.out.println("No has introducido un id de proyecto");
 		  return;
 		}	
+		if(t.getDelegacion()!=null) {
 		for (int i = 0;i<t.getDelegacion().size();i++) {
 			
-			if (t.getDelegacion().get(i).getIdDelegacion().equals(idProyecto)){											
-				while(!comprobacionStr.equals("exit")) {
-					System.out.println("Selecciona la opcion que quieres modificar(para salir introduzca exit)");
-					System.out.println("1.Iddelegacion");
-					System.out.println("2.Nombre Delegacion");
-					System.out.println("3.Cip Delegacion");
-					System.out.println("4.Telefono Delegacion");
-					comprobacionStr=recuperado.next();
-					if(comprobacionStr.equals("1"))
-					{
-						System.out.println("Introduzca el id de la Delegacion");
-						try {
-								t.getDelegacion().get(i).setIdDelegacion(recuperado.next());
+				if (t.getDelegacion().get(i).getIdDelegacion().equals(idProyecto)){											
+					while(!comprobacionStr.equals("exit")) {
+						System.out.println("Selecciona la opcion que quieres modificar(para salir introduzca exit)");
+						System.out.println("1.Iddelegacion");
+						System.out.println("2.Nombre Delegacion");
+						System.out.println("3.Cip Delegacion");
+						System.out.println("4.Telefono Delegacion");
+						comprobacionStr=recuperado.next();
+						if(comprobacionStr.equals("1"))
+						{
+							System.out.println("Introduzca el id de la Delegacion");
+							try {
+									t.getDelegacion().get(i).setIdDelegacion(recuperado.next());
+								}
+								catch(Exception e) {
+									System.out.println("No has introducido un String");
+								  return;
+								}
+						}
+						if(comprobacionStr.equals("2"))
+						{
+							System.out.println("Introduzca el Nombre de la Delegacion");
+							try {
+								t.getDelegacion().get(i).setNomDelegacion(recuperado.next());
 							}
 							catch(Exception e) {
 								System.out.println("No has introducido un String");
 							  return;
 							}
-					}
-					if(comprobacionStr.equals("2"))
-					{
-						System.out.println("Introduzca el Nombre de la Delegacion");
-						try {
-							t.getDelegacion().get(i).setNomDelegacion(recuperado.next());
 						}
-						catch(Exception e) {
-							System.out.println("No has introducido un String");
-						  return;
+						if(comprobacionStr.equals("3"))
+						{
+							System.out.println("Introduzca el Cip de la delegacion");
+							t.getDelegacion().get(i).setCip(recuperado.next());
 						}
+						if(comprobacionStr.equals("4"))
+						{
+							
+							t.getDelegacion().get(i).setTelefono(recuperado.next());
+						}
+						
 					}
-					if(comprobacionStr.equals("3"))
-					{
-						System.out.println("Introduzca el Cip de la delegacion");
-						t.getDelegacion().get(i).setCip(recuperado.next());
-					}
-					if(comprobacionStr.equals("4"))
-					{
-						System.out.println("Introduzca el telefono de la delegacion");
-						t.getDelegacion().get(i).setTelefono(recuperado.next());
-					}
-					
+				}
 			}
+		}else {
+		System.out.println("Archivo Vacio");
 		}
-	}
 }
 
 	public static void delete(Delegaciones t) {

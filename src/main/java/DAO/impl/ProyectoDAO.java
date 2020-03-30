@@ -274,12 +274,16 @@ public class ProyectoDAO{
 		  return;
 		}
 		
-		for (int i = 0;i<t.getProyecto().size();i++) {
-			if (t.getProyecto().get(i).getIdProyecto()==idProyecto){
-			System.out.println(t.getProyecto().get(i).getIdProyecto());
-			t.getProyecto().remove(i);
-			System.out.println("Borrado con exito");
+			if(t.getProyecto()!=null){
+				for (int i = 0;i<t.getProyecto().size();i++) {
+				if (t.getProyecto().get(i).getIdProyecto()==idProyecto){
+				System.out.println(t.getProyecto().get(i).getIdProyecto());
+				t.getProyecto().remove(i);
+				System.out.println("Borrado con exito");
+				}
 			}
+		}else {
+			System.out.println("Archivo Vacio");
 		}
 		return;
 	}

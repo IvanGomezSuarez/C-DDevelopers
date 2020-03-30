@@ -139,7 +139,7 @@ public static void loggin() throws IOException, JAXBException {
 public static void abrirSesion() throws IOException, JAXBException {
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
 	int respuestaOpcion = 0;
-	Integer[] opcionesValidas = {1, 2, 3};
+	Integer[] opcionesValidas = {1, 2, 3, 4, 5};
 	String respuestaNuevaAccion;
 
 
@@ -153,7 +153,8 @@ public static void abrirSesion() throws IOException, JAXBException {
 		System.out.println("1 - Dar de alta una delegacion");
 		System.out.println("2 - Imprimir listado de delegaciones");
 		System.out.println("3 - Dar de baja una delegacion");
-		System.out.println("4 - Salir");
+		System.out.println("4 - Modificar una delegacion");
+		System.out.println("5 - Salir");
 
 		try {
 			respuestaOpcion = Integer.parseInt(br.readLine());
@@ -203,10 +204,17 @@ public static void abrirSesion() throws IOException, JAXBException {
 		
 
 	case 4:
+		DelegacionDAO.update(nuevasDelegaciones);
+		DelegacionDAO.save(nuevasDelegaciones);
+		abrirSesion();
+		break;
+	
+	case 5:
 		System.out.println("La sesión se ha cerrado con éxito.");
 		System.exit(0);
 		break;
 	}
+	
 }
 }
 
