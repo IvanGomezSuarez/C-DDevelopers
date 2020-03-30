@@ -59,28 +59,7 @@ public class Loggin extends Miembros {
 	
 
 	// metodos
-/*	
-	public static void loggin() throws IOException, JAXBException {
-    	
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String respuestaNombre;
-		String respuestaPass;
-    	System.out.println("\n*******");
-    	System.out.println(" LOGGIN");
-    	System.out.println("*********");
-    	
-        System.out.println("Introduce tu nombre de usuario:");
-        respuestaNombre = br.readLine();
-        System.out.println("Introduce tu nombre contraseña");
-        respuestaPass = br.readLine();
-        		  
-        		  
-        if (respuestaPass == ivan) {
-        	Main.opcionesMenuPrincipal();
-      	}
-        		  
-	}
-	*/
+
 	
 public static void loggin() throws IOException, JAXBException {
 		

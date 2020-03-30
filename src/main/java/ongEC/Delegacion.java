@@ -74,20 +74,4 @@ public class Delegacion {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-
-	public static void add(Delegacion delegacion1) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public Object getDelegaciones() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Object getdelegaciones() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

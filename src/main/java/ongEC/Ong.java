@@ -72,28 +72,4 @@ public class Ong {
 		this.cifOng = cifOng;
 	}
 	
-	/**
-	 * no implemento los metodos añadir delegación, borrarla o modificarla por el tema del DAO y DAO factory, que en 
-	 * teoria son capas donde no se junta el código estandard con las acciones sobre la base de datos
-	 * 
-	 */
-
-
-	public Object getOngs() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public static void printDelegaciones() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	public static void delDelegacion() {
-		// TODO Auto-generated method stub
-		
-	}
-		
 }
