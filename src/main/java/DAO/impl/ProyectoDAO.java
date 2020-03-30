@@ -16,6 +16,7 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlElement;
 
 import ongEC.ActualLineasAccion;
+import ongEC.Delegaciones;
 import ongEC.LineaAccion;
 import ongEC.Miembros;
 import ongEC.Proyecto;
@@ -515,6 +516,21 @@ public class ProyectoDAO{
 		nuevoProyecto.setMiembrosAsignados(miembros);
 		}
 		return(nuevoProyecto);
+	}
+	
+	public static Proyectos readfirst() {
+		// TODO Auto-generated method stub
+		 try {
+		        JAXBContext context = JAXBContext.newInstance(Proyectos.class);
+		        Unmarshaller unmarshaller = context.createUnmarshaller();
+		        Proyectos proyectos = (Proyectos) unmarshaller.unmarshal(new File("src/main/resources/Proyecto.xml"));
+		        return(proyectos);
+		      } catch (JAXBException e) {
+		        // TODO Auto-generated catch block
+		    	  System.out.println("No hay ningun registro");
+		        e.printStackTrace();
+		      }
+		return null;
 	}
 }
     

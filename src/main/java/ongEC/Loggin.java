@@ -29,6 +29,7 @@ public class Loggin extends Miembros {
 	private String pass;
 	static Delegacion nuevaDelegacion= new Delegacion();
 	static Delegaciones nuevasDelegaciones=new Delegaciones();
+
 	
 	// constructor
 	
@@ -86,7 +87,7 @@ public static void loggin() throws IOException, JAXBException {
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
     	int respuesta = 0;
     	Integer[] opcionesValidas = {1, 2, 3};
-    	
+    	nuevasDelegaciones=DelegacionDAO.readfirst();
     	System.out.println("****************************");
     	System.out.println(" Bienvenido a Entreculturas");
     	System.out.println("****************************");

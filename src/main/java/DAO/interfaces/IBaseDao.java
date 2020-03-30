@@ -9,4 +9,5 @@ public interface IBaseDao<T> {
     void save(T t) throws JAXBException;
     void update(T t);
     void delete(T t);
+    void readfirst(T t);
 }

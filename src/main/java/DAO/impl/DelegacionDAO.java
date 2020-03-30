@@ -220,4 +220,21 @@ public class DelegacionDAO{
 		return(newDelegacion);
 		
 	}
+	
+	public static Delegaciones readfirst() {
+		// TODO Auto-generated method stub
+		 try {
+		        JAXBContext context = JAXBContext.newInstance(Delegaciones.class);
+		        Unmarshaller unmarshaller = context.createUnmarshaller();
+		        Delegaciones delegaciones = (Delegaciones) unmarshaller.unmarshal(new File("src/main/resources/Delegacion.xml"));
+		        return(delegaciones);
+		      } catch (JAXBException e) {
+		        // TODO Auto-generated catch block
+		    	  System.out.println("No hay ningun registro");
+		        e.printStackTrace();
+		      }
+		return null;
+	}
+
 }
+

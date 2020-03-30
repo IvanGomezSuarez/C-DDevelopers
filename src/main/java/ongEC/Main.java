@@ -1,6 +1,7 @@
 package ongEC;
 
 import DAO.*;
+import DAO.impl.DelegacionDAO;
 import DAO.impl.ProyectoDAO;
 
 import java.io.IOException;
@@ -24,8 +25,7 @@ public class Main {
 		Loggin.loggin();
 		Proyecto nuevoProyecto= new Proyecto();
 		Proyectos nuevoProyectos=new Proyectos();
-		
-		
+		nuevoProyectos=ProyectoDAO.readfirst();
 
 		while (estadoAplicacion!=9){            //Hasta que no se introduzca el numero 9 no se sale de la aplicacion.
 
