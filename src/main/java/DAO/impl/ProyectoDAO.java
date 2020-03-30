@@ -1,6 +1,9 @@
 package DAO.impl;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -56,7 +59,7 @@ public class ProyectoDAO{
 		}
 	}
 
-	public static void update(Proyectos t) {
+	public static void update(Proyectos t) throws IOException {
 		// TODO Auto-generated method stub
 		int idProyecto=0;
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
@@ -85,6 +88,7 @@ public class ProyectoDAO{
 			int devolucionPosicionMiembro;
 			Miembros miembrosNuevos= new Miembros();
 			List<Miembros> miembros= new ArrayList<Miembros>();
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			
 			if (t.getProyecto().get(i).getIdProyecto()==idProyecto){											
 				while(!comprobacionStr.equals("exit")) {
@@ -129,37 +133,37 @@ public class ProyectoDAO{
 					if(comprobacionStr.equals("3"))
 					{
 						System.out.println("Introduzca el Nombre del proyecto");
-						t.getProyecto().get(i).setNombreProyecto(recuperado.next());
+						t.getProyecto().get(i).setNombreProyecto(br.readLine());
 					}
 					if(comprobacionStr.equals("4"))
 					{
 						System.out.println("Introduzca el Pais del proyecto");
-						t.getProyecto().get(i).setPais(recuperado.next());
+						t.getProyecto().get(i).setPais(br.readLine());
 					}
 					if(comprobacionStr.equals("5"))
 					{
 						System.out.println("Introduzca la localizacion del proyecto");
-						t.getProyecto().get(i).setLocalizacion(recuperado.next());
+						t.getProyecto().get(i).setLocalizacion(br.readLine());
 					}
 					if(comprobacionStr.equals("6"))
 					{
 						System.out.println("Introduzca el financiador del proyecto");
-						t.getProyecto().get(i).setFinanciador(recuperado.next());
+						t.getProyecto().get(i).setFinanciador(br.readLine());
 					}
 					if(comprobacionStr.equals("7"))
 					{
 						System.out.println("Introduzca el codigo del proyecto");
-						t.getProyecto().get(i).setCodigoProyecto(recuperado.next());
+						t.getProyecto().get(i).setCodigoProyecto(br.readLine());
 					}
 					if(comprobacionStr.equals("8"))
 					{
 						System.out.println("Introduzca las acciones a realizar del proyecto");
-						t.getProyecto().get(i).setAccionesRealizar(recuperado.next());
+						t.getProyecto().get(i).setAccionesRealizar(br.readLine());
 					}
 					if(comprobacionStr.equals("9"))
 					{
 						System.out.println("Introduzca la Fecha inicio del proyecto(porfavor introduzca la fecha en el siguiente formato --/--/----)");
-						antesConversionFecha=recuperado.next();
+						antesConversionFecha=br.readLine();
 						try {
 							conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
 						} catch (ParseException e) {
@@ -171,7 +175,7 @@ public class ProyectoDAO{
 					if(comprobacionStr.equals("10"))
 					{
 						System.out.println("Introduzca la Fecha Fin del proyecto(porfavor introduzca la fecha en el siguiente formato --/--/----)");
-						antesConversionFecha=recuperado.next();
+						antesConversionFecha=br.readLine();
 						try {
 							conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
 						} catch (ParseException e) {
@@ -210,7 +214,7 @@ public class ProyectoDAO{
 						while(!comprobacionStr.equals("exit")) {
 							subLineaAccion = new SubLineaAccion(); 
 							System.out.println("Introduzca la sublinea");		
-							comprobacionStr=recuperado.next();
+							comprobacionStr=br.readLine();
 							if(!comprobacionStr.equals("exit")) {
 								subLineaAccion.setDescripcion(comprobacionStr);
 								listaSubLineaAccion.add(subLineaAccion);
@@ -223,7 +227,7 @@ public class ProyectoDAO{
 						System.out.println("Introduzca los socios locales del proyecto(para acabar de meter socios pulse intro)");
 						while(!comprobacionStr.equals("exit")) {		
 						System.out.println("Introduzce el Socio Local");
-						comprobacionStr=recuperado.next();
+						comprobacionStr=br.readLine();
 						if(!comprobacionStr.equals("exit")) {
 							subLineaAccion.setDescripcion(comprobacionStr);
 							sociosLocales.add(comprobacionStr);
@@ -237,7 +241,7 @@ public class ProyectoDAO{
 						System.out.println("Introduzca los dni de los Miembos asignados al proyecto(para acabar de introducir miembros pulse intro)");
 						while(!comprobacionStr.equals("exit")) {
 						System.out.println("Introduzce el Dni del miembro");
-						comprobacionStr=recuperado.next();
+						comprobacionStr=br.readLine();
 						devolucionPosicionMiembro=miembrosNuevos.comprobarMiembro(comprobacionStr);
 						if (devolucionPosicionMiembro!=0) {
 							miembros.get(devolucionPosicionMiembro).getDni();
@@ -350,7 +354,7 @@ public class ProyectoDAO{
 //		proyectos.add(proyecto2);
 //		return proyectos;
 //	}
-	public static Proyecto addProyecto() //Clase que añadira un nuevo proyectoç
+	public static Proyecto addProyecto() throws IOException //Clase que añadira un nuevo proyectoç
 	{
 		//Definimos Atributos
 		
@@ -361,7 +365,7 @@ public class ProyectoDAO{
 		String dniMiembro;
 		int devolucionPosicionMiembro;
 		String comprobacionStr="";
-		String textoGuardado="";
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		
 		SubLineaAccion subLineaAccion = new SubLineaAccion(); 
@@ -387,6 +391,8 @@ public class ProyectoDAO{
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		
 		//Solicitamos los datos al usuario del nuevo proyecto con sus comprobaciones de errores
+		System.out.println("Introduzca el ID del proyecto");
+		
 		try {
 				nuevoProyecto.setIdProyecto(recuperado.nextInt());
 			}
@@ -405,28 +411,26 @@ public class ProyectoDAO{
 		}
 		
 		System.out.println("Introduzca el Nombre del proyecto");
-		textoGuardado=recuperado.next();
-		nuevoProyecto.setNombreProyecto(textoGuardado);
+		nuevoProyecto.setNombreProyecto(br.readLine());
 		
 		System.out.println("Introduzca el Pais del proyecto");
-		textoGuardado=recuperado.next();
-		nuevoProyecto.setPais(textoGuardado);
+		nuevoProyecto.setPais(br.readLine());
 		
 		System.out.println("Introduzca la localizacion del proyecto");
-		nuevoProyecto.setLocalizacion(recuperado.next());
+		nuevoProyecto.setLocalizacion(br.readLine());
 		
 		System.out.println("Introduzca el financiador del proyecto");
-		nuevoProyecto.setFinanciador(recuperado.next());
+		nuevoProyecto.setFinanciador(br.readLine());
 		
 		System.out.println("Introduzca el codigo del proyecto");
-		nuevoProyecto.setCodigoProyecto(recuperado.next());
+		nuevoProyecto.setCodigoProyecto(br.readLine());
 		
 		System.out.println("Introduzca las acciones a realizar del proyecto");
-		nuevoProyecto.setAccionesRealizar(recuperado.next());
+		nuevoProyecto.setAccionesRealizar(br.readLine());
 		System.out.println(nuevoProyecto.getAccionesRealizar());
 		
 		System.out.println("Introduzca la Fecha inicio del proyecto(porfavor introduzca la fecha en el siguiente formato --/--/----)");
-		antesConversionFecha=recuperado.next();
+		antesConversionFecha=br.readLine();
 		try {
 			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
 		} catch (ParseException e) {
@@ -436,7 +440,7 @@ public class ProyectoDAO{
 		nuevoProyecto.setFechaInicio(conversionaFecha);
 		
 		System.out.println("Introduzca la Fecha Fin del proyecto(porfavor introduzca la fecha en el siguiente formato --/--/----)");
-		antesConversionFecha=recuperado.next();
+		antesConversionFecha=br.readLine();
 		try {
 			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
 		} catch (ParseException e) {
@@ -471,7 +475,7 @@ public class ProyectoDAO{
 		while(!comprobacionStr.equals("exit")) {
 			subLineaAccion = new SubLineaAccion(); 
 			System.out.println("Introduzca la sublinea");		
-			comprobacionStr=recuperado.next();
+			comprobacionStr=br.readLine();
 			if(!comprobacionStr.equals("exit")) {
 				subLineaAccion.setDescripcion(comprobacionStr);
 				listaSubLineaAccion.add(subLineaAccion);
@@ -487,7 +491,7 @@ public class ProyectoDAO{
 		System.out.println("Introduzca los socios locales del proyecto(para acabar de meter socios pulse intro)");
 		while(!comprobacionStr.equals("exit")) {		
 		System.out.println("Introduzce el Socio Local");
-		comprobacionStr=recuperado.next();
+		comprobacionStr=br.readLine();
 		if(!comprobacionStr.equals("exit")) {
 			subLineaAccion.setDescripcion(comprobacionStr);
 			sociosLocales.add(comprobacionStr);
@@ -501,7 +505,7 @@ public class ProyectoDAO{
 		System.out.println("Introduzca los dni de los Miembos asignados al proyecto(para acabar de introducir miembros pulse intro)");
 		while(!comprobacionStr.equals("exit")) {
 		System.out.println("Introduzce el Dni del miembro");
-		comprobacionStr=recuperado.next();
+		comprobacionStr=br.readLine();
 		devolucionPosicionMiembro=miembrosNuevos.comprobarMiembro(comprobacionStr);
 		if (devolucionPosicionMiembro!=0) {
 			miembros.get(devolucionPosicionMiembro).getDni();
