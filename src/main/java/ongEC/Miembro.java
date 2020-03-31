@@ -41,10 +41,14 @@ public class Miembro {
 	private Direccion direccion;
 	@XmlElement(name = "Rol")
 	private String rol;
-	@XmlElement(name = "Telefono")
+
+	@XmlElement(name = "Personal")
 	Personal personal;
+	@XmlElement(name = "Voluntario")
 	Voluntario voluntario;
+	@XmlElement(name = "Colaborador")
 	Colaborador colaborador;
+	@XmlElement(name = "Telefono")
 	private String telefono;
 	
 

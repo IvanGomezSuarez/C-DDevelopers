@@ -6,7 +6,8 @@ package ongEC;
  * 
  * */
 
-import java.sql.Date;
+//import java.sql.Date;
+import java.util.Date;
 
 public class Personal extends Miembro {
 	

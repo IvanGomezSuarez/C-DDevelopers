@@ -6,7 +6,7 @@ import java.sql.Date;
  * 
  * 
  * */
-public class Internacional extends Voluntario {
+public class Internacional{
 
 	
 	//Definiendo los Atributos
@@ -15,13 +15,13 @@ public class Internacional extends Voluntario {
 
 	//Definiendo los constructores
 	
-	public Internacional(Date fechaAlta, Date fechaBaja) {
-		super(fechaAlta, fechaBaja);
+	public Internacional(String paisOrigen) {
+		super();
+		this.paisOrigen = paisOrigen;
 	}
 
-	public Internacional(Date fechaAlta, Date fechaBaja, String paisOrigen) {
-		super(fechaAlta, fechaBaja);
-		this.paisOrigen = paisOrigen;
+	public Internacional() {
+		super();
 	}
 	
 	//Definiendo los get y set
@@ -33,5 +33,4 @@ public class Internacional extends Voluntario {
 	public void setPaisOrigen(String paisOrigen) {
 		this.paisOrigen = paisOrigen;
 	}
-
 }

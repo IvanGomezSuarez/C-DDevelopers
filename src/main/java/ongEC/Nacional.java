@@ -7,40 +7,32 @@ import java.sql.Date;
  * 
  * 
  * */
-public class Nacional extends Voluntario {
+public class Nacional{
 
 	//Definiendo atributos
 	
-	private String Origen;
+	private String origen;
 	
 	
 	//Definiendo Constructores
 	
-	public Nacional(Date fechaAlta, Date fechaBaja, String origen) {
-		super(fechaAlta, fechaBaja);
-		Origen = origen;
-	}
-	
-	public Nacional(Date fechaAlta, Date fechaBaja) {
-		super(fechaAlta, fechaBaja);
+	public Nacional(String origen) {
+		super();
+		this.origen = origen;
 	}
 
+	public Nacional() {
+		super();
+	}
 
 	//Definiendo los Gets y los Sets
-
-
-
-
-
-
+	
 	public String getOrigen() {
-		return Origen;
+		return origen;
 	}
 
-
-
 	public void setOrigen(String origen) {
-		Origen = origen;
+		this.origen = origen;
 	}
 	
 

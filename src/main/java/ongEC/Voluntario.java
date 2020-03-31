@@ -1,6 +1,6 @@
 package ongEC;
 
-import java.sql.Date;
+import java.util.Date;
 /*
  * esta clase contiene la informaci�n de los datos de fechas de los voluntarios
  * 
@@ -12,6 +12,8 @@ public class Voluntario extends Miembro  {
 	
 	private Date fechaAlta;
 	private Date fechaBaja;
+	Nacional nacional;
+	Internacional internacional;
 	
 	
 	// Definendo los constructores
@@ -43,5 +45,25 @@ public class Voluntario extends Miembro  {
 
 	public void setFechaBaja(Date fechaBaja) {
 		this.fechaBaja = fechaBaja;
-	}				
+	}
+
+
+	public Nacional getNacional() {
+		return nacional;
+	}
+
+
+	public void setNacional(Nacional nacional) {
+		this.nacional = nacional;
+	}
+
+
+	public Internacional getInternacional() {
+		return internacional;
+	}
+
+
+	public void setInternacional(Internacional internacional) {
+		this.internacional = internacional;
+	}
 }

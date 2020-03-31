@@ -6,7 +6,7 @@ package ongEC;
  * 
  * */
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import javax.xml.bind.JAXBException;
 import ongEC.Miembro;

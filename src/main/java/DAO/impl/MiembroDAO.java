@@ -19,15 +19,20 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlElement;
 
 import ongEC.ActualLineasAccion;
+import ongEC.Colaborador;
 import ongEC.Delegacion;
 import ongEC.Delegaciones;
 import ongEC.Direccion;
+import ongEC.Internacional;
 import ongEC.LineaAccion;
 import ongEC.Miembro;
 import ongEC.Miembros;
+import ongEC.Nacional;
+import ongEC.Personal;
 import ongEC.Proyecto;
 import ongEC.Proyectos;
 import ongEC.SubLineaAccion;
+import ongEC.Voluntario;
 
 public class MiembroDAO{
   
@@ -279,11 +284,11 @@ public class MiembroDAO{
 		System.out.println("\n3.Colaborador: ");
 		seleccion=recuperado.nextInt();
 		if (seleccion==1) {
-			
+			nuevoMiembro.setPersonal(addPersonal());
 		}else if (seleccion==2) {
-			nuevoMiembro.setRol("Admin");
+			nuevoMiembro.setVoluntario(addVoluntario());
 		}else if (seleccion==3) {
-			System.out.println("Opcion No valida ");
+			nuevoMiembro.setColaborador(addColaborador());
 		}else
 			System.out.println("Opcion No valida ");
 		
@@ -291,26 +296,126 @@ public class MiembroDAO{
 
 	}
 	
+public static Personal addPersonal() throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		Personal personal=new Personal();
+		SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
+		String antesConversionFecha;
+		Date conversionaFecha= new Date(01/01/2020);
+		
+		System.out.println("Introduzca la Fecha De alta del Contrato(porfavor introduzca la fecha en el siguiente formato --/--/----)");
+		antesConversionFecha=br.readLine();
+		try {
+			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
+		} catch (ParseException e) {
+			System.out.println("Formato Fecha incorrecto");
+			return null;
+		}
+		personal.setFechaAlta(conversionaFecha);
+		
+		System.out.println("Introduzca la Fecha Fin del Contrato(porfavor introduzca la fecha en el siguiente formato --/--/----)");
+		antesConversionFecha=br.readLine();
+		try {
+			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
+		} catch (ParseException e) {
+			System.out.println("Formato Fecha incorrecto");
+			return null;
+		}		
+		personal.setFechaBaja(conversionaFecha);
+		return(personal);
+	}
+	
+public static Colaborador addColaborador() throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		Colaborador colaborador=new Colaborador();
+		SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
+		String antesConversionFecha;
+		Date conversionaFecha= new Date(01/01/2020);
+		
+		System.out.println("Introduzca la Fecha De alta del Colaborador(porfavor introduzca la fecha en el siguiente formato --/--/----)");
+		antesConversionFecha=br.readLine();
+		try {
+			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
+		} catch (ParseException e) {
+			System.out.println("Formato Fecha incorrecto");
+			return null;
+		}
+		colaborador.setFechaAlta(conversionaFecha);
+		
+		System.out.println("Introduzca la Fecha Fin estimada del Colaborador(porfavor introduzca la fecha en el siguiente formato --/--/----)");
+		antesConversionFecha=br.readLine();
+		try {
+			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
+		} catch (ParseException e) {
+			System.out.println("Formato Fecha incorrecto");
+			return null;
+		}		
+		colaborador.setFechaBaja(conversionaFecha);
+		return(colaborador);
+	}
 
-//    // metodo añadir miembro al array
-//
-//// static void comprobacionMiembro (Miembros miembros)
-//// {    
-////      boolean b= true;
-////     for (@SuppressWarnings("unused") Miembro n:ALMiembros)
-////     { if(Miembro.getDni().equals(Miembro.getDni())){
-////         b=false;
-////         System.out.println(" el miembro ya existe");
-////         break;
-////     } else {
-////     }
-////     }
-////     
-////     if(b){
-////         ALMiembros.add (miembro);
-////         System.out.println(" El miembro se ha añadido a la base de datos"+'\n');
-////       }   
-////   }
+public static Voluntario addVoluntario() throws IOException {
+	
+	Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	Voluntario voluntario=new Voluntario();
+	SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
+	String antesConversionFecha;
+	Date conversionaFecha= new Date(01/01/2020);
+	int seleccion;
+	Nacional nacional=new Nacional();
+	Internacional internacional=new Internacional();
+	
+	System.out.println("Introduzca la Fecha De alta del Voluntario(porfavor introduzca la fecha en el siguiente formato --/--/----)");
+	antesConversionFecha=br.readLine();
+	try {
+		conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
+	} catch (ParseException e) {
+		System.out.println("Formato Fecha incorrecto");
+		return null;
+	}
+	voluntario.setFechaAlta(conversionaFecha);
+	
+	System.out.println("Introduzca la Fecha Fin estimada del Voluntario(porfavor introduzca la fecha en el siguiente formato --/--/----)");
+	antesConversionFecha=br.readLine();
+	try {
+		conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
+	} catch (ParseException e) {
+		System.out.println("Formato Fecha incorrecto");
+		return null;
+	}		
+	voluntario.setFechaBaja(conversionaFecha);
+	
+	System.out.println("Introduzca si es Nacional o Internacional");
+	System.out.println("1.Nacional");
+	System.out.println("2.Internacional");
+	seleccion=recuperado.nextInt();
+	if (seleccion==1) {
+		System.out.println("Introduce el Origen");
+		nacional.setOrigen(br.readLine());
+		voluntario.setNacional(nacional);
+	}else if (seleccion==2) {
+		System.out.println("Introduce el  Pais Origen");
+		internacional.setPaisOrigen(br.readLine());
+	}else {
+		System.out.println("Opcion No valida ");
+	}
+	
+	return(voluntario);
+}
+
+// metodo añadir miembro al array
+	/*
+	 * static void comprobacionMiembro (Miembros miembros) { boolean b= true; for
+	 * (@SuppressWarnings("unused") Miembro n:ALMiembros) {
+	 * if(Miembro.getDni().equals(Miembro.getDni())){ b=false;
+	 * System.out.println(" el miembro ya existe"); break; } else { } }
+	 * 
+	 * if(b){ ALMiembros.add (miembro);
+	 * System.out.println(" El miembro se ha añadido a la base de datos"+'\n'); } }
+	 */
 //
 // // ABRIR SESION COMO MIEMBRO
 // 
@@ -337,19 +442,19 @@ public class MiembroDAO{
 ////Comprobar si el dni del miembro esta dado de alta
 //
 //@SuppressWarnings("static-access")
-//public static Integer comprobarMiembro (String dni)
-//{    
-//	Integer existeMiembro=0;
-//	
-//    for (Miembro n:ALMiembros)   	
-//    { if(n.getDni().equals(dni)){
-//    	System.out.println("Dni Encontrado"); 
-//        return (existeMiembro);
-//    }
-//    existeMiembro++;
-//    }
-//    System.out.println("El Dni No existe"); 
-//    return(0);  
-//  }
+public static Integer comprobarMiembro (String dni)
+{    
+	Integer existeMiembro=0;
+	
+    for (Miembro n:ALMiembros)   	
+    { if(n.getDni().equals(dni)){
+    	System.out.println("Dni Encontrado"); 
+        return (existeMiembro);
+    }
+    existeMiembro++;
+    }
+    System.out.println("El Dni No existe"); 
+    return(0);  
+  }
 }
 
