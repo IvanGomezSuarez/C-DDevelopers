@@ -32,7 +32,8 @@ public class Main {
 		miembrosNuevos=MiembroDAO.readfirst();
 
 		while (estadoAplicacion!=9){            //Hasta que no se introduzca el numero 9 no se sale de la aplicacion.
-
+			miembrosNuevos=MiembroDAO.readfirst();
+			nuevoProyectos=ProyectoDAO.readfirst();
 			opcionesMenuPrincipal();			//Llamamos a la funcion que printea la sopciones principales
 
 			estadoAplicacion=comprobacionOpcion();		//Comprobamos con una unica clase (para no tener que estar repitiendo codigo) que el caracter es entero
@@ -61,12 +62,12 @@ public class Main {
 					if (seleccionSubMenu!=0) {
 						 if (seleccionSubMenu==1) {		//Pasamos dependiendo de la seleccion
 							 System.out.println("Dar de alta");
-							 nuevoProyecto=ProyectoDAO.addProyecto();
+							 nuevoProyecto=ProyectoDAO.addProyecto(nuevoProyectos,miembrosNuevos);
 							 nuevoProyectos.add(nuevoProyecto);
 							 ProyectoDAO.save(nuevoProyectos);
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
-							 ProyectoDAO.update(nuevoProyectos);
+							 ProyectoDAO.update(nuevoProyectos,miembrosNuevos);
 							 ProyectoDAO.save(nuevoProyectos);
 						 }else if (seleccionSubMenu==3) {
 							 System.out.println("Eliminar");
@@ -84,7 +85,7 @@ public class Main {
 					 if (seleccionSubMenu!=0) {
 						 if (seleccionSubMenu==1) { 	//Pasamos dependiendo de la seleccion
 							 System.out.println("Dar de alta");
-							 miembroNuevo=MiembroDAO.addMiembro();
+							 miembroNuevo=MiembroDAO.addMiembro(miembrosNuevos);
 							 miembrosNuevos.add(miembroNuevo);
 							 MiembroDAO.save(miembrosNuevos);
 						 }else if (seleccionSubMenu==2) {

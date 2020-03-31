@@ -96,6 +96,7 @@ public static void loggin() throws IOException, JAXBException {
     	System.out.println("****************************");
     	
         do {
+        	nuevasDelegaciones=DelegacionDAO.readfirst();
         	System.out.println("\nPor favor, introduce el número de la acción que deseas realizar: ");
         	System.out.println("1 - Iniciar sesión como miembro de entreculturas");
         	System.out.println("2 - Iniciar sesión como administrador de entreculturas");
@@ -172,7 +173,7 @@ public static void abrirSesion() throws IOException, JAXBException {
 
 	case 1:
 		
-		nuevaDelegacion=DelegacionDAO.addDelegacion();
+		nuevaDelegacion=DelegacionDAO.addDelegacion(nuevasDelegaciones);
 		nuevasDelegaciones.add(nuevaDelegacion);
 		do {
 
@@ -182,7 +183,7 @@ public static void abrirSesion() throws IOException, JAXBException {
 			} while (!respuestaNuevaAccion.equalsIgnoreCase("s") && !respuestaNuevaAccion.equalsIgnoreCase("n"));
 
 			if (respuestaNuevaAccion.equalsIgnoreCase("s")) {
-				nuevaDelegacion=DelegacionDAO.addDelegacion();
+				nuevaDelegacion=DelegacionDAO.addDelegacion(nuevasDelegaciones);
 				nuevasDelegaciones.add(nuevaDelegacion);
 			}else {
 				DelegacionDAO.save(nuevasDelegaciones);

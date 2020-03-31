@@ -61,11 +61,13 @@ public class DelegacionDAO{
 		}
 	}
 
-	public static void update(Delegaciones t) {
+	public static void update(Delegaciones t) throws IOException {
 		// TODO Auto-generated method stub
 		String idProyecto="";
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		String comprobacionStr="";
+		String recuperadoString="";
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		System.out.println("Introduce el la delegacion que se va a modificar");
 		
@@ -76,54 +78,61 @@ public class DelegacionDAO{
 		  return;
 		}	
 		if(t.getDelegacion()!=null) {
-		for (int i = 0;i<t.getDelegacion().size();i++) {
-			
+			for (int i = 0;i<t.getDelegacion().size();i++){
 				if (t.getDelegacion().get(i).getIdDelegacion().equals(idProyecto)){											
-					while(!comprobacionStr.equals("exit")) {
+					while(!recuperadoString.equals("exit")) {
 						System.out.println("Selecciona la opcion que quieres modificar(para salir introduzca exit)");
 						System.out.println("1.Iddelegacion");
 						System.out.println("2.Nombre Delegacion");
 						System.out.println("3.Cip Delegacion");
 						System.out.println("4.Telefono Delegacion");
-						comprobacionStr=recuperado.next();
-						if(comprobacionStr.equals("1"))
+						recuperadoString=recuperado.next();
+						if(recuperadoString.equals("1"))
 						{
 							System.out.println("Introduzca el id de la Delegacion");
+							recuperadoString=br.readLine();
+							for (int x = 0;x<t.getDelegacion().size();x++) {
+								if (t.getDelegacion().get(x).getIdDelegacion().equals(recuperadoString)){
+									System.out.println("\n ID REPETIDO ");
+									return;
+								} 			
+								
+							}
 							try {
-									t.getDelegacion().get(i).setIdDelegacion(recuperado.next());
-								}
-								catch(Exception e) {
-									System.out.println("No has introducido un String");
-								  return;
-								}
-						}
-						if(comprobacionStr.equals("2"))
-						{
-							System.out.println("Introduzca el Nombre de la Delegacion");
-							try {
-								t.getDelegacion().get(i).setNomDelegacion(recuperado.next());
+								t.getDelegacion().get(i).setIdDelegacion(recuperadoString);
 							}
 							catch(Exception e) {
 								System.out.println("No has introducido un String");
 							  return;
 							}
 						}
-						if(comprobacionStr.equals("3"))
+						if(recuperadoString.equals("2"))
+						{
+							System.out.println("Introduzca el Nombre de la Delegacion");
+							try {
+								t.getDelegacion().get(i).setNomDelegacion(br.readLine());
+							}
+							catch(Exception e) {
+								System.out.println("No has introducido un String");
+							  return;
+							}
+						}
+						if(recuperadoString.equals("3"))
 						{
 							System.out.println("Introduzca el Cip de la delegacion");
-							t.getDelegacion().get(i).setCip(recuperado.next());
+							t.getDelegacion().get(i).setCip(br.readLine());
 						}
-						if(comprobacionStr.equals("4"))
+						if(recuperadoString.equals("4"))
 						{
 							
-							t.getDelegacion().get(i).setTelefono(recuperado.next());
+							t.getDelegacion().get(i).setTelefono(br.readLine());
 						}
 						
 					}
 				}
 			}
 		}else {
-		System.out.println("Archivo Vacio");
+			System.out.println("Archivo Vacio");
 		}
 }
 
@@ -174,44 +183,22 @@ public class DelegacionDAO{
 		}
 	}
 	
-	
-//	private static Proyecto setupProyecto() {
-//		Proyecto proyecto = new Proyecto();
-//		proyecto.setIdProyecto(26);
-//		proyecto.setFinanciacionAportada(25.0);
-//		proyecto.setNombreProyecto("nombreProyecto");
-//		proyecto.setPais("pais");
-//		proyecto.setLocalizacion("localizacion");
-//		proyecto.setFinanciador("financiador");
-//		proyecto.setCodigoProyecto("codigoProyecto");
-//		proyecto.setAccionesRealizar("accionesRealizar");
-//		proyecto.setFechaInicio(new Date());
-//		proyecto.setFechaFin(new Date());
-//		proyecto.setLineaAccion(new LineaAccion());
-//		proyecto.setSubLineaAccion(new ArrayList<SubLineaAccion>());
-//		proyecto.setSocioLocal(new ArrayList<String>());
-//		proyecto.setMiembrosAsignados(new ArrayList<Miembros>());
-//		return proyecto;
-//	}
-//	
-//	private static Proyectos setupProyectos() {
-//		Proyectos proyectos = new Proyectos();
-//		Proyecto proyecto1 = setupProyecto();
-//		Proyecto proyecto2 = setupProyecto();
-//		proyecto2.setIdProyecto(5);
-//		proyectos.add(proyecto1);
-//		proyectos.add(proyecto2);
-//		return proyectos;
-//	}
-	// método para dar de alta una delegación
-	
-	public static Delegacion addDelegacion() throws IOException, JAXBException {
+	public static Delegacion addDelegacion(Delegaciones t) throws IOException, JAXBException {
 		Delegacion newDelegacion = new Delegacion();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("\nIntroduce el nombre de la delegación: ");
-		newDelegacion.setNomDelegacion(br.readLine());
+		
 		System.out.println("\nIntroduce el ID de la delegación: ");
 		newDelegacion.setIdDelegacion(br.readLine());
+		
+		for (int i = 0;i<t.getDelegacion().size();i++) {
+			if (t.getDelegacion().get(i).getIdDelegacion().equals(newDelegacion.getIdDelegacion())){
+				System.out.println("\n ID REPETIDO ");
+				return null;
+			}
+			
+		}
+		System.out.println("\nIntroduce el nombre de la delegación: ");
+		newDelegacion.setNomDelegacion(br.readLine());
 		System.out.println("\nIntroduce el teléfono de la delegación: ");
 		newDelegacion.setTelefono(br.readLine());
 		System.out.println("\nIntroduce el CIP de la delegacion: ");
