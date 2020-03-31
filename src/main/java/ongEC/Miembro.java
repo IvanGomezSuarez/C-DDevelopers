@@ -185,99 +185,20 @@ public class Miembro {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	
 
-	static void altaMiembro() throws IOException, JAXBException {
-		Miembro nuevoMiembro = new Miembro();
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("\nIntroduce el nombre del miembro: ");
-		nuevoMiembro.setNombreMiembro(br.readLine());
-		System.out.println("\nIntroduce el primer apellido del miembro: ");
-		nuevoMiembro.setApellido1(br.readLine());
-		System.out.println("\nIntroduce el segundo apellido del trabajador: ");
-		nuevoMiembro.setApellido1(br.readLine());
-		System.out.println("\nIntroduce el DNI del miembro: ");
-		nuevoMiembro.setDni(br.readLine());
-		System.out.println("\nIntroduce el pais de residencia: ");
-		nuevoMiembro.setPais(br.readLine());
-		System.out.println("\nIntroduce la ciudad de residencia: ");
-		nuevoMiembro.setCiudad(br.readLine());
-		System.out.println("\nIntroduce la direccion de su domicilio: ");
-		//nuevoMiembro.setDireccion(br.readLine());
-		System.out.println("\nIntroduce el ID del miembro: ");
-		nuevoMiembro.setIdMiembro(br.readLine());
-		System.out.println("\nIntroduce el nombre que desee como usuario: ");
-		nuevoMiembro.setNombreUsuario(br.readLine());
-		System.out.println("\nIntroduce tu contraseña: ");
-		nuevoMiembro.setPassword(br.readLine());
-		System.out.println("\nIntroduce el numero de movil del miembro: ");
-		nuevoMiembro.setTelefono(br.readLine());
-		
-        // añadir MIEMBRO AL DAO, para ISA
-		//MiembrosDAO.;
-		
-		AddMiembro(nuevoMiembro);
-		mostrarMiembros();
-
+	public String getRol() {
+		return rol;
 	}
-	
-    // metodo añadir miembro al array
 
- static void AddMiembro (Miembro miembro)
- { 
-     
-      boolean b= true;
-     for (@SuppressWarnings("unused") Miembro n:ALMiembros)
-     { if(Miembro.getDni().equals(Miembro.getDni())){
-         b=false;
-         System.out.println(" el miembro ya existe");
-         break;
-     } else {
-     }
-     }
-     
-     if(b){
-         ALMiembros.add (miembro);
-         System.out.println(" El miembro se ha añadido a la base de datos"+'\n');
-       }   
-   }
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
 
- // ABRIR SESION COMO MIEMBRO
- 
- 
-// visualiza en pantalla los miembros 
- 
-@SuppressWarnings("unused")
-static void mostrarMiembros() 
-{
- for(Miembro miembro : ALMiembros) {
-      System.out.println(getDni()+'\n');  
-  }    
-}
-//Lista los miembros
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
 
-static void listMiembros()
-{
- for(@SuppressWarnings("unused") Miembro miembro : ALMiembros) {
-       Miembro.mostrarMiembros();   
-  }    
-}
-
-//Comprobar si el dni del miembro esta dado de alta
-
-@SuppressWarnings("static-access")
-public Integer comprobarMiembro (String dni)
-{    
-	Integer existeMiembro=0;
-	
-    for (Miembro n:ALMiembros)   	
-    { if(n.getDni().equals(dni)){
-    	System.out.println("Dni Encontrado"); 
-        return (existeMiembro);
-    }
-    existeMiembro++;
-    }
-    System.out.println("El Dni No existe"); 
-    return(0);  
-  }
+	public String getPassword() {
+		return password;
+	}
 }

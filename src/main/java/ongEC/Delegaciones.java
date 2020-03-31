@@ -25,7 +25,6 @@ public class Delegaciones {
 	public List<Delegacion> getDelegacion() {
 		return delegacion;
 	}
-
 	public void add(Delegacion delegacion){
         if (this.delegacion == null){
             this.delegacion = new ArrayList<Delegacion>();

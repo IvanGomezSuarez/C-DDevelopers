@@ -27,6 +27,7 @@ import ongEC.Delegacion;
 @XmlAccessorType(XmlAccessType.NONE)
 
 public class Ong {
+	
 	@XmlAttribute(name = "nombreOng")
 	private String nombreOng;
 	

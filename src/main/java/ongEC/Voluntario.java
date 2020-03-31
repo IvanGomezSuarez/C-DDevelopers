@@ -17,7 +17,7 @@ public class Voluntario extends Miembro  {
 	// Definendo los constructores
 	
 	public Voluntario(String idMiembro, String nombreMiembro, String nombreUsuario, String password, String apellido1,
-			String apellido2, String dni, String pais, String ciudad, String direccion, String telefono, Date fechaAlta,
+			String apellido2, String dni, String pais, String ciudad, Direccion direccion, String telefono, Date fechaAlta,
 			Date fechaBaja) {
 		super(idMiembro, nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, pais, ciudad, direccion,
 				telefono);
@@ -26,7 +26,7 @@ public class Voluntario extends Miembro  {
 	}
 
 	public Voluntario(String idMiembro, String nombreMiembro, String nombreUsuario, String password, String apellido1,
-			String apellido2, String dni, String pais, String ciudad, String direccion, String telefono) {
+			String apellido2, String dni, String pais, String ciudad, Direccion direccion, String telefono) {
 		super(idMiembro, nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, pais, ciudad, direccion,
 				telefono);
 	}

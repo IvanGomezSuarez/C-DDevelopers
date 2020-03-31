@@ -2,6 +2,7 @@ package ongEC;
 
 import DAO.*;
 import DAO.impl.DelegacionDAO;
+import DAO.impl.MiembroDAO;
 import DAO.impl.ProyectoDAO;
 
 import java.io.IOException;
@@ -80,7 +81,7 @@ public class Main {
 					 if (seleccionSubMenu!=0) {
 						 if (seleccionSubMenu==1) { 	//Pasamos dependiendo de la seleccion
 							 System.out.println("Dar de alta");
-							 Miembro.altaMiembro();
+							 MiembroDAO.altaMiembro();
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
 						 }else if (seleccionSubMenu==3) {
