@@ -37,17 +37,15 @@ public class Miembro {
 	private String apellido2;
 	@XmlElement(name = "Dni")
 	private static String dni;
-	@XmlElement(name = "Pais")
-	private String pais;
-	@XmlElement(name = "Ciudad")
-	private String ciudad;
 	@XmlElement(name = "Direccion")
 	private Direccion direccion;
 	@XmlElement(name = "Rol")
 	private String rol;
 	@XmlElement(name = "Telefono")
+	Personal personal;
+	Voluntario voluntario;
+	Colaborador colaborador;
 	private String telefono;
-	private static ArrayList<Miembro> ALMiembros;
 	
 
 	// constructores
@@ -67,31 +65,33 @@ public class Miembro {
 	 * 
 	 * 
 	 */
-	public Miembro(String idMiembro, String nombreMiembro, String nombreUsuario, String password, String apellido1, String apellido2,
-			 String dni, String pais, String ciudad, Direccion direccion, String telefono) {
+
+
+	// constructor para el arraylist
+	public Miembro(){  
+	}
+	
+	public Miembro(String idMiembro, String nombreMiembro, String nombreUsuario, String password, String apellido1,
+			String apellido2, Direccion direccion, String rol, Personal personal, Voluntario voluntario,
+			Colaborador colaborador, String telefono) {
 		super();
-		this.idMiembro =idMiembro;
+		this.idMiembro = idMiembro;
 		this.nombreMiembro = nombreMiembro;
 		this.nombreUsuario = nombreUsuario;
 		this.password = password;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
-		Miembro.dni = dni;
-		this.pais = pais;
-		this.ciudad =ciudad;
 		this.direccion = direccion;
+		this.rol = rol;
+		this.personal = personal;
+		this.voluntario = voluntario;
+		this.colaborador = colaborador;
 		this.telefono = telefono;
 	}
-
-	// constructor para el arraylist
-	public Miembro()
-	   {
-	       ALMiembros = new ArrayList <Miembro>();
-	       
-	     }
 	
 	//metodos
 	
+
 	public Miembro(String nombreMiembro2, String dni2) {
 		// TODO Auto-generated constructor stub
 	}
@@ -162,21 +162,6 @@ public class Miembro {
 		this.dni = dni;
 	}
 
-	public String getPais() {
-		return pais;
-	}
-
-	public void setPais(String pais) {
-		this.pais = pais;
-	}
-
-	public String getCiudad() {
-		return ciudad;
-	}
-
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
-	}
 	
 	public String getTelefono() {
 		return telefono;
@@ -201,4 +186,29 @@ public class Miembro {
 	public String getPassword() {
 		return password;
 	}
+
+	public Personal getPersonal() {
+		return personal;
+	}
+
+	public void setPersonal(Personal personal) {
+		this.personal = personal;
+	}
+
+	public Voluntario getVoluntario() {
+		return voluntario;
+	}
+
+	public void setVoluntario(Voluntario voluntario) {
+		this.voluntario = voluntario;
+	}
+
+	public Colaborador getColaborador() {
+		return colaborador;
+	}
+
+	public void setColaborador(Colaborador colaborador) {
+		this.colaborador = colaborador;
+	}
+	
 }

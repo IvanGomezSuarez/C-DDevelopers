@@ -8,6 +8,7 @@ import ongEC.Main;
 import javax.xml.bind.JAXBException;
 
 import DAO.impl.DelegacionDAO;
+import DAO.impl.MiembroDAO;
 
 
 
@@ -29,6 +30,7 @@ public class Loggin extends Miembro {
 	private String pass;
 	static Delegacion nuevaDelegacion= new Delegacion();
 	static Delegaciones nuevasDelegaciones=new Delegaciones();
+	static Miembros miembrosAnteriores=new Miembros();
 
 	
 	// constructor
@@ -88,6 +90,7 @@ public static void loggin() throws IOException, JAXBException {
     	int respuesta = 0;
     	Integer[] opcionesValidas = {1, 2, 3};
     	nuevasDelegaciones=DelegacionDAO.readfirst();
+    	miembrosAnteriores=MiembroDAO.readfirst();
     	System.out.println("****************************");
     	System.out.println(" Bienvenido a Entreculturas");
     	System.out.println("****************************");

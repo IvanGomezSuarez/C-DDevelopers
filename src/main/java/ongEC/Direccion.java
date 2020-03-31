@@ -3,6 +3,7 @@ package ongEC;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 /**
  * Esta clase representa el conceoti de direccion
@@ -20,6 +21,7 @@ public class Direccion {
 	String localidad;
 	String provincia;
 	String cp;
+	String pais;
 	
 	public String getTipoVia() {
 		return tipoVia;
@@ -76,7 +78,15 @@ public class Direccion {
 	public void setCp(String cp) {
 		this.cp = cp;
 	}
-	
+		
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+
 	public Direccion(String tipoVia, int numero, int puerta, int escalera, String localidad, String provincia,
 			String cp) {
 		super();
@@ -95,19 +105,25 @@ public class Direccion {
 	
 	public static Direccion addDireccion() throws IOException {
 		Direccion newdireccion=new Direccion();
+		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
 		System.out.println("\nIntroduce la TipoVia: ");
 		newdireccion.setTipoVia(br.readLine());
+		System.out.println("\nIntroduce el Numero: ");
+		newdireccion.setNumero(recuperado.nextInt());
 		System.out.println("\nIntroduce la Puerta: ");
-		newdireccion.setPuerta(br.read());
+		newdireccion.setPuerta(recuperado.nextInt());
 		System.out.println("\nIntroduce la Escalera: ");
-		newdireccion.setEscalera(br.read());
+		newdireccion.setEscalera(recuperado.nextInt());
 		System.out.println("\nIntroduce la Localidad: ");
 		newdireccion.setLocalidad(br.readLine());
 		System.out.println("\nIntroduce la Provincia: ");
 		newdireccion.setProvincia(br.readLine());
 		System.out.println("\nIntroduce el codigo postal: ");
 		newdireccion.setCp(br.readLine());
+		System.out.println("\nIntroduce el Pais: ");
+		newdireccion.setPais(br.readLine());
 		return (newdireccion);
 	}
 	

@@ -15,15 +15,22 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "Miembros")
 public class Miembros {
 	
-	private List<Miembro> Miembro;
+	private List<Miembro> miembro;
 
-    public void setMiembro(List<Miembro> Miembro) {
-		this.Miembro = Miembro;
+    public void setMiembro(List<Miembro> miembro) {
+		this.miembro = miembro;
 	}
     
 	@XmlElement(name = "Miembro")
 	public List<Miembro> getMiembro() {
-		return Miembro;
+		return miembro;
 	}
+	
+	public void add(Miembro miembro){
+        if (this.miembro == null){
+            this.miembro = new ArrayList<Miembro>();
+        }
+        this.miembro.add(miembro);
+    }
 
 }

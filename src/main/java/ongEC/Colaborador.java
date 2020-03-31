@@ -28,19 +28,14 @@ public class Colaborador extends Miembro {
 	
 	//Definicion de los constructores
 	
-	public Colaborador(String idMiembro, String nombreMiembro, String nombreUsuario, String password, String apellido1,
-			String apellido2, String dni, String pais, String ciudad, Direccion direccion, String telefono, Date fechaAlta,
-			Date fechaBaja) {
-		super(idMiembro, nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, pais, ciudad, direccion,
-				telefono);
+	public Colaborador(Date fechaAlta, Date fechaBaja) {
+		super();
 		this.fechaAlta = fechaAlta;
 		this.fechaBaja = fechaBaja;
 	}
-
-	public Colaborador(String idMiembro, String nombreMiembro, String nombreUsuario, String password, String apellido1,
-			String apellido2, String dni, String pais, String ciudad, Direccion direccion, String telefono) {
-		super(idMiembro, nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, pais, ciudad, direccion,
-				telefono);
+	
+	public Colaborador() {
+		super();
 	}
 
 	//Definicion de los gets y los sets

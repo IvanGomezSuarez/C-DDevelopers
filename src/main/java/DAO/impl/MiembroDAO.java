@@ -88,13 +88,11 @@ public class MiembroDAO{
 						System.out.println("3.Apellido1");
 						System.out.println("4.Apellido2");
 						System.out.println("5.DNI");
-						System.out.println("6.Pais");
-						System.out.println("7.Ciudad");
-						System.out.println("8.Direccion");
-						System.out.println("9.Rol");
-						System.out.println("10.Telefono");
-						System.out.println("11.Usuario");
-						System.out.println("12.Contraseña");
+						System.out.println("6.Direccion");
+						System.out.println("7.Rol");
+						System.out.println("8.Telefono");
+						System.out.println("9.Usuario");
+						System.out.println("10.Contraseña");
 						comprobacionStr=recuperado.next();
 						if(comprobacionStr.equals("1"))
 						{
@@ -135,35 +133,25 @@ public class MiembroDAO{
 						}
 						if(comprobacionStr.equals("6"))
 						{
-							System.out.println("Introduzca el Pais");
-							t.getMiembro().get(i).setPais(recuperado.next());
-						}
-						if(comprobacionStr.equals("7"))
-						{
-							System.out.println("Introduzca la Ciudad");
-							t.getMiembro().get(i).setCiudad(recuperado.next());
-						}
-						if(comprobacionStr.equals("8"))
-						{
 							System.out.println("Introduzca la direccion");
 							t.getMiembro().get(i).setDireccion(Direccion.addDireccion());
 						}
-						if(comprobacionStr.equals("9"))
+						if(comprobacionStr.equals("7"))
 						{
 							System.out.println("Introduzca el Rol");
 							t.getMiembro().get(i).setRol(recuperado.next());
 						}
-						if(comprobacionStr.equals("10"))
+						if(comprobacionStr.equals("8"))
 						{
 							System.out.println("Introduzca el Telefono");
 							t.getMiembro().get(i).setTelefono(recuperado.next());
 						}
-						if(comprobacionStr.equals("11"))
+						if(comprobacionStr.equals("9"))
 						{
 							System.out.println("Introduzca el Usuario");
 							t.getMiembro().get(i).setNombreUsuario(recuperado.next());
 						}
-						if(comprobacionStr.equals("12"))
+						if(comprobacionStr.equals("10"))
 						{
 							System.out.println("Introduzca la Contraseña");
 							t.getMiembro().get(i).setPassword(recuperado.next());
@@ -209,13 +197,12 @@ public class MiembroDAO{
 		System.out.println("Apellido1:" + miembro.getApellido1());
 		System.out.println("Apellido2;"+ miembro.getApellido2());
 		System.out.println("Dni:"+ miembro.getDni());
-		System.out.println("Pais:" + miembro.getPais());
-		System.out.println("Ciudad:" + miembro.getCiudad());
 		System.out.println("Via:"+ miembro.getDireccion().getTipoVia());
 		System.out.println("Puerta:"+ miembro.getDireccion().getPuerta());
 		System.out.println("Escalera::"+ miembro.getDireccion().getEscalera());
 		System.out.println("Localidad:"+ miembro.getDireccion().getLocalidad());
 		System.out.println("Provincia:"+ miembro.getDireccion().getProvincia());
+		System.out.println("Pais:"+ miembro.getDireccion().getPais());
 		System.out.println("CP:"+ miembro.getDireccion().getCp());
 		System.out.println("Rol:"+ miembro.getRol());
 		System.out.println("Telefono;"+ miembro.getTelefono());
@@ -235,98 +222,134 @@ public class MiembroDAO{
 		}
 	}
 	
+	public static Miembros readfirst() {
+		// TODO Auto-generated method stub
+		 try {
+		        JAXBContext context = JAXBContext.newInstance(Miembros.class);
+		        Unmarshaller unmarshaller = context.createUnmarshaller();
+		        Miembros miembros = (Miembros) unmarshaller.unmarshal(new File("src/main/resources/Miembros.xml"));
+		        return(miembros);
+		      } catch (JAXBException e) {
+		        // TODO Auto-generated catch block
+		    	  System.out.println("No hay ningun registro");
+		        e.printStackTrace();
+		      }
+		return null;
+	}
 	
-	public static void altaMiembro() throws IOException, JAXBException {
+	public static Miembro addMiembro() throws IOException, JAXBException {
 		Miembro nuevoMiembro = new Miembro();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
+		int seleccion;
+		
 		System.out.println("\nIntroduce el nombre del miembro: ");
 		nuevoMiembro.setNombreMiembro(br.readLine());
+		
 		System.out.println("\nIntroduce el primer apellido del miembro: ");
 		nuevoMiembro.setApellido1(br.readLine());
 		System.out.println("\nIntroduce el segundo apellido del trabajador: ");
-		nuevoMiembro.setApellido1(br.readLine());
+		nuevoMiembro.setApellido2(br.readLine());
 		System.out.println("\nIntroduce el DNI del miembro: ");
 		nuevoMiembro.setDni(br.readLine());
-		System.out.println("\nIntroduce el pais de residencia: ");
-		nuevoMiembro.setPais(br.readLine());
-		System.out.println("\nIntroduce la ciudad de residencia: ");
-		nuevoMiembro.setCiudad(br.readLine());
 		System.out.println("\nIntroduce la direccion de su domicilio: ");
 		nuevoMiembro.setDireccion(Direccion.addDireccion());
 		System.out.println("\nIntroduce el ID del miembro: ");
 		nuevoMiembro.setIdMiembro(br.readLine());
+		System.out.println("\nIntroduce el numero de movil del miembro: ");
+		nuevoMiembro.setTelefono(br.readLine());
 		System.out.println("\nIntroduce el nombre que desee como usuario: ");
 		nuevoMiembro.setNombreUsuario(br.readLine());
 		System.out.println("\nIntroduce tu contraseña: ");
 		nuevoMiembro.setPassword(br.readLine());
-		System.out.println("\nIntroduce el numero de movil del miembro: ");
-		nuevoMiembro.setTelefono(br.readLine());
+		System.out.println("\nIntroduce el Rol del usuario: ");
+		System.out.println("\n1.Usuario Normal: ");
+		System.out.println("\n2.Usuario Admin: ");
+		seleccion=recuperado.nextInt();
+		if (seleccion==1) {
+			nuevoMiembro.setRol("Normal");
+		}else if (seleccion==2) {
+			nuevoMiembro.setRol("Admin");
+		}else {
+			System.out.println("Opcion No valida ");
+		}
+		System.out.println("\nIntroduce el Tipo de usuario que va a ser: ");
+		System.out.println("\n1.Persona Contratada: ");
+		System.out.println("\n2.Voluntario: ");
+		System.out.println("\n3.Colaborador: ");
+		seleccion=recuperado.nextInt();
+		if (seleccion==1) {
+			
+		}else if (seleccion==2) {
+			nuevoMiembro.setRol("Admin");
+		}else if (seleccion==3) {
+			System.out.println("Opcion No valida ");
+		}else
+			System.out.println("Opcion No valida ");
 		
-        // añadir MIEMBRO AL DAO, para ISA
-		//MiembrosDAO.;
-		
-		AddMiembro(nuevoMiembro);
-		mostrarMiembros();
+		return nuevoMiembro;
 
 	}
 	
-    // metodo añadir miembro al array
 
- static void AddMiembro (Miembro miembro)
- {    
-      boolean b= true;
-     for (@SuppressWarnings("unused") Miembro n:ALMiembros)
-     { if(Miembro.getDni().equals(Miembro.getDni())){
-         b=false;
-         System.out.println(" el miembro ya existe");
-         break;
-     } else {
-     }
-     }
-     
-     if(b){
-         ALMiembros.add (miembro);
-         System.out.println(" El miembro se ha añadido a la base de datos"+'\n');
-       }   
-   }
-
- // ABRIR SESION COMO MIEMBRO
- 
- 
-// visualiza en pantalla los miembros 
- 
-@SuppressWarnings("unused")
-static void mostrarMiembros() 
-{
- for(Miembro miembro : ALMiembros) {
-      System.out.println(getDni()+'\n');  
-  }    
-}
-//Lista los miembros
-
-static void listMiembros()
-{
- for(@SuppressWarnings("unused") Miembro miembro : ALMiembros) {
-       Miembro.mostrarMiembros();   
-  }    
-}
-
-//Comprobar si el dni del miembro esta dado de alta
-
-@SuppressWarnings("static-access")
-public static Integer comprobarMiembro (String dni)
-{    
-	Integer existeMiembro=0;
-	
-    for (Miembro n:ALMiembros)   	
-    { if(n.getDni().equals(dni)){
-    	System.out.println("Dni Encontrado"); 
-        return (existeMiembro);
-    }
-    existeMiembro++;
-    }
-    System.out.println("El Dni No existe"); 
-    return(0);  
-  }
+//    // metodo añadir miembro al array
+//
+//// static void comprobacionMiembro (Miembros miembros)
+//// {    
+////      boolean b= true;
+////     for (@SuppressWarnings("unused") Miembro n:ALMiembros)
+////     { if(Miembro.getDni().equals(Miembro.getDni())){
+////         b=false;
+////         System.out.println(" el miembro ya existe");
+////         break;
+////     } else {
+////     }
+////     }
+////     
+////     if(b){
+////         ALMiembros.add (miembro);
+////         System.out.println(" El miembro se ha añadido a la base de datos"+'\n');
+////       }   
+////   }
+//
+// // ABRIR SESION COMO MIEMBRO
+// 
+// 
+//// visualiza en pantalla los miembros 
+// 
+//@SuppressWarnings("unused")
+//static void mostrarMiembros() 
+//
+//{
+// for(Miembro miembro : ALMiembros) {
+//      System.out.println(getDni()+'\n');  
+//  }    
+//}
+////Lista los miembros
+//
+//static void listMiembros()
+//{
+// for(@SuppressWarnings("unused") Miembro miembro : ALMiembros) {
+//       Miembro.mostrarMiembros();   
+//  }    
+//}
+//
+////Comprobar si el dni del miembro esta dado de alta
+//
+//@SuppressWarnings("static-access")
+//public static Integer comprobarMiembro (String dni)
+//{    
+//	Integer existeMiembro=0;
+//	
+//    for (Miembro n:ALMiembros)   	
+//    { if(n.getDni().equals(dni)){
+//    	System.out.println("Dni Encontrado"); 
+//        return (existeMiembro);
+//    }
+//    existeMiembro++;
+//    }
+//    System.out.println("El Dni No existe"); 
+//    return(0);  
+//  }
 }
 

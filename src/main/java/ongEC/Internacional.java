@@ -15,19 +15,13 @@ public class Internacional extends Voluntario {
 
 	//Definiendo los constructores
 	
-	public Internacional(String idMiembro, String nombreMiembro, String nombreUsuario, String password,
-			String apellido1, String apellido2, String dni, String pais, String ciudad, Direccion direccion,
-			String telefono, Date fechaAlta, Date fechaBaja, String paisOrigen) {
-		super(idMiembro, nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, pais, ciudad, direccion,
-				telefono, fechaAlta, fechaBaja);
-		this.paisOrigen = paisOrigen;
+	public Internacional(Date fechaAlta, Date fechaBaja) {
+		super(fechaAlta, fechaBaja);
 	}
-	
-	public Internacional(String idMiembro, String nombreMiembro, String nombreUsuario, String password,
-			String apellido1, String apellido2, String dni, String pais, String ciudad, Direccion direccion,
-			String telefono, Date fechaAlta, Date fechaBaja) {
-		super(idMiembro, nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, pais, ciudad, direccion,
-				telefono, fechaAlta, fechaBaja);
+
+	public Internacional(Date fechaAlta, Date fechaBaja, String paisOrigen) {
+		super(fechaAlta, fechaBaja);
+		this.paisOrigen = paisOrigen;
 	}
 	
 	//Definiendo los get y set
@@ -35,8 +29,6 @@ public class Internacional extends Voluntario {
 	public String getPaisOrigen() {
 		return paisOrigen;
 	}
-
-
 
 	public void setPaisOrigen(String paisOrigen) {
 		this.paisOrigen = paisOrigen;

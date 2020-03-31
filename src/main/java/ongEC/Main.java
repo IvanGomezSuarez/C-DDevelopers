@@ -27,6 +27,9 @@ public class Main {
 		Proyecto nuevoProyecto= new Proyecto();
 		Proyectos nuevoProyectos=new Proyectos();
 		nuevoProyectos=ProyectoDAO.readfirst();
+		Miembro miembroNuevo= new Miembro();
+		Miembros miembrosNuevos=new Miembros();
+		miembrosNuevos=MiembroDAO.readfirst();
 
 		while (estadoAplicacion!=9){            //Hasta que no se introduzca el numero 9 no se sale de la aplicacion.
 
@@ -81,11 +84,17 @@ public class Main {
 					 if (seleccionSubMenu!=0) {
 						 if (seleccionSubMenu==1) { 	//Pasamos dependiendo de la seleccion
 							 System.out.println("Dar de alta");
-							 MiembroDAO.altaMiembro();
+							 miembroNuevo=MiembroDAO.addMiembro();
+							 miembrosNuevos.add(miembroNuevo);
+							 MiembroDAO.save(miembrosNuevos);
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
+							 MiembroDAO.update(miembrosNuevos);
+							 MiembroDAO.save(miembrosNuevos);
 						 }else if (seleccionSubMenu==3) {
 							 System.out.println("Eliminar");
+							 MiembroDAO.delete(miembrosNuevos);
+							 MiembroDAO.save(miembrosNuevos);
 						 }else {
 							 System.out.println("Opcion no valida");
 						 }
@@ -146,6 +155,7 @@ public class Main {
 							 ProyectoDAO.getAll();
 						 }else if (seleccionSubMenu==3) {
 							 System.out.println("Listado de Miembros");
+							 MiembroDAO.getAll();
 						 }else if (seleccionSubMenu==4) {
 							 System.out.println("Listado de Ingresos");
 					     }else {
