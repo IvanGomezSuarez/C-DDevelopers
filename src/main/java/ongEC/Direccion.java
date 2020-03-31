@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 /**
- * Esta clase representa el conceoti de direccion
+ * Esta clase representa el concepto de direccion
  * 
  * @version 1
  * Yosu
@@ -16,8 +16,8 @@ public class Direccion {
 	
 	String tipoVia;
 	int numero;
-	int puerta;
-	int escalera;
+	String puerta;
+	String escalera;
 	String localidad;
 	String provincia;
 	String cp;
@@ -39,19 +39,19 @@ public class Direccion {
 		this.numero = numero;
 	}
 	
-	public int getPuerta() {
+	public String getPuerta() {
 		return puerta;
 	}
 	
-	public void setPuerta(int puerta) {
+	public void setPuerta(String puerta) {
 		this.puerta = puerta;
 	}
 	
-	public int getEscalera() {
+	public String getEscalera() {
 		return escalera;
 	}
 	
-	public void setEscalera(int escalera) {
+	public void setEscalera(String escalera) {
 		this.escalera = escalera;
 	}
 	
@@ -87,7 +87,7 @@ public class Direccion {
 		this.pais = pais;
 	}
 
-	public Direccion(String tipoVia, int numero, int puerta, int escalera, String localidad, String provincia,
+	public Direccion(String tipoVia, int numero, String puerta, String escalera, String localidad, String provincia,
 			String cp) {
 		super();
 		this.tipoVia = tipoVia;
@@ -108,14 +108,14 @@ public class Direccion {
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		System.out.println("\nIntroduce la TipoVia: ");
+		System.out.println("\nIntroduce la Via: ");
 		newdireccion.setTipoVia(br.readLine());
 		System.out.println("\nIntroduce el Numero: ");
 		newdireccion.setNumero(recuperado.nextInt());
 		System.out.println("\nIntroduce la Puerta: ");
-		newdireccion.setPuerta(recuperado.nextInt());
+		newdireccion.setPuerta(br.readLine());
 		System.out.println("\nIntroduce la Escalera: ");
-		newdireccion.setEscalera(recuperado.nextInt());
+		newdireccion.setEscalera(br.readLine());
 		System.out.println("\nIntroduce la Localidad: ");
 		newdireccion.setLocalidad(br.readLine());
 		System.out.println("\nIntroduce la Provincia: ");
