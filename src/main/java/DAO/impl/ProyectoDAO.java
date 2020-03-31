@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlElement;
 import ongEC.ActualLineasAccion;
 import ongEC.Delegaciones;
 import ongEC.LineaAccion;
-import ongEC.Miembros;
+import ongEC.Miembro;
 import ongEC.Proyecto;
 import ongEC.Proyectos;
 import ongEC.SubLineaAccion;
@@ -86,8 +86,8 @@ public class ProyectoDAO{
 			List<SubLineaAccion> listaSubLineaAccion = new ArrayList<SubLineaAccion>();
 			List<String>sociosLocales = new ArrayList<String>();
 			int devolucionPosicionMiembro;
-			Miembros miembrosNuevos= new Miembros();
-			List<Miembros> miembros= new ArrayList<Miembros>();
+			Miembro miembrosNuevos= new Miembro();
+			List<Miembro> miembro= new ArrayList<Miembro>();
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			
 			if (t.getProyecto().get(i).getIdProyecto()==idProyecto){											
@@ -244,16 +244,16 @@ public class ProyectoDAO{
 						comprobacionStr=br.readLine();
 						devolucionPosicionMiembro=miembrosNuevos.comprobarMiembro(comprobacionStr);
 						if (devolucionPosicionMiembro!=0) {
-							miembros.get(devolucionPosicionMiembro).getDni();
-							miembros.get(devolucionPosicionMiembro).getApellido1();
-							miembros.get(devolucionPosicionMiembro).getApellido2();
-							miembros.get(devolucionPosicionMiembro).getIdMiembro();
-							miembros.get(devolucionPosicionMiembro).getNombreMiembro();
-							miembros.get(devolucionPosicionMiembro).getPass();
-							miembros.get(devolucionPosicionMiembro).getNomUsuario();
-							miembros.get(devolucionPosicionMiembro).getTelefono();
+							miembro.get(devolucionPosicionMiembro).getDni();
+							miembro.get(devolucionPosicionMiembro).getApellido1();
+							miembro.get(devolucionPosicionMiembro).getApellido2();
+							miembro.get(devolucionPosicionMiembro).getIdMiembro();
+							miembro.get(devolucionPosicionMiembro).getNombreMiembro();
+							miembro.get(devolucionPosicionMiembro).getPass();
+							miembro.get(devolucionPosicionMiembro).getNomUsuario();
+							miembro.get(devolucionPosicionMiembro).getTelefono();
 						}
-						t.getProyecto().get(i).setMiembrosAsignados(miembros);
+						t.getProyecto().get(i).setMiembrosAsignados(miembro);
 						}
 					}
 				}
@@ -376,13 +376,13 @@ public class ProyectoDAO{
 
 		List<String>sociosLocales = new ArrayList<String>();
 		
-		List<Miembros> miembrosAsignados= new ArrayList<Miembros>();
+		List<Miembro> miembrosAsignados= new ArrayList<Miembro>();
 		
-		List<Miembros> miembros= new ArrayList<Miembros>();
+		List<Miembro> miembro= new ArrayList<Miembro>();
 		
 		LineaAccion linea= new LineaAccion();
 		
-		Miembros miembrosNuevos= new Miembros();
+		Miembro miembrosNuevos= new Miembro();
 		
 		Proyecto nuevoProyecto= new Proyecto(); //Definicion del nuevo proyecto
 		
@@ -508,16 +508,16 @@ public class ProyectoDAO{
 		comprobacionStr=br.readLine();
 		devolucionPosicionMiembro=miembrosNuevos.comprobarMiembro(comprobacionStr);
 		if (devolucionPosicionMiembro!=0) {
-			miembros.get(devolucionPosicionMiembro).getDni();
-			miembros.get(devolucionPosicionMiembro).getApellido1();
-			miembros.get(devolucionPosicionMiembro).getApellido2();
-			miembros.get(devolucionPosicionMiembro).getIdMiembro();
-			miembros.get(devolucionPosicionMiembro).getNombreMiembro();
-			miembros.get(devolucionPosicionMiembro).getPass();
-			miembros.get(devolucionPosicionMiembro).getNomUsuario();
-			miembros.get(devolucionPosicionMiembro).getTelefono();
+			miembro.get(devolucionPosicionMiembro).getDni();
+			miembro.get(devolucionPosicionMiembro).getApellido1();
+			miembro.get(devolucionPosicionMiembro).getApellido2();
+			miembro.get(devolucionPosicionMiembro).getIdMiembro();
+			miembro.get(devolucionPosicionMiembro).getNombreMiembro();
+			miembro.get(devolucionPosicionMiembro).getPass();
+			miembro.get(devolucionPosicionMiembro).getNomUsuario();
+			miembro.get(devolucionPosicionMiembro).getTelefono();
 		}
-		nuevoProyecto.setMiembrosAsignados(miembros);
+		nuevoProyecto.setMiembrosAsignados(miembro);
 		}
 		return(nuevoProyecto);
 	}

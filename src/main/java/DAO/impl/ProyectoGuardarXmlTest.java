@@ -10,7 +10,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.PropertyException;
 
 import ongEC.LineaAccion;
-import ongEC.Miembros;
+import ongEC.Miembro;
 import ongEC.Proyecto;
 import ongEC.Proyectos;
 import ongEC.SubLineaAccion;
@@ -49,7 +49,7 @@ public class ProyectoGuardarXmlTest {
 		proyecto.setLineaAccion(new LineaAccion());
 		proyecto.setSubLineaAccion(new ArrayList<SubLineaAccion>());
 		proyecto.setSocioLocal(new ArrayList<String>());
-		proyecto.setMiembrosAsignados(new ArrayList<Miembros>());
+		proyecto.setMiembrosAsignados(new ArrayList<Miembro>());
 		return proyecto;
 	}
 	

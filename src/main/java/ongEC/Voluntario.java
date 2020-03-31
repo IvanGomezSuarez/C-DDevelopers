@@ -6,7 +6,7 @@ import java.sql.Date;
  * 
  * 
  * */
-public class Voluntario extends Miembros  {
+public class Voluntario extends Miembro  {
 	
 	//Definendo los Atributos
 	

@@ -27,7 +27,7 @@ import ongEC.Proyecto;
 import ongEC.Proyectos;
 import ongEC.SubLineaAccion;
 
-public class DelegacionDAO{
+public class MiembroDAO{
   
 	public static List<Delegacion> getAll() {
 		// TODO Auto-generated method stub

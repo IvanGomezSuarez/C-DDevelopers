@@ -53,7 +53,7 @@ public class Proyecto {
 	@XmlElement(name = "SocioLocal")
 	private List<String> socioLocal;
 	@XmlElement(name = "MiembrosAsignados")
-	private List<Miembros> miembrosAsignados =new ArrayList<Miembros>();
+	private List<Miembro> miembrosAsignados =new ArrayList<Miembro>();
 	
 	// Definicion de Constructores
 	public Proyecto() {
@@ -63,7 +63,7 @@ public class Proyecto {
 	public Proyecto(int idProyecto, String nombreProyecto, String pais, String localizacion, LineaAccion lineaAccion,
 			List<SubLineaAccion> subLineaAccion, Date fechaInicio, Date fechaFin, List<String> socioLocal,
 			String financiador, Double financiacionAportada, String codigoProyecto, String accionesRealizar,
-			List<Miembros> miembrosAsignados) {
+			List<Miembro> miembrosAsignados) {
 		this.idProyecto = idProyecto;
 		this.nombreProyecto = nombreProyecto;
 		this.pais = pais;
@@ -185,11 +185,11 @@ public class Proyecto {
 		this.accionesRealizar = accionesRealizar;
 	}
 	
-	public List<Miembros> getMiembrosAsignados() {
+	public List<Miembro> getMiembrosAsignados() {
 		return miembrosAsignados;
 	}
 	
-	public void setMiembrosAsignados(List<Miembros> miembrosAsignados) {
+	public void setMiembrosAsignados(List<Miembro> miembrosAsignados) {
 		this.miembrosAsignados = miembrosAsignados;
 	}
 	

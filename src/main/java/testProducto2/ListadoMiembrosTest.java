@@ -9,7 +9,7 @@ import javax.xml.bind.JAXBException;
 
 import org.junit.Test;
 
-import ongEC.Miembros;
+import ongEC.Miembro;
 
 // Test para chequear si el objeto miembro se adjunta correctamente a la lista de miembros
 public class ListadoMiembrosTest {
@@ -18,13 +18,13 @@ public class ListadoMiembrosTest {
 	public void testAdd() throws JAXBException {
 		
 		// Iniciamos 4 miembros
-		Miembros t1 = new Miembros();
-		Miembros t2 = new Miembros();
-		Miembros t3 = new Miembros();
-		Miembros t4 = new Miembros();
+		Miembro t1 = new Miembro();
+		Miembro t2 = new Miembro();
+		Miembro t3 = new Miembro();
+		Miembro t4 = new Miembro();
 		
 		// Se crra el listado de miembros
-		List<Miembros> listadoMiembros = new ArrayList<Miembros>();
+		List<Miembro> listadoMiembros = new ArrayList<Miembro>();
 		assertEquals(0, listadoMiembros.size());
 		listadoMiembros.add(t1); //se agrega los objetos pasados como parametros a la lista.
 		assertEquals(1, listadoMiembros.size()); 

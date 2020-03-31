@@ -1,13 +1,14 @@
 package ongEC;
-import javax.xml.bind.annotation.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
-import ongEC.Delegacion;
-import ongEC.Ong;
+
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /*
@@ -15,30 +16,38 @@ import javax.xml.bind.JAXBException;
  * 
  * 
  * */
-@XmlRootElement(name ="miembro")
+@XmlRootElement(name ="Miembro")
 @XmlAccessorType(XmlAccessType.FIELD)
 
-public class Miembros {
+public class Miembro {
 
 // atributos
 	
-	
+	@XmlElement(name = "IdMiembro")
 	private String idMiembro;
-	@XmlElement(name = "nombre")
+	@XmlElement(name = "Nombre")
 	private String nombreMiembro;
+	@XmlElement(name = "NombreUsuario")
 	private String nombreUsuario;
+	@XmlElement(name = "Password")
 	private String password;
-	@XmlElement(name = "apellidos")
+	@XmlElement(name = "Apellido1")
 	private String apellido1;
+	@XmlElement(name = "Apellido2")
 	private String apellido2;
-	@XmlElement(name = "dni")
+	@XmlElement(name = "Dni")
 	private static String dni;
+	@XmlElement(name = "Pais")
 	private String pais;
+	@XmlElement(name = "Ciudad")
 	private String ciudad;
-	private String direccion;
+	@XmlElement(name = "Direccion")
+	private Direccion direccion;
+	@XmlElement(name = "Rol")
 	private String rol;
+	@XmlElement(name = "Telefono")
 	private String telefono;
-	private static ArrayList<Miembros> ALMiembros;
+	private static ArrayList<Miembro> ALMiembros;
 	
 
 	// constructores
@@ -58,8 +67,8 @@ public class Miembros {
 	 * 
 	 * 
 	 */
-	public Miembros(String idMiembro, String nombreMiembro, String nombreUsuario, String password, String apellido1, String apellido2,
-			 String dni, String pais, String ciudad, String direccion, String telefono) {
+	public Miembro(String idMiembro, String nombreMiembro, String nombreUsuario, String password, String apellido1, String apellido2,
+			 String dni, String pais, String ciudad, Direccion direccion, String telefono) {
 		super();
 		this.idMiembro =idMiembro;
 		this.nombreMiembro = nombreMiembro;
@@ -67,7 +76,7 @@ public class Miembros {
 		this.password = password;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
-		Miembros.dni = dni;
+		Miembro.dni = dni;
 		this.pais = pais;
 		this.ciudad =ciudad;
 		this.direccion = direccion;
@@ -75,15 +84,15 @@ public class Miembros {
 	}
 
 	// constructor para el arraylist
-	public Miembros()
+	public Miembro()
 	   {
-	       ALMiembros = new ArrayList <Miembros>();
+	       ALMiembros = new ArrayList <Miembro>();
 	       
 	     }
 	
 	//metodos
 	
-	public Miembros(String nombreMiembro2, String dni2) {
+	public Miembro(String nombreMiembro2, String dni2) {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -137,11 +146,11 @@ public class Miembros {
 		this.apellido2 = apellido2;
 	}
 
-	public String getDireccion() {
+	public Direccion getDireccion() {
 		return direccion;
 	}
 
-	public void setDireccion(String direccion) {
+	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
 
@@ -179,7 +188,7 @@ public class Miembros {
 	
 
 	static void altaMiembro() throws IOException, JAXBException {
-		Miembros nuevoMiembro = new Miembros();
+		Miembro nuevoMiembro = new Miembro();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("\nIntroduce el nombre del miembro: ");
 		nuevoMiembro.setNombreMiembro(br.readLine());
@@ -194,7 +203,7 @@ public class Miembros {
 		System.out.println("\nIntroduce la ciudad de residencia: ");
 		nuevoMiembro.setCiudad(br.readLine());
 		System.out.println("\nIntroduce la direccion de su domicilio: ");
-		nuevoMiembro.setDireccion(br.readLine());
+		//nuevoMiembro.setDireccion(br.readLine());
 		System.out.println("\nIntroduce el ID del miembro: ");
 		nuevoMiembro.setIdMiembro(br.readLine());
 		System.out.println("\nIntroduce el nombre que desee como usuario: ");
@@ -214,12 +223,12 @@ public class Miembros {
 	
     // metodo añadir miembro al array
 
- static void AddMiembro (Miembros miembro)
+ static void AddMiembro (Miembro miembro)
  { 
      
       boolean b= true;
-     for (@SuppressWarnings("unused") Miembros n:ALMiembros)
-     { if(Miembros.getDni().equals(Miembros.getDni())){
+     for (@SuppressWarnings("unused") Miembro n:ALMiembros)
+     { if(Miembro.getDni().equals(Miembro.getDni())){
          b=false;
          System.out.println(" el miembro ya existe");
          break;
@@ -241,7 +250,7 @@ public class Miembros {
 @SuppressWarnings("unused")
 static void mostrarMiembros() 
 {
- for(Miembros miembro : ALMiembros) {
+ for(Miembro miembro : ALMiembros) {
       System.out.println(getDni()+'\n');  
   }    
 }
@@ -249,8 +258,8 @@ static void mostrarMiembros()
 
 static void listMiembros()
 {
- for(@SuppressWarnings("unused") Miembros miembro : ALMiembros) {
-       Miembros.mostrarMiembros();   
+ for(@SuppressWarnings("unused") Miembro miembro : ALMiembros) {
+       Miembro.mostrarMiembros();   
   }    
 }
 
@@ -261,7 +270,7 @@ public Integer comprobarMiembro (String dni)
 {    
 	Integer existeMiembro=0;
 	
-    for (Miembros n:ALMiembros)   	
+    for (Miembro n:ALMiembros)   	
     { if(n.getDni().equals(dni)){
     	System.out.println("Dni Encontrado"); 
         return (existeMiembro);

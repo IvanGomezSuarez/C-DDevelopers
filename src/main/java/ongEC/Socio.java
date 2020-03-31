@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 
-public class Socio extends Miembros {
+public class Socio extends Miembro {
     @XmlElement(name = "cuota")
     private CuotaSocio cuota;
     @XmlElement(name = "importe")

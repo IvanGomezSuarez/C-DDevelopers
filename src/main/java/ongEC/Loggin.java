@@ -19,7 +19,7 @@ import DAO.impl.DelegacionDAO;
  *
  */
 
-public class Loggin extends Miembros {
+public class Loggin extends Miembro {
 
 
 	//atributos

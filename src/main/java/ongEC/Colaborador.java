@@ -9,7 +9,7 @@ package ongEC;
 import java.sql.Date;
 import java.util.GregorianCalendar;
 import javax.xml.bind.JAXBException;
-import ongEC.Miembros;
+import ongEC.Miembro;
 
 /**
  *  esta clase contiene la informaci�n de los datos de fechas de los colaboradores
@@ -18,7 +18,7 @@ import ongEC.Miembros;
  * Yosu, Ivan
  */
 
-public class Colaborador extends Miembros {
+public class Colaborador extends Miembro {
 
 	// ATRIBUTOS
 	
@@ -29,7 +29,7 @@ public class Colaborador extends Miembros {
 	//Definicion de los constructores
 	
 	public Colaborador(String idMiembro, String nombreMiembro, String nombreUsuario, String password, String apellido1,
-			String apellido2, String dni, String pais, String ciudad, String direccion, String telefono, Date fechaAlta,
+			String apellido2, String dni, String pais, String ciudad, Direccion direccion, String telefono, Date fechaAlta,
 			Date fechaBaja) {
 		super(idMiembro, nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, pais, ciudad, direccion,
 				telefono);
@@ -38,7 +38,7 @@ public class Colaborador extends Miembros {
 	}
 
 	public Colaborador(String idMiembro, String nombreMiembro, String nombreUsuario, String password, String apellido1,
-			String apellido2, String dni, String pais, String ciudad, String direccion, String telefono) {
+			String apellido2, String dni, String pais, String ciudad, Direccion direccion, String telefono) {
 		super(idMiembro, nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, pais, ciudad, direccion,
 				telefono);
 	}
