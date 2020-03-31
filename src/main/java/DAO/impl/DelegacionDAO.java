@@ -189,13 +189,14 @@ public class DelegacionDAO{
 		
 		System.out.println("\nIntroduce el ID de la delegación: ");
 		newDelegacion.setIdDelegacion(br.readLine());
-		
-		for (int i = 0;i<t.getDelegacion().size();i++) {
-			if (t.getDelegacion().get(i).getIdDelegacion().equals(newDelegacion.getIdDelegacion())){
-				System.out.println("\n ID REPETIDO ");
-				return null;
+		if (t.getDelegacion()!=null) {
+			for (int i = 0;i<t.getDelegacion().size();i++) {
+				if (t.getDelegacion().get(i).getIdDelegacion().equals(newDelegacion.getIdDelegacion())){
+					System.out.println("\n ID REPETIDO ");
+					return null;
+				}
+				
 			}
-			
 		}
 		System.out.println("\nIntroduce el nombre de la delegación: ");
 		newDelegacion.setNomDelegacion(br.readLine());

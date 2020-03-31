@@ -376,11 +376,12 @@ public class ProyectoDAO{
 				System.out.println("No has introducido un entero");
 			  return null;
 			}
-		
-		for (int x = 0;x<t.getProyecto().size();x++) {
-			if (t.getProyecto().get(x).getIdProyecto()==(nuevoProyecto.getIdProyecto())){
-				System.out.println("\n ID REPETIDO ");
-				return null;
+		if (t.getProyecto()!=null) {
+			for (int x = 0;x<t.getProyecto().size();x++) {
+				if (t.getProyecto().get(x).getIdProyecto()==(nuevoProyecto.getIdProyecto())){
+					System.out.println("\n ID REPETIDO ");
+					return null;
+				}
 			}
 		}
 		System.out.println("Introduzca la financiacion aportada del proyecto");
