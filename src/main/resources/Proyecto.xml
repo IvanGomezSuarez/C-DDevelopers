@@ -3,111 +3,22 @@
     <Proyecto>
         <IdProyecto>1</IdProyecto>
         <FinanciacionAportada>150000.0</FinanciacionAportada>
-        <NombreProyecto>proyecto costa</NombreProyecto>
-        <Pais>España</Pais>
-        <Localizacion>Costa Blanca</Localizacion>
-        <Financiador>Banco Santander</Financiador>
+        <NombreProyecto>proyecto indigena</NombreProyecto>
+        <Pais>Congo</Pais>
+        <Localizacion>Africa</Localizacion>
+        <Financiador>BBVA</Financiador>
         <CodigoProyecto>p01</CodigoProyecto>
-        <AccionesRealizar>estudio e implementación de mejoras costeras</AccionesRealizar>
-        <FechaInicio>2020-01-01T00:00:00+01:00</FechaInicio>
-        <FechaFin>2021-01-01T00:00:00+01:00</FechaFin>
+        <AccionesRealizar>intercambio y mejora en la educación de la poblacion</AccionesRealizar>
+        <FechaInicio>2020-02-15T00:00:00+01:00</FechaInicio>
+        <FechaFin>2021-12-01T00:00:00+01:00</FechaFin>
         <LineaAccion>
             <IdProyecto>0</IdProyecto>
             <SubLineaAccion>
-                <descripcion>colaboracion con diputacion </descripcion>
+                <descripcion>eit</descripcion>
             </SubLineaAccion>
-            <ActualLineasAccion>COOPERACION</ActualLineasAccion>
+            <ActualLineasAccion>EDUCACION</ActualLineasAccion>
         </LineaAccion>
-        <SocioLocal></SocioLocal>
-        <SocioLocal></SocioLocal>
-        <MiembrosAsignados>
-            <IdMiembro>01</IdMiembro>
-            <Nombre>ivan</Nombre>
-            <NombreUsuario>ivan</NombreUsuario>
-            <Password>ivan</Password>
-            <Apellido1>tano</Apellido1>
-            <Apellido2>garcia</Apellido2>
-            <Direccion>
-                <cp>08027</cp>
-                <escalera>a</escalera>
-                <localidad>barcelona</localidad>
-                <numero>75</numero>
-                <pais>españa</pais>
-                <provincia>barcelona</provincia>
-                <puerta>bajo 6</puerta>
-                <tipoVia>calle josep estivill</tipoVia>
-            </Direccion>
-            <Rol>Admin</Rol>
-            <Telefono>618058878</Telefono>
-            <Colaborador>
-                <fechaAlta>2020-03-31T00:00:00+02:00</fechaAlta>
-                <fechaBaja>2020-12-31T00:00:00+01:00</fechaBaja>
-            </Colaborador>
-        </MiembrosAsignados>
-        <MiembrosAsignados>
-            <IdMiembro>02</IdMiembro>
-            <Nombre>Nerea</Nombre>
-            <NombreUsuario>Nere2020</NombreUsuario>
-            <Password>Nere*//</Password>
-            <Apellido1>Santos</Apellido1>
-            <Apellido2>Tome</Apellido2>
-            <Direccion>
-                <cp>082546</cp>
-                <escalera>b</escalera>
-                <localidad>hospitalet de llobregat</localidad>
-                <numero>85</numero>
-                <pais>España</pais>
-                <provincia>Barcelona</provincia>
-                <puerta>2</puerta>
-                <tipoVia>calle palou</tipoVia>
-            </Direccion>
-            <Rol>Normal</Rol>
-            <Telefono>654898564</Telefono>
-            <Personal>
-                <fechaAlta>2019-06-15T00:00:00+02:00</fechaAlta>
-                <fechaBaja>2020-03-31T00:00:00+02:00</fechaBaja>
-            </Personal>
-        </MiembrosAsignados>
-    </Proyecto>
-    <Proyecto>
-        <IdProyecto>2</IdProyecto>
-        <FinanciacionAportada>25000.0</FinanciacionAportada>
-        <NombreProyecto>proyecto indigenas Congo</NombreProyecto>
-        <Pais>El congo</Pais>
-        <Localizacion>Local</Localizacion>
-        <Financiador>La caixa</Financiador>
-        <CodigoProyecto>p02</CodigoProyecto>
-        <AccionesRealizar>vigilar las necesidades de la poblacion indigena</AccionesRealizar>
-        <FechaInicio>2020-02-03T00:00:00+01:00</FechaInicio>
-        <FechaFin>2020-07-31T00:00:00+02:00</FechaFin>
-        <LineaAccion>
-            <IdProyecto>0</IdProyecto>
-            <ActualLineasAccion>COOPERACION</ActualLineasAccion>
-        </LineaAccion>
-        <MiembrosAsignados>
-            <IdMiembro>02</IdMiembro>
-            <Nombre>Nerea</Nombre>
-            <NombreUsuario>Nere2020</NombreUsuario>
-            <Password>Nere*//</Password>
-            <Apellido1>Santos</Apellido1>
-            <Apellido2>Tome</Apellido2>
-            <Direccion>
-                <cp>082546</cp>
-                <escalera>b</escalera>
-                <localidad>hospitalet de llobregat</localidad>
-                <numero>85</numero>
-                <pais>España</pais>
-                <provincia>Barcelona</provincia>
-                <puerta>2</puerta>
-                <tipoVia>calle palou</tipoVia>
-            </Direccion>
-            <Rol>Normal</Rol>
-            <Telefono>654898564</Telefono>
-            <Personal>
-                <fechaAlta>2019-06-15T00:00:00+02:00</fechaAlta>
-                <fechaBaja>2020-03-31T00:00:00+02:00</fechaBaja>
-            </Personal>
-        </MiembrosAsignados>
+        <SocioLocal>caritas</SocioLocal>
         <MiembrosAsignados>
             <IdMiembro>01</IdMiembro>
             <Nombre>ivan</Nombre>

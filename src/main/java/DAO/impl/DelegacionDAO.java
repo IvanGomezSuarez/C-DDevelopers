@@ -69,7 +69,7 @@ public class DelegacionDAO{
 		String recuperadoString="";
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-		System.out.println("Introduce el la delegacion que se va a modificar");
+		System.out.println("Introduce el Id la delegacion que se va a modificar");
 		
 		try {
 			idProyecto=recuperado.next();
@@ -132,7 +132,7 @@ public class DelegacionDAO{
 				}
 			}
 		}else {
-			System.out.println("Archivo Vacio");
+			System.out.println("Archivo Vacío");
 		}
 }
 
