@@ -9,10 +9,13 @@ import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name ="iPrivados")
 @XmlAccessorType(XmlAccessType.FIELD)
+
 public class IngresoPrivado extends Ingreso {
     @XmlElement(name = "aportacion")
     private Aportaciones aportacion;
 
+    // ATRIBUTOS
+    
     String nombreOrganizacion;
     Direccion direccion;
     float importe;
@@ -32,6 +35,8 @@ public class IngresoPrivado extends Ingreso {
 		this.importe = importe;
 		this.descripcion = descripcion;
 	}
+    
+    // MÉTODOS
     
     public String getNombreOrganizacion() {
 		return nombreOrganizacion;

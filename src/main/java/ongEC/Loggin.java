@@ -13,17 +13,15 @@ import DAO.impl.MiembroDAO;
 
 
 /**
- * Esta clase permite hacer el loggin a un miembro, no tiene atributos propios, solo un método que chequea los datos que haya en la clase miembros
+ * Esta clase permite hacer el loggin a un miembro
  * 
- * @author Ivan.
- * @version 1.0
  *
  */
 
 public class Loggin extends Miembro {
 
 
-	//atributos
+	// ATRIBUTOS
 
 	private static final String ivan = null;
 	private String usuario;
@@ -33,7 +31,7 @@ public class Loggin extends Miembro {
 	static Miembros miembrosAnteriores=new Miembros();
 
 	
-	// constructor
+	// CONSTRUCTORES
 	
 	/**
 	 * Constructor que crea un nuevo objeto Loggin sin inicializar sus campos.
@@ -60,29 +58,8 @@ public class Loggin extends Miembro {
 	
 	
 
-	// metodos
-/*	
-	public static void loggin() throws IOException, JAXBException {
-    	
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String respuestaNombre;
-		String respuestaPass;
-    	System.out.println("\n*******");
-    	System.out.println(" LOGGIN");
-    	System.out.println("*********");
-    	
-        System.out.println("Introduce tu nombre de usuario:");
-        respuestaNombre = br.readLine();
-        System.out.println("Introduce tu nombre contraseña");
-        respuestaPass = br.readLine();
-        		  
-        		  
-        if (respuestaPass == ivan) {
-        	Main.opcionesMenuPrincipal();
-      	}
-        		  
-	}
-	*/
+	// METODOS
+
 	
 public static void loggin() throws IOException, JAXBException {
 		

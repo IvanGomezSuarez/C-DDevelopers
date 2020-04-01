@@ -16,23 +16,26 @@ public enum ActualLineasAccion { //Definimos la enumeracion
 	EDUCACION (2, "Educación"),
 	ACCIONHUMANITARIA (3, "Acción humanitaria");
 	
-	private final int code;                    //Creamos un codigo y una descipcion de cada Linea de accion para que sea mas facil a la hora de selecionarlp
+	//Creamos un codigo y una descipcion de cada Linea de accion para que sea mas facil a la hora de selecionarlos
+	private final int code;                    
 	private final String description;
 	
 	private ActualLineasAccion(int code, String description) {
 		this.code = code;
 		this.description = description;
 	}
-
-	public static List<String> listActions() {                  //Recorremos la enumeracion y guardamos en la lista las acciones para ver exactamente cuales son las opciones
+	
+	//Recorremos la enumeracion y guardamos en la lista las acciones para ver exactamente cuales son las opciones
+	public static List<String> listActions() {                  
 		List<String> listaAcciones = new ArrayList<String>();
 		for (ActualLineasAccion accion : ActualLineasAccion.values()) {
 			listaAcciones.add(accion.getCode() + "." + accion.getDescription());
 		}
 		return listaAcciones;
 	}
-	
-	public static ActualLineasAccion devActions(int seleccionCreacionProyecto) {                  //Recorremos la enumeracion y guardamos en la lista las acciones para ver exactamente cuales son las opciones	
+
+	//Recorremos la enumeracion y guardamos en la lista las acciones para ver exactamente cuales son las opciones
+	public static ActualLineasAccion devActions(int seleccionCreacionProyecto) { 	
 		for (ActualLineasAccion accion : ActualLineasAccion.values()) {
 			if (accion.getCode()==seleccionCreacionProyecto) {
 				return accion;

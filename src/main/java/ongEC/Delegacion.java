@@ -2,7 +2,7 @@ package ongEC;
 import javax.xml.bind.annotation.*;
 
 
-
+// EMPLEAMOS PATRÓN DAO
 @XmlRootElement(name ="Delegacion")
 @XmlAccessorType(XmlAccessType.FIELD)
 

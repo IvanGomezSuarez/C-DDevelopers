@@ -6,32 +6,21 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.PropertyException;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.bind.annotation.XmlElement;
-
-import ongEC.ActualLineasAccion;
 import ongEC.Colaborador;
-import ongEC.Delegacion;
-import ongEC.Delegaciones;
 import ongEC.Direccion;
 import ongEC.Internacional;
-import ongEC.LineaAccion;
 import ongEC.Miembro;
 import ongEC.Miembros;
 import ongEC.Nacional;
 import ongEC.Personal;
-import ongEC.Proyecto;
-import ongEC.Proyectos;
-import ongEC.SubLineaAccion;
 import ongEC.Voluntario;
 
 public class MiembroDAO{

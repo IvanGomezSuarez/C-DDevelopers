@@ -9,8 +9,10 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement(name ="iPublicos")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class IngresoPublico extends Ingreso {
+	
+	//ATRIBUTOS
+	
     @XmlElement(name = "administracion")
-    
     private AdminTipo administracion;
     
     String nombreOrganizacion;
@@ -33,7 +35,7 @@ public class IngresoPublico extends Ingreso {
 		this.descripcion = descripcion;
 	}
 
-
+    // MÉTODOS
     	
 	public String getNombreOrganizacion() {
 		return nombreOrganizacion;

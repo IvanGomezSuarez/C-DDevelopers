@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author josep
+ * CLASE PARA EMPLEAR CON EL PATRÓN DAO
  */
 @XmlRootElement(name = "Delegaciones")
 public class Delegaciones {

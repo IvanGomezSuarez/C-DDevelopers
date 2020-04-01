@@ -94,7 +94,7 @@ public class Miembro {
 		this.telefono = telefono;
 	}
 	
-	//metodos
+	// METODOS
 	
 
 	public Miembro(String nombreMiembro2, String dni2) {

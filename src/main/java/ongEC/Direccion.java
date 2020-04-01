@@ -8,11 +8,11 @@ import java.util.Scanner;
 /**
  * Esta clase representa el concepto de direccion
  * 
- * @version 1
- * Yosu
  *
  */
 public class Direccion {
+	
+	//ATRIBUTOS
 	
 	String tipoVia;
 	int numero;
@@ -22,6 +22,26 @@ public class Direccion {
 	String provincia;
 	String cp;
 	String pais;
+	
+// CONSTRUCTORES
+	
+	public Direccion(String tipoVia, int numero, String puerta, String escalera, String localidad, String provincia,
+			String cp) {
+		super();
+		this.tipoVia = tipoVia;
+		this.numero = numero;
+		this.puerta = puerta;
+		this.escalera = escalera;
+		this.localidad = localidad;
+		this.provincia = provincia;
+		this.cp = cp;
+	}
+	
+	public Direccion() {
+		super();
+	}
+	
+	// METODOS
 	
 	public String getTipoVia() {
 		return tipoVia;
@@ -87,21 +107,7 @@ public class Direccion {
 		this.pais = pais;
 	}
 
-	public Direccion(String tipoVia, int numero, String puerta, String escalera, String localidad, String provincia,
-			String cp) {
-		super();
-		this.tipoVia = tipoVia;
-		this.numero = numero;
-		this.puerta = puerta;
-		this.escalera = escalera;
-		this.localidad = localidad;
-		this.provincia = provincia;
-		this.cp = cp;
-	}
-	
-	public Direccion() {
-		super();
-	}
+
 	
 	public static Direccion addDireccion() throws IOException {
 		Direccion newdireccion=new Direccion();

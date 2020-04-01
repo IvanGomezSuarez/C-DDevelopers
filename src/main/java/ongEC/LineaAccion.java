@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 public class LineaAccion extends Proyecto {
 
-	//Defincion de los Atributos
+	// ATRIBUTOS
 	
 	private String descripcionAccion;
 	//@XmlElement(name = "ActualLineasAccion")
@@ -21,9 +21,7 @@ public class LineaAccion extends Proyecto {
 	@XmlElement(name = "ActualLineasAccion")
 	private ActualLineasAccion actualLineasAccion;
 	
-	//Definicion de los constructores
-	
-	
+	// CONSTRUCTORES
 	
 	public LineaAccion() {
 	}
@@ -35,7 +33,7 @@ public class LineaAccion extends Proyecto {
 		this.actualLineasAccion = actualLineasAccion;
 	}
 
-	//Definicion de los Gets y sets
+	// MÉTODOS
 	
 
 	public String getDescripcionAccion() {

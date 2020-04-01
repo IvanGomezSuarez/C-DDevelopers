@@ -490,17 +490,7 @@ public class ProyectoDAO{
 				}					
 			}		
 		}
-//		while(!comprobacionStr.equals("exit")) {
-//			System.out.println("Introduzce el Dni del miembro");
-//			comprobacionStr=br.readLine();
-//			//devolucionPosicionMiembro=MiembroDAO.comprobarMiembro(comprobacionStr);
-//			for (int i = 0;i<m.getMiembro().size();i++) {
-//				if (m.getMiembro().get(i).getDni().equals(comprobacionStr)){
-//					miembroAgregar=m.getMiembro().get(i);
-//					miembrosAsignados.add(miembroAgregar);
-//				}					
-//			}		
-//		}
+
 		nuevoProyecto.setMiembrosAsignados(miembrosAsignados);
 		return(nuevoProyecto);
 		}

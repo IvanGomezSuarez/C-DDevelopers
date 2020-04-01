@@ -9,11 +9,11 @@ import java.sql.Date;
 public class Internacional{
 
 	
-	//Definiendo los Atributos
+	//ATRIBUTOS
 	
 	private String paisOrigen;
 
-	//Definiendo los constructores
+	//CONSTRUCTORES
 	
 	public Internacional(String paisOrigen) {
 		super();
@@ -24,7 +24,7 @@ public class Internacional{
 		super();
 	}
 	
-	//Definiendo los get y set
+	//MÉTODOS 
 	
 	public String getPaisOrigen() {
 		return paisOrigen;

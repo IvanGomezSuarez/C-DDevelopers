@@ -1,2 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Delegaciones/>
+<Delegaciones>
+    <Delegacion>
+        <idDelegacion>01</idDelegacion>
+        <nomDelegacion>Barcelona centro</nomDelegacion>
+        <cip>B536894785</cip>
+        <telefono>93448145897</telefono>
+    </Delegacion>
+    <Delegacion>
+        <idDelegacion>02</idDelegacion>
+        <nomDelegacion>Madrid atocha</nomDelegacion>
+        <cip>M4589678</cip>
+        <telefono>91656898745</telefono>
+    </Delegacion>
+    <Delegacion>
+        <idDelegacion>03</idDelegacion>
+        <nomDelegacion>Valencia</nomDelegacion>
+        <cip>V4586977</cip>
+        <telefono>9465897845</telefono>
+    </Delegacion>
+</Delegaciones>

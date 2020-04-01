@@ -12,7 +12,7 @@ import javax.xml.bind.JAXBException;
 import ongEC.Miembro;
 
 /**
- *  esta clase contiene la informaciï¿½n de los datos de fechas de los colaboradores
+ *  esta clase contiene la información de los miembros que son colabadores
  *
  * @version 1
  * Yosu, Ivan

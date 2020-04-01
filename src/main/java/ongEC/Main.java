@@ -34,7 +34,7 @@ public class Main {
 		while (estadoAplicacion!=9){            //Hasta que no se introduzca el numero 9 no se sale de la aplicacion.
 			miembrosNuevos=MiembroDAO.readfirst();
 			nuevoProyectos=ProyectoDAO.readfirst();
-			opcionesMenuPrincipal();			//Llamamos a la funcion que printea la sopciones principales
+			opcionesMenuPrincipal();			//Llamamos a la funcion que printea las opciones principales
 
 			estadoAplicacion=comprobacionOpcion();		//Comprobamos con una unica clase (para no tener que estar repitiendo codigo) que el caracter es entero
 
