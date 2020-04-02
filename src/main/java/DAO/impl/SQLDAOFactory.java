@@ -9,55 +9,23 @@ import DAO.impl.*;
  * SQL para el almacenaje de los modelos.
 
  */
-public class SQLDAOFactory extends DAOFactory {
+public abstract class SQLDAOFactory extends DAOFactory {
 	
+	
+
 	@Override
-	public ActualLineasAccionDAO getActualLineasAccionDAO() {
+	public DelegacionDAO getDelegacionDAO() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+
 	@Override
-	public ColaboradorDAO getColaboradorDAO() {
+	public MiembroDAO getMiembrosDAO() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public DelegacionesDAO getDelegacionesDAO() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public DireccionDAO getDireccionDAO() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ILogginDAO getILogginDAO() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public LineaAccionDAO getLineaAccionDAO() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public MiembrosDAO getMiembrosDAO() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public OngDAO getOngDAO() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public ProyectoDAO getProyectoDAO() throws JAXBException {
