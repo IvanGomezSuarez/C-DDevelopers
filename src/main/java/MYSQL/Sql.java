@@ -214,7 +214,7 @@ public class Sql {
 
         try {
             newStatement = newConnection.createStatement();
-            out.println("Statement creado con éxito.");
+            out.println("Statement creado con exito.");
         } catch (SQLException e) {
             out.println("Error al crear el Statement.");
             e.printStackTrace();
@@ -226,7 +226,7 @@ public class Sql {
 
         try {
             resultado = newStatement.executeUpdate(sentencia);
-            out.println("Sentencia SQL ejecutada con éxito.");
+            out.println("Sentencia SQL ejecutada con exito.");
             return resultado;
         } catch (SQLException e) {
             out.println("Error al ejecutar la sentencia SQL.");
@@ -236,7 +236,7 @@ public class Sql {
     }
 
     /**
-     * El método sentencia SELECT devuelve un objeto ResultSet con el resultado de
+     * El metodo sentencia SELECT devuelve un objeto ResultSet con el resultado de
      * una sentencia SQL de tipo SELECT. No muestra los resultados.
      *
      * @param newConnection Objeto Connection con una conexión a la BD establecida
@@ -276,7 +276,7 @@ public class Sql {
     public void consultaBD(Connection newConnection, ResultSet newResultSet) {
 
         Scanner entrada = new Scanner(in);
-        out.print("¿Número de campos a mostrar? ");
+        out.print("�Numero de campos a mostrar? ");
         int numCampos = entrada.nextInt();
 
         // Creamos un array de Strings con el número de elementos indicado para almacenar
@@ -339,13 +339,13 @@ public class Sql {
                         ") ENGINE = InnoDB;";
 
         // Como la sentencia anterior es una sentencia DDL (de definición de datos), llamamos
-        // al metodo sentenciaDDL, que nos devolverá true si la sentencia es ejecutada con éxito.
+        // al metodo sentenciaDDL, que nos devolverá true si la sentencia es ejecutada con exito.
 
         sentenciaDDL(newConnection, sentenciaSql);
         out.println("Sentencia DDL ejecutada con éxito.");
 
         // Pasamos pues, tras haber comprobado que lo anterior ha funcionado correctamente, a crear
-        // el resto de tablas simplemente modificando la sentencia y volviendo a llamar al método
+        // el resto de tablas simplemente modificando la sentencia y volviendo a llamar al metodo
         // sentenciaDDL()
 
         sentenciaSql = "DROP PROCEDURE IF EXISTS crud_personal;" +
@@ -442,7 +442,7 @@ public class Sql {
     }
 
     public void insertPersona (String nombre, String primerApellido, String segundoApellido, String direccion,
-                                       String telefono, String mail) throws SQLException {
+                                       String telefono) throws SQLException {
 
             Conexion nuevaConexion = new Conexion();
             Sql sesionSql = new Sql(nuevaConexion);
@@ -465,11 +465,11 @@ public class Sql {
             ps.setString(3, segundoApellido);
             ps.setString(4, direccion);
             ps.setString(5, telefono);
-            ps.setString(6, mail);
+         
 
             ps.executeUpdate();
-            out.println("Sentencia DML ejecutada con éxito. Se ha insertado: "
-                    + nombre + " " + primerApellido + " " + segundoApellido + " " + direccion + " " + telefono + " " + mail);
+            out.println("Sentencia DML ejecutada con exito. Se ha insertado: "
+                    + nombre + " " + primerApellido + " " + segundoApellido + " " + direccion + " " + telefono + " ");
 
     }
 
@@ -584,7 +584,7 @@ public class Sql {
 
     }
     /**
-     * Este método se encarga de ir tabla por tabla borrando los registros que contengan.
+     * Este metodo se encarga de ir tabla por tabla borrando los registros que contengan.
      * */
     public void truncateAllContentDB() throws SQLException {
 

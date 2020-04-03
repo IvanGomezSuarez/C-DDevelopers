@@ -9,16 +9,15 @@ public class MySqlMiembroDao implements IMiembroDAO{
 
 
 /** La clase MySqlMiembroDAO forma parte del patron DAO.
- *  Permite separar la lógica para la persistencia de la logica del negocio.
+ *  Permite separar la logica para la persistencia de la logica del negocio.
  *
  *  MySqlMiembroDAO implementa la interfaz IMiembroDAO que declara los metodos que de deberan implementar
- *  todas las instancias DAO ONG, ya sean XmlMiembroDAO o MySqlDAO.
+ *  todas las instancias DAO Miembro, ya sean XmlMiembroDAO o MySqlDAO.
  *
  *  En el caso de MySqlMiembroDAO se implementa toda la logica necesaria para que Miembro trabaje con MySQL,
  *  tan solo implementamos los metodos basicos CRUD (Create, Read, Update y Delete).
  *
 */
-
     private Miembro miembro;
 
     public MySqlMiembroDao() {
@@ -29,11 +28,11 @@ public class MySqlMiembroDao implements IMiembroDAO{
 
     public void createMiembroDAO(Miembro miembro) {
 
-       Sql utilitySql = new Sql();
+       Sql Sql = new Sql();
 
         //En primer lugar borraremos los contenidos que puedan existir en la Base de datos.
         try {
-            utilitySql.truncateAllContentDB();
+            Sql.truncateAllContentDB();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -44,31 +43,18 @@ public class MySqlMiembroDao implements IMiembroDAO{
 
             String nombre, primerApellido, segundoApellido, direccion, telefono, mail, paisOrigen = null;
 
-            nombre = miembro.lequipo.get(i).getNombre();
-            primerApellido = miembro.lequipo.get(i).getPrimerApellido();
-            segundoApellido = miembro.lequipo.get(i).getSegundoApellido();
-            mail = miembro.lequipo.get(i).getMail();
-            PerVoluntario perVoluntario = (PerVoluntario) ong.lequipo.get(i);
-            int numHoras = perVoluntario.getNumHorasVol();
-
-            //En función de que sea personal internacional o nacional tabla destino y campos varian
-            if (!(ong.lequipo.get(i) instanceof PerVolInternacional)) {
-                //Se ejecuta cuando es personal nacional
-                telefono = ong.lequipo.get(i).getTelefono();
-                direccion = ong.lequipo.get(i).getDireccion().toString();
-
-            } else {
-                //Se ejecuta cuando es personal internacional
-                PerVolInternacional perVolutarioInternacional = (PerVolInternacional) ong.lequipo.get(i);
-                telefono = perVolutarioInternacional.getCodInternaTelefono() + " " + perVolutarioInternacional.getTelefono();
-                direccion = perVolutarioInternacional.getDir();
-                paisOrigen = perVolutarioInternacional.getPaisOrigen();
+            nombre = miembro.lequipo.get(i).getNombreMiembro();
+            primerApellido = miembro.lequipo.get(i).getApellido1();
+            segundoApellido = miembro.lequipo.get(i).getApellido2();
+            segundoApellido = miembro.lequipo.get(i).getApellido2();
+            telefono = miembro.lequipo.get(i).getTelefono();
+            direccion = miembro.lequipo.get(i).getDireccion().toString();
 
             }
 
             try {
 
-                utilitySql.insertPersona(nombre, primerApellido, segundoApellido, direccion, telefono, mail);
+                Sql.insertPersona(nombre, primerApellido, segundoApellido, direccion, telefono, mail);
 
                 int idPersona = utilitySql.consultarIdGenerado("Persona");
 

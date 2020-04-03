@@ -12,23 +12,8 @@ import DAO.impl.*;
 public abstract class SQLDAOFactory extends DAOFactory {
 	
 	
-
-	@Override
-	public DelegacionDAO getDelegacionDAO() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 	@Override
 	public MiembroDAO getMiembrosDAO() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public ProyectoDAO getProyectoDAO() throws JAXBException {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -3,12 +3,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+
 
 
 /*
@@ -50,6 +52,8 @@ public class Miembro {
 	Voluntario voluntario;
 	@XmlElement(name = "Colaborador")
 	Colaborador colaborador;
+    @XmlElement(name= "Personal")
+    public List<Personal> lequipo;
 	
 	
 
@@ -78,7 +82,7 @@ public class Miembro {
 	
 	public Miembro(String idMiembro, String nombreMiembro, String nombreUsuario, String password, String apellido1,
 			String apellido2, Direccion direccion, String rol, Personal personal, Voluntario voluntario,
-			Colaborador colaborador, String telefono) {
+			Colaborador colaborador, String telefono,List<Personal> lequipo) {
 		super();
 		this.idMiembro = idMiembro;
 		this.nombreMiembro = nombreMiembro;
@@ -92,10 +96,45 @@ public class Miembro {
 		this.voluntario = voluntario;
 		this.colaborador = colaborador;
 		this.telefono = telefono;
+		this.lequipo = new ArrayList<>();
 	}
 	
 	// METODOS
 	
+    public List<Personal> getEquipo() {
+        return lequipo;
+    }
+
+    /** Getter para obtener un miembro del personal según su idPersonal.
+     * Si no existe un miembro del personal con el id proporcionado devolverá una excepción controlada y
+     * una instancia de tipo Personal vacia.
+     *
+     * @param idPersonal int con el id de personal
+     * @return devuelve un tipo Personal, que contiene un miembro concreto del personal según idPersonal
+     */
+    public Personal getMiembroDelEquipo(int idPersonal) {
+
+        Personal pPersonaBuscada = null;
+
+        for (Personal personal : lequipo) {
+
+            try {
+
+                if (personal.getIdMiembro() == idMiembro) {
+                    pPersonaBuscada = personal;
+                    return pPersonaBuscada;
+                } else {
+                    return null;
+                }
+
+            } catch (Exception e) {
+                System.out.println("ERROR: No existe ningún miembros del personal con el id proporcionado.");
+            }
+        }
+
+        return pPersonaBuscada;
+
+    }
 
 	public Miembro(String nombreMiembro2, String dni2) {
 		// TODO Auto-generated constructor stub
