@@ -22,8 +22,6 @@ public class MySqlMiembroDao implements IMiembroDAO{
 
     public MySqlMiembroDao() {
 
-        //Implementación de la lógica
-        //Inicialización
     }
 
     public void createMiembroDAO(Miembro miembro) {
@@ -56,30 +54,21 @@ public class MySqlMiembroDao implements IMiembroDAO{
 
                 Sql.insertPersona(nombre, primerApellido, segundoApellido, direccion, telefono, mail);
 
-                int idPersona = utilitySql.consultarIdGenerado("Persona");
+                int idPersona = Sql.consultarIdGenerado("Persona");
 
-                utilitySql.insertPersonal(idPersona);
+                Sql.insertPersonal(idPersona);
 
-                int idPersonal = utilitySql.consultarIdGenerado("Personal");
+                int idPersonal = Sql.consultarIdGenerado("Personal");
 
-                utilitySql.insertPerVoluntario(numHoras, idPersona, idPersonal);
-
-                //Hasta este punto todos las instancias son PerVoluntario, ahora verificamos si además son voluntarios
-                //internacionales, para actuar en consecuencia.
-                if ((ong.lequipo.get(i) instanceof PerVolInternacional)) {
-
-                    int idPerVol = utilitySql.consultarIdGenerado("PerVoluntario");
-
-                    utilitySql.insertPerVolInternacional(idPersona, idPersonal, idPerVol, direccion, paisOrigen, telefono);
-
-                }
+       
+                
 
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
-
     }
+
+    
 
     public Miembro readMiembroDAO() {
         return null;

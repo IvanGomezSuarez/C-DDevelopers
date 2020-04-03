@@ -4,7 +4,9 @@ import DAO.*;
 import DAO.impl.DelegacionDAO;
 import DAO.impl.MiembroDAO;
 import DAO.impl.ProyectoDAO;
-
+import DAO.impl.DAOFactory;
+import DAO.impl.MySqlMiembroDao;
+import DAO.impl.*;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -19,21 +21,22 @@ import ongEC.Loggin;
  *
  * */
 public class Main {
+	@SuppressWarnings("static-access")
 	public static void main(String args[]) throws IOException, JAXBException{
 
 		Integer estadoAplicacion=0;//Estado de la aplicacion para decidir que opcion entre todas usar
 		Integer seleccionSubMenu=0;//Seleccion del Menu Secundario
 		Loggin.loggin();
-		Proyecto nuevoProyecto= new Proyecto();
+		/*Proyecto nuevoProyecto= new Proyecto();
 		Proyectos nuevoProyectos=new Proyectos();
-		nuevoProyectos=ProyectoDAO.readfirst();
+		nuevoProyectos=ProyectoDAO.readfirst();*/
 		Miembro miembroNuevo= new Miembro();
 		Miembros miembrosNuevos=new Miembros();
 		miembrosNuevos=MiembroDAO.readfirst();
 
 		while (estadoAplicacion!=9){            //Hasta que no se introduzca el numero 9 no se sale de la aplicacion.
 			miembrosNuevos=MiembroDAO.readfirst();
-			nuevoProyectos=ProyectoDAO.readfirst();
+			//nuevoProyectos=ProyectoDAO.readfirst();
 			opcionesMenuPrincipal();			//Llamamos a la funcion que printea las opciones principales
 
 			estadoAplicacion=comprobacionOpcion();		//Comprobamos con una unica clase (para no tener que estar repitiendo codigo) que el caracter es entero
@@ -62,17 +65,17 @@ public class Main {
 					if (seleccionSubMenu!=0) {
 						 if (seleccionSubMenu==1) {		//Pasamos dependiendo de la seleccion
 							 System.out.println("Dar de alta");
-							 nuevoProyecto=ProyectoDAO.addProyecto(nuevoProyectos,miembrosNuevos);
-							 nuevoProyectos.add(nuevoProyecto);
-							 ProyectoDAO.save(nuevoProyectos);
+							 //nuevoProyecto=ProyectoDAO.addProyecto(nuevoProyectos,miembrosNuevos);
+							 //nuevoProyectos.add(nuevoProyecto);
+							 //ProyectoDAO.save(nuevoProyectos);
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
-							 ProyectoDAO.update(nuevoProyectos,miembrosNuevos);
-							 ProyectoDAO.save(nuevoProyectos);
+							// ProyectoDAO.update(nuevoProyectos,miembrosNuevos);
+							 //ProyectoDAO.save(nuevoProyectos);
 						 }else if (seleccionSubMenu==3) {
 							 System.out.println("Eliminar");
-							 ProyectoDAO.delete(nuevoProyectos);
-							 ProyectoDAO.save(nuevoProyectos);
+							 //ProyectoDAO.delete(nuevoProyectos);
+							 //ProyectoDAO.save(nuevoProyectos);
 						 }else {
 							 System.out.println("Opcion no valida");
 						 }
@@ -88,6 +91,9 @@ public class Main {
 							 miembroNuevo=MiembroDAO.addMiembro(miembrosNuevos);
 							 miembrosNuevos.add(miembroNuevo);
 							 MiembroDAO.save(miembrosNuevos);
+							 
+							SQLDAOFactory.getDAOFactory(SQLDAOFactory.MYSQL).getMiembroDao.createMiembroDAO(miembro);
+		                     System.out.println("Datos cargados correctamente de XML a MySQL!");
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
 							 MiembroDAO.update(miembrosNuevos);
@@ -100,7 +106,7 @@ public class Main {
 							 System.out.println("Opcion no valida");
 						 }
 					 }
-				}else if (estadoAplicacion==4){
+				/*}else if (estadoAplicacion==4){
 					System.out.println("4.Dar de alta/modificar/eliminar un Ingreso");
 					opcionesSecundario();
 					seleccionSubMenu=comprobacionOpcion(); 	//Comprobamos si es int
@@ -141,7 +147,7 @@ public class Main {
 						 }else {
 							 System.out.println("Opcion no valida");
 						 }
-					 }
+					 }*/
 				}else if (estadoAplicacion==5) {
 					System.out.println("Listados");
 
@@ -153,7 +159,7 @@ public class Main {
 							 System.out.println("Listado de Socios");
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Listado de Proyectos");
-							 ProyectoDAO.getAll();
+							// ProyectoDAO.getAll();
 						 }else if (seleccionSubMenu==3) {
 							 System.out.println("Listado de Miembros");
 							 MiembroDAO.getAll();

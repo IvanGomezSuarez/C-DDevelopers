@@ -23,7 +23,7 @@ public abstract class DAOFactory {
 
         switch (whichFactory) {
             case XML:
-                return new XmlDAOFactory();
+             //   return new XmlDAOFactory();
             case MYSQL:
                 return new MySQLDAOFactory();
             default:
