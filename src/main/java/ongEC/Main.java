@@ -23,7 +23,7 @@ import ongEC.Loggin;
 public class Main {
 	@SuppressWarnings("static-access")
 	public static void main(String args[]) throws IOException, JAXBException{
-
+		MySqlConection.connect();
 		Integer estadoAplicacion=0;//Estado de la aplicacion para decidir que opcion entre todas usar
 		Integer seleccionSubMenu=0;//Seleccion del Menu Secundario
 		Loggin.loggin();
@@ -91,6 +91,7 @@ public class Main {
 							 miembroNuevo=MiembroDAO.addMiembro(miembrosNuevos);
 							 miembrosNuevos.add(miembroNuevo);
 							 MiembroDAO.save(miembrosNuevos);
+							 MySqlConection.connect();
 							 
 							//SQLDAOFactory.getDAOFactory(SQLDAOFactory.MYSQL).getMiembroDao.createMiembroDAO(miembro);
 		                     System.out.println("Datos cargados correctamente de XML a MySQL!");
