@@ -26,8 +26,8 @@ public class Loggin extends Miembro {
 	private static final String ivan = null;
 	private String usuario;
 	private String pass;
-	static Delegacion nuevaDelegacion= new Delegacion();
-	static Delegaciones nuevasDelegaciones=new Delegaciones();
+	//static Delegacion nuevaDelegacion= new Delegacion();
+	//static Delegaciones nuevasDelegaciones=new Delegaciones();
 	static Miembros miembrosAnteriores=new Miembros();
 
 	
@@ -66,14 +66,14 @@ public static void loggin() throws IOException, JAXBException {
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
     	int respuesta = 0;
     	Integer[] opcionesValidas = {1, 2, 3};
-    	nuevasDelegaciones=DelegacionDAO.readfirst();
+    	//nuevasDelegaciones=DelegacionDAO.readfirst();
     	miembrosAnteriores=MiembroDAO.readfirst();
     	System.out.println("****************************");
     	System.out.println(" Bienvenido a Entreculturas");
     	System.out.println("****************************");
     	
         do {
-        	nuevasDelegaciones=DelegacionDAO.readfirst();
+      //  	nuevasDelegaciones=DelegacionDAO.readfirst();
         	System.out.println("\nPor favor, introduce el número de la acción que deseas realizar: ");
         	System.out.println("1 - Iniciar sesión como miembro de entreculturas");
         	System.out.println("2 - Iniciar sesión como administrador de entreculturas");
@@ -150,8 +150,8 @@ public static void abrirSesion() throws IOException, JAXBException {
 
 	case 1:
 		
-		nuevaDelegacion=DelegacionDAO.addDelegacion(nuevasDelegaciones);
-		nuevasDelegaciones.add(nuevaDelegacion);
+	//	nuevaDelegacion=DelegacionDAO.addDelegacion(nuevasDelegaciones);
+	//	nuevasDelegaciones.add(nuevaDelegacion);
 		do {
 
 			do {
@@ -160,10 +160,10 @@ public static void abrirSesion() throws IOException, JAXBException {
 			} while (!respuestaNuevaAccion.equalsIgnoreCase("s") && !respuestaNuevaAccion.equalsIgnoreCase("n"));
 
 			if (respuestaNuevaAccion.equalsIgnoreCase("s")) {
-				nuevaDelegacion=DelegacionDAO.addDelegacion(nuevasDelegaciones);
-				nuevasDelegaciones.add(nuevaDelegacion);
+	//			nuevaDelegacion=DelegacionDAO.addDelegacion(nuevasDelegaciones);
+	//			nuevasDelegaciones.add(nuevaDelegacion);
 			}else {
-				DelegacionDAO.save(nuevasDelegaciones);
+	//			DelegacionDAO.save(nuevasDelegaciones);
 			}
 
 		} while (!respuestaNuevaAccion.equalsIgnoreCase("n"));
@@ -173,21 +173,21 @@ public static void abrirSesion() throws IOException, JAXBException {
 		break;
 
 	case 2:
-		DelegacionDAO.getAll();
+		//DelegacionDAO.getAll();
 		abrirSesion();
 		break;
 		
 		
 	case 3:
-		DelegacionDAO.delete(nuevasDelegaciones);
-		DelegacionDAO.save(nuevasDelegaciones);
+		//DelegacionDAO.delete(nuevasDelegaciones);
+		//DelegacionDAO.save(nuevasDelegaciones);
 		abrirSesion();
 		break;	
 		
 
 	case 4:
-		DelegacionDAO.update(nuevasDelegaciones);
-		DelegacionDAO.save(nuevasDelegaciones);
+		//DelegacionDAO.update(nuevasDelegaciones);
+		//DelegacionDAO.save(nuevasDelegaciones);
 		abrirSesion();
 		break;
 	

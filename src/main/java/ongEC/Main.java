@@ -92,7 +92,7 @@ public class Main {
 							 miembrosNuevos.add(miembroNuevo);
 							 MiembroDAO.save(miembrosNuevos);
 							 
-							SQLDAOFactory.getDAOFactory(SQLDAOFactory.MYSQL).getMiembroDao.createMiembroDAO(miembro);
+							//SQLDAOFactory.getDAOFactory(SQLDAOFactory.MYSQL).getMiembroDao.createMiembroDAO(miembro);
 		                     System.out.println("Datos cargados correctamente de XML a MySQL!");
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");

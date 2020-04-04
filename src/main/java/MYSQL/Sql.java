@@ -632,11 +632,11 @@ class Conexion {
     //de conexión prefijados
 
     public Conexion() {
-        this.host = "localhost";
+        this.host = "127.0.0.1";
         this.puerto = "3306";
         this.nombreBD = "producto3";
         this.user = "root";
-        this.pass = "";
+        this.pass = "Ivan2018";
 
     }
 
