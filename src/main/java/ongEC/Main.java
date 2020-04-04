@@ -6,6 +6,7 @@ import DAO.impl.MiembroDAO;
 import DAO.impl.ProyectoDAO;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -19,7 +20,7 @@ import ongEC.Loggin;
  *
  * */
 public class Main {
-	public static void main(String args[]) throws IOException, JAXBException{
+	public static void main(String args[]) throws IOException, JAXBException, SQLException{
 
 		Integer estadoAplicacion=0;//Estado de la aplicacion para decidir que opcion entre todas usar
 		Integer seleccionSubMenu=0;//Seleccion del Menu Secundario
@@ -80,6 +81,7 @@ public class Main {
 
 				}else if (estadoAplicacion==3){
 					System.out.println("3.Dar de alta/modificar/eliminar un Miembro");
+					MySqlConection.connect();
 					opcionesSecundario();
 					seleccionSubMenu=comprobacionOpcion();	//Comprobamos si es int
 					 if (seleccionSubMenu!=0) {
@@ -88,6 +90,7 @@ public class Main {
 							 miembroNuevo=MiembroDAO.addMiembro(miembrosNuevos);
 							 miembrosNuevos.add(miembroNuevo);
 							 MiembroDAO.save(miembrosNuevos);
+							 
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
 							 MiembroDAO.update(miembrosNuevos);

@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Scanner;
+
 import ongEC.Main;
 import javax.xml.bind.JAXBException;
 
@@ -197,6 +199,24 @@ public static void abrirSesion() throws IOException, JAXBException {
 		break;
 	}
 	
+}
+
+public static void pulsaIntroParaContinuar() {
+
+    String tecla;
+    Scanner teclado = new Scanner(System.in);
+    System.out.println("Presione Enter para continuar...");
+
+    try {
+
+        tecla = teclado.nextLine();
+
+    }
+
+    catch(Exception e)
+
+    {}
+
 }
 }
 
