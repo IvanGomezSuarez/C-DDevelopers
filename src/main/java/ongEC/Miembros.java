@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "Miembros")
 public class Miembros {
 	
-	private List<Miembro> miembro;
+	public static List<Miembro> miembro;
 
     public void setMiembro(List<Miembro> miembro) {
 		this.miembro = miembro;

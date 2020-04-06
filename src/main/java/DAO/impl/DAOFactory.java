@@ -11,22 +11,17 @@ public abstract class DAOFactory {
 	public static final int XML = 1;
 	
 	// indica los DAO a implementar
-	public abstract DelegacionDAO 
-	getDelegacionDao();
-	
-	public abstract MiembroDAO 
-	getMiembroDao();
-	
-	public abstract ProyectoDAO 
-	getProyecto();
-	
+	public IMiembroDAO getMiembroDAO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	public static DAOFactory getDAOFactory(int qFactory) {
 		
 	switch (qFactory) {
 	
-    case XML:
-        return new XmlDAOFactory();
+   // case XML:
+     //   return new XmlDAOFactory();
         
 	case MYSQL:
 		return new MySQLDAOFactory();
@@ -35,4 +30,6 @@ public abstract class DAOFactory {
 		return null;
 	}
 	}
+
+
 }
