@@ -43,9 +43,20 @@ public abstract class MySqlMiembroDAO implements IMiembroDAO{
         //Recorremos miembros para insertarlo en la BD MySQL.
         for (int i = 0; i < Miembros.miembro.size(); i++) {
 
-            String nombre, primerApellido, segundoApellido, direccion, telefono, mail, paisOrigen = null;
+            String nombre, usuario, password, direccion, primerApellido, segundoApellido, dni, direccion, rol, telefono, personal, voluntario, colaborador = null;
 
             nombre = Miembros.miembro.get(i).getNombreMiembro();
+            usuario = Miembros.miembro.get(i).getNombreUsuario();
+            password = Miembros.miembro.get(i).getPassword();
+            direccion = Miembros.miembro.get(i).direccion.getDireccion();
+            primerApellido = Miembros.miembro.get(i).getApellido1();
+            segundoApellido = Miembros.miembro.get(i).getApellido2();
+            dni = Miembros.miembro.get(i).getDni();
+            rol = Miembros.miembro.get(i).getRol();
+            telefono = Miembros.miembro.get(i).getTelefono();
+            personal = Miembros.miembro.get(i).getPersonal();
+            voluntario = Miembros.miembro.get(i);
+            colaborador = Miembros.miembro.get(i);
            
             //En función de que sea personal internacional o nacional tabla destino y campos varian
             if (!(Miembros.miembro.get(i) instanceof Voluntario)) {
