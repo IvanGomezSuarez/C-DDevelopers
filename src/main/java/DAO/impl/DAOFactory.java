@@ -2,7 +2,8 @@ package DAO.impl;
 
 import javax.xml.bind.JAXBException;
 
-import DAO.impl.ProyectoDAO;
+import DAO.XmlDAOFactory;
+import ongEC.Miembro;
 
 public abstract class DAOFactory {
 
@@ -20,8 +21,8 @@ public abstract class DAOFactory {
 		
 	switch (qFactory) {
 	
-   // case XML:
-     //   return new XmlDAOFactory();
+   case XML:
+     return new XmlDAOFactory();
         
 	case MYSQL:
 		return new MySQLDAOFactory();

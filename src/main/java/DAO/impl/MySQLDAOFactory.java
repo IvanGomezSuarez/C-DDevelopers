@@ -1,6 +1,6 @@
 package DAO.impl;
 
-import DAO.impl.*;
+import DAO.impl.MySqlMiembroDAO;
 
 
 public class MySQLDAOFactory extends DAOFactory{

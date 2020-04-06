@@ -18,7 +18,8 @@ import java.sql.SQLException;
  * */
 public abstract class MySqlMiembroDAO implements IMiembroDAO{
 
-    private Miembro miembro;
+    @SuppressWarnings("unused")
+	private Miembro miembro;
 
     public MySqlMiembroDAO() {
 
@@ -39,7 +40,7 @@ public abstract class MySqlMiembroDAO implements IMiembroDAO{
             e.printStackTrace();
         }
 
-        //Recorremos personal para insertarlo en la BD MySQL.
+        //Recorremos miembros para insertarlo en la BD MySQL.
         for (int i = 0; i < Miembros.miembro.size(); i++) {
 
             String nombre, primerApellido, segundoApellido, direccion, telefono, mail, paisOrigen = null;
@@ -53,8 +54,8 @@ public abstract class MySqlMiembroDAO implements IMiembroDAO{
                 
 
             } else {
-                //Se ejecuta cuando es personal colaborador
-                PerVolInternacional perVolutarioInternacional = (PerVolInternacional) ong.lequipo.get(i);
+                //Se ejecuta cuando es personal voluntario
+                Voluntario voluntario = (Voluntario) Miembros.miembro.get(i);
                 telefono = perVolutarioInternacional.getCodInternaTelefono() + " " + perVolutarioInternacional.getTelefono();
                 direccion = perVolutarioInternacional.getDir();
                 paisOrigen = perVolutarioInternacional.getPaisOrigen();
