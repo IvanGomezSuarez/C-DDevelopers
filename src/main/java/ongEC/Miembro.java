@@ -38,7 +38,7 @@ public class Miembro {
 	@XmlElement(name = "Dni")
 	private static String dni;
 	@XmlElement(name = "Direccion")
-	private Direccion direccion;
+	public Direccion direccion;
 	@XmlElement(name = "Rol")
 	private String rol;
 	@XmlElement(name = "Telefono")
