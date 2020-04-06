@@ -23,11 +23,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Ivan/Documents/IVAN/GRADO SUPERIOR DESARROLLO APLICACIONES WEB/POO con acceso a BBDD/PRODUCTOS/PRODUCTO 3/mysql-connector-java-8.0.19.tar/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19.jar"/>
-	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
