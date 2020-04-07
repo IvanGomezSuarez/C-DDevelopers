@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Direccion {
 	
 	//ATRIBUTOS
-	
+	int idDireccion;
 	String tipoVia;
 	int numero;
 	String puerta;
@@ -25,9 +25,11 @@ public class Direccion {
 	
 // CONSTRUCTORES
 	
-	public Direccion(String tipoVia, int numero, String puerta, String escalera, String localidad, String provincia,
-			String cp) {
+
+	public Direccion(int idDireccion, String tipoVia, int numero, String puerta, String escalera, String localidad,
+			String provincia, String cp, String pais) {
 		super();
+		this.idDireccion = idDireccion;
 		this.tipoVia = tipoVia;
 		this.numero = numero;
 		this.puerta = puerta;
@@ -35,12 +37,12 @@ public class Direccion {
 		this.localidad = localidad;
 		this.provincia = provincia;
 		this.cp = cp;
+		this.pais = pais;
 	}
 	
 	public Direccion() {
-		super();
 	}
-	
+
 	// METODOS
 	
 	public String getTipoVia() {
@@ -106,9 +108,15 @@ public class Direccion {
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
-
-
 	
+	public int getIdDireccion() {
+		return idDireccion;
+	}
+
+	public void setIdDireccion(int idDireccion) {
+		this.idDireccion = idDireccion;
+	}
+
 	public static Direccion addDireccion() throws IOException {
 		Direccion newdireccion=new Direccion();
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario

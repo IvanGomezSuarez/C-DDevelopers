@@ -1,15 +1,17 @@
 package ongEC;
 
 import java.util.Date;
+
+import javax.xml.bind.annotation.XmlElement;
 /*
  * esta clase contiene la informaci�n de los datos de fechas de los voluntarios
  * 
  * 
  * */
-public class Voluntario extends Miembro  {
+public class Voluntario{
 	
 	//Definendo los Atributos
-	
+	int idVoluntario;
 	private Date fechaAlta;
 	private Date fechaBaja;
 	Nacional nacional;
@@ -18,17 +20,22 @@ public class Voluntario extends Miembro  {
 	
 	// Definendo los constructores
 	
-	public Voluntario(Date fechaAlta, Date fechaBaja) {
+	public Voluntario(int idVoluntario, Date fechaAlta, Date fechaBaja, Nacional nacional,
+			Internacional internacional) {
+		this.idVoluntario = idVoluntario;
 		this.fechaAlta = fechaAlta;
 		this.fechaBaja = fechaBaja;
+		this.nacional = nacional;
+		this.internacional = internacional;
 	}
 
 	
 	public Voluntario() {
-		super();
 	}
 	
 	//Definiendo los gets y los sets
+
+
 
 
 	public Date getFechaAlta() {
@@ -66,4 +73,15 @@ public class Voluntario extends Miembro  {
 	public void setInternacional(Internacional internacional) {
 		this.internacional = internacional;
 	}
+
+
+	public int getIdVoluntario() {
+		return idVoluntario;
+	}
+
+
+	public void setIdVoluntario(int idVoluntario) {
+		this.idVoluntario = idVoluntario;
+	}
+	
 }

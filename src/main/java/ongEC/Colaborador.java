@@ -18,22 +18,22 @@ import ongEC.Miembro;
  * Yosu, Ivan
  */
 
-public class Colaborador extends Miembro {
+public class Colaborador{
 
 	// ATRIBUTOS
-	
+	int idColaborador;
 	private Date fechaAlta;
 	private Date fechaBaja;
 	
 	
 	//Definicion de los constructores
 	
-	public Colaborador(Date fechaAlta, Date fechaBaja) {
+	public Colaborador(int idColaborador, Date fechaAlta, Date fechaBaja) {
 		super();
+		this.idColaborador = idColaborador;
 		this.fechaAlta = fechaAlta;
 		this.fechaBaja = fechaBaja;
 	}
-	
 	public Colaborador() {
 		super();
 	}
@@ -54,5 +54,13 @@ public class Colaborador extends Miembro {
 
 	public void setFechaBaja(Date fechaBaja) {
 		this.fechaBaja = fechaBaja;
+	}
+
+	public int getIdColaborador() {
+		return idColaborador;
+	}
+
+	public void setIdColaborador(int idColaborador) {
+		this.idColaborador = idColaborador;
 	}
 }

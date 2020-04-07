@@ -52,7 +52,6 @@ public class MySqlConection {
     
     public static Connection getcon(){
         try{
-            //Class.forName("com.mysql.jdbc.Driver");
         	String url = "jdbc:mysql://127.0.0.1:3306/ong?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         	String user = "root";
             String pass = "tesTed4a";            
