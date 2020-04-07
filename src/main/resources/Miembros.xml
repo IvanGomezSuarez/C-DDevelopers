@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Miembros>
     <Miembro>
+<<<<<<< HEAD
         <IdMiembro>4</IdMiembro>
         <Nombre>Yosu</Nombre>
         <NombreUsuario>Yosu</NombreUsuario>
@@ -8,6 +9,14 @@
         <Apellido1>Garcia</Apellido1>
         <Apellido2>Izquierdo</Apellido2>
         <Dni>99999999L</Dni>
+=======
+        <IdMiembro>01</IdMiembro>
+        <Nombre>ivan</Nombre>
+        <NombreUsuario>ivan</NombreUsuario>
+        <Password>ivan</Password>
+        <Apellido1>tano</Apellido1>
+        <Apellido2>garcia</Apellido2>
+>>>>>>> INT
         <Direccion>
             <cp>1</cp>
             <escalera>3</escalera>
@@ -19,6 +28,7 @@
             <puerta>3</puerta>
             <tipoVia>Via</tipoVia>
         </Direccion>
+<<<<<<< HEAD
         <Rol>ADMINISTRADOR</Rol>
         <Telefono>645896892</Telefono>
         <Voluntario>
@@ -36,6 +46,22 @@
         <Apellido1>Yos2</Apellido1>
         <Apellido2>Yos3</Apellido2>
         <Dni>99999999L</Dni>
+=======
+        <Rol>Admin</Rol>
+        <Telefono>618058878</Telefono>
+        <Colaborador>
+            <fechaAlta>2020-03-31T00:00:00+02:00</fechaAlta>
+            <fechaBaja>2020-12-31T00:00:00+01:00</fechaBaja>
+        </Colaborador>
+    </Miembro>
+    <Miembro>
+        <IdMiembro>02</IdMiembro>
+        <Nombre>Nerea</Nombre>
+        <NombreUsuario>Nere2020</NombreUsuario>
+        <Password>Nere*//</Password>
+        <Apellido1>Santos</Apellido1>
+        <Apellido2>Tome</Apellido2>
+>>>>>>> INT
         <Direccion>
             <cp>1</cp>
             <escalera>3</escalera>
@@ -47,6 +73,7 @@
             <puerta>3</puerta>
             <tipoVia>Via</tipoVia>
         </Direccion>
+<<<<<<< HEAD
         <Rol>ADMINISTRADOR</Rol>
         <Telefono>010104101</Telefono>
         <Voluntario>
@@ -109,5 +136,37 @@
             <fechaBaja>2099-02-02T01:00:00+01:00</fechaBaja>
             <idColaborador>6</idColaborador>
         </Colaborador>
+=======
+        <Rol>Normal</Rol>
+        <Telefono>654898564</Telefono>
+        <Personal>
+            <fechaAlta>2019-06-15T00:00:00+02:00</fechaAlta>
+            <fechaBaja>2020-03-31T00:00:00+02:00</fechaBaja>
+        </Personal>
+    </Miembro>
+    <Miembro>
+        <IdMiembro>04</IdMiembro>
+        <Nombre>federico</Nombre>
+        <NombreUsuario>fede</NombreUsuario>
+        <Password>fede2020</Password>
+        <Apellido1>garcia</Apellido1>
+        <Apellido2>villalonga</Apellido2>
+        <Direccion>
+            <cp>08027</cp>
+            <escalera>b</escalera>
+            <localidad>barcelona</localidad>
+            <numero>85</numero>
+            <pais>españa</pais>
+            <provincia>barcelona</provincia>
+            <puerta>2</puerta>
+            <tipoVia>josep maria brunet</tipoVia>
+        </Direccion>
+        <Rol>Admin</Rol>
+        <Telefono>625789654</Telefono>
+        <Personal>
+            <fechaAlta>2015-08-17T00:00:00+02:00</fechaAlta>
+            <fechaBaja>2025-12-31T00:00:00+01:00</fechaBaja>
+        </Personal>
+>>>>>>> INT
     </Miembro>
 </Miembros>

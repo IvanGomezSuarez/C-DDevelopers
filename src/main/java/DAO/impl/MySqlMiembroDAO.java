@@ -16,7 +16,7 @@ import java.sql.SQLException;
  *
 
  * */
-public abstract class MySqlMiembroDAO implements IMiembroDAO{
+public class MySqlMiembroDAO implements IMiembroDAO{
 
     @SuppressWarnings("unused")
 	private Miembro miembro;
@@ -28,7 +28,7 @@ public abstract class MySqlMiembroDAO implements IMiembroDAO{
     }
 
     @Override
-    public void createMiembroDAO(Miembro miembro) {
+    public void createMiembroDAO(Miembros miembrosNuevos) {
 
         UtilitySql utilitySql = new UtilitySql();
 
@@ -43,23 +43,23 @@ public abstract class MySqlMiembroDAO implements IMiembroDAO{
         //Recorremos miembros para insertarlo en la BD MySQL.
         for (int i = 0; i < Miembros.miembro.size(); i++) {
 
-            String nombre, usuario, password, direccion, primerApellido, segundoApellido, dni, direccion, rol, telefono, personal, voluntario, colaborador = null;
+            String nombre, usuario, password, primerApellido, segundoApellido, dni, rol, telefono = null;
 
             nombre = Miembros.miembro.get(i).getNombreMiembro();
             usuario = Miembros.miembro.get(i).getNombreUsuario();
             password = Miembros.miembro.get(i).getPassword();
-            direccion = Miembros.miembro.get(i).direccion.getDireccion();
+           // direccion = Miembros.miembro.get(i).direccion.getDireccion();
             primerApellido = Miembros.miembro.get(i).getApellido1();
             segundoApellido = Miembros.miembro.get(i).getApellido2();
             dni = Miembros.miembro.get(i).getDni();
             rol = Miembros.miembro.get(i).getRol();
             telefono = Miembros.miembro.get(i).getTelefono();
-            personal = Miembros.miembro.get(i).getPersonal();
-            voluntario = Miembros.miembro.get(i);
-            colaborador = Miembros.miembro.get(i);
+           // personal = Miembros.miembro.get(i).getPersonal();
+            //voluntario = Miembros.miembro.get(i);
+            //colaborador = Miembros.miembro.get(i);
            
             //En función de que sea personal internacional o nacional tabla destino y campos varian
-            if (!(Miembros.miembro.get(i) instanceof Voluntario)) {
+          /*  if (!(Miembros.miembro.get(i) instanceof Voluntario)) {
                 //Se ejecuta cuando es personal nacional
                 telefono = Miembros.miembro.get(i).getTelefono();
                 
@@ -71,30 +71,30 @@ public abstract class MySqlMiembroDAO implements IMiembroDAO{
                 direccion = perVolutarioInternacional.getDir();
                 paisOrigen = perVolutarioInternacional.getPaisOrigen();
 
-            }
+            }*/
 
             try {
 
-                utilitySql.insertPersona(nombre, primerApellido, segundoApellido, direccion, telefono, mail);
+                utilitySql.insertPersona(nombre, usuario, password, primerApellido, segundoApellido, dni, rol, telefono);
 
                 int idPersona = utilitySql.consultarIdGenerado("Persona");
 
                 utilitySql.insertPersonal(idPersona);
 
-                int idPersonal = utilitySql.consultarIdGenerado("Personal");
+               // int idPersonal = utilitySql.consultarIdGenerado("Personal");
 
-                utilitySql.insertPerVoluntario(numHoras, idPersona, idPersonal);
+              //  utilitySql.insertPerVoluntario(numHoras, idPersona, idPersonal);
 
                 //Hasta este punto todos las instancias son PerVoluntario, ahora verificamos si además son voluntarios
                 //internacionales, para actuar en consecuencia.
-                if ((Miembros.miembro.get(i) instanceof Personal)) {
+           /*     if ((Miembros.miembro.get(i) instanceof Personal)) {
 
                     int idPerVol = utilitySql.consultarIdGenerado("PerVoluntario");
 
                     utilitySql.insertPerVolInternacional(idPersona, idPersonal, idPerVol, direccion, paisOrigen, telefono);
 
                 }
-
+*/
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -116,4 +116,9 @@ public abstract class MySqlMiembroDAO implements IMiembroDAO{
     public boolean deleteMiembroDAO(Miembro pMiembro) {
         return false;
     }
+
+	public void createMiembroDAO1(Miembros miembrosNuevos) {
+		// TODO Auto-generated method stub
+		
+	}
 }
