@@ -8,7 +8,7 @@ import ongEC.*;
  */
 public interface IMiembroDAO {
 
-    void createMiembroDAO(Miembro pMiembro);
+    void createMiembroDAO(Miembros miembrosNuevos);
     Miembro readMiembroDAO();
     boolean updateMiembroDAO(Miembro pMiembro);
     boolean deleteMiembroDAO(Miembro pMiembro);

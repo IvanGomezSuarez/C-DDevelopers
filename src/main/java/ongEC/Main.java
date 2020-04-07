@@ -4,6 +4,9 @@ import DAO.*;
 import DAO.impl.DelegacionDAO;
 import DAO.impl.MiembroDAO;
 import DAO.impl.ProyectoDAO;
+import DAO.impl.DAOFactory;
+import sql.UtilitySql;
+import ongEC.Miembro;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -90,7 +93,10 @@ public class Main {
 							 miembroNuevo=MiembroDAO.addMiembro(miembrosNuevos);
 							 miembrosNuevos.add(miembroNuevo);
 							 MiembroDAO.save(miembrosNuevos);
-							 
+							 DAOFactory.getDAOFactory(DAOFactory.MYSQL).getMiembroDAO().createMiembroDAO(miembrosNuevos);
+		                     System.out.println("Datos cargados correctamente de XML a MySQL!");
+		                     Loggin.pulsaIntroParaContinuar();
+							// UtilitySql.crearEstructuraBD();
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
 							 MiembroDAO.update(miembrosNuevos);

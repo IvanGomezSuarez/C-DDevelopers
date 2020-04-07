@@ -62,19 +62,18 @@ public class UtilitySql {
         // Vamos a definir una sentencia SQL que utilizaremos a continuación. En este caso,
         // creamos las diferentes tablas:
 
-        sesionSql.crearEstructuraBD();
+        //sesionSql.crearEstructuraBD();
 
         // Pasaremos ahora a introducir unos pocos registros manualmente, utilizando para ello
         // el método sentenciaDML, que nos servirá para usar sentencias tipo SELECT, INSERT,
         // DELETE o UPDATE. Esto es sólo de prueba, ya que en principio debemos pasar los elementos
         // mediante los XML generados en Java.
 
-        String sentenciaSql = "INSERT INTO Persona\n" +
-                "\t\t( Nombre, PrimerApellido, SegundoApellido, Direccion,\n" +
-                "        Telefono, Mail )\n" +
-                "        VALUES ( \"Rosa\", \"Giménez\", \"Villar\",\n" +
-                "        \"C/ Terminillo, 12 4ºC 50017 Zaragiza\", \"674988745\",\n" +
-                "        \"rosagv@gmail.com\" );";
+        /*String sentenciaSql = "INSERT INTO miembros\n" +
+                "\t\t( nombreMiembro, nombreUsuario, password, apellido1,\n" +
+                "        apellido2, dni, telefono )\n" +
+                "        VALUES ( \"Federico\", \"fede\", \"fede2020\",\n" +
+                "        \"manrique\", \"gonsalves\", \"43546897g\", \"618056987\");";
 
         sesionSql.sentenciaDML(newConnection, sentenciaSql);
         out.println("Sentencia DML ejecutada con éxito.");
@@ -125,13 +124,13 @@ public class UtilitySql {
 
         // Pasamos la sentencia y la conexión ya creada que venimos utilizando al nuevo método
         // sentenciaSELECT
-
-        ResultSet newResultSet = (sesionSql.sentenciaSELECT(newConnection, sentenciaSql));
-        out.println("Consulta SQL ejecutada con éxito. Listo para mostrar datos.");
+*/
+       // ResultSet newResultSet = (sesionSql.sentenciaSELECT(newConnection, sentenciaSql));
+        //out.println("Consulta SQL ejecutada con éxito. Listo para mostrar datos.");
 
         // Vamos a comprobar si el ResultSet es Válido.
 
-        sesionSql.consultaBD(newConnection, newResultSet);
+        //sesionSql.consultaBD(newConnection, newResultSet);
 
     }
 
@@ -159,7 +158,7 @@ public class UtilitySql {
             out.println("Error al conectar con la base de datos.");
             e.printStackTrace();
         } finally {
-            out.println("Conexión establecida.");
+            out.println("Conexion establecida.");
         }
 
         return newConnection;
@@ -325,19 +324,11 @@ public class UtilitySql {
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
         Connection newConnection = sesionSql.conectarBD(nuevaConexion);
 
-        String sentenciaSql =
-                "CREATE TABLE IF NOT EXISTS Persona (\n" +
-                        "\n" +
-                        "\tIdPersona INT(6) NOT NULL AUTO_INCREMENT,\n" +
-                        "    Nombre VARCHAR(16) NOT NULL,\n" +
-                        "    PrimerApellido VARCHAR(16) NOT NULL,\n" +
-                        "    SegundoApellido VARCHAR(16) NOT NULL,Direccion VARCHAR(128) NOT NULL,\n" +
-                        "    Telefono VARCHAR(24) NOT NULL,\n" +
-                        "    Mail VARCHAR(32),\n" +
-                        "\n" +
-                        "    PRIMARY KEY(IdPersona)\n" +
-                        "\n" +
-                        ") ENGINE = InnoDB;";
+        String sentenciaSql = "INSERT INTO miembros\n" +
+                        "\t\t( nombreMiembro, nombreUsuario, password, apellido1,\n" +
+                        "        apellido2, dni, telefono )\n" +
+                        "        VALUES ( \"Federico\", \"fede\", \"fede2020\",\n" +
+                        "        \"manrique\", \"gonsalves\", \"43546897g\", \"618056987\");";
 
         // Como la sentencia anterior es una sentencia DDL (de definición de datos), llamamos
         // al metodo sentenciaDDL, que nos devolverá true si la sentencia es ejecutada con éxito.
@@ -442,8 +433,8 @@ public class UtilitySql {
 
     }
 
-    public void insertPersona (String nombre, String primerApellido, String segundoApellido, String direccion,
-                                       String telefono, String mail) throws SQLException {
+    public void insertPersona (String nombreMiembro, String nombreUsuario, String password, String apellido1,
+                                       String apellido2, String dni, String rol, String telefono  ) throws SQLException {
 
             Conexion nuevaConexion = new Conexion();
             UtilitySql sesionSql = new UtilitySql(nuevaConexion);
@@ -461,16 +452,19 @@ public class UtilitySql {
             String sentenciaSql = "CALL Entreculturas.crud_personal( null,?,?,?,?,?,?, 'create');";
 
             PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
-            ps.setString(1, nombre);
-            ps.setString(2, primerApellido);
-            ps.setString(3, segundoApellido);
-            ps.setString(4, direccion);
-            ps.setString(5, telefono);
-            ps.setString(6, mail);
-
+            ps.setString(1, nombreMiembro);
+            ps.setString(2, nombreUsuario);
+            ps.setString(3, password);
+            ps.setString(4, apellido1);
+            ps.setString(5, apellido2);
+            ps.setString(6, dni);
+            //ps.setString(7, Direccion.addDireccion());
+            ps.setString(7, telefono);
+           
+           
             ps.executeUpdate();
-            out.println("Sentencia DML ejecutada con éxito. Se ha insertado: "
-                    + nombre + " " + primerApellido + " " + segundoApellido + " " + direccion + " " + telefono + " " + mail);
+            out.println("Sentencia DML ejecutada con exito. Se ha insertado: "
+                    + nombreMiembro + " " + nombreUsuario + " " + password + " " + apellido1 + " " + apellido2 + " " + dni + " " + dni + " " + telefono);
 
     }
 
