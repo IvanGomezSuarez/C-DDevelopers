@@ -3,6 +3,7 @@ package ongEC;
 import DAO.*;
 import DAO.impl.DelegacionDAO;
 import DAO.impl.MiembroDAO;
+import DAO.impl.MySqlMiembroDAOYosu;
 import DAO.impl.ProyectoDAO;
 
 import java.io.IOException;
@@ -21,15 +22,17 @@ import ongEC.Loggin;
  * */
 public class Main {
 	public static void main(String args[]) throws IOException, JAXBException, SQLException{
-
+		
+		MySqlMiembroDAOYosu.incializarXMLdesdeSQL();
+		
 		Integer estadoAplicacion=0;//Estado de la aplicacion para decidir que opcion entre todas usar
 		Integer seleccionSubMenu=0;//Seleccion del Menu Secundario
 		Loggin.loggin();
 		Proyecto nuevoProyecto= new Proyecto();
 		Proyectos nuevoProyectos=new Proyectos();
-		nuevoProyectos=ProyectoDAO.readfirst();
 		Miembro miembroNuevo= new Miembro();
 		Miembros miembrosNuevos=new Miembros();
+		nuevoProyectos=ProyectoDAO.readfirst();
 		miembrosNuevos=MiembroDAO.readfirst();
 
 		while (estadoAplicacion!=9){            //Hasta que no se introduzca el numero 9 no se sale de la aplicacion.
