@@ -43,6 +43,8 @@ public abstract class MySqlMiembroDAOYosu implements IMiembroDAO{
     	ResultSet rs = selectStmt.executeQuery("SELECT * FROM ong.miembros inner join voluntario on idMiembro=idVoluntario inner join direccionesUsuarios on direccion=idDireccion ");
         while(rs.next()){
             	miembro=new Miembro();
+            	direccion=new Direccion();
+            	voluntario=new Voluntario();
             	 //System.out.println(rs.getString(1));   1 Column
              	miembro.setIdMiembro(rs.getString(1));
              	 //System.out.println(rs.getString(2));    //2 Column
@@ -105,6 +107,8 @@ public abstract class MySqlMiembroDAOYosu implements IMiembroDAO{
         ResultSet rs1 = selectStmt1.executeQuery("SELECT * FROM ong.miembros inner join personal on idMiembro=idPersonal inner join direccionesUsuarios on direccion=idDireccion ");
         while(rs1.next()){
         		miembro=new Miembro();
+        		direccion=new Direccion();
+        		personal=new Personal();
         		 //System.out.println(rs1.getString(1));    //1 Column
              	miembro.setIdMiembro(rs1.getString(1));
              	 //System.out.println(rs1.getString(2));    //2 Column
@@ -158,6 +162,8 @@ public abstract class MySqlMiembroDAOYosu implements IMiembroDAO{
         ResultSet rs2 = selectStmt2.executeQuery("SELECT * FROM ong.miembros inner join colaborador on idMiembro=idColaborador inner join direccionesUsuarios on direccion=idDireccion");
         while(rs2.next()){
             	miembro=new Miembro();
+            	direccion=new Direccion();
+            	colaborador=new Colaborador();
             	 //System.out.println(rs2.getString(1));    //1 Column
 	         	miembro.setIdMiembro(rs2.getString(1));
 	         	 //System.out.println(rs2.getString(2));    //2 Column
