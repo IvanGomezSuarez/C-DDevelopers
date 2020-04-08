@@ -54,7 +54,7 @@ public class UtilitySql {
         out.println("Intentando conectarse con los siguientes datos:");
         out.println(nuevaConexion.toString());
 
-        // Ahora llamamos al método conectarBD con miConexion como parámetro para efectivamente
+        // Ahora llamamos al metodo conectarBD con miConexion como parametro para efectivamente
         //conectar con la base de datos deseada.
 
         Connection newConnection = sesionSql.conectarBD(nuevaConexion);
@@ -138,11 +138,11 @@ public class UtilitySql {
     // Métodos de clase
 
     /**
-     * El método conectarBD crea una conexión con los datos establecidos para un
+     * El metodo conectarBD crea una conexion con los datos establecidos para un
      * objeto Conexion.
      *
-     * @param miConexion Objeto Conexion con datos sobre la conexión a la BD
-     * @return Objeto Connection con la conexión a la BD establecida.
+     * @param miConexion Objeto Conexion con datos sobre la conexion a la BD
+     * @return Objeto Connection con la conexion a la BD establecida.
      */
 
     public Connection conectarBD(Conexion miConexion) {
@@ -339,8 +339,8 @@ public class UtilitySql {
         // Pasamos pues, tras haber comprobado que lo anterior ha funcionado correctamente, a crear
         // el resto de tablas simplemente modificando la sentencia y volviendo a llamar al método
         // sentenciaDDL()
-
-        sentenciaSql = "DROP PROCEDURE IF EXISTS crud_personal;" +
+/*
+        sentenciaSql = "DROP PROCEDURE IF EXISTS crud_miembros;" +
                 "CREATE TABLE IF NOT EXISTS Personal (\n" +
                 "\n" +
                 "\tIdPersonal INT(4) NOT NULL AUTO_INCREMENT,\n" +
@@ -353,8 +353,8 @@ public class UtilitySql {
                 ") ENGINE = InnoDb;";
         sentenciaDDL(newConnection, sentenciaSql);
         out.println("Sentencia DDL ejecutada con éxito.");
-
-        sentenciaSql = " CREATE TABLE IF NOT EXISTS PerVoluntario (\n" +
+*/
+       /* sentenciaSql = " CREATE TABLE IF NOT EXISTS PerVoluntario (\n" +
                 "\n" +
                 "\tIdPerVol INT(4) NOT NULL AUTO_INCREMENT,\n" +
                 "    IdPersonal INT(4) NOT NULL,\n" +
@@ -393,43 +393,44 @@ public class UtilitySql {
 
         sentenciaDDL(newConnection, sentenciaSql);
         out.println("Sentencia DDL ejecutada con éxito.");
-
+*/
         //Creamos un stored procedure que permitirá operaciones tipo CRUD con la tabla personal
         sentenciaSql =
                 "/* Vamos a crear un Procedimiento Almacenado con varios parámetros de entrada (IN) \n" +
                         "Su funcionalidad es ejecutar operaciones CRUD, en la tabla Personal, en función del último parámetro facilitado*/\n" +
                         "CREATE PROCEDURE crud_personal(\n" +
-                        "IN paramIdPersona INT, \n" +
-                        "IN paramNombre VARCHAR(16),\n" +
-                        "IN paramPrimerApellido VARCHAR(16),\n" +
-                        "IN paramSegundoApellido VARCHAR(16),\n" +
-                        "IN paramDireccion VARCHAR(128),\n" +
-                        "IN paramTelefono VARCHAR(24),\n" +
-                        "IN paramMail VARCHAR(32),\n" +
+                        "IN paramnombreMiembro VARCHAR(16), \n" +
+                        "IN paramnombreUsuario VARCHAR(16),\n" +
+                        "IN parampassword VARCHAR(16),\n" +
+                        "IN paramapellido1 VARCHAR(16),\n" +
+                        "IN paramapellido2 VARCHAR(16),\n" +
+                        "IN paramdni VARCHAR(16),\n" +
+                        "IN paramtelefono VARCHAR(16),\n" +
+                        "IN paramrol NULL, \n" +
                         "IN accion CHAR(6)\n" +
                         ")\n" +
                         "BEGIN\n" +
                         "    CASE accion\n" +
                         "    WHEN 'create' THEN\n" +
-                        "\t\tINSERT INTO Entreculturas.Persona(Nombre, PrimerApellido, SegundoApellido, Direccion, Telefono, Mail)\n" +
-                        "\t\tVALUES(paramNombre, paramPrimerApellido, paramSegundoApellido, paramDireccion, paramTelefono, paramMail);\n" +
+                        "\t\tINSERT INTO producto3.miembros(nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, rol)\n" +
+                        "\t\tVALUES(paramnombreMiembro, paramnombreUsuario, parampassword, paramapellido1, paramapellido2, paramdni, paramrol );\n" +
                         "\tWHEN 'read' THEN\n" +
-                        "\t\tSELECT * FROM Entreculturas.Persona\n" +
-                        "        WHERE IdPersona=paramIdPersona;    \n" +
+                        "\t\tSELECT * FROM producto3.miembros\n" +
+                        "        WHERE nombreMiembro=paramnombreMiembro;    \n" +
                         "\tWHEN 'update' THEN\n" +
-                        "        UPDATE Entreculturas.Persona \n" +
-                        "        SET Nombre=paramNombre, PrimerApellido=paramPrimerApellido, SegundoApellido=paramSegundoApellido, Direccion=paramDireccion, Telefono=paramTelefono, Mail=paramMail\n" +
-                        "\t\tWHERE IdPersona=paramIdPersona;\n" +
+                        "        UPDATE producto3.miembros \n" +
+                        "        SET nombreMiembro=paramnombreMiembro, nombreUsuario=paramnombreUsuario, password=parampassword, apellido1=paramapellido1, apellido2=paramapellido2, dni=paramdni, rol=paramrol\n" +
+                        "\t\tWHERE nombreUsuario=paramnombreUsuario;\n" +
                         "\tWHEN 'delete' THEN\n" +
-                        "        DELETE FROM Entreculturas.Persona \n" +
-                        "        WHERE IdPersona=paramIdPersona;\n" +
+                        "        DELETE FROM producto3.miembros \n" +
+                        "        WHERE nombreMiembro=paramnombreMiembro;\n" +
                         "\tELSE\n" +
                         "\t\tSIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Buhhh!! Tan solo se permiten las opciones CRUD: Create, Read, Update o Delete :(';\n" +
                         "\tEND CASE;\n" +
                         "END;";
 
         sentenciaDDL(newConnection, sentenciaSql);
-        out.println("Sentencias de creación estructura BD ejecutadas con éxito.");
+        out.println("Sentencias de creacion estructura BD ejecutadas con exito.");
 
     }
 
@@ -449,7 +450,7 @@ public class UtilitySql {
 
             Connection newConnection = sesionSql.conectarBD(nuevaConexion);
 
-            String sentenciaSql = "CALL Entreculturas.crud_personal( null,?,?,?,?,?,?, 'create');";
+            String sentenciaSql = "CALL producto3.crud_personal(?,?,?,?,?,?,?,?, 'create');";
 
             PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
             ps.setString(1, nombreMiembro);
@@ -458,13 +459,13 @@ public class UtilitySql {
             ps.setString(4, apellido1);
             ps.setString(5, apellido2);
             ps.setString(6, dni);
-            //ps.setString(7, Direccion.addDireccion());
-            ps.setString(7, telefono);
+            ps.setString(7, rol);
+            ps.setString(8, telefono);
            
            
             ps.executeUpdate();
             out.println("Sentencia DML ejecutada con exito. Se ha insertado: "
-                    + nombreMiembro + " " + nombreUsuario + " " + password + " " + apellido1 + " " + apellido2 + " " + dni + " " + dni + " " + telefono);
+                    + nombreMiembro + " " + nombreUsuario + " " + password + " " + apellido1 + " " + apellido2 + " " + dni + " " + rol + " " + telefono);
 
     }
 
@@ -479,24 +480,18 @@ public class UtilitySql {
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
         Connection newConnection = sesionSql.conectarBD(nuevaConexion);
 
-        if(tablaObjetivo == "Persona"){
+        if(tablaObjetivo == "miembros"){
 
-            sentenciaSql = "SELECT MAX(idPersona) AS id FROM Persona;";
+            sentenciaSql = "SELECT MAX(IdMiembro) AS id FROM miembros;";
 
-        } else if(tablaObjetivo == "Personal"){
+        } else if(tablaObjetivo == "personal"){
 
             sentenciaSql = "SELECT MAX(idPersonal) AS id FROM Personal;";
 
-        }else if(tablaObjetivo == "PerVoluntario"){
+        }else if(tablaObjetivo == "colaborador"){
 
-            sentenciaSql = "SELECT MAX(idPerVol) AS id FROM PerVoluntario;";
-
-        }else if(tablaObjetivo == "PerVolInternacional"){
-
-            sentenciaSql = "SELECT MAX(idPerVolInt) AS id FROM PerVolInternacional;";
-
+            sentenciaSql = "SELECT MAX(idColaborador) AS id FROM colaborador;";
         }
-
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ResultSet rs = ps.executeQuery();
         while (rs.next()){
@@ -508,7 +503,7 @@ public class UtilitySql {
         return idGenerado;
     }
 
-    public void insertPersonal(int idPersona) throws SQLException {
+    public void insertPersonal(int IdMiembro) throws SQLException {
 
         Conexion nuevaConexion = new Conexion();
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
@@ -516,9 +511,9 @@ public class UtilitySql {
 
         foreingKeyChecks(false, newConnection);
 
-        String sentenciaSql = "INSERT INTO Personal(idPersona) VALUES (?);";
+        String sentenciaSql = "INSERT INTO miembros(IdMiembro) VALUES (?);";
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
-        ps.setInt(1, idPersona);
+        ps.setInt(1, IdMiembro);
         ps.executeUpdate();
 
         foreingKeyChecks(true, newConnection);
@@ -546,7 +541,7 @@ public class UtilitySql {
 
     }
 
-    public void insertPerVoluntario(int numHorasVol, int idPersona, int idPersonal) throws SQLException {
+ /*   public void insertColaborador(int numHorasVol, int idPersona, int idPersonal) throws SQLException {
 
         Conexion nuevaConexion = new Conexion();
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
@@ -559,9 +554,9 @@ public class UtilitySql {
         ps.setInt(3, numHorasVol);
         ps.executeUpdate();
 
-    }
+    }*/
 
-    public void insertPerVolInternacional( int idPersona, int idPersonal, int idPerVol, String direccion, String paisOrigen, String telefono) throws SQLException {
+ /*   public void insertVoluntario( int idPersona, int idPersonal, int idPerVol, String direccion, String paisOrigen, String telefono) throws SQLException {
 
         Conexion nuevaConexion = new Conexion();
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
@@ -577,9 +572,9 @@ public class UtilitySql {
         ps.setString(6, telefono);
         ps.executeUpdate();
 
-    }
+    }*/
     /**
-     * Este método se encarga de ir tabla por tabla borrando los registros que contengan.
+     * Este metodo se encarga de ir tabla por tabla borrando los registros que contengan.
      * */
     public void truncateAllContentDB() throws SQLException {
 
@@ -587,11 +582,12 @@ public class UtilitySql {
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
         Connection newConnection = sesionSql.conectarBD(nuevaConexion);
 
-        String[] tablesName = new String[]{"Persona", "Personal", "PerVoluntario", "PerVolInternacional"};
+        String[] tablesName = new String[]{"miembros", "voluntario", "personal", "colaborador", "direccionesusuarios"};
 
         //Quitamos la verificación de foreing key para poder usar TRUNCATE (que no solo hace el borrado como delete,
         // sino que además resetea los autoincrement que tenga la tabla)
 
+        
         foreingKeyChecks(false, newConnection);
         //Ejecutamos el Truncate para cada nombre de tabla que hemos indicado en tablesName.
         for(int i=0; tablesName.length > i; i++){

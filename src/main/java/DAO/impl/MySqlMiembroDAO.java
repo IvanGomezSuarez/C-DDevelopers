@@ -43,14 +43,14 @@ public class MySqlMiembroDAO implements IMiembroDAO{
         //Recorremos miembros para insertarlo en la BD MySQL.
         for (int i = 0; i < Miembros.miembro.size(); i++) {
 
-            String nombre, usuario, password, primerApellido, segundoApellido, dni, rol, telefono = null;
+            String nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, rol, telefono = null;
 
-            nombre = Miembros.miembro.get(i).getNombreMiembro();
-            usuario = Miembros.miembro.get(i).getNombreUsuario();
+            nombreMiembro = Miembros.miembro.get(i).getNombreMiembro();
+            nombreUsuario = Miembros.miembro.get(i).getNombreUsuario();
             password = Miembros.miembro.get(i).getPassword();
            // direccion = Miembros.miembro.get(i).direccion.getDireccion();
-            primerApellido = Miembros.miembro.get(i).getApellido1();
-            segundoApellido = Miembros.miembro.get(i).getApellido2();
+            apellido1 = Miembros.miembro.get(i).getApellido1();
+            apellido2 = Miembros.miembro.get(i).getApellido2();
             dni = Miembros.miembro.get(i).getDni();
             rol = Miembros.miembro.get(i).getRol();
             telefono = Miembros.miembro.get(i).getTelefono();
@@ -75,7 +75,7 @@ public class MySqlMiembroDAO implements IMiembroDAO{
 
             try {
 
-                utilitySql.insertPersona(nombre, usuario, password, primerApellido, segundoApellido, dni, rol, telefono);
+                utilitySql.insertPersona(nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, rol, telefono);
 
                 int idPersona = utilitySql.consultarIdGenerado("Persona");
 

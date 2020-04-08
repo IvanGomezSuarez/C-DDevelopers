@@ -24,7 +24,7 @@ import ongEC.Loggin;
  * */
 public class Main {
 	public static void main(String args[]) throws IOException, JAXBException, SQLException{
-
+		DAOFactory objetoFactory = DAOFactory.getDAOFactory(DAOFactory.XML);
 		Integer estadoAplicacion=0;//Estado de la aplicacion para decidir que opcion entre todas usar
 		Integer seleccionSubMenu=0;//Seleccion del Menu Secundario
 		Loggin.loggin();
@@ -179,6 +179,7 @@ public class Main {
 				}
 			}
 		}
+		objetoFactory.getMiembroDAO().createMiembroDAO(miembrosNuevos);
 	}
 
 	// M�TODOS DEL MENU PRINCIPAL Y SECUNDARIO
