@@ -450,7 +450,7 @@ public class UtilitySql {
 
             Connection newConnection = sesionSql.conectarBD(nuevaConexion);
 
-            String sentenciaSql = "CALL producto3.crud_personal(?,?,?,?,?,?,?,?, 'create');";
+            String sentenciaSql = "CALL producto3.insertar_miembro(?,?,?,?,?,?,?,?, 'create');";
 
             PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
             ps.setString(1, nombreMiembro);

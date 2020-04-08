@@ -3,6 +3,7 @@ package ongEC;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -63,7 +64,7 @@ public class Loggin extends Miembro {
 	// METODOS
 
 	
-public static void loggin() throws IOException, JAXBException {
+public static void loggin() throws IOException, JAXBException, SQLException {
 		
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
     	int respuesta = 0;
@@ -106,6 +107,7 @@ public static void loggin() throws IOException, JAXBException {
             	}else {
             		 System.out.println("Miembro no encontrado");
             		 Loggin.loggin();
+            		 
             	}
               break;
            

@@ -27,6 +27,7 @@ public class Main {
 		DAOFactory objetoFactory = DAOFactory.getDAOFactory(DAOFactory.XML);
 		Integer estadoAplicacion=0;//Estado de la aplicacion para decidir que opcion entre todas usar
 		Integer seleccionSubMenu=0;//Seleccion del Menu Secundario
+		
 		Loggin.loggin();
 		Proyecto nuevoProyecto= new Proyecto();
 		Proyectos nuevoProyectos=new Proyectos();
@@ -93,6 +94,7 @@ public class Main {
 							 miembroNuevo=MiembroDAO.addMiembro(miembrosNuevos);
 							 miembrosNuevos.add(miembroNuevo);
 							 MiembroDAO.save(miembrosNuevos);
+							 
 							 DAOFactory.getDAOFactory(DAOFactory.MYSQL).getMiembroDAO().createMiembroDAO(miembrosNuevos);
 		                     System.out.println("Datos cargados correctamente de XML a MySQL!");
 		                     Loggin.pulsaIntroParaContinuar();
