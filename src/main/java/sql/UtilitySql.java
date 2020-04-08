@@ -435,22 +435,22 @@ public class UtilitySql {
     }
 
     public void insertPersona (String nombreMiembro, String nombreUsuario, String password, String apellido1,
-                                       String apellido2, String dni, String rol, String telefono  ) throws SQLException {
+                                       String apellido2, String dni, int direccion, String rol, String telefono  ) throws SQLException {
 
             Conexion nuevaConexion = new Conexion();
             UtilitySql sesionSql = new UtilitySql(nuevaConexion);
 
-            // Comprobamos que los datos son los que esperábamos.
+            // Comprobamos que los datos son los que esperabamos.
 
             out.println("Intentando conectarse con los siguientes datos:");
             out.println(nuevaConexion.toString());
 
-            // Ahora llamamos al método conectarBD con miConexion como parámetro para efectivamente
+            // Ahora llamamos al metodo conectarBD con miConexion como parametro para efectivamente
             //conectar con la base de datos deseada.
 
             Connection newConnection = sesionSql.conectarBD(nuevaConexion);
 
-            String sentenciaSql = "CALL producto3.insertar_miembro(?,?,?,?,?,?,?,?, 'create');";
+            String sentenciaSql = "CALL producto3.insertar_miembro(?,?,?,?,?,?,?,?,?, 'create');";
 
             PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
             ps.setString(1, nombreMiembro);
@@ -459,13 +459,14 @@ public class UtilitySql {
             ps.setString(4, apellido1);
             ps.setString(5, apellido2);
             ps.setString(6, dni);
-            ps.setString(7, rol);
-            ps.setString(8, telefono);
+            ps.setInt(7, direccion);
+            ps.setString(8, rol);
+            ps.setString(9, telefono);
            
            
             ps.executeUpdate();
             out.println("Sentencia DML ejecutada con exito. Se ha insertado: "
-                    + nombreMiembro + " " + nombreUsuario + " " + password + " " + apellido1 + " " + apellido2 + " " + dni + " " + rol + " " + telefono);
+                    + nombreMiembro + " " + nombreUsuario + " " + password + " " + apellido1 + " " + apellido2 + " " + dni + " " + direccion + " " + rol + " " + telefono);
 
     }
 
@@ -483,14 +484,6 @@ public class UtilitySql {
         if(tablaObjetivo == "miembros"){
 
             sentenciaSql = "SELECT MAX(IdMiembro) AS id FROM miembros;";
-
-        } else if(tablaObjetivo == "personal"){
-
-            sentenciaSql = "SELECT MAX(idPersonal) AS id FROM Personal;";
-
-        }else if(tablaObjetivo == "colaborador"){
-
-            sentenciaSql = "SELECT MAX(idColaborador) AS id FROM colaborador;";
         }
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ResultSet rs = ps.executeQuery();
@@ -503,7 +496,7 @@ public class UtilitySql {
         return idGenerado;
     }
 
-    public void insertPersonal(int IdMiembro) throws SQLException {
+ /*   public void insertPersonal(int IdMiembro) throws SQLException {
 
         Conexion nuevaConexion = new Conexion();
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
@@ -519,8 +512,8 @@ public class UtilitySql {
         foreingKeyChecks(true, newConnection);
 
     }
-
-    public void foreingKeyChecks(Boolean foreingKeyChecks, Connection newConnection) throws SQLException {
+*/
+    public static void foreingKeyChecks(Boolean foreingKeyChecks, Connection newConnection) throws SQLException {
 
         String sentenciaSql = new String();
 
@@ -576,7 +569,7 @@ public class UtilitySql {
     /**
      * Este metodo se encarga de ir tabla por tabla borrando los registros que contengan.
      * */
-    public void truncateAllContentDB() throws SQLException {
+    public static void truncateAllContentDB() throws SQLException {
 
         Conexion nuevaConexion = new Conexion();
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
@@ -584,8 +577,8 @@ public class UtilitySql {
 
         String[] tablesName = new String[]{"miembros", "voluntario", "personal", "colaborador", "direccionesusuarios"};
 
-        //Quitamos la verificación de foreing key para poder usar TRUNCATE (que no solo hace el borrado como delete,
-        // sino que además resetea los autoincrement que tenga la tabla)
+        //Quitamos la verificacion de foreing key para poder usar TRUNCATE (que no solo hace el borrado como delete,
+        // sino que ademas resetea los autoincrement que tenga la tabla)
 
         
         foreingKeyChecks(false, newConnection);
@@ -619,8 +612,8 @@ class Conexion {
     private String pass;
 
     //Constructores
-    //Al llamar al constructor por defecto, le pasaremos automáticamente unos datos
-    //de conexión prefijados
+    //Al llamar al constructor por defecto, le pasaremos automaticamente unos datos
+    //de conexion prefijados
 
     public Conexion() {
         this.host = "127.0.0.1";
@@ -628,12 +621,6 @@ class Conexion {
         this.nombreBD = "producto3";
         this.user = "root";
         this.pass = "Ivan2018";
-
-//        this.host = "localhost";
-//        this.puerto = "3306";
-//        this.nombreBD = "Entreculturas";
-//        this.user = "root";
-//        this.pass = "";
 
     }
 

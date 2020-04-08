@@ -44,22 +44,24 @@ public class MySqlMiembroDAO implements IMiembroDAO{
         for (int i = 0; i < Miembros.miembro.size(); i++) {
 
             String nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, rol, telefono = null;
+			Direccion direccion;
 
             nombreMiembro = Miembros.miembro.get(i).getNombreMiembro();
             nombreUsuario = Miembros.miembro.get(i).getNombreUsuario();
             password = Miembros.miembro.get(i).getPassword();
-           // direccion = Miembros.miembro.get(i).direccion.getDireccion();
+            direccion = Miembros.miembro.get(i).direccion;
             apellido1 = Miembros.miembro.get(i).getApellido1();
             apellido2 = Miembros.miembro.get(i).getApellido2();
             dni = Miembros.miembro.get(i).getDni();
+            direccion = Miembros.miembro.get(i).getDireccion();
             rol = Miembros.miembro.get(i).getRol();
             telefono = Miembros.miembro.get(i).getTelefono();
            // personal = Miembros.miembro.get(i).getPersonal();
             //voluntario = Miembros.miembro.get(i);
             //colaborador = Miembros.miembro.get(i);
            
-            //En función de que sea personal internacional o nacional tabla destino y campos varian
-          /*  if (!(Miembros.miembro.get(i) instanceof Voluntario)) {
+            //En funcion de que sea personal contratado, colaborador o voluntario la tabla destino y campos varian
+            if (!(Miembros.miembro.get(i) instanceof Voluntario)) {
                 //Se ejecuta cuando es personal nacional
                 telefono = Miembros.miembro.get(i).getTelefono();
                 
@@ -71,15 +73,15 @@ public class MySqlMiembroDAO implements IMiembroDAO{
                 direccion = perVolutarioInternacional.getDir();
                 paisOrigen = perVolutarioInternacional.getPaisOrigen();
 
-            }*/
+            }
 
             try {
 
-                utilitySql.insertPersona(nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, rol, telefono);
+                utilitySql.insertPersona(nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, Direccion direccion, rol, telefono);
 
                 int idPersona = utilitySql.consultarIdGenerado("Persona");
 
-                utilitySql.insertPersonal(idPersona);
+                //utilitySql.insertPersonal(idPersona);
 
                // int idPersonal = utilitySql.consultarIdGenerado("Personal");
 

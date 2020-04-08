@@ -85,6 +85,7 @@ public class Main {
 
 				}else if (estadoAplicacion==3){
 					System.out.println("3.Dar de alta/modificar/eliminar un Miembro");
+					UtilitySql.truncateAllContentDB();
 					MySqlConection.connect();
 					opcionesSecundario();
 					seleccionSubMenu=comprobacionOpcion();	//Comprobamos si es int
@@ -94,7 +95,6 @@ public class Main {
 							 miembroNuevo=MiembroDAO.addMiembro(miembrosNuevos);
 							 miembrosNuevos.add(miembroNuevo);
 							 MiembroDAO.save(miembrosNuevos);
-							 
 							 DAOFactory.getDAOFactory(DAOFactory.MYSQL).getMiembroDAO().createMiembroDAO(miembrosNuevos);
 		                     System.out.println("Datos cargados correctamente de XML a MySQL!");
 		                     Loggin.pulsaIntroParaContinuar();
