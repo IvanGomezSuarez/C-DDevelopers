@@ -1,9 +1,11 @@
 package DAO.impl;
 
 import ongEC.*;
+import ongEC.Voluntario;
 import sql.UtilitySql;
 
 import java.sql.SQLException;
+import java.util.Date;
 
 /** La clase MySqlOngDAO forma parte del patrón DAO.
  *  Permite separar la lógica para la persistencia de la lógica del negocio.
@@ -45,6 +47,7 @@ public class MySqlMiembroDAO implements IMiembroDAO{
 
             String nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, rol, telefono = null;
 			Direccion direccion;
+			Date fechaAlta, fechaBaja, fechaAltaP, fechaBajaP, fechaAltaC, fechaBajaC;
 
             nombreMiembro = Miembros.miembro.get(i).getNombreMiembro();
             nombreUsuario = Miembros.miembro.get(i).getNombreUsuario();
@@ -56,32 +59,33 @@ public class MySqlMiembroDAO implements IMiembroDAO{
             direccion = Miembros.miembro.get(i).getDireccion();
             rol = Miembros.miembro.get(i).getRol();
             telefono = Miembros.miembro.get(i).getTelefono();
-           // personal = Miembros.miembro.get(i).getPersonal();
-            //voluntario = Miembros.miembro.get(i);
-            //colaborador = Miembros.miembro.get(i);
+            // �COMO LECHES COJO LOS DATOS DE TODO EL ARRAY?
            
             //En funcion de que sea personal contratado, colaborador o voluntario la tabla destino y campos varian
-            if (!(Miembros.miembro.get(i) instanceof Voluntario)) {
+            if (!(Miembros.miembro.get(i) instanceof Personal)) {
                 //Se ejecuta cuando es personal nacional
-                telefono = Miembros.miembro.get(i).getTelefono();
-                
+                fechaAltaP = Personal.getFechaAlta();
+                fechaBajaP = Personal.getFechaBaja();
 
-            } else {
+            } else if (!(Miembros.miembro.get(i) instanceof Voluntario)){
                 //Se ejecuta cuando es personal voluntario
                 Voluntario voluntario = (Voluntario) Miembros.miembro.get(i);
-                telefono = perVolutarioInternacional.getCodInternaTelefono() + " " + perVolutarioInternacional.getTelefono();
-                direccion = perVolutarioInternacional.getDir();
-                paisOrigen = perVolutarioInternacional.getPaisOrigen();
-
+                fechaAlta = Voluntario.getFechaAlta();
+                fechaBaja = Voluntario.getFechaBaja();
+                
+            } else if (!(Miembros.miembro.get(i) instanceof Colaborador)) {
+                Colaborador colaborador = (Colaborador) Miembros.miembro.get(i);
+                fechaAltaC = Colaborador.getFechaAlta();
+                fechaBajaC = Colaborador.getFechaBaja();
             }
-
+            
             try {
 
                 utilitySql.insertPersona(nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, Direccion direccion, rol, telefono);
 
                 int idPersona = utilitySql.consultarIdGenerado("Persona");
 
-                //utilitySql.insertPersonal(idPersona);
+                utilitySql.insertPersonal(idPersona);
 
                // int idPersonal = utilitySql.consultarIdGenerado("Personal");
 

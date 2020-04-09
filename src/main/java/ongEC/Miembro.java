@@ -47,6 +47,7 @@ public class Miembro {
 	@XmlElement(name = "Personal")
 	Personal personal;
 	@XmlElement(name = "Voluntario")
+	public static
 	Voluntario voluntario;
 	@XmlElement(name = "Colaborador")
 	Colaborador colaborador;

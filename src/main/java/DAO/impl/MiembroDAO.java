@@ -287,16 +287,16 @@ public class MiembroDAO{
 		int seleccion;
 		
 		
-		System.out.println("\nIntroduce el ID del miembro: ");
-		nuevoMiembro.setIdMiembro(br.readLine());
+		/*System.out.println("\nIntroduce el dni del miembro: ");
+		nuevoMiembro.setDni(br.readLine());
 		if(t.getMiembro()!=null) {
 		for (int i = 0;i<t.getMiembro().size();i++) {
-			if (t.getMiembro().get(i).getIdMiembro().equals(nuevoMiembro.getIdMiembro())){
-				System.out.println("\n ID REPETIDO ");
+			if (t.getMiembro().get(i).getDni().equals(nuevoMiembro.getDni())){
+				System.out.println("\n Dni REPETIDO ");
 				return null;
 			}
 		}
-		}
+		}*/
 		System.out.println("\nIntroduce el nombre del miembro: ");
 		nuevoMiembro.setNombreMiembro(br.readLine());
 		System.out.println("\nIntroduce el primer apellido del miembro: ");

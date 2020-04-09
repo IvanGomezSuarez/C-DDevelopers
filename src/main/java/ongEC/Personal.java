@@ -13,8 +13,8 @@ public class Personal extends Miembro {
 	
 	//Definicion de los Atributos
 	
-	private Date fechaAlta;
-	private Date fechaBaja;		
+	private static Date fechaAlta;
+	private static Date fechaBaja;		
 	
 	//Definiendo los Constructores
 	
@@ -30,7 +30,7 @@ public class Personal extends Miembro {
 
 	//Defincion de los Gets y Sets
 	
-	public Date getFechaAlta() {
+	public static Date getFechaAlta() {
 		return fechaAlta;
 	}
 	
@@ -40,7 +40,7 @@ public class Personal extends Miembro {
 		this.fechaAlta = fechaAlta;
 	}
 	
-	public Date getFechaBaja() {
+	public static Date getFechaBaja() {
 		return fechaBaja;
 	}
 	

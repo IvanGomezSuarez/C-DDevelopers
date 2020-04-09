@@ -22,8 +22,8 @@ public class Colaborador extends Miembro {
 
 	// ATRIBUTOS
 	
-	private Date fechaAlta;
-	private Date fechaBaja;
+	private static Date fechaAlta;
+	private static Date fechaBaja;
 	
 	
 	//Definicion de los constructores
@@ -40,7 +40,7 @@ public class Colaborador extends Miembro {
 
 	//Definicion de los gets y los sets
 	
-	public Date getFechaAlta() {
+	public static Date getFechaAlta() {
 		return fechaAlta;
 	}
 
@@ -48,7 +48,7 @@ public class Colaborador extends Miembro {
 		this.fechaAlta = fechaAlta;
 	}
 
-	public Date getFechaBaja() {
+	public static Date getFechaBaja() {
 		return fechaBaja;
 	}
 

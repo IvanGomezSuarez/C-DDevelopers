@@ -10,8 +10,8 @@ public class Voluntario extends Miembro  {
 	
 	//Definendo los Atributos
 	
-	private Date fechaAlta;
-	private Date fechaBaja;
+	public static Date fechaAlta;
+	public static Date fechaBaja;
 	Nacional nacional;
 	Internacional internacional;
 	
@@ -31,7 +31,7 @@ public class Voluntario extends Miembro  {
 	//Definiendo los gets y los sets
 
 
-	public Date getFechaAlta() {
+	public static Date getFechaAlta() {
 		return fechaAlta;
 	}
 
@@ -39,7 +39,7 @@ public class Voluntario extends Miembro  {
 		this.fechaAlta = fechaAlta;
 	}
 
-	public Date getFechaBaja() {
+	public static Date getFechaBaja() {
 		return fechaBaja;
 	}
 
