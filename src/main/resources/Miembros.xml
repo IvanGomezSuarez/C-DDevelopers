@@ -104,6 +104,33 @@
         </Direccion>
         <Rol>MIEMBRO</Rol>
         <Telefono>000000000</Telefono>
+        <Personal>
+            <fechaAlta>2020-01-01T01:00:00+01:00</fechaAlta>
+            <fechaBaja>2020-01-01T01:00:00+01:00</fechaBaja>
+            <idPersonal>6</idPersonal>
+        </Personal>
+    </Miembro>
+    <Miembro>
+        <IdMiembro>6</IdMiembro>
+        <Nombre>Gordi</Nombre>
+        <NombreUsuario>Gordi</NombreUsuario>
+        <Password>Gordi</Password>
+        <Apellido1>Gar</Apellido1>
+        <Apellido2>Izq</Apellido2>
+        <Dni>99999999L</Dni>
+        <Direccion>
+            <cp>1</cp>
+            <escalera>3</escalera>
+            <idDireccion>3</idDireccion>
+            <localidad>3</localidad>
+            <numero>3</numero>
+            <pais>3</pais>
+            <provincia>3</provincia>
+            <puerta>3</puerta>
+            <tipoVia>Via</tipoVia>
+        </Direccion>
+        <Rol>MIEMBRO</Rol>
+        <Telefono>000000000</Telefono>
         <Colaborador>
             <fechaAlta>1900-01-01T00:09:21+00:09</fechaAlta>
             <fechaBaja>2099-02-02T01:00:00+01:00</fechaBaja>

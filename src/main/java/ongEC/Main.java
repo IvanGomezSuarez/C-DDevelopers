@@ -27,6 +27,7 @@ public class Main {
 	public static void main(String args[]) throws IOException, JAXBException, SQLException{
 		
 		MySqlMiembroDAOYosu.incializarXMLdesdeSQL();
+		MySqlMiembroDAOYosu.consultarIdGenerado();
 		
 		Integer estadoAplicacion=0;//Estado de la aplicacion para decidir que opcion entre todas usar
 		Integer seleccionSubMenu=0;//Seleccion del Menu Secundario

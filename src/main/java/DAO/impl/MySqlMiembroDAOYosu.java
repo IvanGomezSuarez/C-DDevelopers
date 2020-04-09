@@ -214,4 +214,26 @@ public abstract class MySqlMiembroDAOYosu implements IMiembroDAO{
 	    }
         MiembroDAO.save(miembros);
      } 
+    public static int consultarIdGenerado() throws SQLException {
+    	
+    	int idGenerado=0;
+    	Connection conexion;
+    	conexion=MySqlConection.getcon();    		    	
+    	Statement selectStmt = conexion.createStatement();  
+    	System.out.println("Recogemos el ultimo id de miembros");
+    	ResultSet rs = selectStmt.executeQuery("Select MAX(idMiembro) from miembros");
+    	while (rs.next()) {
+    		idGenerado=rs.getInt(1);
+    		//System.out.println(idGenerado);
+    	}
+    	return(idGenerado);
+    }
+    
+    public static void updateMiembroDAO() throws SQLException {
+    	Connection conexion;
+    	conexion=MySqlConection.getcon();    		    	
+    	Statement selectStmt = conexion.createStatement();  
+    	System.out.println("Updateamos");
+    	ResultSet rs = selectStmt.executeQuery("Select MAX(idMiembro) from miembros");
+    }
 }
