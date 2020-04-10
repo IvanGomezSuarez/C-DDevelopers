@@ -21,7 +21,7 @@ public abstract class DAOFactory {
 	switch (qFactory) {
 	
    case XML:
-     return new XmlDAOFactory();
+     //return new XmlDAOFactory();
         
 	case MYSQL:
 		return new MySQLDAOFactory();

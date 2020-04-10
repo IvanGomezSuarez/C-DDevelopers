@@ -26,7 +26,7 @@ import ongEC.Loggin;
 public class Main {
 	public static void main(String args[]) throws IOException, JAXBException, SQLException{
 
-		//DAOFactory objetoFactory = DAOFactory.getDAOFactory(DAOFactory.XML);
+		DAOFactory objetoFactory = DAOFactory.getDAOFactory(DAOFactory.XML);
 
 		MySqlMiembroDAOYosu.incializarXMLdesdeSQL();
 		MySqlMiembroDAOYosu.consultarIdGenerado();
@@ -189,7 +189,7 @@ public class Main {
 				}
 			}
 		}
-		//objetoFactory.getMiembroDAO().createMiembroDAO(miembrosNuevos);
+		objetoFactory.getMiembroDAO().createMiembroDAO(miembrosNuevos);
 	}
 
 	// M�TODOS DEL MENU PRINCIPAL Y SECUNDARIO
