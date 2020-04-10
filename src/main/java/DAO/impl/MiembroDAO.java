@@ -305,8 +305,8 @@ public class MiembroDAO{
 		nuevoMiembro.setApellido2(br.readLine());
 		System.out.println("\nIntroduce el DNI del miembro: ");
 		nuevoMiembro.setDni(br.readLine());
-		System.out.println("\nIntroduce la direccion de su domicilio: ");
-		nuevoMiembro.setDireccion(Direccion.addDireccion());
+		//System.out.println("\nIntroduce la direccion de su domicilio: ");
+		//nuevoMiembro.setDireccion(Direccion.addDireccion());
 		System.out.println("\nIntroduce el numero de movil del miembro: ");
 		nuevoMiembro.setTelefono(br.readLine());
 		System.out.println("\nIntroduce el nombre que desee como usuario: ");

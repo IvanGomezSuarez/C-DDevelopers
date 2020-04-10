@@ -24,16 +24,38 @@ public class Colaborador extends Miembro {
 	
 	private static Date fechaAlta;
 	private static Date fechaBaja;
+	public static String origen;
+	public static String paisOrigen;
 	
 	
 	//Definicion de los constructores
 	
-	public Colaborador(Date fechaAlta, Date fechaBaja) {
+	public Colaborador(Date fechaAlta, Date fechaBaja, String origen, String paisOrigen) {
 		super();
 		this.fechaAlta = fechaAlta;
 		this.fechaBaja = fechaBaja;
+		this.origen = origen;
+		this.paisOrigen = paisOrigen;
+		
+		
 	}
 	
+	public static String getOrigen() {
+		return origen;
+	}
+
+	public void setOrigen(String origen) {
+		this.origen = origen;
+	}
+
+	public static String getPaisOrigen() {
+		return paisOrigen;
+	}
+
+	public void setPaisOrigen(String paisOrigen) {
+		this.paisOrigen = paisOrigen;
+	}
+
 	public Colaborador() {
 		super();
 	}

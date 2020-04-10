@@ -73,7 +73,7 @@ public class Prueba_Sql {
             System.out.println("                 Entreculturas - Pruebas SQL");
             System.out.println("---------------------------------------------------------------");
             if(nuevaConexion == null) {
-                System.out.println("Estado: sin conexión");
+                System.out.println("Estado: sin conexion");
                 } else {
                     System.out.println("Estado: conectado\n" + nuevaConexion.toString());
                 }
@@ -88,7 +88,7 @@ public class Prueba_Sql {
             System.out.println("\n1 - Conectar a una base de datos");
             System.out.println("2 - Crear tablas");
             System.out.println("3 - Insertar registros");
-            System.out.println("0 - Salir de la aplicación");
+            System.out.println("0 - Salir de la aplicacion");
 
             elegirOpcion(nuevaConexion, newConnection);
 
