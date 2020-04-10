@@ -13,9 +13,11 @@ public class Personal{
 	
 	//Definicion de los Atributos
 	
+
 	int idPersonal;
-	private Date fechaAlta;
-	private Date fechaBaja;		
+	private static Date fechaAlta;
+	private static Date fechaBaja;		
+
 	
 	//Definiendo los Constructores
 	
@@ -31,7 +33,9 @@ public class Personal{
 	}
 	//Defincion de los Gets y Sets
 
-	public Date getFechaAlta() {
+	
+	public static Date getFechaAlta() {
+
 		return fechaAlta;
 	}
 	
@@ -41,7 +45,7 @@ public class Personal{
 		this.fechaAlta = fechaAlta;
 	}
 	
-	public Date getFechaBaja() {
+	public static Date getFechaBaja() {
 		return fechaBaja;
 	}
 	

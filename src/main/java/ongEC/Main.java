@@ -25,12 +25,17 @@ import ongEC.Loggin;
  * */
 public class Main {
 	public static void main(String args[]) throws IOException, JAXBException, SQLException{
-		
+
+		DAOFactory objetoFactory = DAOFactory.getDAOFactory(DAOFactory.XML);
+
+		DAOFactory objetoFactory = DAOFactory.getDAOFactory(DAOFactory.XML);
 		MySqlMiembroDAOYosu.incializarXMLdesdeSQL();
 		MySqlMiembroDAOYosu.consultarIdGenerado();
 		
+
 		Integer estadoAplicacion=0;//Estado de la aplicacion para decidir que opcion entre todas usar
 		Integer seleccionSubMenu=0;//Seleccion del Menu Secundario
+		
 		Loggin.loggin();
 		Proyecto nuevoProyecto= new Proyecto();
 		Proyectos nuevoProyectos=new Proyectos();
@@ -88,6 +93,7 @@ public class Main {
 
 				}else if (estadoAplicacion==3){
 					System.out.println("3.Dar de alta/modificar/eliminar un Miembro");
+					UtilitySql.truncateAllContentDB();
 					MySqlConection.connect();
 					opcionesSecundario();
 					seleccionSubMenu=comprobacionOpcion();	//Comprobamos si es int
@@ -97,6 +103,7 @@ public class Main {
 							 miembroNuevo=MiembroDAO.addMiembro(miembrosNuevos);
 							 miembrosNuevos.add(miembroNuevo);
 							 MiembroDAO.save(miembrosNuevos);
+							 //UtilitySql.sentenciaSql;
 							 DAOFactory.getDAOFactory(DAOFactory.MYSQL).getMiembroDAO().createMiembroDAO(miembrosNuevos);
 		                     System.out.println("Datos cargados correctamente de XML a MySQL!");
 		                     Loggin.pulsaIntroParaContinuar();
@@ -183,6 +190,7 @@ public class Main {
 				}
 			}
 		}
+		objetoFactory.getMiembroDAO().createMiembroDAO(miembrosNuevos);
 	}
 
 	// M�TODOS DEL MENU PRINCIPAL Y SECUNDARIO

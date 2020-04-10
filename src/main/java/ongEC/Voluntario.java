@@ -11,9 +11,11 @@ import javax.xml.bind.annotation.XmlElement;
 public class Voluntario{
 	
 	//Definendo los Atributos
-	int idVoluntario;
-	private Date fechaAlta;
-	private Date fechaBaja;
+
+	
+	public static Date fechaAlta;
+	public static Date fechaBaja;
+
 	Nacional nacional;
 	Internacional internacional;
 	
@@ -37,16 +39,15 @@ public class Voluntario{
 
 
 
+	public static Date getFechaAlta() {
 
-	public Date getFechaAlta() {
-		return fechaAlta;
 	}
 
 	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
 
-	public Date getFechaBaja() {
+	public static Date getFechaBaja() {
 		return fechaBaja;
 	}
 

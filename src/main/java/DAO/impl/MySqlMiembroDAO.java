@@ -3,7 +3,11 @@ package DAO.impl;
 import ongEC.*;
 import sql.UtilitySql;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
 
 /** La clase MySqlOngDAO forma parte del patr贸n DAO.
  *  Permite separar la l贸gica para la persistencia de la l贸gica del negocio.
@@ -43,47 +47,58 @@ public class MySqlMiembroDAO implements IMiembroDAO{
         //Recorremos miembros para insertarlo en la BD MySQL.
         for (int i = 0; i < Miembros.miembro.size(); i++) {
 
-            String nombre, usuario, password, primerApellido, segundoApellido, dni, rol, telefono = null;
+            String nombreMiembro, nombreUsuario, pass, apellido1, apellido2, dni, rol, telefono, origen, paisOrigen = null;
+			Date fechaAlta, fechaBaja, fechaAltaP, fechaBajaP, fechaAltaC, fechaBajaC;
+		
 
-            nombre = Miembros.miembro.get(i).getNombreMiembro();
-            usuario = Miembros.miembro.get(i).getNombreUsuario();
-            password = Miembros.miembro.get(i).getPassword();
-           // direccion = Miembros.miembro.get(i).direccion.getDireccion();
-            primerApellido = Miembros.miembro.get(i).getApellido1();
-            segundoApellido = Miembros.miembro.get(i).getApellido2();
-            dni = Miembros.miembro.get(i).getDni();
+            nombreMiembro = Miembros.miembro.get(i).getNombreMiembro();
+            nombreUsuario = Miembros.miembro.get(i).getNombreUsuario();
+            pass = Miembros.miembro.get(i).getPassword();
+           // direccion = Miembros.miembro.get(i).direccion;
+            apellido1 = Miembros.miembro.get(i).getApellido1();
+            apellido2 = Miembros.miembro.get(i).getApellido2();
+            Miembros.miembro.get(i);
+			dni = Miembro.getDni();
+            //direccion = Miembros.miembro.get(i).getDireccion();
             rol = Miembros.miembro.get(i).getRol();
             telefono = Miembros.miembro.get(i).getTelefono();
-           // personal = Miembros.miembro.get(i).getPersonal();
-            //voluntario = Miembros.miembro.get(i);
-            //colaborador = Miembros.miembro.get(i);
+            // 緾OMO LECHES COJO LOS DATOS DE TODO EL ARRAY?
            
-            //En funci贸n de que sea personal internacional o nacional tabla destino y campos varian
-          /*  if (!(Miembros.miembro.get(i) instanceof Voluntario)) {
+            //En funcion de que sea personal contratado, colaborador o voluntario la tabla destino y campos varian
+           if (!(Miembros.miembro.get(i) instanceof Personal)) {
                 //Se ejecuta cuando es personal nacional
-                telefono = Miembros.miembro.get(i).getTelefono();
-                
+                fechaAltaP = Personal.getFechaAlta();
+                fechaBajaP = Personal.getFechaBaja();
 
-            } else {
+            } else if (!(Miembros.miembro.get(i) instanceof Voluntario)){
                 //Se ejecuta cuando es personal voluntario
                 Voluntario voluntario = (Voluntario) Miembros.miembro.get(i);
-                telefono = perVolutarioInternacional.getCodInternaTelefono() + " " + perVolutarioInternacional.getTelefono();
-                direccion = perVolutarioInternacional.getDir();
-                paisOrigen = perVolutarioInternacional.getPaisOrigen();
-
-            }*/
-
+                fechaAlta = Voluntario.getFechaAlta();
+                fechaBaja = Voluntario.getFechaBaja();
+                
+            } else if (!(Miembros.miembro.get(i) instanceof Colaborador)) {
+                Colaborador colaborador = (Colaborador) Miembros.miembro.get(i);
+                fechaAltaC = Colaborador.getFechaAlta();
+                fechaBajaC = Colaborador.getFechaBaja();
+                origen = Colaborador.getOrigen();
+                paisOrigen= Colaborador.getPaisOrigen();
+            }
+            
             try {
 
-                utilitySql.insertPersona(nombre, usuario, password, primerApellido, segundoApellido, dni, rol, telefono);
+                utilitySql.insertPersona(nombreMiembro, nombreUsuario, pass, apellido1, apellido2, dni, rol, telefono);
 
-                int idPersona = utilitySql.consultarIdGenerado("Persona");
+                int idPersonal = utilitySql.consultarIdGenerado("miembros");
 
-                utilitySql.insertPersonal(idPersona);
+                utilitySql.insertPersonal(idPersonal, fechaAltaP, fechaBajaP);
 
-               // int idPersonal = utilitySql.consultarIdGenerado("Personal");
+                int idVoluntario = utilitySql.consultarIdGenerado("miembros");
 
-              //  utilitySql.insertPerVoluntario(numHoras, idPersona, idPersonal);
+                utilitySql.insertVoluntario(idVoluntario, fechaAlta, fechaBaja, origen, paisOrigen);
+                
+                int idColaborador = utilitySql.consultarIdGenerado("miembros");
+
+                utilitySql.insertColaborador(idColaborador, fechaAltaC, fechaBajaC);
 
                 //Hasta este punto todos las instancias son PerVoluntario, ahora verificamos si adem谩s son voluntarios
                 //internacionales, para actuar en consecuencia.
@@ -101,6 +116,7 @@ public class MySqlMiembroDAO implements IMiembroDAO{
         }
 
     }
+    
 
     @Override
     public Miembro readMiembroDAO() {
