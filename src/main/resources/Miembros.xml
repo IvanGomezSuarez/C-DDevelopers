@@ -7,7 +7,7 @@
         <Password>ivan</Password>
         <Apellido1>tano</Apellido1>
         <Apellido2>garcia</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>08027</cp>
             <escalera>a</escalera>
@@ -21,7 +21,7 @@
         <Rol>Admin</Rol>
         <Telefono>618058878</Telefono>
         <Colaborador>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Colaborador>
     </Miembro>
     <Miembro>
@@ -31,7 +31,7 @@
         <Password>Nere*//</Password>
         <Apellido1>Santos</Apellido1>
         <Apellido2>Tome</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>082546</cp>
             <escalera>b</escalera>
@@ -45,7 +45,7 @@
         <Rol>Normal</Rol>
         <Telefono>654898564</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -55,7 +55,7 @@
         <Password>fede2020</Password>
         <Apellido1>garcia</Apellido1>
         <Apellido2>villalonga</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>08027</cp>
             <escalera>b</escalera>
@@ -69,7 +69,7 @@
         <Rol>Admin</Rol>
         <Telefono>625789654</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -79,7 +79,7 @@
         <Password>1</Password>
         <Apellido1>garcia</Apellido1>
         <Apellido2>lorca</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -93,7 +93,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -103,7 +103,7 @@
         <Password>2</Password>
         <Apellido1>2</Apellido1>
         <Apellido2>2</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>2</cp>
             <escalera>2</escalera>
@@ -124,7 +124,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -138,7 +138,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -148,7 +148,7 @@
         <Password>8</Password>
         <Apellido1>8</Apellido1>
         <Apellido2>8</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>8</cp>
             <escalera>8</escalera>
@@ -169,7 +169,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -190,7 +190,7 @@
         <Password>9</Password>
         <Apellido1>9</Apellido1>
         <Apellido2>9</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>9</cp>
             <escalera>9</escalera>
@@ -204,7 +204,7 @@
         <Rol>Admin</Rol>
         <Telefono>9</Telefono>
         <Colaborador>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Colaborador>
     </Miembro>
     <Miembro>
@@ -214,7 +214,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -228,7 +228,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -238,7 +238,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -252,7 +252,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -262,7 +262,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -276,7 +276,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -286,7 +286,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp></cp>
             <escalera>1</escalera>
@@ -300,7 +300,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -310,7 +310,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -324,7 +324,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -334,7 +334,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -348,7 +348,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -357,7 +357,7 @@
         <Password>1</Password>
         <Apellido1>pere</Apellido1>
         <Apellido2>rodrigo</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -371,7 +371,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -380,7 +380,7 @@
         <Password>1</Password>
         <Apellido1>castaño</Apellido1>
         <Apellido2>garcia</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -400,30 +400,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
-        <Direccion>
-            <cp>1</cp>
-            <escalera>1</escalera>
-            <localidad>1</localidad>
-            <numero>1</numero>
-            <pais>1</pais>
-            <provincia>1</provincia>
-            <puerta>1</puerta>
-            <tipoVia>1</tipoVia>
-        </Direccion>
-        <Rol>Normal</Rol>
-        <Telefono>1</Telefono>
-        <Personal>
-            <Dni>1</Dni>
-        </Personal>
-    </Miembro>
-    <Miembro>
-        <Nombre>1</Nombre>
-        <NombreUsuario>1</NombreUsuario>
-        <Password>1</Password>
-        <Apellido1>1</Apellido1>
-        <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -437,7 +414,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -446,7 +423,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -460,7 +437,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -469,7 +446,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -483,7 +460,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -492,7 +469,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -506,7 +483,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -515,7 +492,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -529,7 +506,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -538,7 +515,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -552,7 +529,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -561,7 +538,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -575,7 +552,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -584,7 +561,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -598,7 +575,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -607,7 +584,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -621,7 +598,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -630,7 +607,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -644,7 +621,7 @@
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
     <Miembro>
@@ -653,7 +630,30 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
+        <Direccion>
+            <cp>1</cp>
+            <escalera>1</escalera>
+            <localidad>1</localidad>
+            <numero>1</numero>
+            <pais>1</pais>
+            <provincia>1</provincia>
+            <puerta>1</puerta>
+            <tipoVia>1</tipoVia>
+        </Direccion>
+        <Rol>Normal</Rol>
+        <Telefono>1</Telefono>
+        <Personal>
+            <Dni>47635897f</Dni>
+        </Personal>
+    </Miembro>
+    <Miembro>
+        <Nombre>1</Nombre>
+        <NombreUsuario>1</NombreUsuario>
+        <Password>1</Password>
+        <Apellido1>1</Apellido1>
+        <Apellido2>1</Apellido2>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -672,7 +672,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -691,7 +691,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
@@ -710,7 +710,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Telefono>1</Telefono>
     </Miembro>
     <Miembro>
@@ -719,7 +719,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Telefono>1</Telefono>
     </Miembro>
     <Miembro>
@@ -728,7 +728,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Telefono>1</Telefono>
     </Miembro>
     <Miembro>
@@ -737,7 +737,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Telefono>1</Telefono>
     </Miembro>
     <Miembro>
@@ -746,7 +746,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Telefono>1</Telefono>
     </Miembro>
     <Miembro>
@@ -755,7 +755,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Telefono>1</Telefono>
     </Miembro>
     <Miembro>
@@ -764,7 +764,7 @@
         <Password>ivan2020</Password>
         <Apellido1>garcia</Apellido1>
         <Apellido2>margallo</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Telefono>618058878</Telefono>
     </Miembro>
     <Miembro>
@@ -773,7 +773,7 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Telefono>1</Telefono>
     </Miembro>
     <Miembro>
@@ -782,7 +782,7 @@
         <Password>ivan2020</Password>
         <Apellido1>garcia</Apellido1>
         <Apellido2>maras</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Telefono>618058878</Telefono>
     </Miembro>
     <Miembro>
@@ -791,7 +791,7 @@
         <Password>luis2020</Password>
         <Apellido1>garcia</Apellido1>
         <Apellido2>sinra</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Telefono>2</Telefono>
     </Miembro>
     <Miembro>
@@ -800,11 +800,37 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>1</Dni>
+        <Dni>47635897f</Dni>
         <Rol>Normal</Rol>
         <Telefono>1</Telefono>
         <Personal>
-            <Dni>1</Dni>
+            <Dni>47635897f</Dni>
+        </Personal>
+    </Miembro>
+    <Miembro>
+        <Nombre>1</Nombre>
+        <NombreUsuario>1</NombreUsuario>
+        <Password>1</Password>
+        <Apellido1>1</Apellido1>
+        <Apellido2>1</Apellido2>
+        <Dni>47635897f</Dni>
+        <Rol>Normal</Rol>
+        <Telefono>1</Telefono>
+        <Personal>
+            <Dni>47635897f</Dni>
+        </Personal>
+    </Miembro>
+    <Miembro>
+        <Nombre>ivan</Nombre>
+        <NombreUsuario>ivan</NombreUsuario>
+        <Password>pol140809</Password>
+        <Apellido1>garcia</Apellido1>
+        <Apellido2>llopis</Apellido2>
+        <Dni>47635897f</Dni>
+        <Rol>Normal</Rol>
+        <Telefono>618058878</Telefono>
+        <Personal>
+            <Dni>47635897f</Dni>
         </Personal>
     </Miembro>
 </Miembros>

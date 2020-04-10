@@ -48,7 +48,7 @@ public class MySqlMiembroDAO implements IMiembroDAO{
         for (int i = 0; i < Miembros.miembro.size(); i++) {
 
             String nombreMiembro, nombreUsuario, pass, apellido1, apellido2, dni, rol, telefono, origen, paisOrigen = null;
-			java.util.Date fechaAlta, fechaBaja, fechaAltaP, fechaBajaP, fechaAltaC, fechaBajaC;
+			Date fechaAlta, fechaBaja, fechaAltaP, fechaBajaP, fechaAltaC, fechaBajaC;
 		
 
             nombreMiembro = Miembros.miembro.get(i).getNombreMiembro();
