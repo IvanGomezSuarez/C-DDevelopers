@@ -429,9 +429,9 @@ class Conexion {
     public Conexion() {
         this.host = "127.0.0.1";
         this.puerto = "3306";
-        this.nombreBD = "producto3";
+        this.nombreBD = "ong";
         this.user = "root";
-        this.pass = "Ivan2018";
+        this.pass = "tesTed4a";
 
     }
 

@@ -189,6 +189,7 @@ public class MiembroDAO{
 					}
 					System.out.println("Despues del while actualizamos"+ i);
 					int result = Integer.parseInt(idProyecto);
+					System.out.println(idProyecto);
 					MySqlMiembroDAOYosu.updateMiembroDAOMysql(t.getMiembro().get(i),result);
 				}
 			}

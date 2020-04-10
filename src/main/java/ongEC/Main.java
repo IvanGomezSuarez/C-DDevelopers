@@ -92,7 +92,7 @@ public class Main {
 
 				}else if (estadoAplicacion==3){
 					System.out.println("3.Dar de alta/modificar/eliminar un Miembro");
-					UtilitySql.truncateAllContentDB();
+					//UtilitySql.truncateAllContentDB();
 					MySqlConection.connect();
 					opcionesSecundario();
 					seleccionSubMenu=comprobacionOpcion();	//Comprobamos si es int
