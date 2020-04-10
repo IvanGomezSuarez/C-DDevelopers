@@ -229,7 +229,7 @@ public abstract class MySqlMiembroDAOYosu implements IMiembroDAO{
     	return(idGenerado);
     }
     
-    public static void updateMiembroDAO() throws SQLException {
+    public static void updateMiembroDAOMysql(Miembro miembro) throws SQLException {
     	Connection conexion;
     	conexion=MySqlConection.getcon();    		    	
     	Statement selectStmt = conexion.createStatement();  
