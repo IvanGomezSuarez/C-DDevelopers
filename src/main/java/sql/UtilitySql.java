@@ -60,79 +60,6 @@ public class UtilitySql {
 
         Connection newConnection = sesionSql.conectarBD(nuevaConexion);
 
-        // Vamos a definir una sentencia SQL que utilizaremos a continuación. En este caso,
-        // creamos las diferentes tablas:
-
-        //sesionSql.crearEstructuraBD();
-
-        // Pasaremos ahora a introducir unos pocos registros manualmente, utilizando para ello
-        // el método sentenciaDML, que nos servirá para usar sentencias tipo SELECT, INSERT,
-        // DELETE o UPDATE. Esto es sólo de prueba, ya que en principio debemos pasar los elementos
-        // mediante los XML generados en Java.
-
-        /*String sentenciaSql = "INSERT INTO miembros\n" +
-                "\t\t( nombreMiembro, nombreUsuario, password, apellido1,\n" +
-                "        apellido2, dni, telefono )\n" +
-                "        VALUES ( \"Federico\", \"fede\", \"fede2020\",\n" +
-                "        \"manrique\", \"gonsalves\", \"43546897g\", \"618056987\");";
-
-        sesionSql.sentenciaDML(newConnection, sentenciaSql);
-        out.println("Sentencia DML ejecutada con éxito.");
-
-        sentenciaSql = "INSERT INTO Personal (IdPersona) VALUES (1);";
-
-        sesionSql.sentenciaDML(newConnection, sentenciaSql);
-        out.println("Sentencia DML ejecutada con éxito.");
-
-        sentenciaSql = "INSERT INTO PerVoluntario (IdPersonal, IdPersona, NumHorasVol)\n" +
-                "\t\tVALUES(1, 1, 60);";
-
-        sesionSql.sentenciaDML(newConnection, sentenciaSql);
-        out.println("Sentencia DML ejecutada con éxito.");
-
-        // Creamos otro empleado más
-
-        sentenciaSql = "INSERT INTO Persona\n" +
-                "\t\t( Nombre, PrimerApellido, SegundoApellido, Direccion,\n" +
-                "        Telefono, Mail )\n" +
-                "        VALUES ( \"Miguel\", \"Arias\", \"Valdemar\",\n" +
-                "        \"C/ Navas de Tolosa, 6 2ºB 23003 Jaén\", \"696238755\",\n" +
-                "        \"valdemarrules@yahoo.com\" );";
-
-        sesionSql.sentenciaDML(newConnection, sentenciaSql);
-        out.println("Sentencia DML ejecutada con éxito.");
-
-        sentenciaSql = "INSERT INTO Personal (IdPersona) VALUES (2);";
-
-        sesionSql.sentenciaDML(newConnection, sentenciaSql);
-        out.println("Sentencia DML ejecutada con éxito.");
-
-        sentenciaSql = "INSERT INTO PerVoluntario (IdPersonal, IdPersona, NumHorasVol)\n" +
-                "\t\tVALUES(2, 2, 80);";
-
-        sesionSql.sentenciaDML(newConnection, sentenciaSql);
-        out.println("Sentencia DML ejecutada con éxito.");
-
-        // Con esto tenemos creado un registro en varias tablas, que representa a un empleado
-        // voluntario de la ONG Entreculturas.
-
-        //Vamos a probar a hacer una consulta. Creamos una nueva sentencia, para seleccionar
-        //campos de las tablas involucradas
-
-        sentenciaSql = "SELECT E.IdPersonal, P.PrimerApellido, P.SegundoApellido," +
-                " P.Nombre FROM Persona AS P INNER JOIN Personal AS E" +
-                " ON P.IdPersona = E.IdPersona;";
-
-        // Pasamos la sentencia y la conexión ya creada que venimos utilizando al nuevo método
-        // sentenciaSELECT
-*/
-       // ResultSet newResultSet = (sesionSql.sentenciaSELECT(newConnection, sentenciaSql));
-        //out.println("Consulta SQL ejecutada con éxito. Listo para mostrar datos.");
-
-        // Vamos a comprobar si el ResultSet es Válido.
-
-        //sesionSql.consultaBD(newConnection, newResultSet);
-
     }
 
 
@@ -319,65 +246,6 @@ public class UtilitySql {
 
     }
 
-    public void crearEstructuraBD(){
-
-        Conexion nuevaConexion = new Conexion();
-        UtilitySql sesionSql = new UtilitySql(nuevaConexion);
-        Connection newConnection = sesionSql.conectarBD(nuevaConexion);
-
-        String sentenciaSql = "INSERT INTO miembros\n" +
-                        "\t\t( nombreMiembro, nombreUsuario, password, apellido1,\n" +
-                        "        apellido2, dni, telefono )\n" +
-                        "        VALUES ( \"Federico\", \"fede\", \"fede2020\",\n" +
-                        "        \"manrique\", \"gonsalves\", \"43546897g\", \"618056987\");";
-
-        // Como la sentencia anterior es una sentencia DDL (de definición de datos), llamamos
-        // al metodo sentenciaDDL, que nos devolverá true si la sentencia es ejecutada con éxito.
-
-        sentenciaDDL(newConnection, sentenciaSql);
-        out.println("Sentencia DDL ejecutada con éxito.");
-
-
-        //Creamos un stored procedure que permitira operaciones tipo CRUD con las tablas personal
-        sentenciaSql =
-                "/* Vamos a crear un Procedimiento Almacenado con varios parámetros de entrada (IN) \n" +
-                        "Su funcionalidad es ejecutar operaciones CRUD, en la tabla Personal, en función del último parámetro facilitado*/\n" +
-                        "CREATE PROCEDURE crud_personal(\n" +
-                        "IN paramnombreMiembro VARCHAR(16), \n" +
-                        "IN paramnombreUsuario VARCHAR(16),\n" +
-                        "IN parampassword VARCHAR(16),\n" +
-                        "IN paramapellido1 VARCHAR(16),\n" +
-                        "IN paramapellido2 VARCHAR(16),\n" +
-                        "IN paramdni VARCHAR(16),\n" +
-                        "IN paramtelefono VARCHAR(16),\n" +
-                        "IN paramrol NULL, \n" +
-                        "IN accion CHAR(6)\n" +
-                        ")\n" +
-                        "BEGIN\n" +
-                        "    CASE accion\n" +
-                        "    WHEN 'create' THEN\n" +
-                        "\t\tINSERT INTO producto3.miembros(nombreMiembro, nombreUsuario, password, apellido1, apellido2, dni, rol)\n" +
-                        "\t\tVALUES(paramnombreMiembro, paramnombreUsuario, parampassword, paramapellido1, paramapellido2, paramdni, paramrol );\n" +
-                        "\tWHEN 'read' THEN\n" +
-                        "\t\tSELECT * FROM producto3.miembros\n" +
-                        "        WHERE nombreMiembro=paramnombreMiembro;    \n" +
-                        "\tWHEN 'update' THEN\n" +
-                        "        UPDATE producto3.miembros \n" +
-                        "        SET nombreMiembro=paramnombreMiembro, nombreUsuario=paramnombreUsuario, password=parampassword, apellido1=paramapellido1, apellido2=paramapellido2, dni=paramdni, rol=paramrol\n" +
-                        "\t\tWHERE nombreUsuario=paramnombreUsuario;\n" +
-                        "\tWHEN 'delete' THEN\n" +
-                        "        DELETE FROM producto3.miembros \n" +
-                        "        WHERE nombreMiembro=paramnombreMiembro;\n" +
-                        "\tELSE\n" +
-                        "\t\tSIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Buhhh!! Tan solo se permiten las opciones CRUD: Create, Read, Update o Delete :(';\n" +
-                        "\tEND CASE;\n" +
-                        "END;";
-
-        sentenciaDDL(newConnection, sentenciaSql);
-        out.println("Sentencias de creacion estructura BD ejecutadas con exito.");
-
-    }
-
     public void insertPersona (String nombreMiembro, String nombreUsuario, String pass, String apellido1,
                                        String apellido2, String dni, String rol, String telefono  ) throws SQLException {
 
@@ -437,7 +305,7 @@ public class UtilitySql {
         return idGenerado;
     }
 
-    public void insertPersonal(int idPersonal, java.util.Date fechaAlta, java.util.Date fechaBaja) throws SQLException {
+    public void insertPersonal(int idPersonal, Date fechaAlta, Date fechaBaja) throws SQLException {
 
         Conexion nuevaConexion = new Conexion();
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
@@ -477,7 +345,7 @@ public class UtilitySql {
 
     }
 
-        public void insertColaborador(int idColaborador, java.util.Date fechaAlta, java.util.Date fechaBaja) throws SQLException {
+        public void insertColaborador(int idColaborador, Date fechaAlta, Date fechaBaja) throws SQLException {
 
         Conexion nuevaConexion = new Conexion();
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
@@ -492,7 +360,7 @@ public class UtilitySql {
 
     }
 
-    public void insertVoluntario( int idVoluntario, java.util.Date fechaAlta, java.util.Date fechaBaja, String origen, String paisOrigen) throws SQLException {
+    public void insertVoluntario( int idVoluntario, Date fechaAlta, Date fechaBaja, String origen, String paisOrigen) throws SQLException {
 
         Conexion nuevaConexion = new Conexion();
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
