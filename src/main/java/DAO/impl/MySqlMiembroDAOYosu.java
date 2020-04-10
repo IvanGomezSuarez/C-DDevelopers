@@ -229,14 +229,33 @@ public abstract class MySqlMiembroDAOYosu implements IMiembroDAO{
     	return(idGenerado);
     }
     
-    public static void updateMiembroDAOMysql(Miembro miembro) throws SQLException {
+    public static void updateMiembroDAOMysql(Miembro miembro, int miembroIdViejo) throws SQLException {
     	Connection conexion;
     	conexion=MySqlConection.getcon();    		    	
     	Statement selectStmt = conexion.createStatement();  
-    	System.out.println("Updateamos");
+    	System.out.println("Updateamos Direccion");
+    	ResultSet rs5 = selectStmt.executeQuery("Update direccionesUsuarios SET idDireccion="+miembro.getDireccion().getIdDireccion()+
+    	" tipovia="+miembro.getDireccion().getTipoVia()+ " numero" +miembro.getDireccion().getNumero()+" puerta="+miembro.getDireccion().getPuerta()+
+    	" escalera= "+ miembro.getDireccion().getEscalera() + " localidad=" + miembro.getDireccion().getLocalidad() +" provincia=" +
+    	miembro.getDireccion().getProvincia() +" cp=" +miembro.getDireccion().getCp() + " pais= " + miembro.getDireccion().getPais() + 
+    	"where idDireccion="+miembroIdViejo);
     	System.out.println("Comprobamos si es Voluntario,Personal,Colaborador");
     	if(miembro.getVoluntario()!=null) {
     		System.out.println("Es voluntario");
+    		System.out.println("Comprobamos si antes era voluntario");
+    		ResultSet rs = selectStmt.executeQuery("Select * from voluntario where idVoluntario="+miembroIdViejo);
+    		if (rs!=null) {
+    			System.out.println("Era voluntario, por lo que actualizamos la base de datos");   			
+    			ResultSet rs3 = selectStmt.executeQuery("update voluntario set idVoluntario="+miembro.getIdMiembro()+" fechaAlta="+ 
+    			miembro.getVoluntario().getFechaAlta()+ " fechaBaja="+ miembro.getVoluntario().getFechaBaja()+" origen="+ miembro.getVoluntario().getNacional()+
+    			" paisOrigen=" +miembro.getVoluntario().getInternacional()+ "where idVoluntario="+ miembroIdViejo);
+    			System.out.println("Actualizamos ");   					  			
+    		}else {
+    			System.out.println("No era voluntario por lo que Borramos las relaciones de Colaborador y Personal");
+    			ResultSet rs1 = selectStmt.executeQuery("Delete from colaborador where idColaborador="+miembro.getIdMiembro());
+    			ResultSet rs2 = selectStmt.executeQuery("Delete from personal where idPersonal="+miembro.getIdMiembro());
+    			ResultSet rs4 = selectStmt.executeQuery("insert into");
+    		}
     	}else if (miembro.getPersonal()!=null) {
     		System.out.println("Es Personal");
     		ResultSet rs = selectStmt.executeQuery("Select MAX(idMiembro) from miembros");

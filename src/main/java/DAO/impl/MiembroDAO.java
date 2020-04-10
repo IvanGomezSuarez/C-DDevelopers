@@ -65,6 +65,7 @@ public class MiembroDAO{
 		String comprobacionStr="";
 		int seleccion;
 		
+		
 		System.out.println("Introduce el ID miembro que se va a modificar");
 		
 		try {
@@ -187,7 +188,8 @@ public class MiembroDAO{
 						}
 					}
 					System.out.println("Despues del while actualizamos"+ i);
-					MySqlMiembroDAOYosu.updateMiembroDAOMysql(t.getMiembro().get(i));
+					int result = Integer.parseInt(idProyecto);
+					MySqlMiembroDAOYosu.updateMiembroDAOMysql(t.getMiembro().get(i),result);
 				}
 			}
 		}else {
