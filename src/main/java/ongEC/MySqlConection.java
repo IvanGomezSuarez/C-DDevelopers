@@ -58,7 +58,7 @@ public class MySqlConection {
             return DriverManager.getConnection(url, user,pass);
         }catch(Exception ex){
             System.out.println(ex.getMessage());
-            System.out.println("couldn't connect!");
+            System.out.println("no puede conectar!");
             throw new RuntimeException(ex);
         }
     }
