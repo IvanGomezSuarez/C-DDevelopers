@@ -9,28 +9,33 @@ package ongEC;
 //import java.sql.Date;
 import java.util.Date;
 
-public class Personal extends Miembro {
+public class Personal{
 	
 	//Definicion de los Atributos
 	
+
+	int idPersonal;
 	private static Date fechaAlta;
 	private static Date fechaBaja;		
+
 	
 	//Definiendo los Constructores
 	
-	public Personal(Date fechaAlta, Date fechaBaja) {
-		super();
+	
+	
+	public Personal() {
+	}
+
+	public Personal(int idPersonal, Date fechaAlta, Date fechaBaja) {
+		this.idPersonal = idPersonal;
 		this.fechaAlta = fechaAlta;
 		this.fechaBaja = fechaBaja;
 	}
-	
-	public Personal() {
-		super();
-	}
-
 	//Defincion de los Gets y Sets
+
 	
 	public static Date getFechaAlta() {
+
 		return fechaAlta;
 	}
 	
@@ -48,4 +53,11 @@ public class Personal extends Miembro {
 		this.fechaBaja = fechaBaja;
 	}
 
+	public int getIdPersonal() {
+		return idPersonal;
+	}
+
+	public void setIdPersonal(int idPersonal) {
+		this.idPersonal = idPersonal;
+	}
 }

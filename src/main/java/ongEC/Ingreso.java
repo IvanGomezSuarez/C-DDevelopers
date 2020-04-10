@@ -60,7 +60,8 @@ public class Ingreso {
 
 	public static void addIngresoPublico() throws JAXBException {
 		
-		IngresoPublico ingresoPublico=new IngresoPublico();
+		IngresoPublico ingresoPublico= new IngresoPublico();
+		
 	    Direccion direccion=new Direccion();
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		
@@ -104,7 +105,7 @@ public class Ingreso {
 		
 		System.out.println("Introduzca la puerta");
 		try {
-			ingresoPublico.direccion.setPuerta(recuperado.nextInt());
+			ingresoPublico.direccion.setPuerta(recuperado.next());
 		} catch (Exception e) {
 			System.out.println("Formato Entero incorrecto");
 			return;
@@ -112,7 +113,7 @@ public class Ingreso {
 		
 		System.out.println("Introduzca la escalera");
 		try {
-			ingresoPublico.direccion.setEscalera(recuperado.nextInt());
+			ingresoPublico.direccion.setEscalera(recuperado.next());
 		} catch (Exception e) {
 			System.out.println("Formato Entero incorrecto");
 			return;
@@ -189,7 +190,7 @@ public class Ingreso {
 		
 		System.out.println("Introduzca la puerta");
 		try {
-			ingresoPrivado.direccion.setPuerta(recuperado.nextInt());
+			ingresoPrivado.direccion.setPuerta(recuperado.next());
 		} catch (Exception e) {
 			System.out.println("Formato Entero incorrecto");
 			return;
@@ -197,7 +198,7 @@ public class Ingreso {
 		
 		System.out.println("Introduzca la escalera");
 		try {
-			ingresoPrivado.direccion.setEscalera(recuperado.nextInt());
+			ingresoPrivado.direccion.setEscalera(recuperado.next());
 		} catch (Exception e) {
 			System.out.println("Formato Entero incorrecto");
 			return;
