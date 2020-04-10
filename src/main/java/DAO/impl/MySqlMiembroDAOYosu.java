@@ -234,6 +234,15 @@ public abstract class MySqlMiembroDAOYosu implements IMiembroDAO{
     	conexion=MySqlConection.getcon();    		    	
     	Statement selectStmt = conexion.createStatement();  
     	System.out.println("Updateamos");
+    	System.out.println("Comprobamos si es Voluntario,Personal,Colaborador");
+    	if(miembro.getVoluntario()!=null) {
+    		System.out.println("Es voluntario");
+    	}else if (miembro.getPersonal()!=null) {
+    		System.out.println("Es Personal");
+    		ResultSet rs = selectStmt.executeQuery("Select MAX(idMiembro) from miembros");
+    	}else {
+    		System.out.println("Es Colaborador");
+    	}
     	ResultSet rs = selectStmt.executeQuery("Select MAX(idMiembro) from miembros");
     }
 }
