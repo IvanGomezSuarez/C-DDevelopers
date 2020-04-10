@@ -11,7 +11,7 @@ import sql.UtilitySql;
 
 
 public class MySqlConection {
-    
+
     public static void connect() throws SQLException{
     String url = "jdbc:mysql://127.0.0.1:3306/ong?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     //String url = "jdbc:mysql://127.0.0.1:3306/mysql";
@@ -23,12 +23,23 @@ public class MySqlConection {
     try(Connection connection = DriverManager.getConnection(url, user,pass)){
     System.out.println("\nConectado!!\n");
     Loggin.pulsaIntroParaContinuar();
-    
+
 
     }catch(SQLException e){
         System.out.println(e.getMessage());
         //UtilitySql.truncateAllContentDB();// esta puesto para las pruebas parta que borre los datos insertados si hay error
     }
     }
-    } 
-
+    public static Connection getcon(){
+        try{
+        	String url = "jdbc:mysql://127.0.0.1:3306/ong?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        	String user = "root";
+            String pass = "tesTed4a";
+            return DriverManager.getConnection(url, user,pass);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+            System.out.println("no puede conectar!");
+            throw new RuntimeException(ex);
+        }
+    }
+}

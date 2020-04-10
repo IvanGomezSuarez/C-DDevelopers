@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -57,12 +58,13 @@ public class MiembroDAO{
 		}
 	}
 
-	public static void update(Miembros t) throws IOException {
+	public static void update(Miembros t) throws IOException, SQLException {
 		// TODO Auto-generated method stub
 		String idProyecto="";
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		String comprobacionStr="";
 		int seleccion;
+		
 		
 		System.out.println("Introduce el ID miembro que se va a modificar");
 		
@@ -185,6 +187,9 @@ public class MiembroDAO{
 								System.out.println("Opcion No valida ");
 						}
 					}
+					System.out.println("Despues del while actualizamos"+ i);
+					int result = Integer.parseInt(idProyecto);
+					MySqlMiembroDAOYosu.updateMiembroDAOMysql(t.getMiembro().get(i),result);
 				}
 			}
 		}else {
