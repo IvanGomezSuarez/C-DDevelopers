@@ -239,6 +239,10 @@ public abstract class MySqlMiembroDAOYosu implements IMiembroDAO{
     	" escalera= "+ miembro.getDireccion().getEscalera() + " localidad=" + miembro.getDireccion().getLocalidad() +" provincia=" +
     	miembro.getDireccion().getProvincia() +" cp=" +miembro.getDireccion().getCp() + " pais= " + miembro.getDireccion().getPais() + 
     	"where idDireccion="+miembroIdViejo);
+    	System.out.println("Updateamos Miembro");
+    	ResultSet rs6 = selectStmt.executeQuery("update miembros set idMiembro=" + miembro.getIdMiembro() + " nombreMiembro="+ miembro.getNombreMiembro() + " nombreUsuario="+ miembro.getNombreUsuario() + " password=" + miembro.getPassword() +
+    			" apellido1=" + miembro.getApellido1() + " apellido2"+ miembro.getApellido2() + " dni=" + miembro.getDni() + " direccion=" +miembro.getDireccion().getIdDireccion() + " rol= "
+    			+ miembro.getRol() + " telefono=" + miembro.getTelefono()+ "where idMiembro="+miembroIdViejo);
     	System.out.println("Comprobamos si es Voluntario,Personal,Colaborador");
     	if(miembro.getVoluntario()!=null) {
     		System.out.println("Es voluntario");
@@ -247,21 +251,32 @@ public abstract class MySqlMiembroDAOYosu implements IMiembroDAO{
     		if (rs!=null) {
     			System.out.println("Era voluntario, por lo que actualizamos la base de datos");   			
     			ResultSet rs3 = selectStmt.executeQuery("update voluntario set idVoluntario="+miembro.getIdMiembro()+" fechaAlta="+ 
-    			miembro.getVoluntario().getFechaAlta()+ " fechaBaja="+ miembro.getVoluntario().getFechaBaja()+" origen="+ miembro.getVoluntario().getNacional()+
-    			" paisOrigen=" +miembro.getVoluntario().getInternacional()+ "where idVoluntario="+ miembroIdViejo);
+    			miembro.getVoluntario().getFechaAlta()+ " fechaBaja="+ miembro.getVoluntario().getFechaBaja()+" origen="+ miembro.getVoluntario().getNacional().getOrigen()+
+    			" paisOrigen=" +miembro.getVoluntario().getInternacional().getPaisOrigen()+ "where idVoluntario="+ miembroIdViejo);
     			System.out.println("Actualizamos ");   					  			
     		}else {
     			System.out.println("No era voluntario por lo que Borramos las relaciones de Colaborador y Personal");
     			ResultSet rs1 = selectStmt.executeQuery("Delete from colaborador where idColaborador="+miembro.getIdMiembro());
     			ResultSet rs2 = selectStmt.executeQuery("Delete from personal where idPersonal="+miembro.getIdMiembro());
-    			ResultSet rs4 = selectStmt.executeQuery("insert into");
+    			ResultSet rs4 = selectStmt.executeQuery("insert into voluntario (idVoluntario,fechaAlta,fechaBaja,origen,paisOrigen) VALUES("+miembro.getIdMiembro()+"," + miembro.getVoluntario().getFechaAlta()
+    					+"," + miembro.getVoluntario().getFechaBaja()+"," +miembro.getVoluntario().getNacional().getOrigen()+"," +miembro.getVoluntario().getInternacional().getPaisOrigen());
     		}
     	}else if (miembro.getPersonal()!=null) {
     		System.out.println("Es Personal");
-    		ResultSet rs = selectStmt.executeQuery("Select MAX(idMiembro) from miembros");
+    		ResultSet rs = selectStmt.executeQuery("Select * from personal where idVoluntario="+miembroIdViejo);
+    		if (rs!=null) {
+    			System.out.println("Era personal, por lo que actualizamos la base de datos");   			
+    		}else {
+    			
+    		}
     	}else {
     		System.out.println("Es Colaborador");
+    		ResultSet rs = selectStmt.executeQuery("Select * from colaborador where idVoluntario="+miembroIdViejo);
+    		if (rs!=null) {
+    			System.out.println("Era personal, por lo que actualizamos la base de datos");   			
+    		}else {
+    			
+    		}
     	}
-    	ResultSet rs = selectStmt.executeQuery("Select MAX(idMiembro) from miembros");
     }
 }
