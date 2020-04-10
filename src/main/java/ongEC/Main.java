@@ -189,7 +189,7 @@ public class Main {
 				}
 			}
 		}
-		objetoFactory.getMiembroDAO().createMiembroDAO(miembrosNuevos);
+		//objetoFactory.getMiembroDAO().createMiembroDAO(miembrosNuevos);
 	}
 
 	// M�TODOS DEL MENU PRINCIPAL Y SECUNDARIO
