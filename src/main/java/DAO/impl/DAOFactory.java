@@ -2,7 +2,6 @@ package DAO.impl;
 
 import javax.xml.bind.JAXBException;
 
-import DAO.XmlDAOFactory;
 import ongEC.Miembro;
 
 public abstract class DAOFactory {

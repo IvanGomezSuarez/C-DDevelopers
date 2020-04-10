@@ -12,7 +12,7 @@ public class Voluntario{
 	
 	//Definendo los Atributos
 
-	
+	int idVoluntario;
 	public static Date fechaAlta;
 	public static Date fechaBaja;
 
@@ -37,15 +37,14 @@ public class Voluntario{
 	
 	//Definiendo los gets y los sets
 
-
-
-	public static Date getFechaAlta() {
-
-	}
-
 	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
+
+	public static Date getFechaAlta() {
+		return fechaAlta;
+	}
+
 
 	public static Date getFechaBaja() {
 		return fechaBaja;

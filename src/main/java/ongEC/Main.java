@@ -28,7 +28,6 @@ public class Main {
 
 		DAOFactory objetoFactory = DAOFactory.getDAOFactory(DAOFactory.XML);
 
-		DAOFactory objetoFactory = DAOFactory.getDAOFactory(DAOFactory.XML);
 		MySqlMiembroDAOYosu.incializarXMLdesdeSQL();
 		MySqlMiembroDAOYosu.consultarIdGenerado();
 		

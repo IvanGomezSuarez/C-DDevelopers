@@ -22,7 +22,7 @@ public class Colaborador{
 
 	// ATRIBUTOS
 
-	
+	int idColaborador;
 	private static Date fechaAlta;
 	private static Date fechaBaja;
 	public static String origen;
@@ -42,24 +42,6 @@ public class Colaborador{
 		
 		
 	}
-
-	
-	public static String getOrigen() {
-		return origen;
-	}
-
-	public void setOrigen(String origen) {
-		this.origen = origen;
-	}
-
-	public static String getPaisOrigen() {
-		return paisOrigen;
-	}
-
-	public void setPaisOrigen(String paisOrigen) {
-		this.paisOrigen = paisOrigen;
-	}
-
 	public Colaborador() {
 		super();
 	}
@@ -68,7 +50,24 @@ public class Colaborador{
 	public static String getOrigen() {
 		return origen;
 	}
-
+	public int getIdColaborador() {
+		return idColaborador;
+	}
+	public void setIdColaborador(int idColaborador) {
+		this.idColaborador = idColaborador;
+	}
+	public static Date getFechaAlta() {
+		return fechaAlta;
+	}
+	public static void setFechaAlta(Date fechaAlta) {
+		Colaborador.fechaAlta = fechaAlta;
+	}
+	public static Date getFechaBaja() {
+		return fechaBaja;
+	}
+	public static void setFechaBaja(Date fechaBaja) {
+		Colaborador.fechaBaja = fechaBaja;
+	}
 	public void setOrigen(String origen) {
 		this.origen = origen;
 	}
