@@ -274,8 +274,8 @@ public class UtilitySql {
             ps.setString(7, rol);
             ps.setString(8, telefono);
             ps.executeUpdate();
-            //out.println("Sentencia DML ejecutada con exito. Se ha insertado: "
-              //      + nombreMiembro + " " + nombreUsuario + " " + pass + " " + apellido1 + " " + apellido2 + " " + dni + " " + rol + " " + telefono);
+            out.println("\nSentencia DML ejecutada con exito. Se ha insertado: "
+                   + nombreMiembro + " " + nombreUsuario + " " + pass + " " + apellido1 + " " + apellido2 + " " + dni + " " + rol + " " + telefono);
 
     }
 

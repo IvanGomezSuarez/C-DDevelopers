@@ -37,12 +37,12 @@ public class MySqlMiembroDAO implements IMiembroDAO{
         UtilitySql utilitySql = new UtilitySql();
 
         //En primer lugar borraremos los contenidos que puedan existir en la Base de datos.
-        try {
+      /*  try {
             utilitySql.truncateAllContentDB();
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
 
         //Recorremos miembros para insertarlo en la BD MySQL.
         for (int i = 0; i < Miembros.miembro.size(); i++) {
@@ -51,21 +51,19 @@ public class MySqlMiembroDAO implements IMiembroDAO{
 			Date fechaAlta, fechaBaja, fechaAltaP, fechaBajaP, fechaAltaC, fechaBajaC;
 		
 
-            nombreMiembro = Miembros.miembro.get(i).getNombreMiembro();
-            nombreUsuario = Miembros.miembro.get(i).getNombreUsuario();
-            pass = Miembros.miembro.get(i).getPassword();
+            nombreMiembro = miembrosNuevos.getMiembro().get(i).getNombreMiembro();
+            nombreUsuario = miembrosNuevos.getMiembro().get(i).getNombreUsuario();
+            pass = miembrosNuevos.getMiembro().get(i).getPass();
            // direccion = Miembros.miembro.get(i).direccion;
-            apellido1 = Miembros.miembro.get(i).getApellido1();
-            apellido2 = Miembros.miembro.get(i).getApellido2();
-            Miembros.miembro.get(i);
-			dni = Miembro.getDni();
-            //direccion = Miembros.miembro.get(i).getDireccion();
-            rol = Miembros.miembro.get(i).getRol();
-            telefono = Miembros.miembro.get(i).getTelefono();
+            apellido1 = miembrosNuevos.getMiembro().get(i).getApellido1();
+            apellido2 = miembrosNuevos.getMiembro().get(i).getApellido2();
+			dni = miembrosNuevos.getMiembro().get(i).getDni();
+            rol = miembrosNuevos.getMiembro().get(i).getRol();
+            telefono = miembrosNuevos.getMiembro().get(i).getTelefono();
             // ¿COMO LECHES COJO LOS DATOS DE TODO EL ARRAY?
            
             //En funcion de que sea personal contratado, colaborador o voluntario la tabla destino y campos varian
-           if (!(Miembros.miembro.get(i) instanceof Personal)) {
+       /*    if (!(Miembros.miembro.get(i) instanceof Personal)) {
                 //Se ejecuta cuando es personal nacional
                 fechaAltaP = Personal.getFechaAlta();
                 fechaBajaP = Personal.getFechaBaja();
@@ -83,26 +81,26 @@ public class MySqlMiembroDAO implements IMiembroDAO{
                 origen = Colaborador.getOrigen();
                 paisOrigen= Colaborador.getPaisOrigen();
             }
-            
+            */
             try {
 
                 utilitySql.insertPersona(nombreMiembro, nombreUsuario, pass, apellido1, apellido2, dni, rol, telefono);
 
-                int idPersonal = utilitySql.consultarIdGenerado("miembros");
+             //   int idPersonal = utilitySql.consultarIdGenerado("miembros");
 
-                utilitySql.insertPersonal(idPersonal, fechaAltaP, fechaBajaP);
+              //  utilitySql.insertPersonal(idPersonal, fechaAltaP, fechaBajaP);
 
-                int idVoluntario = utilitySql.consultarIdGenerado("miembros");
+             //   int idVoluntario = utilitySql.consultarIdGenerado("miembros");
 
-                utilitySql.insertVoluntario(idVoluntario, fechaAlta, fechaBaja, origen, paisOrigen);
+              //  utilitySql.insertVoluntario(idVoluntario, fechaAlta, fechaBaja, origen, paisOrigen);
                 
-                int idColaborador = utilitySql.consultarIdGenerado("miembros");
+              //  int idColaborador = utilitySql.consultarIdGenerado("miembros");
 
-                utilitySql.insertColaborador(idColaborador, fechaAltaC, fechaBajaC);
+              //  utilitySql.insertColaborador(idColaborador, fechaAltaC, fechaBajaC);
 
                 //Hasta este punto todos las instancias son PerVoluntario, ahora verificamos si ademÃ¡s son voluntarios
                 //internacionales, para actuar en consecuencia.
-           /*     if ((Miembros.miembro.get(i) instanceof Personal)) {
+             /*  if ((Miembros.miembro.get(i) instanceof Personal)) {
 
                     int idPerVol = utilitySql.consultarIdGenerado("PerVoluntario");
 

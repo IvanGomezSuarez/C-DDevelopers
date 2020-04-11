@@ -318,7 +318,7 @@ public class MiembroDAO{
 		nuevoMiembro.setNombreUsuario(br.readLine());
 		System.out.println("\nIntroduce tu contraseña: ");
 		nuevoMiembro.setPassword(br.readLine());
-		System.out.println("\nIntroduce el Rol del usuario: ");
+		/*System.out.println("\nIntroduce el Rol del usuario: ");
 		System.out.println("\n1.Usuario Normal: ");
 		System.out.println("\n2.Usuario Admin: ");
 		seleccion=recuperado.nextInt();
@@ -342,7 +342,7 @@ public class MiembroDAO{
 			nuevoMiembro.setColaborador(addColaborador());
 		}else
 			System.out.println("Opcion No valida ");
-		
+		*/
 		return nuevoMiembro;
 
 	}
