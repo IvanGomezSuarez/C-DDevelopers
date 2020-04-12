@@ -9,6 +9,8 @@ package ongEC;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.annotation.XmlElement;
+
 import ongEC.Miembro;
 
 /**
@@ -21,12 +23,11 @@ import ongEC.Miembro;
 public class Colaborador{
 
 	// ATRIBUTOS
-
 	int idColaborador;
+	@XmlElement(name = "fechaAltaCol")
 	private static Date fechaAlta;
+	@XmlElement(name = "fechaBajaCol")
 	private static Date fechaBaja;
-	public static String origen;
-	public static String paisOrigen;
 
 	//Definicion de los constructores
 	
@@ -37,8 +38,6 @@ public class Colaborador{
 		this.idColaborador = idColaborador;
 		this.fechaAlta = fechaAlta;
 		this.fechaBaja = fechaBaja;
-		this.origen = origen;
-		this.paisOrigen = paisOrigen;
 		
 		
 	}
@@ -47,9 +46,7 @@ public class Colaborador{
 	}
 
 	//Definicion de los gets y los sets
-	public static String getOrigen() {
-		return origen;
-	}
+
 	public int getIdColaborador() {
 		return idColaborador;
 	}
@@ -67,16 +64,5 @@ public class Colaborador{
 	}
 	public static void setFechaBaja(Date fechaBaja) {
 		Colaborador.fechaBaja = fechaBaja;
-	}
-	public void setOrigen(String origen) {
-		this.origen = origen;
-	}
-
-	public static String getPaisOrigen() {
-		return paisOrigen;
-	}
-
-	public void setPaisOrigen(String paisOrigen) {
-		this.paisOrigen = paisOrigen;
 	}
 }

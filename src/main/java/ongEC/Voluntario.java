@@ -13,7 +13,9 @@ public class Voluntario{
 	//Definendo los Atributos
 
 	int idVoluntario;
+	@XmlElement(name = "fechaAltaVol")
 	public static Date fechaAlta;
+	@XmlElement(name = "fechaBajaVol")
 	public static Date fechaBaja;
 
 	Nacional nacional;

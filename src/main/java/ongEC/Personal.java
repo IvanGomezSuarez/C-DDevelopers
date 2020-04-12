@@ -9,13 +9,17 @@ package ongEC;
 //import java.sql.Date;
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlElement;
+
 public class Personal{
 	
 	//Definicion de los Atributos
 	
 
 	int idPersonal;
+	@XmlElement(name = "fechaAltaPer")
 	private static Date fechaAlta;
+	@XmlElement(name = "fechaBajaPer")
 	private static Date fechaBaja;		
 
 	

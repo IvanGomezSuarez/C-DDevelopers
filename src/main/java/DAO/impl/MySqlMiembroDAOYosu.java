@@ -229,83 +229,78 @@ public abstract class MySqlMiembroDAOYosu implements IMiembroDAO{
     	return(idGenerado);
     }
     
-    public static void updateMiembroDAOMysql(Miembro miembro, int miembroIdViejo) throws SQLException {
+    public static void updateMiembroDAOMysql(Miembro miembro, int miembroIdViejo, int opcioncambiotipomiembro) throws SQLException {
     	Connection conexion;
     	conexion=MySqlConection.getcon();    		    	
-    	Statement selectStmt = conexion.createStatement();  
-    	System.out.println("Updateamos Direccion");
-    	System.out.println(miembro.getDireccion().getIdDireccion());
-    	System.out.println("Update direccionesUsuarios SET idDireccion="+miembro.getIdMiembro() +","+
-    	    	" tipovia="+miembro.getDireccion().getTipoVia()+","+ " numero=" +miembro.getDireccion().getNumero()+","+" puerta="+miembro.getDireccion().getPuerta()+","+
-    	    	" escalera= "+ miembro.getDireccion().getEscalera()+","+ " localidad=" + miembro.getDireccion().getLocalidad()+","+" provincia=" +
-    	    	miembro.getDireccion().getProvincia()+","+" cp=" +miembro.getDireccion().getCp() +","+ " pais= " + miembro.getDireccion().getPais() + 
-    	    	" where idDireccion="+miembroIdViejo);
-    	selectStmt.executeUpdate("Update direccionesUsuarios SET idDireccion="+miembro.getIdMiembro() +","+
-    	    	" tipovia="+miembro.getDireccion().getTipoVia()+","+ " numero=" +miembro.getDireccion().getNumero()+","+" puerta="+miembro.getDireccion().getPuerta()+","+
-    	    	" escalera= "+ miembro.getDireccion().getEscalera()+","+ " localidad=" + miembro.getDireccion().getLocalidad()+","+" provincia=" +
-    	    	miembro.getDireccion().getProvincia()+","+" cp=" +miembro.getDireccion().getCp() +","+ " pais= " + miembro.getDireccion().getPais() + 
-    	    	" where idDireccion="+miembroIdViejo);
-//    	ResultSet rs5 = selectStmt.executeQuery("Update direccionesUsuarios SET idDireccion="+miembro.getDireccion().getIdDireccion() +","+
-//    	" tipovia="+miembro.getDireccion().getTipoVia()+","+ " numero=" +miembro.getDireccion().getNumero()+","+" puerta="+miembro.getDireccion().getPuerta()+","+
-//    	" escalera= "+ miembro.getDireccion().getEscalera()+","+ " localidad=" + miembro.getDireccion().getLocalidad()+","+" provincia=" +
-//    	miembro.getDireccion().getProvincia()+","+" cp=" +miembro.getDireccion().getCp() +","+ " pais= " + miembro.getDireccion().getPais() + 
-//    	" where idDireccion="+miembroIdViejo);
-//    	rs5.executeUpdate(String.format("Update direccionesUsuarios SET idDireccion="+miembro.getDireccion().getIdDireccion() +","+
-//    	    	" tipovia="+miembro.getDireccion().getTipoVia()+","+ " numero=" +miembro.getDireccion().getNumero()+","+" puerta="+miembro.getDireccion().getPuerta()+","+
-//    	    	" escalera= "+ miembro.getDireccion().getEscalera()+","+ " localidad=" + miembro.getDireccion().getLocalidad()+","+" provincia=" +
-//    	    	miembro.getDireccion().getProvincia()+","+" cp=" +miembro.getDireccion().getCp() +","+ " pais= " + miembro.getDireccion().getPais() + 
-//    	    	" where idDireccion="+miembroIdViejo));
-    	
+    	Statement selectStmt = conexion.createStatement();
+    	UtilitySql.updateDireccionesMiembro(miembro.getDireccion().getIdDireccion(),miembro.getDireccion().getTipoVia(),miembro.getDireccion().getNumero(),miembro.getDireccion().getPuerta(),
+    	miembro.getDireccion().getEscalera(),miembro.getDireccion().getLocalidad(),miembro.getDireccion().getProvincia(),miembro.getDireccion().getCp(),miembro.getDireccion().getPais(),miembroIdViejo);
+    	System.out.println("Updateamos Direccion OK");    		
     	System.out.println("Updateamos Miembro");
-    	ResultSet rs6 = selectStmt.executeQuery("update miembros set idMiembro=" + miembro.getIdMiembro() + " nombreMiembro="+ miembro.getNombreMiembro() + " nombreUsuario="+ miembro.getNombreUsuario() + " password=" + miembro.getPassword() +
-    			" apellido1=" + miembro.getApellido1() + " apellido2"+ miembro.getApellido2() + " dni=" + miembro.getDni() + " direccion=" +miembro.getDireccion().getIdDireccion() + " rol= "
-    			+ miembro.getRol() + " telefono=" + miembro.getTelefono()+ " where idMiembro="+miembroIdViejo);
+    	UtilitySql.updateMiembros(Integer.parseInt(miembro.getIdMiembro()),miembro.getNombreMiembro(),miembro.getNombreUsuario(),miembro.getPassword(),miembro.getApellido1(),miembro.getApellido2(),miembro.getDni(),+miembro.getDireccion().getIdDireccion(),miembro.getRol(),
+    	miembro.getTelefono(),miembroIdViejo);
+    	System.out.println("Updateamos Miembro OK");    		
     	System.out.println("Comprobamos si es Voluntario,Personal,Colaborador");
-    	if(miembro.getVoluntario()!=null) {
-    		System.out.println("Es voluntario");
-    		System.out.println("Comprobamos si antes era voluntario");
-    		ResultSet rs = selectStmt.executeQuery("Select * from voluntario where idVoluntario="+miembroIdViejo);
-    		if (rs!=null) {
-    			System.out.println("Era voluntario, por lo que actualizamos la base de datos");   			
-    			ResultSet rs3 = selectStmt.executeQuery("update voluntario set idVoluntario="+miembro.getIdMiembro()+" fechaAlta="+ 
-    			miembro.getVoluntario().getFechaAlta()+ " fechaBaja="+ miembro.getVoluntario().getFechaBaja()+" origen="+ miembro.getVoluntario().getNacional().getOrigen()+
-    			" paisOrigen=" +miembro.getVoluntario().getInternacional().getPaisOrigen()+ " where idVoluntario="+ miembroIdViejo);
-    			System.out.println("Actualizamos ");   					  			
-    		}else {
-    			System.out.println("No era voluntario por lo que Borramos las relaciones de Colaborador y Personal");
-    			ResultSet rs1 = selectStmt.executeQuery("Delete from colaborador where idColaborador="+miembro.getIdMiembro());
-    			ResultSet rs2 = selectStmt.executeQuery("Delete from personal where idPersonal="+miembro.getIdMiembro());
-    			ResultSet rs4 = selectStmt.executeQuery("insert into voluntario (idVoluntario,fechaAlta,fechaBaja,origen,paisOrigen) VALUES("+miembro.getIdMiembro()+"," + miembro.getVoluntario().getFechaAlta()
-    					+"," + miembro.getVoluntario().getFechaBaja()+"," +miembro.getVoluntario().getNacional().getOrigen()+"," +miembro.getVoluntario().getInternacional().getPaisOrigen());
-    		}
-    	}else if (miembro.getPersonal()!=null) {
-    		System.out.println("Es Personal");
-    		ResultSet rs7 = selectStmt.executeQuery("Select * from personal where idPersonal="+miembroIdViejo);
-    		if (rs7!=null) {
-    			System.out.println("Era personal, por lo que actualizamos la base de datos");  
-    			ResultSet rs8 = selectStmt.executeQuery("update personal set idPersonal="+miembro.getIdMiembro()+" fechaAlta="+ 
-            			miembro.getPersonal().getFechaAlta()+ " fechaBaja="+ miembro.getPersonal().getFechaBaja()+ " where idVoluntario="+ miembroIdViejo);
-    		}else {
-    			System.out.println("No era Personal por lo que Borramos las relaciones de Colaborador y Personal");
-    			ResultSet rs1 = selectStmt.executeQuery("Delete from colaborador where idColaborador="+miembro.getIdMiembro());
-    			ResultSet rs2 = selectStmt.executeQuery("Delete from voluntario where idVoluntario="+miembro.getIdMiembro());
-    			ResultSet rs4 = selectStmt.executeQuery("insert into personal (idPersonal,fechaAlta,fechaBaja) VALUES("+miembro.getIdMiembro()+"," + miembro.getPersonal().getFechaAlta()
-    					+"," + miembro.getVoluntario().getFechaBaja()+")");
-    		}
-    	}else {
-    		System.out.println("Es Colaborador");
-    		ResultSet rs = selectStmt.executeQuery("Select * from colaborador where idVoluntario="+miembroIdViejo);
-    		if (rs!=null) {
-    			System.out.println("Era colaborador, por lo que actualizamos la base de datos");
-    			ResultSet rs8 = selectStmt.executeQuery("update colaborador set idColabodarod="+miembro.getIdMiembro()+" fechaAlta="+ 
-            			miembro.getColaborador().getFechaAlta()+ " fechaBaja="+ miembro.getColaborador().getFechaBaja()+ " where idVoluntario="+ miembroIdViejo);
-    		}else {
-    			System.out.println("No era voluntario por lo que Borramos las relaciones de Colaborador y Personal");
-    			ResultSet rs1 = selectStmt.executeQuery("Delete from colaborador where idColaborador="+miembro.getIdMiembro());
-    			ResultSet rs2 = selectStmt.executeQuery("Delete from personal where idPersonal="+miembro.getIdMiembro());
-    			ResultSet rs4 = selectStmt.executeQuery("insert into colaborador (idColaborador,fechaAlta,fechaBaja) VALUES("+miembro.getIdMiembro()+"," + miembro.getVoluntario().getFechaAlta()
-    					+"," + miembro.getVoluntario().getFechaBaja()+")");
-    		}
+    	if(opcioncambiotipomiembro!=0) {
+	    	if(opcioncambiotipomiembro==3) {
+	    		System.out.println("Es Colaborador");
+	    		java.sql.Date sqldateFechaAlta = new java.sql.Date(miembro.getColaborador().getFechaAlta().getTime());
+				java.sql.Date sqldateFechaBaja = new java.sql.Date(miembro.getColaborador().getFechaBaja().getTime());
+	    		ResultSet rs = selectStmt.executeQuery("Select * from colaborador where idColaborador="+miembroIdViejo);
+	    		if (rs==null) {
+	    			System.out.println("Era colaborador, por lo que actualizamos la base de datos");
+	    			UtilitySql.updateColaborador(Integer.parseInt(miembro.getIdMiembro()),sqldateFechaAlta,sqldateFechaBaja,miembroIdViejo);
+	    		}else {
+	    			System.out.println("No era voluntario por lo que Borramos las relaciones de Colaborador y Personal");
+	    			try {
+	    				UtilitySql.deleteVoluntario(miembro.getVoluntario().getIdVoluntario());
+	    			}catch(Exception e) {
+	    				  //  Block of code to handle errors
+	    			}
+	    			try {
+	    			UtilitySql.deletePersonal(miembro.getPersonal().getIdPersonal());
+	    			}catch(Exception e) {
+	    				  //  Block of code to handle errors
+	    			}
+	    			System.out.println("insert into colaborador (idColaborador,fechaAlta,fechaBaja) VALUES("+miembro.getIdMiembro()+"," + sqldateFechaAlta
+	    					+"," + sqldateFechaBaja+");");
+	    			selectStmt.executeUpdate("insert into colaborador (idColaborador,fechaAlta,fechaBaja) VALUES("+"+miembro.getIdMiembro()+"+"," +"+ sqldateFechaAlta+"
+	    					+","+" + sqldateFechaBaja+"+")");
+	    		}
+	    	}else if (opcioncambiotipomiembro==1) {
+	    		System.out.println("Es Personal");
+	    		java.sql.Date sqldateFechaAlta = new java.sql.Date(miembro.getPersonal().getFechaAlta().getTime());
+				java.sql.Date sqldateFechaBaja = new java.sql.Date(miembro.getPersonal().getFechaBaja().getTime());
+	    		ResultSet rs7 = selectStmt.executeQuery("Select * from personal where idPersonal="+miembroIdViejo);
+	    		if (rs7==null) {
+	    			System.out.println("Era personal, por lo que actualizamos la base de datos");
+	    			UtilitySql.updatePersonal(Integer.parseInt(miembro.getIdMiembro()),sqldateFechaAlta,sqldateFechaBaja,miembroIdViejo);
+	    		}else {
+	    			System.out.println("No era Personal por lo que Borramos las relaciones de Colaborador y Personal");
+	    			UtilitySql.deleteColaborador(miembro.getColaborador().getIdColaborador());
+	    			UtilitySql.deleteVoluntario(miembro.getVoluntario().getIdVoluntario());
+	    			ResultSet rs4 = selectStmt.executeQuery("insert into personal (idPersonal,fechaAlta,fechaBaja) VALUES("+miembro.getIdMiembro()+"," +sqldateFechaAlta
+	    					+"," + sqldateFechaBaja+")");
+	    		}
+	    	}else {
+	    		System.out.println("Es voluntario");
+	    		java.sql.Date sqldateFechaAlta = new java.sql.Date(miembro.getVoluntario().getFechaAlta().getTime());
+				java.sql.Date sqldateFechaBaja = new java.sql.Date(miembro.getVoluntario().getFechaBaja().getTime());
+	    		System.out.println("Comprobamos si antes era voluntario");
+	    		ResultSet rs = selectStmt.executeQuery("Select * from voluntario where idVoluntario="+miembroIdViejo);
+	    		if (rs==null) {
+	    			System.out.println("Era voluntario, por lo que actualizamos la base de datos");
+	    			UtilitySql.updateVoluntario(Integer.parseInt(miembro.getIdMiembro()),sqldateFechaAlta,sqldateFechaBaja, miembro.getVoluntario().getNacional().getOrigen(), miembro.getVoluntario().getInternacional().getPaisOrigen(), miembroIdViejo);
+	    			System.out.println("Actualizamos OK ");   					  			
+	    		}else {
+	    			System.out.println("No era voluntario por lo que Borramos las relaciones de Colaborador y Personal");
+	    			UtilitySql.deletePersonal(miembro.getPersonal().getIdPersonal());
+	    			//UtilitySql.deleteVoluntario(miembro.getVoluntario().getIdVoluntario());
+	    			UtilitySql.deleteColaborador(miembro.getColaborador().getIdColaborador());
+	    			ResultSet rs4 = selectStmt.executeQuery("insert into voluntario (idVoluntario,fechaAlta,fechaBaja,origen,paisOrigen) VALUES("+miembro.getIdMiembro()+"," + sqldateFechaAlta
+	    					+"," + sqldateFechaBaja+"," +miembro.getVoluntario().getNacional().getOrigen()+"," +miembro.getVoluntario().getInternacional().getPaisOrigen());
+	    		}
+	    	}
     	}
     	System.out.println("Actualizado con exito");
     }

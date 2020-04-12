@@ -121,7 +121,30 @@ public class Direccion {
 		Direccion newdireccion=new Direccion();
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+		
+		System.out.println("\nIntroduce la Via: ");
+		newdireccion.setTipoVia(br.readLine());
+		System.out.println("\nIntroduce el Numero: ");
+		newdireccion.setNumero(recuperado.nextInt());
+		System.out.println("\nIntroduce la Puerta: ");
+		newdireccion.setPuerta(br.readLine());
+		System.out.println("\nIntroduce la Escalera: ");
+		newdireccion.setEscalera(br.readLine());
+		System.out.println("\nIntroduce la Localidad: ");
+		newdireccion.setLocalidad(br.readLine());
+		System.out.println("\nIntroduce la Provincia: ");
+		newdireccion.setProvincia(br.readLine());
+		System.out.println("\nIntroduce el codigo postal: ");
+		newdireccion.setCp(br.readLine());
+		System.out.println("\nIntroduce el Pais: ");
+		newdireccion.setPais(br.readLine());
+		return (newdireccion);
+	}
+	public static Direccion updateDireccion(int direccion) throws IOException {
+		Direccion newdireccion=new Direccion();
+		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		newdireccion.setIdDireccion(direccion);
 		System.out.println("\nIntroduce la Via: ");
 		newdireccion.setTipoVia(br.readLine());
 		System.out.println("\nIntroduce el Numero: ");

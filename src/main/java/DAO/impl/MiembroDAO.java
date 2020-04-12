@@ -64,6 +64,7 @@ public class MiembroDAO{
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		String comprobacionStr="";
 		int seleccion;
+		int opcioncambiotipomiembro=0;
 		
 		
 		System.out.println("Introduce el ID miembro que se va a modificar");
@@ -139,7 +140,7 @@ public class MiembroDAO{
 						if(comprobacionStr.equals("6"))
 						{
 							System.out.println("Introduzca la direccion");
-							t.getMiembro().get(i).setDireccion(Direccion.addDireccion());
+							t.getMiembro().get(i).setDireccion(Direccion.updateDireccion(t.getMiembro().get(i).direccion.getIdDireccion()));
 						}
 						if(comprobacionStr.equals("7"))
 						{
@@ -178,10 +179,13 @@ public class MiembroDAO{
 							System.out.println("\n3.Colaborador: ");
 							seleccion=recuperado.nextInt();
 							if (seleccion==1) {
+								opcioncambiotipomiembro=1;
 								t.getMiembro().get(i).setPersonal(addPersonal());
 							}else if (seleccion==2) {
+								opcioncambiotipomiembro=2;
 								t.getMiembro().get(i).setVoluntario(addVoluntario());
 							}else if (seleccion==3) {
+								opcioncambiotipomiembro=3;
 								t.getMiembro().get(i).setColaborador(addColaborador());
 							}else
 								System.out.println("Opcion No valida ");
@@ -190,7 +194,7 @@ public class MiembroDAO{
 					System.out.println("Despues del while actualizamos"+ i);
 					int result = Integer.parseInt(idProyecto);
 					System.out.println(idProyecto);
-					MySqlMiembroDAOYosu.updateMiembroDAOMysql(t.getMiembro().get(i),result);
+					MySqlMiembroDAOYosu.updateMiembroDAOMysql(t.getMiembro().get(i),result,opcioncambiotipomiembro);
 				}
 			}
 		}else {
@@ -242,6 +246,7 @@ public class MiembroDAO{
 		System.out.println("Telefono;"+ miembro.getTelefono());
 		System.out.println("Nombre usuario:"+ miembro.getNombreUsuario());
 		System.out.println("Nombre Contraseña:"+ miembro.getPassword());
+		//System.out.println("Id Direccion:"+ miembro.getDireccion().getIdDireccion());
 		if(miembro.getVoluntario()!=null) {
 			System.out.println("Fecha Alta:"+ miembro.getVoluntario().getFechaAlta());
 			System.out.println("Fecha Baja:"+ miembro.getVoluntario().getFechaBaja());
