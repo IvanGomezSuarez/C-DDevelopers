@@ -10,7 +10,7 @@
         <Direccion>
             <cp>1</cp>
             <escalera>1</escalera>
-            <idDireccion>0</idDireccion>
+            <idDireccion>1</idDireccion>
             <localidad>1</localidad>
             <numero>1</numero>
             <pais>1</pais>

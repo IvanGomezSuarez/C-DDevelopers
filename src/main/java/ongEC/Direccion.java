@@ -3,7 +3,10 @@ package ongEC;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.Scanner;
+
+import sql.UtilitySql;
 
 /**
  * Esta clase representa el concepto de direccion
@@ -117,11 +120,12 @@ public class Direccion {
 		this.idDireccion = idDireccion;
 	}
 
-	public static Direccion addDireccion() throws IOException {
+	public static Direccion addDireccion() throws IOException, SQLException {
 		Direccion newdireccion=new Direccion();
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+		newdireccion.setIdDireccion(UtilitySql.generarIdDireccion());
 		System.out.println("\nIntroduce la Via: ");
 		newdireccion.setTipoVia(br.readLine());
 		System.out.println("\nIntroduce el Numero: ");

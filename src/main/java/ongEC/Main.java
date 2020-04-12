@@ -30,6 +30,7 @@ public class Main {
 
 		MySqlMiembroDAOYosu.incializarXMLdesdeSQL();
 		MySqlMiembroDAOYosu.consultarIdGenerado();
+		UtilitySql.generarIdDireccion();
 		
 
 		Integer estadoAplicacion=0;//Estado de la aplicacion para decidir que opcion entre todas usar

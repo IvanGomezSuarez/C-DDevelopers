@@ -64,6 +64,22 @@ public class UtilitySql {
 
 
     // MÃ©todos de clase
+    
+    
+    public static int generarIdDireccion() throws SQLException {
+    	
+    	int idGenerado=0;
+    	Connection conexion;
+    	conexion=MySqlConection.getcon();    		    	
+    	Statement selectStmt = conexion.createStatement();  
+    	System.out.println("Recogemos el ultimo id de Direcciones");
+    	ResultSet rs = selectStmt.executeQuery("Select MAX(idDireccion) from direccionesusuarios");
+    	while (rs.next()) {
+    		idGenerado=rs.getInt(1)+1;
+    		System.out.println("el id de Direcciones será\n" + idGenerado);
+    	}
+    	return(idGenerado);
+    }
 
     /**
      * El metodo conectarBD crea una conexion con los datos establecidos para un
@@ -285,7 +301,6 @@ public class UtilitySql {
      
         foreingKeyChecks(false, newConnection);
 
-        
         String sentenciaSql = "CALL producto3.insertar_Direccion(?,?,?,?,?,?,?,?,?);";
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ps.setInt(1, idDireccion);

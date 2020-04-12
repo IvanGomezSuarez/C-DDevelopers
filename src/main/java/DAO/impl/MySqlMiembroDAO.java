@@ -55,20 +55,22 @@ public class MySqlMiembroDAO implements IMiembroDAO{
 
             String nombreMiembro, nombreUsuario, pass, apellido1, apellido2, dni, rol, telefono, origen = null, paisOrigen = null,
             		tipoVia = null, puerta = null, escalera = null, localidad = null, provincia = null, cp = null, pais = null;
-			int idDireccion = 0, numero = 0; Direccion direccion;
+			int idDireccion = 0;
+			int numero = 0;
+			
 			Date fechaAlta, fechaBaja, fechaAltaP, fechaBajaP, fechaAltaC, fechaBajaC;
 		
 
-            nombreMiembro = Miembros.miembro.get(i).getNombreMiembro();
-            nombreUsuario = Miembros.miembro.get(i).getNombreUsuario();
+            nombreMiembro = miembrosNuevos.getMiembro().get(i).getNombreMiembro();
+            nombreUsuario = miembrosNuevos.getMiembro().get(i).getNombreUsuario();
             pass = Miembros.miembro.get(i).getPass();
            // direccion = Miembros.miembro.get(i).direccion;
-            apellido1 = Miembros.miembro.get(i).getApellido1();
-            apellido2 = Miembros.miembro.get(i).getApellido2();
-			dni = Miembros.miembro.get(i).getDni();
-			direccion = miembrosNuevos.getMiembro().get(i).getDireccion();
-            rol = Miembros.miembro.get(i).getRol();
-            telefono = Miembros.miembro.get(i).getTelefono();
+            apellido1 = miembrosNuevos.getMiembro().get(i).getApellido1();
+            apellido2 = miembrosNuevos.getMiembro().get(i).getApellido2();
+			dni = miembrosNuevos.getMiembro().get(i).getDni();
+			Direccion direccion = miembrosNuevos.getMiembro().get(i).getDireccion();
+            rol = miembrosNuevos.getMiembro().get(i).getRol();
+            telefono = miembrosNuevos.getMiembro().get(i).getTelefono();
           
             //En funcion de que sea personal contratado, colaborador o voluntario la tabla destino y campos varian
             

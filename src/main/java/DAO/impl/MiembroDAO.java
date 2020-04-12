@@ -285,7 +285,7 @@ public class MiembroDAO{
 		return null;
 	}
 	
-	public static Miembro addMiembro(Miembros t) throws IOException, JAXBException {
+	public static Miembro addMiembro(Miembros t) throws IOException, JAXBException, SQLException {
 		Miembro nuevoMiembro = new Miembro();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
