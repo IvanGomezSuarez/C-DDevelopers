@@ -7,6 +7,7 @@ import DAO.impl.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
@@ -53,24 +54,24 @@ public class MySqlMiembroDAO implements IMiembroDAO{
         //Recorremos miembros para insertarlo en la BD MySQL.
         for (int i = 0; i < Miembros.miembro.size(); i++) {
 
-            String nombreMiembro, nombreUsuario, pass, apellido1, apellido2, dni, rol, telefono, origen = null, paisOrigen = null,
-            		tipoVia = null, puerta = null, escalera = null, localidad = null, provincia = null, cp = null, pais = null;
+            String nombreMiembro, nombreUsuario, pass, apellido1, apellido2, dni, rol, telefono, origen,
+            paisOrigen, tipoVia = null, puerta = null, escalera = null, localidad = null, provincia = null, cp = null, pais= null;
 			int idDireccion = 0;
 			int numero = 0;
 			
-			Date fechaAlta, fechaBaja, fechaAltaP, fechaBajaP, fechaAltaC, fechaBajaC;
+			SQLData fechaAlta, fechaBaja, fechaAltaP, fechaBajaP, fechaAltaC, fechaBajaC;
 		
 
             nombreMiembro = miembrosNuevos.getMiembro().get(i).getNombreMiembro();
             nombreUsuario = miembrosNuevos.getMiembro().get(i).getNombreUsuario();
             pass = Miembros.miembro.get(i).getPass();
-           // direccion = Miembros.miembro.get(i).direccion;
             apellido1 = miembrosNuevos.getMiembro().get(i).getApellido1();
             apellido2 = miembrosNuevos.getMiembro().get(i).getApellido2();
 			dni = miembrosNuevos.getMiembro().get(i).getDni();
 			Direccion direccion = miembrosNuevos.getMiembro().get(i).getDireccion();
             rol = miembrosNuevos.getMiembro().get(i).getRol();
             telefono = miembrosNuevos.getMiembro().get(i).getTelefono();
+            idDireccion = direccion.getIdDireccion();
           
             //En funcion de que sea personal contratado, colaborador o voluntario la tabla destino y campos varian
             
@@ -105,9 +106,10 @@ public class MySqlMiembroDAO implements IMiembroDAO{
             	
             	/*------------INSERTAREMOS LA DIRECCION PRIMERO---------------------------------------------------------*/
             	
-            	 utilitySql.insertDireccion(idDireccion, tipoVia, numero, puerta, escalera, localidad, provincia, cp, pais);
+            	 utilitySql.insertDireccion(direccion.getIdDireccion(), direccion.getTipoVia(), direccion.getNumero(), direccion.getPuerta(), 
+            			 direccion.getEscalera(), direccion.getLocalidad(), direccion.getProvincia(), direccion.getCp(), direccion.getPais());
             	
-                 //utilitySql.insertPersona(nombreMiembro, nombreUsuario, pass, apellido1, apellido2, dni, rol, telefono);
+                 utilitySql.insertPersona(nombreMiembro, nombreUsuario, pass, apellido1, apellido2, dni, rol, telefono);
                 
                
                 

@@ -72,11 +72,11 @@ public class UtilitySql {
     	Connection conexion;
     	conexion=MySqlConection.getcon();    		    	
     	Statement selectStmt = conexion.createStatement();  
-    	System.out.println("Recogemos el ultimo id de Direcciones");
+    	System.out.println("Recogemos el ultimo id de Direcciones\n");
     	ResultSet rs = selectStmt.executeQuery("Select MAX(idDireccion) from direccionesusuarios");
     	while (rs.next()) {
     		idGenerado=rs.getInt(1)+1;
-    		System.out.println("el id de Direcciones será\n" + idGenerado);
+    		System.out.println("el id de Direcciones será:" + "" + idGenerado);
     	}
     	return(idGenerado);
     }
@@ -292,6 +292,7 @@ public class UtilitySql {
     /*----------------------------------LOS INSERTS A LA BASE DE DATOS---------------------------------------------------*/
     
     // PRIMERO INSERTAMOS LA DIRECCION
+    
     public void insertDireccion(int idDireccion, String tipoVia, int numero, String puerta, String escalera, String localidad, String provincia, String cp, String pais) throws SQLException {
 //hacer correctamente
     	
@@ -304,6 +305,7 @@ public class UtilitySql {
         String sentenciaSql = "CALL producto3.insertar_Direccion(?,?,?,?,?,?,?,?,?);";
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ps.setInt(1, idDireccion);
+        out.printf("Insertado idDireccion:", +idDireccion);
         ps.setString(2, tipoVia);
         ps.setInt(3, numero);
         ps.setString(4, puerta);
@@ -313,11 +315,14 @@ public class UtilitySql {
         ps.setString(8, cp);
         ps.setString(9, pais);
         ps.executeUpdate();
+        out.println("\nSentencia DML ejecutada con exito. Se ha insertado\n: "
+        		+ idDireccion + " " + tipoVia + " " + numero + " " + puerta + " " + escalera + 
+        		" " + localidad + " " + provincia + " " + cp + " "+ pais);
 
         foreingKeyChecks(true, newConnection);
 
     }
-   // DESPUÉS INSERTAMO EL MIEMBRO 
+   // DESPUÉS INSERTAMOS EL MIEMBRO 
     
     public void insertPersona (String nombreMiembro, String nombreUsuario, String pass, String apellido1,
             String apellido2, String dni, String rol, String telefono  ) throws SQLException {
@@ -347,7 +352,7 @@ ps.setString(6, dni);
 ps.setString(7, rol);
 ps.setString(8, telefono);
 ps.executeUpdate();
-out.println("\nSentencia DML ejecutada con exito. Se ha insertado: "
+out.println("\nSentencia DML ejecutada con exito. Se ha insertado:\n "
 + nombreMiembro + " " + nombreUsuario + " " + pass + " " + apellido1 + " " + apellido2 + " " + dni + " " + rol + " " + telefono);
 
 }
