@@ -224,7 +224,7 @@ public abstract class MySqlMiembroDAOYosu implements IMiembroDAO{
     	ResultSet rs = selectStmt.executeQuery("Select MAX(idMiembro) from miembros");
     	while (rs.next()) {
     		idGenerado=rs.getInt(1);
-    		//System.out.println(idGenerado);
+    		System.out.println(idGenerado);
     	}
     	return(idGenerado);
     }

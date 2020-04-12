@@ -6,16 +6,18 @@
         <Password>1</Password>
         <Apellido1>1</Apellido1>
         <Apellido2>1</Apellido2>
-        <Dni>2</Dni>
+        <Dni>1</Dni>
+        <Direccion>
+            <cp>1</cp>
+            <escalera>1</escalera>
+            <idDireccion>0</idDireccion>
+            <localidad>1</localidad>
+            <numero>1</numero>
+            <pais>1</pais>
+            <provincia>1</provincia>
+            <puerta>1</puerta>
+            <tipoVia>1</tipoVia>
+        </Direccion>
         <Telefono>1</Telefono>
-    </Miembro>
-    <Miembro>
-        <Nombre>2</Nombre>
-        <NombreUsuario>2</NombreUsuario>
-        <Password>2</Password>
-        <Apellido1>2</Apellido1>
-        <Apellido2>2</Apellido2>
-        <Dni>2</Dni>
-        <Telefono>2</Telefono>
     </Miembro>
 </Miembros>

@@ -2,21 +2,23 @@ package DAO.impl;
 
 import ongEC.*;
 import sql.UtilitySql;
+import DAO.impl.*;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 
-/** La clase MySqlOngDAO forma parte del patr贸n DAO.
- *  Permite separar la l贸gica para la persistencia de la l贸gica del negocio.
+/** La clase MySqlMiembroDAO forma parte del patr髇 DAO.
+ *  Permite separar la l骻ica para la persistencia de la l骻ica del negocio.
  *
- *  MySqlOngDAO implementa la interfaz IOngDAO que declara los m茅todos que de deber谩n implementar
- *  todas las instancias DAO ONG, ya sean XmlOngDAO o MySQLDAO.
+ *  MySqlMiembroDAO implementa la interfaz IMiembroDAO que declara los m閠odos que de deber醤 implementar
+ *  todas las instancias DAO Miembro, ya sean XmlMiembroDAO o MySQLDAO.
  *
- *  En el caso de MySqlOngDAO se implementa toda la l贸gica necesaria para que ONG trabaje con MySQL,
- *  tan solo implementamos los m茅todos b谩sicos CRUD (Create, Read, Update y Delete).
+ *  En el caso de MySqlMiembroDAO se implementa toda la l骻ica necesaria para que Miembro trabaje con MySQL,
+ *  tan solo implementamos los m閠odos b醩icos CRUD (Create, Read, Update y Delete).
  *
 
  * */
@@ -31,83 +33,95 @@ public class MySqlMiembroDAO implements IMiembroDAO{
         //Inicializaci贸n
     }
 
+
+    
+    
+    
     @Override
-    public void createMiembroDAO(Miembros miembrosNuevos) {
+    public void createMiembroDAO(Miembros miembrosNuevos) throws IOException {
 
         UtilitySql utilitySql = new UtilitySql();
 
         //En primer lugar borraremos los contenidos que puedan existir en la Base de datos.
-      /*  try {
+       /* try {
             utilitySql.truncateAllContentDB();
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }*/
-
+        }
+*/
         //Recorremos miembros para insertarlo en la BD MySQL.
         for (int i = 0; i < Miembros.miembro.size(); i++) {
 
-            String nombreMiembro, nombreUsuario, pass, apellido1, apellido2, dni, rol, telefono, origen, paisOrigen = null;
+            String nombreMiembro, nombreUsuario, pass, apellido1, apellido2, dni, rol, telefono, origen = null, paisOrigen = null,
+            		tipoVia = null, puerta = null, escalera = null, localidad = null, provincia = null, cp = null, pais = null;
+			int idDireccion = 0, numero = 0; Direccion direccion;
 			Date fechaAlta, fechaBaja, fechaAltaP, fechaBajaP, fechaAltaC, fechaBajaC;
 		
 
-            nombreMiembro = miembrosNuevos.getMiembro().get(i).getNombreMiembro();
-            nombreUsuario = miembrosNuevos.getMiembro().get(i).getNombreUsuario();
-            pass = miembrosNuevos.getMiembro().get(i).getPass();
+            nombreMiembro = Miembros.miembro.get(i).getNombreMiembro();
+            nombreUsuario = Miembros.miembro.get(i).getNombreUsuario();
+            pass = Miembros.miembro.get(i).getPass();
            // direccion = Miembros.miembro.get(i).direccion;
-            apellido1 = miembrosNuevos.getMiembro().get(i).getApellido1();
-            apellido2 = miembrosNuevos.getMiembro().get(i).getApellido2();
-			dni = miembrosNuevos.getMiembro().get(i).getDni();
-            rol = miembrosNuevos.getMiembro().get(i).getRol();
-            telefono = miembrosNuevos.getMiembro().get(i).getTelefono();
-            // 緾OMO LECHES COJO LOS DATOS DE TODO EL ARRAY?
-           
+            apellido1 = Miembros.miembro.get(i).getApellido1();
+            apellido2 = Miembros.miembro.get(i).getApellido2();
+			dni = Miembros.miembro.get(i).getDni();
+			direccion = miembrosNuevos.getMiembro().get(i).getDireccion();
+            rol = Miembros.miembro.get(i).getRol();
+            telefono = Miembros.miembro.get(i).getTelefono();
+          
             //En funcion de que sea personal contratado, colaborador o voluntario la tabla destino y campos varian
-       /*    if (!(Miembros.miembro.get(i) instanceof Personal)) {
-                //Se ejecuta cuando es personal nacional
+            
+            //java.sql.Date sqldateFechaAlta = new java.sql.Date(Voluntario.getFechaAlta().getTime());
+        	//java.sql.Date sqldateFechaBaja = new java.sql.Date(Voluntario.getFechaBaja().getTime());
+            //java.sql.Date sqldateFechaAltaC = new java.sql.Date(Colaborador.getFechaAlta().getTime());
+        	//java.sql.Date sqldateFechaBajaC= new java.sql.Date(Colaborador.getFechaBaja().getTime());
+            //java.sql.Date sqldateFechaAltaP = new java.sql.Date(Personal.getFechaAlta().getTime());
+        	//java.sql.Date sqldateFechaBajaP = new java.sql.Date(Personal.getFechaBaja().getTime());
+        	
+          /*  if (!(Miembros.miembro.get(i) instanceof Personal)) {
+                
                 fechaAltaP = Personal.getFechaAlta();
                 fechaBajaP = Personal.getFechaBaja();
 
-            } else if (!(Miembros.miembro.get(i) instanceof Voluntario)){
+            } else if (!(miembrosNuevos.getMiembro().get(i) instanceof Voluntario)){
                 //Se ejecuta cuando es personal voluntario
-                Voluntario voluntario = (Voluntario) Miembros.miembro.get(i);
+                Voluntario voluntario = (Voluntario) miembrosNuevos.getMiembro();
                 fechaAlta = Voluntario.getFechaAlta();
                 fechaBaja = Voluntario.getFechaBaja();
+                origen = Voluntario.getOrigen();
+                paisOrigen= Voluntario.getPaisOrigen();
                 
-            } else if (!(Miembros.miembro.get(i) instanceof Colaborador)) {
-                Colaborador colaborador = (Colaborador) Miembros.miembro.get(i);
+            } else if (!(miembrosNuevos.getMiembro().get(i) instanceof Colaborador)) {
+                Colaborador colaborador = (Colaborador) miembrosNuevos.getMiembro();
                 fechaAltaC = Colaborador.getFechaAlta();
                 fechaBajaC = Colaborador.getFechaBaja();
-                origen = Colaborador.getOrigen();
-                paisOrigen= Colaborador.getPaisOrigen();
+
             }
             */
             try {
-
-                utilitySql.insertPersona(nombreMiembro, nombreUsuario, pass, apellido1, apellido2, dni, rol, telefono);
-
-             //   int idPersonal = utilitySql.consultarIdGenerado("miembros");
-
-              //  utilitySql.insertPersonal(idPersonal, fechaAltaP, fechaBajaP);
-
-             //   int idVoluntario = utilitySql.consultarIdGenerado("miembros");
-
-              //  utilitySql.insertVoluntario(idVoluntario, fechaAlta, fechaBaja, origen, paisOrigen);
+            	
+            	/*------------INSERTAREMOS LA DIRECCION PRIMERO---------------------------------------------------------*/
+            	
+            	 utilitySql.insertDireccion(idDireccion, tipoVia, numero, puerta, escalera, localidad, provincia, cp, pais);
+            	
+                 //utilitySql.insertPersona(nombreMiembro, nombreUsuario, pass, apellido1, apellido2, dni, rol, telefono);
                 
-              //  int idColaborador = utilitySql.consultarIdGenerado("miembros");
+               
+                
 
-              //  utilitySql.insertColaborador(idColaborador, fechaAltaC, fechaBajaC);
+                //int idPersonal = utilitySql.consultarIdGenerado("miembros");
 
-                //Hasta este punto todos las instancias son PerVoluntario, ahora verificamos si adem谩s son voluntarios
-                //internacionales, para actuar en consecuencia.
-             /*  if ((Miembros.miembro.get(i) instanceof Personal)) {
+               // utilitySql.insertPersonal(idPersonal, sqldateFechaAltaP, sqldateFechaBajaP);
 
-                    int idPerVol = utilitySql.consultarIdGenerado("PerVoluntario");
+                //int idVoluntario = utilitySql.consultarIdGenerado("miembros");
 
-                    utilitySql.insertPerVolInternacional(idPersona, idPersonal, idPerVol, direccion, paisOrigen, telefono);
+                //utilitySql.insertVoluntario(idVoluntario, origen, paisOrigen);
+                
+                //int idColaborador = utilitySql.consultarIdGenerado("miembros");
 
-                }
-*/
+                //utilitySql.insertColaborador(idColaborador, fechaAltaC, fechaBajaC);
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -131,8 +145,4 @@ public class MySqlMiembroDAO implements IMiembroDAO{
         return false;
     }
 
-	public void createMiembroDAO1(Miembros miembrosNuevos) {
-		// TODO Auto-generated method stub
-		
-	}
 }

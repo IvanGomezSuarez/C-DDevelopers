@@ -24,7 +24,7 @@ public class Miembro {
 // atributos
 	
 	@XmlElement(name = "IdMiembro")
-	private String idMiembro;
+	private static String idMiembro;
 	@XmlElement(name = "Nombre")
 	private String nombreMiembro;
 	@XmlElement(name = "NombreUsuario")
@@ -103,7 +103,7 @@ public class Miembro {
 	}
 
 
-	public String getIdMiembro() {
+	public static String getIdMiembro() {
 		return idMiembro;
 	}
 
