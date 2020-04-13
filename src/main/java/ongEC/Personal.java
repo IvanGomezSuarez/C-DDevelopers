@@ -11,7 +11,7 @@ import java.util.Date;
 
 import javax.xml.bind.annotation.XmlElement;
 
-public class Personal{
+public class Personal extends Miembro{
 
 	//Definicion de los Atributos
 

@@ -495,7 +495,7 @@ public class UtilitySql {
     }
 
 
-    public void insertVoluntario( int idVoluntario, Date fechaAlta, Date fechaBaja, String origen, String paisOrigen) throws SQLException {
+    public static void insertVoluntario( int idVoluntario, Date fechaAlta, Date fechaBaja, String origen, String paisOrigen) throws SQLException {
     	// faltarian los campos date que por ahora fallan y se han omitido para las pruebas de insercion
         Conexion nuevaConexion = new Conexion();
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
