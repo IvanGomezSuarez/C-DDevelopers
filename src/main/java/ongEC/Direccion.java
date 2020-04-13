@@ -125,6 +125,7 @@ public class Direccion {
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		newdireccion.setIdDireccion(UtilitySql.generarIdDireccion());
+		System.out.println(UtilitySql.generarIdDireccion());
 		System.out.println("\nIntroduce la Via: ");
 		newdireccion.setTipoVia(br.readLine());
 		System.out.println("\nIntroduce el Numero: ");

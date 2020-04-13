@@ -4,7 +4,7 @@ import ongEC.*;
 
 import java.sql.*;
 import java.sql.Date;
-import java.util.*;
+import java.util.Scanner;
 import DAO.impl.*;
 import static java.lang.System.*;
 
@@ -302,7 +302,7 @@ public class UtilitySql {
 
         foreingKeyChecks(false, newConnection);
 
-        String sentenciaSql = "CALL producto3.insertar_Direccion(?,?,?,?,?,?,?,?,?);";
+        String sentenciaSql = "CALL ong.insertar_Direccion(?,?,?,?,?,?,?,?,?);";
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ps.setInt(1, idDireccion);
         out.printf("Insertado idDireccion:", +idDireccion);
@@ -327,33 +327,33 @@ public class UtilitySql {
     public void insertPersona (String nombreMiembro, String nombreUsuario, String pass, String apellido1,
             String apellido2, String dni, String rol, String telefono  ) throws SQLException {
 
-Conexion nuevaConexion = new Conexion();
-UtilitySql sesionSql = new UtilitySql(nuevaConexion);
-
-// Comprobamos que los datos son los que esperabamos.
-
-out.println("Intentando conectarse con los siguientes datos:");
-out.println(nuevaConexion.toString());
-
-// Ahora llamamos al metodo conectarBD con miConexion como parametro para efectivamente
-//conectar con la base de datos deseada.
-
-Connection newConnection = sesionSql.conectarBD(nuevaConexion);
-
-String sentenciaSql = "CALL producto3.insertar_miembro(?,?,?,?,?,?,?,?);";
-
-PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
-ps.setString(1, nombreMiembro);
-ps.setString(2, nombreUsuario);
-ps.setString(3, pass);
-ps.setString(4, apellido1);
-ps.setString(5, apellido2);
-ps.setString(6, dni);
-ps.setString(7, rol);
-ps.setString(8, telefono);
-ps.executeUpdate();
-out.println("\nSentencia DML ejecutada con exito. Se ha insertado:\n "
-+ nombreMiembro + " " + nombreUsuario + " " + pass + " " + apellido1 + " " + apellido2 + " " + dni + " " + rol + " " + telefono);
+	Conexion nuevaConexion = new Conexion();
+	UtilitySql sesionSql = new UtilitySql(nuevaConexion);
+	
+	// Comprobamos que los datos son los que esperabamos.
+	
+	out.println("Intentando conectarse con los siguientes datos:");
+	out.println(nuevaConexion.toString());
+	
+	// Ahora llamamos al metodo conectarBD con miConexion como parametro para efectivamente
+	//conectar con la base de datos deseada.
+	
+	Connection newConnection = sesionSql.conectarBD(nuevaConexion);
+	
+	String sentenciaSql = "CALL ong.insertar_miembro(?,?,?,?,?,?,?,?);";
+	
+	PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
+	ps.setString(1, nombreMiembro);
+	ps.setString(2, nombreUsuario);
+	ps.setString(3, pass);
+	ps.setString(4, apellido1);
+	ps.setString(5, apellido2);
+	ps.setString(6, dni);
+	ps.setString(7, rol);
+	ps.setString(8, telefono);
+	ps.executeUpdate();
+	out.println("\nSentencia DML ejecutada con exito. Se ha insertado:\n "
+	+ nombreMiembro + " " + nombreUsuario + " " + pass + " " + apellido1 + " " + apellido2 + " " + dni + " " + rol + " " + telefono);
 
 }
 
@@ -369,7 +369,7 @@ out.println("\nSentencia DML ejecutada con exito. Se ha insertado:\n "
         foreingKeyChecks(false, newConnection);
 
 
-        String sentenciaSql = "CALL producto3.insertar_Personal(?,?,?);";
+        String sentenciaSql = "CALL ong.insertar_Personal(?,?,?);";
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ps.setInt(1, idPersonal);
         ps.setDate(2, fechaAlta);
@@ -383,20 +383,20 @@ out.println("\nSentencia DML ejecutada con exito. Se ha insertado:\n "
 
 
 
-public void insertColaborador(int idColaborador, Date fechaAltaC, Date fechaBajaC) throws SQLException {
-
-Conexion nuevaConexion = new Conexion();
-UtilitySql sesionSql = new UtilitySql(nuevaConexion);
-Connection newConnection = sesionSql.conectarBD(nuevaConexion);
-
-String sentenciaSql = "CALL producto3.insertar_Colaborador(?,?,?);";
-PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
-ps.setInt(1, idColaborador);
-ps.setDate(2, fechaAltaC);
-ps.setDate(3, fechaBajaC);
-ps.executeUpdate();
-
-}
+	public static void insertColaborador(int idColaborador, Date fechaAltaC, Date fechaBajaC) throws SQLException {
+	
+	Conexion nuevaConexion = new Conexion();
+	UtilitySql sesionSql = new UtilitySql(nuevaConexion);
+	Connection newConnection = sesionSql.conectarBD(nuevaConexion);
+	
+	String sentenciaSql = "CALL ong.insertar_Colaborador(?,?,?);";
+	PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
+	ps.setInt(1, idColaborador);
+	ps.setDate(2, fechaAltaC);
+	ps.setDate(3, fechaBajaC);
+	ps.executeUpdate();
+	
+	}
 
 
     public static void foreingKeyChecks(Boolean foreingKeyChecks, Connection newConnection) throws SQLException {
@@ -420,24 +420,12 @@ ps.executeUpdate();
 
     }
 
-    public static void insertColaborador(int idColaborador, Date fechaAlta, Date fechaBaja) throws SQLException {
-
-        Conexion nuevaConexion = new Conexion();
-        UtilitySql sesionSql = new UtilitySql(nuevaConexion);
-        Connection newConnection = sesionSql.conectarBD(nuevaConexion);
-
-        String sentenciaSql = "INSERT INTO colaborador(idColaborador, fechaAlta, fechaBaja) VALUES (?, ?, ?);";
-        PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
-        ps.setInt(1, idColaborador);
-        ps.setDate(2, fechaAlta);
-        ps.setDate(3, fechaBaja);
-        ps.executeUpdate();
-
-    }
-
     public static void insertVoluntario( int idVoluntario, Date fechaAlta, Date fechaBaja, String origen, String paisOrigen) throws SQLException {
-
-        String sentenciaSql = "CALL producto3.insertar_Voluntario(?,?,?);";
+    	Conexion nuevaConexion = new Conexion();
+    	UtilitySql sesionSql = new UtilitySql(nuevaConexion);
+    	Connection newConnection = sesionSql.conectarBD(nuevaConexion);
+    	
+        String sentenciaSql = "CALL ong.insertar_Voluntario(?,?,?);";
 
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ps.setInt(1, idVoluntario);

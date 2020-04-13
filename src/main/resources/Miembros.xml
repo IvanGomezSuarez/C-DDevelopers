@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Miembros>
     <Miembro>
-        <IdMiembro>1</IdMiembro>
+        <IdMiembro>2</IdMiembro>
         <Nombre>yosu</Nombre>
         <NombreUsuario>1</NombreUsuario>
         <Password>1</Password>
@@ -53,5 +53,26 @@
             <fechaBajaCol>2020-02-01T01:00:00+01:00</fechaBajaCol>
             <idColaborador>2</idColaborador>
         </Colaborador>
+    </Miembro>
+    <Miembro>
+        <IdMiembro>2</IdMiembro>
+        <Nombre>1</Nombre>
+        <NombreUsuario>1</NombreUsuario>
+        <Password>1</Password>
+        <Apellido1>1</Apellido1>
+        <Apellido2>1</Apellido2>
+        <Dni>1</Dni>
+        <Direccion>
+            <cp>1</cp>
+            <escalera>1</escalera>
+            <idDireccion>24</idDireccion>
+            <localidad>1</localidad>
+            <numero>1</numero>
+            <pais>1</pais>
+            <provincia>1</provincia>
+            <puerta>1</puerta>
+            <tipoVia>1</tipoVia>
+        </Direccion>
+        <Telefono>1</Telefono>
     </Miembro>
 </Miembros>

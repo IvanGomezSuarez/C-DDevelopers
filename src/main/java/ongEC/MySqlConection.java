@@ -13,10 +13,10 @@ import sql.UtilitySql;
 public class MySqlConection {
 
     public static void connect() throws SQLException{
-    String url = "jdbc:mysql://127.0.0.1:3306/Producto3?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    String url = "jdbc:mysql://127.0.0.1:3306/ong?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     //String url = "jdbc:mysql://127.0.0.1:3306/mysql";
     String user = "root";
-    String pass = "Ivan2018";
+    String pass = "tesTed4a";
     System.out.println("\n**********************************");
     System.out.println("Conectando con la base de datos...");
     System.out.println("**********************************");
@@ -32,9 +32,9 @@ public class MySqlConection {
     }
     public static Connection getcon(){
         try{
-        	String url = "jdbc:mysql://127.0.0.1:3306/producto3?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        	String url = "jdbc:mysql://127.0.0.1:3306/ong?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         	String user = "root";
-            String pass = "Ivan2018";
+            String pass = "tesTed4a";
             return DriverManager.getConnection(url, user,pass);
         }catch(Exception ex){
             System.out.println(ex.getMessage());
