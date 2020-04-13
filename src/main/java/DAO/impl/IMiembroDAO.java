@@ -12,6 +12,6 @@ public interface IMiembroDAO {
 
     void createMiembroDAO(Miembros miembrosNuevos) throws IOException;
     Miembro readMiembroDAO();
-    boolean updateMiembroDAO(Miembro pMiembro);
     boolean deleteMiembroDAO(Miembro pMiembro);
+	boolean updateMiembroDAO(Miembro pMiembro);
 }

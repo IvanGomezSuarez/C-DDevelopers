@@ -9,7 +9,7 @@ package ongEC;
 //import java.sql.Date;
 import java.util.Date;
 
-public class Personal{
+public class Personal extends Miembro{
 	
 	//Definicion de los Atributos
 	

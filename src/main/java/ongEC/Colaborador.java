@@ -18,7 +18,7 @@ import ongEC.Miembro;
  * Yosu, Ivan
  */
 
-public class Colaborador{
+public class Colaborador extends Miembro{
 
 	// ATRIBUTOS
 

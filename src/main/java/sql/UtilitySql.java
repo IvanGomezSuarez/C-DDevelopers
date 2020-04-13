@@ -65,6 +65,9 @@ public class UtilitySql {
 
     // MÃ©todos de clase
     
+    /*---------------METODOS PARA CAPTURAR Y ASIGNAR LOS ID'S--------------------------------------*/
+    
+    // METODO PARA GENERAR ID EN LA TABLA MIEMBRO Y QUE SEAN SIEMPRE CONSECUTIVOS
     
     public static int generarIdDireccion() throws SQLException {
     	
@@ -80,7 +83,70 @@ public class UtilitySql {
     	}
     	return(idGenerado);
     }
-
+    
+    
+    public static int generarIdPersonal() throws SQLException {
+    	
+    	int idGenerado=0;
+    	Connection conexion;
+    	conexion=MySqlConection.getcon();    		    	
+    	Statement selectStmt = conexion.createStatement();  
+    	System.out.println("Recogemos el ultimo id de Miembro\n");
+    	ResultSet rs = selectStmt.executeQuery("Select MAX(IdMiembro) from miembros");
+    	while (rs.next()) {
+    		idGenerado=rs.getInt(1)+1;
+    		System.out.println("el id de la nueva persona contratada será:" + "" + idGenerado);
+    	}
+    	return(idGenerado);
+    }
+    
+    
+    public static int generarIdVoluntario() throws SQLException {
+    	
+    	int idGenerado=0;
+    	Connection conexion;
+    	conexion=MySqlConection.getcon();    		    	
+    	Statement selectStmt = conexion.createStatement();  
+    	System.out.println("Recogemos el ultimo id de Miembro\n");
+    	ResultSet rs = selectStmt.executeQuery("Select MAX(IdMiembro) from miembros");
+    	while (rs.next()) {
+    		idGenerado=rs.getInt(1)+1;
+    		System.out.println("el id de la nueva persona voluntario/a será:" + "" + idGenerado);
+    	}
+    	return(idGenerado);
+    }
+    
+    
+    public static int generarIdColaborador() throws SQLException {
+    	
+    	int idGenerado=0;
+    	Connection conexion;
+    	conexion=MySqlConection.getcon();    		    	
+    	Statement selectStmt = conexion.createStatement();  
+    	System.out.println("Recogemos el ultimo id de Miembro\n");
+    	ResultSet rs = selectStmt.executeQuery("Select MAX(IdMiembro) from miembros");
+    	while (rs.next()) {
+    		idGenerado=rs.getInt(1)+1;
+    		System.out.println("el id de la nueva persona colaborador/a será:" + "" + idGenerado);
+    	}
+    	return(idGenerado);
+    }
+    // ESTE MÉTODO INSERTA EN LA COLUMNA DIRECCION DE LA TABLA MIEMBROS EL ID DE LA TABLA DIRECCIONES
+    public static int generarColDireccion() throws SQLException {
+    	
+    	int idGenerado=0;
+    	Connection conexion;
+    	conexion=MySqlConection.getcon();    		    	
+    	Statement selectStmt = conexion.createStatement();  
+    	System.out.println("Recogemos el ultimo id de Direcciones\n");
+    	ResultSet rs = selectStmt.executeQuery("Select MAX(idDireccion) from direccionesusuarios");
+    	while (rs.next()) {
+    		idGenerado=rs.getInt(1);
+    		System.out.println("el id de Direcciones será:" + "" + idGenerado);
+    	}
+    	return(idGenerado);
+    } 
+    
     /**
      * El metodo conectarBD crea una conexion con los datos establecidos para un
      * objeto Conexion.
@@ -289,6 +355,12 @@ public class UtilitySql {
         return idGenerado;
     }
     
+    
+    public static java.sql.Date getCurrentDate() {
+        java.util.Date today = new java.util.Date();
+        return new java.sql.Date(today.getTime());
+    }
+    
     /*----------------------------------LOS INSERTS A LA BASE DE DATOS---------------------------------------------------*/
     
     // PRIMERO INSERTAMOS LA DIRECCION
@@ -372,7 +444,7 @@ out.println("\nSentencia DML ejecutada con exito. Se ha insertado:\n "
         String sentenciaSql = "CALL producto3.insertar_Personal(?,?,?);";
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ps.setInt(1, idPersonal);
-        ps.setDate(2, fechaAlta);
+        ps.setDate(2, getCurrentDate());
         ps.setDate(3, fechaBaja);
         ps.executeUpdate();
 
@@ -381,7 +453,7 @@ out.println("\nSentencia DML ejecutada con exito. Se ha insertado:\n "
     }
     
     
-
+    
 
 public void insertColaborador(int idColaborador, Date fechaAltaC, Date fechaBajaC) throws SQLException {
 
@@ -421,16 +493,18 @@ ps.executeUpdate();
     }
     
     
-    public void insertVoluntario( int idVoluntario,  String origen, String paisOrigen) throws SQLException {
+    public void insertVoluntario( int idVoluntario, Date fechaAlta, Date fechaBaja, String origen, String paisOrigen) throws SQLException {
     	// faltarian los campos date que por ahora fallan y se han omitido para las pruebas de insercion
         Conexion nuevaConexion = new Conexion();
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
         Connection newConnection = sesionSql.conectarBD(nuevaConexion);
 
-        String sentenciaSql = "CALL producto3.insertar_Voluntario(?,?,?);";
+        String sentenciaSql = "CALL producto3.insertar_Voluntario(?,?,?,?,?);";
         
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ps.setInt(1, idVoluntario);
+        ps.setDate(1, fechaAlta);
+        ps.setDate(1, fechaBaja);
         ps.setString(2, origen);
         ps.setString(3, paisOrigen);
         ps.executeUpdate();
