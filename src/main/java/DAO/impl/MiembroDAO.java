@@ -23,6 +23,7 @@ import ongEC.Miembros;
 import ongEC.Nacional;
 import ongEC.Personal;
 import ongEC.Voluntario;
+import sql.UtilitySql;
 
 public class MiembroDAO{
   
@@ -202,7 +203,7 @@ public class MiembroDAO{
 		}
 }
 
-	public static void delete(Miembros t) {
+	public static void delete(Miembros t) throws SQLException {
 		// TODO Auto-generated method stub
 		String idMiembro="";
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
@@ -219,6 +220,7 @@ public class MiembroDAO{
 			for (int i = 0;i<t.getMiembro().size();i++) {
 				if (t.getMiembro().get(i).getIdMiembro().equals(idMiembro)){
 					System.out.println(t.getMiembro().get(i).getIdMiembro());
+					UtilitySql.deleteMiembro(t.getMiembro().get(i));
 					t.getMiembro().remove(i);
 					System.out.println("Borrado con exito");
 				}

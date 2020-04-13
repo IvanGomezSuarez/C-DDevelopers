@@ -1,33 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Miembros>
     <Miembro>
-        <IdMiembro>2</IdMiembro>
-        <Nombre>2</Nombre>
-        <NombreUsuario>2</NombreUsuario>
-        <Password>2</Password>
-        <Apellido1>2</Apellido1>
-        <Apellido2>2</Apellido2>
-        <Dni>1</Dni>
-        <Direccion>
-            <cp>100</cp>
-            <escalera>100</escalera>
-            <idDireccion>2</idDireccion>
-            <localidad>100</localidad>
-            <numero>100</numero>
-            <pais>100</pais>
-            <provincia>100</provincia>
-            <puerta>100</puerta>
-            <tipoVia>100</tipoVia>
-        </Direccion>
-        <Rol>MIEMBRO</Rol>
-        <Telefono>2</Telefono>
-        <Personal>
-            <fechaAltaPer>2020-01-01T01:00:00+01:00</fechaAltaPer>
-            <fechaBajaPer>2020-01-01T01:00:00+01:00</fechaBajaPer>
-            <idPersonal>2</idPersonal>
-        </Personal>
-    </Miembro>
-    <Miembro>
         <IdMiembro>1</IdMiembro>
         <Nombre>yosu</Nombre>
         <NombreUsuario>1</NombreUsuario>
@@ -49,9 +22,36 @@
         <Rol>ADMINISTRADOR</Rol>
         <Telefono>1</Telefono>
         <Colaborador>
-            <fechaAltaCol>2020-01-01T01:00:00+01:00</fechaAltaCol>
+            <fechaAltaCol>2019-12-31T01:00:00+01:00</fechaAltaCol>
             <fechaBajaCol>2020-02-01T01:00:00+01:00</fechaBajaCol>
             <idColaborador>1</idColaborador>
+        </Colaborador>
+    </Miembro>
+    <Miembro>
+        <IdMiembro>2</IdMiembro>
+        <Nombre>2</Nombre>
+        <NombreUsuario>2</NombreUsuario>
+        <Password>2</Password>
+        <Apellido1>2</Apellido1>
+        <Apellido2>2</Apellido2>
+        <Dni>1</Dni>
+        <Direccion>
+            <cp>100</cp>
+            <escalera>100</escalera>
+            <idDireccion>2</idDireccion>
+            <localidad>100</localidad>
+            <numero>100</numero>
+            <pais>100</pais>
+            <provincia>100</provincia>
+            <puerta>100</puerta>
+            <tipoVia>100</tipoVia>
+        </Direccion>
+        <Rol>MIEMBRO</Rol>
+        <Telefono>2</Telefono>
+        <Colaborador>
+            <fechaAltaCol>2019-12-31T01:00:00+01:00</fechaAltaCol>
+            <fechaBajaCol>2020-02-01T01:00:00+01:00</fechaBajaCol>
+            <idColaborador>2</idColaborador>
         </Colaborador>
     </Miembro>
 </Miembros>

@@ -305,7 +305,7 @@ public class UtilitySql {
         return idGenerado;
     }
 
-    public void insertPersonal(int idPersonal, Date fechaAlta, Date fechaBaja) throws SQLException {
+    public static void insertPersonal(int idPersonal, Date fechaAlta, Date fechaBaja) throws SQLException {
 
         Conexion nuevaConexion = new Conexion();
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
@@ -345,13 +345,13 @@ public class UtilitySql {
 
     }
 
-    public void insertColaborador(int idColaborador, Date fechaAlta, Date fechaBaja) throws SQLException {
+    public static void insertColaborador(int idColaborador, Date fechaAlta, Date fechaBaja) throws SQLException {
 
         Conexion nuevaConexion = new Conexion();
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
         Connection newConnection = sesionSql.conectarBD(nuevaConexion);
         
-        String sentenciaSql = "INSERT INTO voluntario(idColaborador, fechaAlta, fechaBaja) VALUES (null, ?, ?);";
+        String sentenciaSql = "INSERT INTO colaborador(idColaborador, fechaAlta, fechaBaja) VALUES (?, ?, ?);";
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ps.setInt(1, idColaborador);
         ps.setDate(2, fechaAlta);
@@ -360,7 +360,7 @@ public class UtilitySql {
 
     }
 
-    public void insertVoluntario( int idVoluntario, Date fechaAlta, Date fechaBaja, String origen, String paisOrigen) throws SQLException {
+    public static void insertVoluntario( int idVoluntario, Date fechaAlta, Date fechaBaja, String origen, String paisOrigen) throws SQLException {
 
         Conexion nuevaConexion = new Conexion();
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
@@ -485,7 +485,7 @@ public class UtilitySql {
 		
 		Connection newConnection = sesionSql.conectarBD(nuevaConexion);
 		
-		String sentenciaSql = "CALL producto3.update_colaborador(?,?,?,?);";
+		String sentenciaSql = "CALL update_colaborador(?,?,?,?);";
 		
 		PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
 		ps.setInt(1, idColaborador);
@@ -617,6 +617,57 @@ public class UtilitySql {
 		ps.setInt(1, idPersonal);
 		ps.executeUpdate();
     	
+    }
+    public static void deleteMiembro(Miembro miembro) throws SQLException {
+
+		Conexion nuevaConexion = new Conexion();
+		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
+		
+		// Comprobamos que los datos son los que esperabamos.
+		
+		out.println("Intentando conectarse con los siguientes datos:");
+		out.println(nuevaConexion.toString());
+		
+		// Ahora llamamos al metodo conectarBD con miConexion como parametro para efectivamente
+		//conectar con la base de datos deseada.
+		
+		Connection newConnection = sesionSql.conectarBD(nuevaConexion);
+		
+		String sentenciaSql = "CALL delete_personal(?);";
+		
+		PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
+		ps.setInt(1, Integer.parseInt(miembro.getIdMiembro()));
+		
+		ps.executeUpdate();
+		
+		String sentenciaSql1 = "CALL delete_voluntario(?);";
+		
+		PreparedStatement ps1 = newConnection.prepareStatement(sentenciaSql1);
+		ps1.setInt(1, Integer.parseInt(miembro.getIdMiembro()));
+		
+		ps1.executeUpdate();
+		
+		String sentenciaSql2 = "CALL delete_colaborador(?);";
+		
+		PreparedStatement ps2 = newConnection.prepareStatement(sentenciaSql2);
+		ps2.setInt(1, Integer.parseInt(miembro.getIdMiembro()));
+		
+		ps2.executeUpdate();
+		
+		String sentenciaSql3 = "CALL delete_miembro(?);";
+		
+		PreparedStatement ps3 = newConnection.prepareStatement(sentenciaSql3);
+		ps3.setInt(1, Integer.parseInt(miembro.getIdMiembro()));
+		
+		ps3.executeUpdate();
+		
+		String sentenciaSql4 = "CALL delete_direccion(?);";
+		
+		PreparedStatement ps4 = newConnection.prepareStatement(sentenciaSql4);
+		ps4.setInt(1, miembro.getDireccion().getIdDireccion());
+		
+		ps4.executeUpdate(); 
+		out.println("Borrado ok");
     }
 }
 
