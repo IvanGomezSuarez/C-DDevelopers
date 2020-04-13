@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlElement;
  * 
  * 
  * */
-public class Voluntario{
+public class Voluntario extends Miembro{
 	
 	//Definendo los Atributos
 
@@ -39,8 +39,8 @@ public class Voluntario{
 	
 	//Definiendo los gets y los sets
 
-	public void setFechaAlta(Date fechaAlta) {
-		this.fechaAlta = fechaAlta;
+	public static  Date setFechaAlta(Date fechaAlta) {
+		return fechaAlta = fechaAlta;
 	}
 
 	public static Date getFechaAlta() {
@@ -84,6 +84,18 @@ public class Voluntario{
 
 	public void setIdVoluntario(int idVoluntario) {
 		this.idVoluntario = idVoluntario;
+	}
+
+
+	public static String getPaisOrigen() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public static String getOrigen() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

@@ -299,17 +299,6 @@ public class MiembroDAO{
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		int seleccion;
 		
-		
-		/*System.out.println("\nIntroduce el dni del miembro: ");
-		nuevoMiembro.setDni(br.readLine());
-		if(t.getMiembro()!=null) {
-		for (int i = 0;i<t.getMiembro().size();i++) {
-			if (t.getMiembro().get(i).getDni().equals(nuevoMiembro.getDni())){
-				System.out.println("\n Dni REPETIDO ");
-				return null;
-			}
-		}
-		}*/
 		System.out.println("\nIntroduce el nombre del miembro: ");
 		nuevoMiembro.setNombreMiembro(br.readLine());
 		System.out.println("\nIntroduce el primer apellido del miembro: ");
@@ -326,7 +315,7 @@ public class MiembroDAO{
 		nuevoMiembro.setNombreUsuario(br.readLine());
 		System.out.println("\nIntroduce tu contraseña: ");
 		nuevoMiembro.setPassword(br.readLine());
-		/*System.out.println("\nIntroduce el Rol del usuario: ");
+		System.out.println("\nIntroduce el Rol del usuario: ");
 		System.out.println("\n1.Usuario Normal: ");
 		System.out.println("\n2.Usuario Admin: ");
 		seleccion=recuperado.nextInt();
@@ -350,28 +339,22 @@ public class MiembroDAO{
 			nuevoMiembro.setColaborador(addColaborador());
 		}else
 			System.out.println("Opcion No valida ");
-		*/
+		
 		return nuevoMiembro;
 
 	}
 	
-	public static Personal addPersonal() throws IOException {
+	public static Personal addPersonal() throws IOException, SQLException {
 			
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			Personal personal=new Personal();
 			SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
 			String antesConversionFecha;
 			Date conversionaFecha= new Date(01/01/2020);
-			
-			System.out.println("Introduzca la Fecha De alta del Contrato(porfavor introduzca la fecha en el siguiente formato --/--/----)");
-			antesConversionFecha=br.readLine();
-			try {
-				conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
-			} catch (ParseException e) {
-				System.out.println("Formato Fecha incorrecto");
-				return null;
-			}
-			personal.setFechaAlta(conversionaFecha);
+			// falta crear este método
+			personal.setIdPersonal(UtilitySql.generarIdPersonal());
+			System.out.println("La fecha de alta se considera la actual");
+			personal.setFechaAlta(UtilitySql.getCurrentDate());
 			
 			System.out.println("Introduzca la Fecha Fin del Contrato(porfavor introduzca la fecha en el siguiente formato --/--/----)");
 			antesConversionFecha=br.readLine();
@@ -393,15 +376,8 @@ public class MiembroDAO{
 			String antesConversionFecha;
 			Date conversionaFecha= new Date(01/01/2020);
 			
-			System.out.println("Introduzca la Fecha De alta del Colaborador(porfavor introduzca la fecha en el siguiente formato --/--/----)");
-			antesConversionFecha=br.readLine();
-			try {
-				conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
-			} catch (ParseException e) {
-				System.out.println("Formato Fecha incorrecto");
-				return null;
-			}
-			colaborador.setFechaAlta(conversionaFecha);
+			System.out.println("La fecha de alta se considera la actual");
+			Colaborador.setFechaAlta(UtilitySql.getCurrentDate());
 			
 			System.out.println("Introduzca la Fecha Fin estimada del Colaborador(porfavor introduzca la fecha en el siguiente formato --/--/----)");
 			antesConversionFecha=br.readLine();
@@ -411,7 +387,7 @@ public class MiembroDAO{
 				System.out.println("Formato Fecha incorrecto");
 				return null;
 			}		
-			colaborador.setFechaBaja(conversionaFecha);
+			Colaborador.setFechaBaja(conversionaFecha);
 			return(colaborador);
 		}
 	
@@ -427,15 +403,8 @@ public class MiembroDAO{
 		Nacional nacional=new Nacional();
 		Internacional internacional=new Internacional();
 		
-		System.out.println("Introduzca la Fecha De alta del Voluntario(porfavor introduzca la fecha en el siguiente formato --/--/----)");
-		antesConversionFecha=br.readLine();
-		try {
-			conversionaFecha=convertirStringaFecha.parse(antesConversionFecha);
-		} catch (ParseException e) {
-			System.out.println("Formato Fecha incorrecto");
-			return null;
-		}
-		voluntario.setFechaAlta(conversionaFecha);
+		System.out.println("La fecha de alta se considera la actual");
+		voluntario.setFechaAlta(UtilitySql.getCurrentDate());
 		
 		System.out.println("Introduzca la Fecha Fin estimada del Voluntario(porfavor introduzca la fecha en el siguiente formato --/--/----)");
 		antesConversionFecha=br.readLine();

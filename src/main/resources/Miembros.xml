@@ -73,6 +73,11 @@
             <puerta>1</puerta>
             <tipoVia>1</tipoVia>
         </Direccion>
-        <Telefono>1</Telefono>
+        <Rol>Normal</Rol>
+        <Telefono>6</Telefono>
+        <Personal>
+            <Dni>6</Dni>
+            <idPersonal>3</idPersonal>
+        </Personal>
     </Miembro>
 </Miembros>

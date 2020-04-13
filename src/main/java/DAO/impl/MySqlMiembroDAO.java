@@ -37,7 +37,6 @@ public class MySqlMiembroDAO implements IMiembroDAO{
 
     
     
-    
     @Override
     public void createMiembroDAO(Miembros miembrosNuevos) throws IOException {
 
@@ -54,12 +53,12 @@ public class MySqlMiembroDAO implements IMiembroDAO{
         //Recorremos miembros para insertarlo en la BD MySQL.
         for (int i = 0; i < Miembros.miembro.size(); i++) {
 
-            String nombreMiembro, nombreUsuario, pass, apellido1, apellido2, dni, rol, telefono, origen,
-            paisOrigen, tipoVia = null, puerta = null, escalera = null, localidad = null, provincia = null, cp = null, pais= null;
+            String nombreMiembro, nombreUsuario, pass, apellido1, apellido2, dni, rol, telefono, origen = null,
+            paisOrigen = null, tipoVia = null, puerta = null, escalera = null, localidad = null, provincia = null, cp = null, pais= null;
 			int idDireccion = 0;
 			int numero = 0;
 			
-			SQLData fechaAlta, fechaBaja, fechaAltaP, fechaBajaP, fechaAltaC, fechaBajaC;
+			Date fechaAlta, fechaBaja, fechaAltaP, fechaBajaP, fechaAltaC, fechaBajaC;
 		
 
             nombreMiembro = miembrosNuevos.getMiembro().get(i).getNombreMiembro();
@@ -75,14 +74,14 @@ public class MySqlMiembroDAO implements IMiembroDAO{
           
             //En funcion de que sea personal contratado, colaborador o voluntario la tabla destino y campos varian
             
-            //java.sql.Date sqldateFechaAlta = new java.sql.Date(Voluntario.getFechaAlta().getTime());
+            fechaAlta = Voluntario.setFechaAlta(UtilitySql.getCurrentDate());
         	//java.sql.Date sqldateFechaBaja = new java.sql.Date(Voluntario.getFechaBaja().getTime());
             //java.sql.Date sqldateFechaAltaC = new java.sql.Date(Colaborador.getFechaAlta().getTime());
-        	//java.sql.Date sqldateFechaBajaC= new java.sql.Date(Colaborador.getFechaBaja().getTime());
-            //java.sql.Date sqldateFechaAltaP = new java.sql.Date(Personal.getFechaAlta().getTime());
-        	//java.sql.Date sqldateFechaBajaP = new java.sql.Date(Personal.getFechaBaja().getTime());
+            //java.sql.Date sqldateFechaBajaC= new java.sql.Date(Colaborador.getFechaBaja().getTime());
+            java.sql.Date sqldateFechaAltaP = new java.sql.Date(Personal.getFechaAlta().getTime());
+        	java.sql.Date sqldateFechaBajaP = new java.sql.Date(Personal.getFechaBaja().getTime());
         	
-          /*  if (!(Miembros.miembro.get(i) instanceof Personal)) {
+            if (!(Miembros.miembro.get(i) instanceof Personal)) {
                 
                 fechaAltaP = Personal.getFechaAlta();
                 fechaBajaP = Personal.getFechaBaja();
@@ -101,30 +100,29 @@ public class MySqlMiembroDAO implements IMiembroDAO{
                 fechaBajaC = Colaborador.getFechaBaja();
 
             }
-            */
+            
             try {
             	
             	/*------------INSERTAREMOS LA DIRECCION PRIMERO---------------------------------------------------------*/
             	
             	 utilitySql.insertDireccion(direccion.getIdDireccion(), direccion.getTipoVia(), direccion.getNumero(), direccion.getPuerta(), 
             			 direccion.getEscalera(), direccion.getLocalidad(), direccion.getProvincia(), direccion.getCp(), direccion.getPais());
+            	 
+            	 /* despues insertamos al miembro*/
             	
                  utilitySql.insertPersona(nombreMiembro, nombreUsuario, pass, apellido1, apellido2, dni, rol, telefono);
                 
-               
+                 int idPersonal = utilitySql.consultarIdGenerado("miembros");
+
+                 utilitySql.insertPersonal(idPersonal, sqldateFechaAltaP, sqldateFechaBajaP);
+
+                 int idVoluntario = utilitySql.consultarIdGenerado("miembros");
+
+                 //utilitySql.insertVoluntario(idVoluntario, origen, paisOrigen);
                 
+                 int idColaborador = utilitySql.consultarIdGenerado("miembros");
 
-                //int idPersonal = utilitySql.consultarIdGenerado("miembros");
-
-               // utilitySql.insertPersonal(idPersonal, sqldateFechaAltaP, sqldateFechaBajaP);
-
-                //int idVoluntario = utilitySql.consultarIdGenerado("miembros");
-
-                //utilitySql.insertVoluntario(idVoluntario, origen, paisOrigen);
-                
-                //int idColaborador = utilitySql.consultarIdGenerado("miembros");
-
-                //utilitySql.insertColaborador(idColaborador, fechaAltaC, fechaBajaC);
+                 //utilitySql.insertColaborador(idColaborador, fechaAltaC, fechaBajaC);
 
             } catch (SQLException e) {
                 e.printStackTrace();
