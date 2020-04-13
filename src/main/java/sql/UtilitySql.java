@@ -5,7 +5,7 @@ import ongEC.*;
 import java.sql.*;
 import java.sql.Date;
 import java.util.*;
-
+import DAO.impl.*;
 import static java.lang.System.*;
 
 /**La clse UtilitySql contiene todos los métodos necesarios para realizar operaciones
@@ -64,6 +64,22 @@ public class UtilitySql {
 
 
     // Métodos de clase
+
+
+    public static int generarIdDireccion() throws SQLException {
+
+    	int idGenerado=0;
+    	Connection conexion;
+    	conexion=MySqlConection.getcon();
+    	Statement selectStmt = conexion.createStatement();
+    	System.out.println("Recogemos el ultimo id de Direcciones\n");
+    	ResultSet rs = selectStmt.executeQuery("Select MAX(idDireccion) from direccionesusuarios");
+    	while (rs.next()) {
+    		idGenerado=rs.getInt(1)+1;
+    		System.out.println("el id de Direcciones ser�:" + "" + idGenerado);
+    	}
+    	return(idGenerado);
+    }
 
     /**
      * El metodo conectarBD crea una conexion con los datos establecidos para un
@@ -246,38 +262,6 @@ public class UtilitySql {
 
     }
 
-    public void insertPersona (String nombreMiembro, String nombreUsuario, String pass, String apellido1,
-                                       String apellido2, String dni, String rol, String telefono  ) throws SQLException {
-
-            Conexion nuevaConexion = new Conexion();
-            UtilitySql sesionSql = new UtilitySql(nuevaConexion);
-
-            // Comprobamos que los datos son los que esperabamos.
-
-            out.println("Intentando conectarse con los siguientes datos:");
-            out.println(nuevaConexion.toString());
-
-            // Ahora llamamos al metodo conectarBD con miConexion como parametro para efectivamente
-            //conectar con la base de datos deseada.
-
-            Connection newConnection = sesionSql.conectarBD(nuevaConexion);
-
-            String sentenciaSql = "CALL producto3.insertar_miembro(?,?,?,?,?,?,?,?);";
-
-            PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
-            ps.setString(1, nombreMiembro);
-            ps.setString(2, nombreUsuario);
-            ps.setString(3, pass);
-            ps.setString(4, apellido1);
-            ps.setString(5, apellido2);
-            ps.setString(6, dni);
-            ps.setString(7, rol);
-            ps.setString(8, telefono);
-            ps.executeUpdate();
-            //out.println("Sentencia DML ejecutada con exito. Se ha insertado: "
-              //      + nombreMiembro + " " + nombreUsuario + " " + pass + " " + apellido1 + " " + apellido2 + " " + dni + " " + rol + " " + telefono);
-
-    }
 
     /**
      * Este método nos devolverá el id que ha otorgado la base de datos al último registro insertado.
@@ -305,7 +289,12 @@ public class UtilitySql {
         return idGenerado;
     }
 
-    public static void insertPersonal(int idPersonal, Date fechaAlta, Date fechaBaja) throws SQLException {
+    /*----------------------------------LOS INSERTS A LA BASE DE DATOS---------------------------------------------------*/
+
+    // PRIMERO INSERTAMOS LA DIRECCION
+
+    public void insertDireccion(int idDireccion, String tipoVia, int numero, String puerta, String escalera, String localidad, String provincia, String cp, String pais) throws SQLException {
+//hacer correctamente
 
         Conexion nuevaConexion = new Conexion();
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
@@ -313,7 +302,74 @@ public class UtilitySql {
 
         foreingKeyChecks(false, newConnection);
 
-        String sentenciaSql = "INSERT INTO personal(idPersonal) VALUES (null,?,?);";
+        String sentenciaSql = "CALL producto3.insertar_Direccion(?,?,?,?,?,?,?,?,?);";
+        PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
+        ps.setInt(1, idDireccion);
+        out.printf("Insertado idDireccion:", +idDireccion);
+        ps.setString(2, tipoVia);
+        ps.setInt(3, numero);
+        ps.setString(4, puerta);
+        ps.setString(5, escalera);
+        ps.setString(6, localidad);
+        ps.setString(7, provincia);
+        ps.setString(8, cp);
+        ps.setString(9, pais);
+        ps.executeUpdate();
+        out.println("\nSentencia DML ejecutada con exito. Se ha insertado\n: "
+        		+ idDireccion + " " + tipoVia + " " + numero + " " + puerta + " " + escalera +
+        		" " + localidad + " " + provincia + " " + cp + " "+ pais);
+
+        foreingKeyChecks(true, newConnection);
+
+    }
+   // DESPU�S INSERTAMOS EL MIEMBRO
+
+    public void insertPersona (String nombreMiembro, String nombreUsuario, String pass, String apellido1,
+            String apellido2, String dni, String rol, String telefono  ) throws SQLException {
+
+Conexion nuevaConexion = new Conexion();
+UtilitySql sesionSql = new UtilitySql(nuevaConexion);
+
+// Comprobamos que los datos son los que esperabamos.
+
+out.println("Intentando conectarse con los siguientes datos:");
+out.println(nuevaConexion.toString());
+
+// Ahora llamamos al metodo conectarBD con miConexion como parametro para efectivamente
+//conectar con la base de datos deseada.
+
+Connection newConnection = sesionSql.conectarBD(nuevaConexion);
+
+String sentenciaSql = "CALL producto3.insertar_miembro(?,?,?,?,?,?,?,?);";
+
+PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
+ps.setString(1, nombreMiembro);
+ps.setString(2, nombreUsuario);
+ps.setString(3, pass);
+ps.setString(4, apellido1);
+ps.setString(5, apellido2);
+ps.setString(6, dni);
+ps.setString(7, rol);
+ps.setString(8, telefono);
+ps.executeUpdate();
+out.println("\nSentencia DML ejecutada con exito. Se ha insertado:\n "
++ nombreMiembro + " " + nombreUsuario + " " + pass + " " + apellido1 + " " + apellido2 + " " + dni + " " + rol + " " + telefono);
+
+}
+
+    // POR ULTIMO INSERTAMOS EL TIPO DE MIEMBRO
+
+    public static void insertPersonal(int idPersonal, Date fechaAlta, Date fechaBaja) throws SQLException {
+
+
+        Conexion nuevaConexion = new Conexion();
+        UtilitySql sesionSql = new UtilitySql(nuevaConexion);
+        Connection newConnection = sesionSql.conectarBD(nuevaConexion);
+
+        foreingKeyChecks(false, newConnection);
+
+
+        String sentenciaSql = "CALL producto3.insertar_Personal(?,?,?);";
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ps.setInt(1, idPersonal);
         ps.setDate(2, fechaAlta);
@@ -323,6 +379,25 @@ public class UtilitySql {
         foreingKeyChecks(true, newConnection);
 
     }
+
+
+
+
+public void insertColaborador(int idColaborador, Date fechaAltaC, Date fechaBajaC) throws SQLException {
+
+Conexion nuevaConexion = new Conexion();
+UtilitySql sesionSql = new UtilitySql(nuevaConexion);
+Connection newConnection = sesionSql.conectarBD(nuevaConexion);
+
+String sentenciaSql = "CALL producto3.insertar_Colaborador(?,?,?);";
+PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
+ps.setInt(1, idColaborador);
+ps.setDate(2, fechaAltaC);
+ps.setDate(3, fechaBajaC);
+ps.executeUpdate();
+
+}
+
 
     public static void foreingKeyChecks(Boolean foreingKeyChecks, Connection newConnection) throws SQLException {
 
@@ -350,7 +425,7 @@ public class UtilitySql {
         Conexion nuevaConexion = new Conexion();
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
         Connection newConnection = sesionSql.conectarBD(nuevaConexion);
-        
+
         String sentenciaSql = "INSERT INTO colaborador(idColaborador, fechaAlta, fechaBaja) VALUES (?, ?, ?);";
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ps.setInt(1, idColaborador);
@@ -362,18 +437,12 @@ public class UtilitySql {
 
     public static void insertVoluntario( int idVoluntario, Date fechaAlta, Date fechaBaja, String origen, String paisOrigen) throws SQLException {
 
-        Conexion nuevaConexion = new Conexion();
-        UtilitySql sesionSql = new UtilitySql(nuevaConexion);
-        Connection newConnection = sesionSql.conectarBD(nuevaConexion);
+        String sentenciaSql = "CALL producto3.insertar_Voluntario(?,?,?);";
 
-        String sentenciaSql = "INSERT INTO voluntario(idVoluntario, fechaAlta, fechaBaja, origen, paisOrigen) VALUES ( null, ?, ?, ?, ?);";
-        
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ps.setInt(1, idVoluntario);
-        ps.setDate(2, fechaAlta);
-        ps.setDate(3, fechaBaja);
-        ps.setString(4, origen);
-        ps.setString(5, paisOrigen);
+        ps.setString(2, origen);
+        ps.setString(3, paisOrigen);
         ps.executeUpdate();
 
     }
@@ -391,7 +460,7 @@ public class UtilitySql {
         //Quitamos la verificacion de foreing key para poder usar TRUNCATE (que no solo hace el borrado como delete,
         // sino que ademas resetea los autoincrement que tenga la tabla)
 
-        
+
         foreingKeyChecks(false, newConnection);
         //Ejecutamos el Truncate para cada nombre de tabla que hemos indicado en tablesName.
         for(int i=0; tablesName.length > i; i++){
@@ -405,22 +474,22 @@ public class UtilitySql {
         foreingKeyChecks(true, newConnection);
     }
     public static void updateDireccionesMiembro (int idDireccion,String tipoVia, int numero, String puerta,String escalera,String localidad,String provincia,String cp,String pais, int idAntiguo ) throws SQLException {
-		
+
 		Conexion nuevaConexion = new Conexion();
 		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
-		
+
 		// Comprobamos que los datos son los que esperabamos.
-		
+
 		out.println("Intentando conectarse con los siguientes datos:");
 		out.println(nuevaConexion.toString());
-		
+
 		// Ahora llamamos al metodo conectarBD con miConexion como parametro para efectivamente
 		//conectar con la base de datos deseada.
-		
+
 		Connection newConnection = sesionSql.conectarBD(nuevaConexion);
-		
+
 		String sentenciaSql = "CALL update_direccionesUsuarios(?,?,?,?,?,?,?,?,?);";
-		
+
 		PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
 		ps.setInt(1, idDireccion);
 		ps.setString(2, tipoVia);
@@ -434,25 +503,25 @@ public class UtilitySql {
 		ps.executeUpdate();
 		//out.println("Sentencia DML ejecutada con exito. Se ha insertado: "
 		//      + nombreMiembro + " " + nombreUsuario + " " + pass + " " + apellido1 + " " + apellido2 + " " + dni + " " + rol + " " + telefono);
-		
+
 		}
     public static void updateMiembros (int idMiembro,String nombreMiembro, String nombreUsuario, String password,String apellido1,String apellido2,String dni,int direccion,String rol,String telefono,int idAntiguo ) throws SQLException {
-		
+
 		Conexion nuevaConexion = new Conexion();
 		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
-		
+
 		// Comprobamos que los datos son los que esperabamos.
-		
+
 		out.println("Intentando conectarse con los siguientes datos:");
 		out.println(nuevaConexion.toString());
-		
+
 		// Ahora llamamos al metodo conectarBD con miConexion como parametro para efectivamente
 		//conectar con la base de datos deseada.
-		
+
 		Connection newConnection = sesionSql.conectarBD(nuevaConexion);
-		
+
 		String sentenciaSql = "CALL update_miembros(?,?,?,?,?,?,?,?,?,?,?);";
-		
+
 		PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
 		ps.setInt(1, idMiembro);
 		ps.setString(2, nombreMiembro);
@@ -468,25 +537,25 @@ public class UtilitySql {
 		ps.executeUpdate();
 		//out.println("Sentencia DML ejecutada con exito. Se ha insertado: "
 		//      + nombreMiembro + " " + nombreUsuario + " " + pass + " " + apellido1 + " " + apellido2 + " " + dni + " " + rol + " " + telefono);
-		
+
 		}
     public static void updateColaborador (int idColaborador,Date fechaAlta, Date fechaBaja, int idAntiguo) throws SQLException {
-		
+
 		Conexion nuevaConexion = new Conexion();
 		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
-		
+
 		// Comprobamos que los datos son los que esperabamos.
-		
+
 		out.println("Intentando conectarse con los siguientes datos:");
 		out.println(nuevaConexion.toString());
-		
+
 		// Ahora llamamos al metodo conectarBD con miConexion como parametro para efectivamente
 		//conectar con la base de datos deseada.
-		
+
 		Connection newConnection = sesionSql.conectarBD(nuevaConexion);
-		
+
 		String sentenciaSql = "CALL update_colaborador(?,?,?,?);";
-		
+
 		PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
 		ps.setInt(1, idColaborador);
 		ps.setDate(2, fechaAlta);
@@ -495,25 +564,25 @@ public class UtilitySql {
 		ps.executeUpdate();
 		//out.println("Sentencia DML ejecutada con exito. Se ha insertado: "
 		//      + nombreMiembro + " " + nombreUsuario + " " + pass + " " + apellido1 + " " + apellido2 + " " + dni + " " + rol + " " + telefono);
-		
+
 		}
     public static void updatePersonal (int idPersonal,Date fechaAlta, Date fechaBaja,int idAntiguo) throws SQLException {
-		
+
 		Conexion nuevaConexion = new Conexion();
 		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
-		
+
 		// Comprobamos que los datos son los que esperabamos.
-		
+
 		out.println("Intentando conectarse con los siguientes datos:");
 		out.println(nuevaConexion.toString());
-		
+
 		// Ahora llamamos al metodo conectarBD con miConexion como parametro para efectivamente
 		//conectar con la base de datos deseada.
-		
+
 		Connection newConnection = sesionSql.conectarBD(nuevaConexion);
-		
+
 		String sentenciaSql = "CALL update_personal(?,?,?,?);";
-		
+
 		PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
 		ps.setInt(1, idPersonal);
 		ps.setDate(2, fechaAlta);
@@ -522,25 +591,25 @@ public class UtilitySql {
 		ps.executeUpdate();
 		//out.println("Sentencia DML ejecutada con exito. Se ha insertado: "
 		//      + nombreMiembro + " " + nombreUsuario + " " + pass + " " + apellido1 + " " + apellido2 + " " + dni + " " + rol + " " + telefono);
-		
+
 		}
     public static void updateVoluntario (int idVoluntario,Date fechaAlta, Date fechaBaja,String origen,String paisOrigen,int idAntiguo ) throws SQLException {
-		
+
 		Conexion nuevaConexion = new Conexion();
 		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
-		
+
 		// Comprobamos que los datos son los que esperabamos.
-		
+
 		out.println("Intentando conectarse con los siguientes datos:");
 		out.println(nuevaConexion.toString());
-		
+
 		// Ahora llamamos al metodo conectarBD con miConexion como parametro para efectivamente
 		//conectar con la base de datos deseada.
-		
+
 		Connection newConnection = sesionSql.conectarBD(nuevaConexion);
-		
+
 		String sentenciaSql = "CALL update_voluntario(?,?,?,?,?,?);";
-		
+
 		PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
 		ps.setInt(1, idVoluntario);
 		ps.setDate(2, fechaAlta);
@@ -551,25 +620,25 @@ public class UtilitySql {
 		ps.executeUpdate();
 		//out.println("Sentencia DML ejecutada con exito. Se ha insertado: "
 		//      + nombreMiembro + " " + nombreUsuario + " " + pass + " " + apellido1 + " " + apellido2 + " " + dni + " " + rol + " " + telefono);
-		
+
 		}
     public static void deleteColaborador(int idColaborador) throws SQLException {
 
 		Conexion nuevaConexion = new Conexion();
 		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
-		
+
 		// Comprobamos que los datos son los que esperabamos.
-		
+
 		out.println("Intentando conectarse con los siguientes datos:");
 		out.println(nuevaConexion.toString());
-		
+
 		// Ahora llamamos al metodo conectarBD con miConexion como parametro para efectivamente
 		//conectar con la base de datos deseada.
-		
+
 		Connection newConnection = sesionSql.conectarBD(nuevaConexion);
-		
+
 		String sentenciaSql = "CALL delete_colaborador(?);";
-		
+
 		PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
 		ps.setInt(1, idColaborador);
 		ps.executeUpdate();
@@ -578,95 +647,95 @@ public class UtilitySql {
 
 		Conexion nuevaConexion = new Conexion();
 		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
-		
+
 		// Comprobamos que los datos son los que esperabamos.
-		
+
 		out.println("Intentando conectarse con los siguientes datos:");
 		out.println(nuevaConexion.toString());
-		
+
 		// Ahora llamamos al metodo conectarBD con miConexion como parametro para efectivamente
 		//conectar con la base de datos deseada.
-		
+
 		Connection newConnection = sesionSql.conectarBD(nuevaConexion);
-		
+
 		String sentenciaSql = "CALL delete_voluntario(?);";
-		
+
 		PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
 		ps.setInt(1, idVoluntario);
 		ps.executeUpdate();
-    	
+
     }
     public static void deletePersonal(int idPersonal) throws SQLException {
 
 		Conexion nuevaConexion = new Conexion();
 		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
-		
+
 		// Comprobamos que los datos son los que esperabamos.
-		
+
 		out.println("Intentando conectarse con los siguientes datos:");
 		out.println(nuevaConexion.toString());
-		
+
 		// Ahora llamamos al metodo conectarBD con miConexion como parametro para efectivamente
 		//conectar con la base de datos deseada.
-		
+
 		Connection newConnection = sesionSql.conectarBD(nuevaConexion);
-		
+
 		String sentenciaSql = "CALL delete_personal(?);";
-		
+
 		PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
 		ps.setInt(1, idPersonal);
 		ps.executeUpdate();
-    	
+
     }
     public static void deleteMiembro(Miembro miembro) throws SQLException {
 
 		Conexion nuevaConexion = new Conexion();
 		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
-		
+
 		// Comprobamos que los datos son los que esperabamos.
-		
+
 		out.println("Intentando conectarse con los siguientes datos:");
 		out.println(nuevaConexion.toString());
-		
+
 		// Ahora llamamos al metodo conectarBD con miConexion como parametro para efectivamente
 		//conectar con la base de datos deseada.
-		
+
 		Connection newConnection = sesionSql.conectarBD(nuevaConexion);
-		
+
 		String sentenciaSql = "CALL delete_personal(?);";
-		
+
 		PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
 		ps.setInt(1, Integer.parseInt(miembro.getIdMiembro()));
-		
+
 		ps.executeUpdate();
-		
+
 		String sentenciaSql1 = "CALL delete_voluntario(?);";
-		
+
 		PreparedStatement ps1 = newConnection.prepareStatement(sentenciaSql1);
 		ps1.setInt(1, Integer.parseInt(miembro.getIdMiembro()));
-		
+
 		ps1.executeUpdate();
-		
+
 		String sentenciaSql2 = "CALL delete_colaborador(?);";
-		
+
 		PreparedStatement ps2 = newConnection.prepareStatement(sentenciaSql2);
 		ps2.setInt(1, Integer.parseInt(miembro.getIdMiembro()));
-		
+
 		ps2.executeUpdate();
-		
+
 		String sentenciaSql3 = "CALL delete_miembro(?);";
-		
+
 		PreparedStatement ps3 = newConnection.prepareStatement(sentenciaSql3);
 		ps3.setInt(1, Integer.parseInt(miembro.getIdMiembro()));
-		
+
 		ps3.executeUpdate();
-		
+
 		String sentenciaSql4 = "CALL delete_direccion(?);";
-		
+
 		PreparedStatement ps4 = newConnection.prepareStatement(sentenciaSql4);
 		ps4.setInt(1, miembro.getDireccion().getIdDireccion());
-		
-		ps4.executeUpdate(); 
+
+		ps4.executeUpdate();
 		out.println("Borrado ok");
     }
 }
@@ -756,4 +825,3 @@ class Conexion {
 
     }
 }
-

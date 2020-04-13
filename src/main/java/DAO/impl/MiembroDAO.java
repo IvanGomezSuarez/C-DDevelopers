@@ -293,7 +293,7 @@ public class MiembroDAO{
 		return null;
 	}
 	
-	public static Miembro addMiembro(Miembros t) throws IOException, JAXBException {
+	public static Miembro addMiembro(Miembros t) throws IOException, JAXBException, SQLException {
 		Miembro nuevoMiembro = new Miembro();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
@@ -318,15 +318,15 @@ public class MiembroDAO{
 		nuevoMiembro.setApellido2(br.readLine());
 		System.out.println("\nIntroduce el DNI del miembro: ");
 		nuevoMiembro.setDni(br.readLine());
-		//System.out.println("\nIntroduce la direccion de su domicilio: ");
-		//nuevoMiembro.setDireccion(Direccion.addDireccion());
+		System.out.println("\nIntroduce la direccion de su domicilio: ");
+		nuevoMiembro.setDireccion(Direccion.addDireccion());
 		System.out.println("\nIntroduce el numero de movil del miembro: ");
 		nuevoMiembro.setTelefono(br.readLine());
 		System.out.println("\nIntroduce el nombre que desee como usuario: ");
 		nuevoMiembro.setNombreUsuario(br.readLine());
 		System.out.println("\nIntroduce tu contraseña: ");
 		nuevoMiembro.setPassword(br.readLine());
-		System.out.println("\nIntroduce el Rol del usuario: ");
+		/*System.out.println("\nIntroduce el Rol del usuario: ");
 		System.out.println("\n1.Usuario Normal: ");
 		System.out.println("\n2.Usuario Admin: ");
 		seleccion=recuperado.nextInt();
@@ -350,7 +350,7 @@ public class MiembroDAO{
 			nuevoMiembro.setColaborador(addColaborador());
 		}else
 			System.out.println("Opcion No valida ");
-		
+		*/
 		return nuevoMiembro;
 
 	}

@@ -1,5 +1,7 @@
 package DAO.impl;
 
+import java.io.IOException;
+
 import ongEC.*;
 
 /** Aqui declaramos todos los metodos que nuestros objetos MIEMBRO DAO deberan soportar
@@ -8,7 +10,7 @@ import ongEC.*;
  */
 public interface IMiembroDAO {
 
-    void createMiembroDAO(Miembros miembrosNuevos);
+    void createMiembroDAO(Miembros miembrosNuevos) throws IOException;
     Miembro readMiembroDAO();
     boolean updateMiembroDAO(Miembro pMiembro);
     boolean deleteMiembroDAO(Miembro pMiembro);

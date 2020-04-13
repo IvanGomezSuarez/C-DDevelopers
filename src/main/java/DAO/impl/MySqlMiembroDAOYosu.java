@@ -40,7 +40,7 @@ public abstract class MySqlMiembroDAOYosu implements IMiembroDAO{
     	Connection conexion;
     	conexion=MySqlConection.getcon();    		    	
     	Statement selectStmt = conexion.createStatement();  	
-    	ResultSet rs = selectStmt.executeQuery("SELECT * FROM ong.miembros inner join voluntario on idMiembro=idVoluntario inner join direccionesUsuarios on direccion=idDireccion ");
+    	ResultSet rs = selectStmt.executeQuery("SELECT * FROM producto3.miembros inner join voluntario on idMiembro=idVoluntario inner join direccionesUsuarios on direccion=idDireccion ");
         while(rs.next()){
             	miembro=new Miembro();
             	direccion=new Direccion();
@@ -104,7 +104,7 @@ public abstract class MySqlMiembroDAOYosu implements IMiembroDAO{
         }
         conexion=MySqlConection.getcon();
         Statement selectStmt1 = conexion.createStatement();
-        ResultSet rs1 = selectStmt1.executeQuery("SELECT * FROM ong.miembros inner join personal on idMiembro=idPersonal inner join direccionesUsuarios on direccion=idDireccion ");
+        ResultSet rs1 = selectStmt1.executeQuery("SELECT * FROM producto3.miembros inner join personal on idMiembro=idPersonal inner join direccionesUsuarios on direccion=idDireccion ");
         while(rs1.next()){
         		miembro=new Miembro();
         		direccion=new Direccion();
@@ -159,7 +159,7 @@ public abstract class MySqlMiembroDAOYosu implements IMiembroDAO{
         }
         conexion=MySqlConection.getcon();
         Statement selectStmt2 = conexion.createStatement();
-        ResultSet rs2 = selectStmt2.executeQuery("SELECT * FROM ong.miembros inner join colaborador on idMiembro=idColaborador inner join direccionesUsuarios on direccion=idDireccion");
+        ResultSet rs2 = selectStmt2.executeQuery("SELECT * FROM producto3.miembros inner join colaborador on idMiembro=idColaborador inner join direccionesUsuarios on direccion=idDireccion");
         while(rs2.next()){
             	miembro=new Miembro();
             	direccion=new Direccion();
@@ -224,7 +224,7 @@ public abstract class MySqlMiembroDAOYosu implements IMiembroDAO{
     	ResultSet rs = selectStmt.executeQuery("Select MAX(idMiembro) from miembros");
     	while (rs.next()) {
     		idGenerado=rs.getInt(1);
-    		//System.out.println(idGenerado);
+    		System.out.println(idGenerado);
     	}
     	return(idGenerado);
     }

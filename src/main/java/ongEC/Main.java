@@ -30,6 +30,7 @@ public class Main {
 
 		MySqlMiembroDAOYosu.incializarXMLdesdeSQL();
 		MySqlMiembroDAOYosu.consultarIdGenerado();
+		UtilitySql.generarIdDireccion();
 		
 
 		Integer estadoAplicacion=0;//Estado de la aplicacion para decidir que opcion entre todas usar
@@ -103,9 +104,9 @@ public class Main {
 							 miembrosNuevos.add(miembroNuevo);
 							 MiembroDAO.save(miembrosNuevos);
 							 DAOFactory.getDAOFactory(DAOFactory.MYSQL).getMiembroDAO().createMiembroDAO(miembrosNuevos);
-		                     System.out.println("Datos cargados correctamente de XML a MySQL!");
+		                     //System.out.println("Datos cargados correctamente de XML a MySQL!");
 		                     Loggin.pulsaIntroParaContinuar();
-							// UtilitySql.crearEstructuraBD();
+							
 						 }else if (seleccionSubMenu==2) {
 							 System.out.println("Modificar");
 							 MiembroDAO.update(miembrosNuevos);
