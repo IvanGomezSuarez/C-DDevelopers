@@ -396,8 +396,8 @@ public class UtilitySql {
     }
    // DESPU�S INSERTAMOS EL MIEMBRO
 
-    public void insertPersona (String nombreMiembro, String nombreUsuario, String pass, String apellido1,
-            String apellido2, String dni, String rol, String telefono  ) throws SQLException {
+    public void insertPersona (String idMiembro,String nombreMiembro, String nombreUsuario, String pass, String apellido1,
+            String apellido2,String dni, int idDireccion, String rol, String telefono  ) throws SQLException {
 
 	Conexion nuevaConexion = new Conexion();
 	UtilitySql sesionSql = new UtilitySql(nuevaConexion);
@@ -412,17 +412,19 @@ public class UtilitySql {
 
 	Connection newConnection = sesionSql.conectarBD(nuevaConexion);
 
-	String sentenciaSql = "CALL ong.insertar_miembro(?,?,?,?,?,?,?,?);";
+	String sentenciaSql = "CALL ong.insertar_miembro(?,?,?,?,?,?,?,?,?,?);";
 
 	PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
-	ps.setString(1, nombreMiembro);
-	ps.setString(2, nombreUsuario);
-	ps.setString(3, pass);
-	ps.setString(4, apellido1);
-	ps.setString(5, apellido2);
-	ps.setString(6, dni);
-	ps.setString(7, rol);
-	ps.setString(8, telefono);
+	ps.setInt(1, Integer.valueOf(idMiembro));
+	ps.setString(2, nombreMiembro);
+	ps.setString(3, nombreUsuario);
+	ps.setString(4, pass);
+	ps.setString(5, apellido1);
+	ps.setString(6, apellido2);
+	ps.setString(7, dni);
+	ps.setInt(8, idDireccion);
+	ps.setString(9, rol);
+	ps.setString(10, telefono);
 	ps.executeUpdate();
 	out.println("\nSentencia DML ejecutada con exito. Se ha insertado:\n "
 	+ nombreMiembro + " " + nombreUsuario + " " + pass + " " + apellido1 + " " + apellido2 + " " + dni + " " + rol + " " + telefono);
@@ -444,17 +446,13 @@ public class UtilitySql {
         String sentenciaSql = "CALL ong.insertar_Personal(?,?,?);";
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ps.setInt(1, idPersonal);
-        ps.setDate(2, getCurrentDate());
+        ps.setDate(2, fechaAlta);
         ps.setDate(3, fechaBaja);
         ps.executeUpdate();
 
         foreingKeyChecks(true, newConnection);
 
     }
-
-
-
-
 
 
 	public static void insertColaborador(int idColaborador, Date fechaAltaC, Date fechaBajaC) throws SQLException {
@@ -494,21 +492,20 @@ public class UtilitySql {
 
     }
 
-
     public static void insertVoluntario( int idVoluntario, Date fechaAlta, Date fechaBaja, String origen, String paisOrigen) throws SQLException {
     	// faltarian los campos date que por ahora fallan y se han omitido para las pruebas de insercion
         Conexion nuevaConexion = new Conexion();
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
         Connection newConnection = sesionSql.conectarBD(nuevaConexion);
 
-        String sentenciaSql = "CALL producto3.insertar_Voluntario(?,?,?,?,?);";
+        String sentenciaSql = "CALL ong.insertar_Voluntario(?,?,?,?,?);";
 
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ps.setInt(1, idVoluntario);
-        ps.setDate(1, fechaAlta);
-        ps.setDate(1, fechaBaja);
-        ps.setString(2, origen);
-        ps.setString(3, paisOrigen);
+        ps.setDate(2, fechaAlta);
+        ps.setDate(3, fechaBaja);
+        ps.setString(4, origen);
+        ps.setString(5, paisOrigen);
         ps.executeUpdate();
 
     }

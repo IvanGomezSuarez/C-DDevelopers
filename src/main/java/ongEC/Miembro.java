@@ -24,7 +24,7 @@ public class Miembro {
 // atributos
 	
 	@XmlElement(name = "IdMiembro")
-	private static String idMiembro;
+	private String idMiembro;
 	@XmlElement(name = "Nombre")
 	private String nombreMiembro;
 	@XmlElement(name = "NombreUsuario")
@@ -47,7 +47,6 @@ public class Miembro {
 	@XmlElement(name = "Personal")
 	Personal personal;
 	@XmlElement(name = "Voluntario")
-	public static
 	Voluntario voluntario;
 	@XmlElement(name = "Colaborador")
 	Colaborador colaborador;
@@ -78,8 +77,8 @@ public class Miembro {
 	}
 	
 	public Miembro(String idMiembro, String nombreMiembro, String nombreUsuario, String password, String apellido1,
-			String apellido2, Direccion direccion, String rol, Personal personal, Voluntario voluntario,
-			Colaborador colaborador, String telefono) {
+			String apellido2, String dni, Direccion direccion, String rol, String telefono, Personal personal,
+			Voluntario voluntario, Colaborador colaborador) {
 		super();
 		this.idMiembro = idMiembro;
 		this.nombreMiembro = nombreMiembro;
@@ -87,31 +86,26 @@ public class Miembro {
 		this.password = password;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
+		this.dni = dni;
 		this.direccion = direccion;
 		this.rol = rol;
+		this.telefono = telefono;
 		this.personal = personal;
 		this.voluntario = voluntario;
 		this.colaborador = colaborador;
-		this.telefono = telefono;
 	}
 	
 	// METODOS
 	
 
-	public Miembro(String nombreMiembro2, String dni2) {
-		// TODO Auto-generated constructor stub
-	}
-
-
-	public static String getIdMiembro() {
+	public String getIdMiembro() {
 		return idMiembro;
 	}
-
 
 	public void setIdMiembro(String idMiembro) {
 		this.idMiembro = idMiembro;
 	}
-	
+
 	public String getNombreMiembro() {
 		return nombreMiembro;
 	}
@@ -120,24 +114,24 @@ public class Miembro {
 		this.nombreMiembro = nombreMiembro;
 	}
 
-	public String getApellido1() {
-		return apellido1;
+	public String getNombreUsuario() {
+		return nombreUsuario;
 	}
-	
+
 	public void setNombreUsuario(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
 	}
-	
-	public String getNomUsuario() {
-		return nombreUsuario;
+
+	public String getPassword() {
+		return password;
 	}
-	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public String getPass() {
-		return password;
+
+	public String getApellido1() {
+		return apellido1;
 	}
 
 	public void setApellido1(String apellido1) {
@@ -152,15 +146,7 @@ public class Miembro {
 		this.apellido2 = apellido2;
 	}
 
-	public Direccion getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(Direccion direccion) {
-		this.direccion = direccion;
-	}
-
-	public static String getDni() {
+	public String getDni() {
 		return dni;
 	}
 
@@ -168,13 +154,12 @@ public class Miembro {
 		this.dni = dni;
 	}
 
-	
-	public String getTelefono() {
-		return telefono;
+	public Direccion getDireccion() {
+		return direccion;
 	}
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
 	}
 
 	public String getRol() {
@@ -185,12 +170,12 @@ public class Miembro {
 		this.rol = rol;
 	}
 
-	public String getNombreUsuario() {
-		return nombreUsuario;
+	public String getTelefono() {
+		return telefono;
 	}
 
-	public String getPassword() {
-		return password;
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
 	public Personal getPersonal() {
@@ -215,6 +200,5 @@ public class Miembro {
 
 	public void setColaborador(Colaborador colaborador) {
 		this.colaborador = colaborador;
-	}
-	
+	}	
 }

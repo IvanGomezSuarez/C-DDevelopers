@@ -309,8 +309,14 @@ public abstract class MySqlMiembroDAOYosu implements IMiembroDAO{
 	    				UtilitySql.deleteColaborador(miembro.getColaborador().getIdColaborador());
 		    			}catch(Exception e) {
 		    				  //  Block of code to handle errors
-		    			}	    			
-	    			UtilitySql.insertVoluntario(Integer.parseInt(miembro.getIdMiembro()),sqldateFechaAlta,sqldateFechaBaja,miembro.getVoluntario().getNacional().getOrigen(),miembro.getVoluntario().getInternacional().getPaisOrigen());
+		    			}
+	    			if (miembro.getVoluntario().getInternacional()==null){
+	    				UtilitySql.insertVoluntario(Integer.parseInt(miembro.getIdMiembro()),sqldateFechaAlta,sqldateFechaBaja,miembro.getVoluntario().getNacional().getOrigen(),null);
+	    			}
+	    			if (miembro.getVoluntario().getNacional()==null) {
+	    				UtilitySql.insertVoluntario(Integer.parseInt(miembro.getIdMiembro()),sqldateFechaAlta,sqldateFechaBaja,null ,miembro.getVoluntario().getInternacional().getPaisOrigen());
+	    			}
+	    				
 	    		}
 	    	}
     	}

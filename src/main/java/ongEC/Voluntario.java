@@ -14,9 +14,9 @@ public class Voluntario extends Miembro{
 
 	int idVoluntario;
 	@XmlElement(name = "fechaAltaVol")
-	public static Date fechaAlta;
+	public  Date fechaAlta;
 	@XmlElement(name = "fechaBajaVol")
-	public static Date fechaBaja;
+	public  Date fechaBaja;
 
 	Nacional nacional;
 	Internacional internacional;
@@ -36,21 +36,34 @@ public class Voluntario extends Miembro{
 	
 	public Voluntario() {
 	}
-	
+
 	//Definiendo los gets y los sets
 
-	public static  Date setFechaAlta(Date fechaAlta) {
-		return fechaAlta = fechaAlta;
+
+	public int getIdVoluntario() {
+		return idVoluntario;
 	}
 
-	public static Date getFechaAlta() {
+
+	public void setIdVoluntario(int idVoluntario) {
+		this.idVoluntario = idVoluntario;
+	}
+
+
+	public Date getFechaAlta() {
 		return fechaAlta;
 	}
 
 
-	public static Date getFechaBaja() {
+	public void setFechaAlta(Date fechaAlta) {
+		this.fechaAlta = fechaAlta;
+	}
+
+
+	public Date getFechaBaja() {
 		return fechaBaja;
 	}
+
 
 	public void setFechaBaja(Date fechaBaja) {
 		this.fechaBaja = fechaBaja;
@@ -75,27 +88,8 @@ public class Voluntario extends Miembro{
 	public void setInternacional(Internacional internacional) {
 		this.internacional = internacional;
 	}
+	
 
 
-	public int getIdVoluntario() {
-		return idVoluntario;
-	}
-
-
-	public void setIdVoluntario(int idVoluntario) {
-		this.idVoluntario = idVoluntario;
-	}
-
-
-	public static String getPaisOrigen() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public static String getOrigen() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 }

@@ -236,7 +236,7 @@ public class MiembroDAO{
 		System.out.println("Nombre:" + miembro.getNombreMiembro());
 		System.out.println("Apellido1:" + miembro.getApellido1());
 		System.out.println("Apellido2;"+ miembro.getApellido2());
-		System.out.println("Dni:"+ Miembro.getDni());
+		System.out.println("Dni:"+ miembro.getDni());
 		System.out.println("Via:"+ miembro.getDireccion().getTipoVia());
 		System.out.println("Puerta:"+ miembro.getDireccion().getPuerta());
 		System.out.println("Escalera::"+ miembro.getDireccion().getEscalera());
@@ -298,7 +298,10 @@ public class MiembroDAO{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Scanner recuperado = new Scanner(System.in);  // recuperar la informacion del usuario
 		int seleccion;
+		int idmiembro;
 		
+		idmiembro=MySqlMiembroDAOYosu.consultarIdGenerado()+1;
+		nuevoMiembro.setIdMiembro(String.valueOf(idmiembro));
 		System.out.println("\nIntroduce el nombre del miembro: ");
 		nuevoMiembro.setNombreMiembro(br.readLine());
 		System.out.println("\nIntroduce el primer apellido del miembro: ");
@@ -320,9 +323,9 @@ public class MiembroDAO{
 		System.out.println("\n2.Usuario Admin: ");
 		seleccion=recuperado.nextInt();
 		if (seleccion==1) {
-			nuevoMiembro.setRol("Normal");
+			nuevoMiembro.setRol("MIEMBRO");
 		}else if (seleccion==2) {
-			nuevoMiembro.setRol("Admin");
+			nuevoMiembro.setRol("ADMINISTRADOR");
 		}else {
 			System.out.println("Opcion No valida ");
 		}
@@ -377,7 +380,7 @@ public class MiembroDAO{
 			Date conversionaFecha= new Date(01/01/2020);
 			
 			System.out.println("La fecha de alta se considera la actual");
-			Colaborador.setFechaAlta(UtilitySql.getCurrentDate());
+			colaborador.setFechaAlta(UtilitySql.getCurrentDate());
 			
 			System.out.println("Introduzca la Fecha Fin estimada del Colaborador(porfavor introduzca la fecha en el siguiente formato --/--/----)");
 			antesConversionFecha=br.readLine();
@@ -387,7 +390,7 @@ public class MiembroDAO{
 				System.out.println("Formato Fecha incorrecto");
 				return null;
 			}		
-			Colaborador.setFechaBaja(conversionaFecha);
+			colaborador.setFechaBaja(conversionaFecha);
 			return(colaborador);
 		}
 	
@@ -427,6 +430,7 @@ public class MiembroDAO{
 		}else if (seleccion==2) {
 			System.out.println("Introduce el  Pais Origen");
 			internacional.setPaisOrigen(br.readLine());
+			voluntario.setInternacional(internacional);
 		}else {
 			System.out.println("Opcion No valida ");
 		}

@@ -27,6 +27,7 @@ public class Nacional{
 
 	//Definiendo los Gets y los Sets
 	
+	
 	public String getOrigen() {
 		return origen;
 	}
@@ -34,7 +35,6 @@ public class Nacional{
 	public void setOrigen(String origen) {
 		this.origen = origen;
 	}
-	
 
 	
 }
