@@ -3,7 +3,7 @@ package ongEC;
 import DAO.*;
 import DAO.impl.DelegacionDAO;
 import DAO.impl.MiembroDAO;
-import DAO.impl.MySqlMiembroDAOYosu;
+import DAO.impl.MySqlMiembroDAO;
 import DAO.impl.ProyectoDAO;
 import DAO.impl.DAOFactory;
 import sql.UtilitySql;
@@ -28,8 +28,8 @@ public class Main {
 
 		DAOFactory objetoFactory = DAOFactory.getDAOFactory(DAOFactory.XML);
 
-		MySqlMiembroDAOYosu.incializarXMLdesdeSQL();
-		MySqlMiembroDAOYosu.consultarIdGenerado();
+		MySqlMiembroDAO.incializarXMLdesdeSQL();
+		//MySqlMiembroDAOYosu.consultarIdGenerado();
 		UtilitySql.generarIdDireccion();
 		
 
@@ -94,7 +94,7 @@ public class Main {
 				}else if (estadoAplicacion==3){
 					System.out.println("3.Dar de alta/modificar/eliminar un Miembro");
 					//UtilitySql.truncateAllContentDB();
-					MySqlConection.connect();
+					//MySqlConection.connect();
 					opcionesSecundario();
 					seleccionSubMenu=comprobacionOpcion();	//Comprobamos si es int
 					 if (seleccionSubMenu!=0) {
@@ -104,7 +104,6 @@ public class Main {
 							 miembrosNuevos.add(miembroNuevo);
 							 MiembroDAO.save(miembrosNuevos);
 							 DAOFactory.getDAOFactory(DAOFactory.MYSQL).getMiembroDAO().createMiembroDAO(miembrosNuevos);
-		                     //System.out.println("Datos cargados correctamente de XML a MySQL!");
 		                     Loggin.pulsaIntroParaContinuar();
 							
 						 }else if (seleccionSubMenu==2) {

@@ -195,7 +195,7 @@ public class MiembroDAO{
 					System.out.println("Despues del while actualizamos"+ i);
 					int result = Integer.parseInt(idProyecto);
 					System.out.println(idProyecto);
-					MySqlMiembroDAOYosu.updateMiembroDAOMysql(t.getMiembro().get(i),result,opcioncambiotipomiembro);
+					DAOFactory.getDAOFactory(DAOFactory.MYSQL).getMiembroDAO().updateMiembroDAO(t.getMiembro().get(i),result,opcioncambiotipomiembro);
 				}
 			}
 		}else {
@@ -220,7 +220,8 @@ public class MiembroDAO{
 			for (int i = 0;i<t.getMiembro().size();i++) {
 				if (t.getMiembro().get(i).getIdMiembro().equals(idMiembro)){
 					System.out.println(t.getMiembro().get(i).getIdMiembro());
-					UtilitySql.deleteMiembro(t.getMiembro().get(i));
+					DAOFactory.getDAOFactory(DAOFactory.MYSQL).getMiembroDAO().deleteMiembroDAO(t.getMiembro().get(i));
+					//UtilitySql.deleteMiembro(t.getMiembro().get(i));
 					t.getMiembro().remove(i);
 					System.out.println("Borrado con exito");
 				}
@@ -300,7 +301,7 @@ public class MiembroDAO{
 		int seleccion;
 		int idmiembro;
 		
-		idmiembro=MySqlMiembroDAOYosu.consultarIdGenerado()+1;
+		idmiembro=MySqlMiembroDAO.consultarIdGenerado()+1;
 		nuevoMiembro.setIdMiembro(String.valueOf(idmiembro));
 		System.out.println("\nIntroduce el nombre del miembro: ");
 		nuevoMiembro.setNombreMiembro(br.readLine());

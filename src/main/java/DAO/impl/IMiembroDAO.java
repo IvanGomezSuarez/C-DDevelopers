@@ -1,6 +1,7 @@
 package DAO.impl;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import ongEC.*;
 
@@ -12,6 +13,6 @@ public interface IMiembroDAO {
 
     void createMiembroDAO(Miembros miembrosNuevos) throws IOException;
     Miembro readMiembroDAO();
-    boolean deleteMiembroDAO(Miembro pMiembro);
-	boolean updateMiembroDAO(Miembro pMiembro);
+    void deleteMiembroDAO(Miembro miembro) throws SQLException;
+	void updateMiembroDAO(Miembro miembro,int result, int opcioncambiotipomiembro)throws SQLException;
 }

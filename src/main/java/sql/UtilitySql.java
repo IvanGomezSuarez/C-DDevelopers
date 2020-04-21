@@ -3,7 +3,6 @@ package sql;
 import ongEC.*;
 
 import java.sql.*;
-import java.sql.Date;
 import java.util.Scanner;
 import DAO.impl.*;
 import static java.lang.System.*;
@@ -72,8 +71,9 @@ public class UtilitySql {
     public static int generarIdDireccion() throws SQLException {
 
     	int idGenerado=0;
-    	Connection conexion;
-    	conexion=MySqlConection.getcon();
+    	Conexion nuevaConexion = new Conexion();
+		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
+		Connection conexion = sesionSql.conectarBD(nuevaConexion);	    	
     	Statement selectStmt = conexion.createStatement();
     	System.out.println("Recogemos el ultimo id de Direcciones\n");
     	ResultSet rs = selectStmt.executeQuery("Select MAX(idDireccion) from direccionesusuarios");
@@ -88,8 +88,9 @@ public class UtilitySql {
     public static int generarIdPersonal() throws SQLException {
 
     	int idGenerado=0;
-    	Connection conexion;
-    	conexion=MySqlConection.getcon();
+    	Conexion nuevaConexion = new Conexion();
+		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
+		Connection conexion = sesionSql.conectarBD(nuevaConexion);	    	
     	Statement selectStmt = conexion.createStatement();
     	System.out.println("Recogemos el ultimo id de Miembro\n");
     	ResultSet rs = selectStmt.executeQuery("Select MAX(IdMiembro) from miembros");
@@ -104,8 +105,9 @@ public class UtilitySql {
     public static int generarIdVoluntario() throws SQLException {
 
     	int idGenerado=0;
-    	Connection conexion;
-    	conexion=MySqlConection.getcon();
+    	Conexion nuevaConexion = new Conexion();
+		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
+		Connection conexion = sesionSql.conectarBD(nuevaConexion);	    	
     	Statement selectStmt = conexion.createStatement();
     	System.out.println("Recogemos el ultimo id de Miembro\n");
     	ResultSet rs = selectStmt.executeQuery("Select MAX(IdMiembro) from miembros");
@@ -120,8 +122,9 @@ public class UtilitySql {
     public static int generarIdColaborador() throws SQLException {
 
     	int idGenerado=0;
-    	Connection conexion;
-    	conexion=MySqlConection.getcon();
+    	Conexion nuevaConexion = new Conexion();
+		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
+		Connection conexion = sesionSql.conectarBD(nuevaConexion);	    	
     	Statement selectStmt = conexion.createStatement();
     	System.out.println("Recogemos el ultimo id de Miembro\n");
     	ResultSet rs = selectStmt.executeQuery("Select MAX(IdMiembro) from miembros");
@@ -135,8 +138,9 @@ public class UtilitySql {
     public static int generarColDireccion() throws SQLException {
 
     	int idGenerado=0;
-    	Connection conexion;
-    	conexion=MySqlConection.getcon();
+    	Conexion nuevaConexion = new Conexion();
+		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
+		Connection conexion = sesionSql.conectarBD(nuevaConexion);	    	
     	Statement selectStmt = conexion.createStatement();
     	System.out.println("Recogemos el ultimo id de Direcciones\n");
     	ResultSet rs = selectStmt.executeQuery("Select MAX(idDireccion) from direccionesusuarios");
@@ -808,83 +812,83 @@ public class UtilitySql {
 /**
  * Se incluye la clase Conexion, que utilizará la clase UtilitySql.
  */
-
-class Conexion {
-
-    //Variables de clase
-
-    private String host;
-    private String puerto;
-    private String nombreBD;
-    private String user;
-    private String pass;
-
-    //Constructores
-    //Al llamar al constructor por defecto, le pasaremos automaticamente unos datos
-    //de conexion prefijados
-
-    public Conexion() {
-        this.host = "127.0.0.1";
-        this.puerto = "3306";
-        this.nombreBD = "ong";
-        this.user = "root";
-        this.pass = "tesTed4a";
-
-    }
-
-    public Conexion(String host, String puerto, String nombreBD, String user, String pass) {
-        this.host = host;
-        this.puerto = puerto;
-        this.nombreBD = nombreBD;
-        this.user = user;
-        this.pass = pass;
-    }
-
-    //Getters y Setters
-    public String getHost() {
-        return host;
-    }
-
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public String getPuerto() {
-        return puerto;
-    }
-
-    public void setPuerto(String puerto) {
-        this.puerto = puerto;
-    }
-
-    public String getNombreBD() {
-        return nombreBD;
-    }
-
-    public void setNombreBD(String nombreBD) {
-        this.nombreBD = nombreBD;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    public String toString() {
-
-        return String.format("Host: %s - Puerto: %s\nBase de Datos: %s - Usuario: %s.",
-                host, puerto, nombreBD, user);
-
-    }
-}
+//
+//class Conexion {
+//
+//    //Variables de clase
+//
+//    private String host;
+//    private String puerto;
+//    private String nombreBD;
+//    private String user;
+//    private String pass;
+//
+//    //Constructores
+//    //Al llamar al constructor por defecto, le pasaremos automaticamente unos datos
+//    //de conexion prefijados
+//
+//    public Conexion() {
+//        this.host = "127.0.0.1";
+//        this.puerto = "3306";
+//        this.nombreBD = "ong";
+//        this.user = "root";
+//        this.pass = "tesTed4a";
+//
+//    }
+//
+//    public Conexion(String host, String puerto, String nombreBD, String user, String pass) {
+//        this.host = host;
+//        this.puerto = puerto;
+//        this.nombreBD = nombreBD;
+//        this.user = user;
+//        this.pass = pass;
+//    }
+//
+//    //Getters y Setters
+//    public String getHost() {
+//        return host;
+//    }
+//
+//    public void setHost(String host) {
+//        this.host = host;
+//    }
+//
+//    public String getPuerto() {
+//        return puerto;
+//    }
+//
+//    public void setPuerto(String puerto) {
+//        this.puerto = puerto;
+//    }
+//
+//    public String getNombreBD() {
+//        return nombreBD;
+//    }
+//
+//    public void setNombreBD(String nombreBD) {
+//        this.nombreBD = nombreBD;
+//    }
+//
+//    public String getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(String user) {
+//        this.user = user;
+//    }
+//
+//    public String getPass() {
+//        return pass;
+//    }
+//
+//    public void setPass(String pass) {
+//        this.pass = pass;
+//    }
+//
+//    public String toString() {
+//
+//        return String.format("Host: %s - Puerto: %s\nBase de Datos: %s - Usuario: %s.",
+//                host, puerto, nombreBD, user);
+//
+//    }
+//}

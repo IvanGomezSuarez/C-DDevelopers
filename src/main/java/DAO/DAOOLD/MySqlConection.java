@@ -1,4 +1,4 @@
-package ongEC;
+package DAO.DAOOLD;
 
 import java . sql . Connection ;
 import java . sql . DriverManager ;
@@ -10,7 +10,7 @@ import sql.UtilitySql;
 
 
 
-public class MySqlConection {
+public class MySqlConectionO {
 
     public static void connect() throws SQLException{
     String url = "jdbc:mysql://127.0.0.1:3306/ong?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
