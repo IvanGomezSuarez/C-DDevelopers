@@ -378,7 +378,7 @@ public class UtilitySql {
 
         foreingKeyChecks(false, newConnection);
 
-        String sentenciaSql = "CALL ong.insertar_Direccion(?,?,?,?,?,?,?,?,?);";
+        String sentenciaSql = "CALL producto3.insertar_Direccion(?,?,?,?,?,?,?,?,?);";
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ps.setInt(1, idDireccion);
         out.printf("Insertado idDireccion:", +idDireccion);
@@ -416,7 +416,7 @@ public class UtilitySql {
 
 	Connection newConnection = sesionSql.conectarBD(nuevaConexion);
 
-	String sentenciaSql = "CALL ong.insertar_miembro(?,?,?,?,?,?,?,?,?,?);";
+	String sentenciaSql = "CALL producto3.insertar_miembro(?,?,?,?,?,?,?,?,?,?);";
 
 	PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
 	ps.setInt(1, Integer.valueOf(idMiembro));
@@ -447,7 +447,7 @@ public class UtilitySql {
         foreingKeyChecks(false, newConnection);
 
 
-        String sentenciaSql = "CALL ong.insertar_Personal(?,?,?);";
+        String sentenciaSql = "CALL producto3.insertar_Personal(?,?,?);";
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ps.setInt(1, idPersonal);
         ps.setDate(2, fechaAlta);
@@ -465,7 +465,7 @@ public class UtilitySql {
 	UtilitySql sesionSql = new UtilitySql(nuevaConexion);
 	Connection newConnection = sesionSql.conectarBD(nuevaConexion);
 
-	String sentenciaSql = "CALL ong.insertar_Colaborador(?,?,?);";
+	String sentenciaSql = "CALL producto3.insertar_Colaborador(?,?,?);";
 	PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
 	ps.setInt(1, idColaborador);
 	ps.setDate(2, fechaAltaC);
@@ -502,7 +502,7 @@ public class UtilitySql {
         UtilitySql sesionSql = new UtilitySql(nuevaConexion);
         Connection newConnection = sesionSql.conectarBD(nuevaConexion);
 
-        String sentenciaSql = "CALL ong.insertar_Voluntario(?,?,?,?,?);";
+        String sentenciaSql = "CALL producto3.insertar_Voluntario(?,?,?,?,?);";
 
         PreparedStatement ps = newConnection.prepareStatement(sentenciaSql);
         ps.setInt(1, idVoluntario);
