@@ -53,34 +53,8 @@
         <Telefono>1</Telefono>
         <Personal>
             <idPersonal>1</idPersonal>
-            <fechaAltaPer>2020-04-22T09:13:45.110+02:00</fechaAltaPer>
-            <fechaBajaPer>0002-02-02T00:00:00+01:00</fechaBajaPer>
-        </Personal>
-    </Miembro>
-    <Miembro>
-        <IdMiembro>3</IdMiembro>
-        <Nombre>4</Nombre>
-        <NombreUsuario>4</NombreUsuario>
-        <Password>4</Password>
-        <Apellido1>4</Apellido1>
-        <Apellido2>4</Apellido2>
-        <Dni>4</Dni>
-        <Direccion>
-            <cp>4</cp>
-            <escalera>4</escalera>
-            <idDireccion>3</idDireccion>
-            <localidad>4</localidad>
-            <numero>4</numero>
-            <pais>4</pais>
-            <provincia>4</provincia>
-            <puerta>4</puerta>
-            <tipoVia>4</tipoVia>
-        </Direccion>
-        <Telefono>4</Telefono>
-        <Personal>
-            <idPersonal>3</idPersonal>
-            <fechaAltaPer>2020-04-22T09:13:45.110+02:00</fechaAltaPer>
-            <fechaBajaPer>0002-02-02T00:00:00+01:00</fechaBajaPer>
+            <fechaAltaPer>2020-04-22T02:00:00+02:00</fechaAltaPer>
+            <fechaBajaPer>0002-02-01T01:00:00+01:00</fechaBajaPer>
         </Personal>
     </Miembro>
 </Miembros>
