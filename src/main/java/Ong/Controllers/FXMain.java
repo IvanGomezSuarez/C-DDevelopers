@@ -20,43 +20,19 @@ import javafx.stage.Stage;
 public class FXMain extends Application {
     
     @Override
-    public void start(Stage stage) throws IOException {
-       /* Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
-        */
-        
-        Parent root = FXMLLoader.load(getClass().getResource("/Ong/views/main.fxml"));
-        
-     /*   stage.setMaxHeight(600);
-        stage.setMaxWidth(900);
-        stage.setFullScreen(false);
-        stage.setMaximized(false);
-        double width = 1200;
-        double height = 800;
-*/
+    public void start(Stage  stage) throws IOException {
 
+      Parent root = FXMLLoader.load(getClass().getResource("/Ong/Views/main.fxml"));
+        
         Scene scene = new Scene(root);
+        
+        //String css = FXMain.class.getResource("myCss.css").toExternalForm();
+        //scene.getStylesheets().add(css);
         stage.setScene(scene);
-       // stage.setTitle("ONG Resource Planner");
-       // stage.getIcons().add(new Image("/images/ong.png"));
+        stage.setTitle("Bienvenido a EntreCulturas");
+        stage.getIcons().add(new Image("/images/ong.jpg"));
         stage.show();
-        
-        
-       /* StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        
-        Scene scene = new Scene(root, 300, 250);
-        
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();*/
+  
     }
 
     /**
