@@ -40,7 +40,6 @@ public class MySqlMiembroDAO implements IMiembroDAO{
 
     
     
-    @Override
     public void createMiembroDAO(Miembros miembrosNuevos) throws IOException {
 
         UtilitySql utilitySql = new UtilitySql();
@@ -151,12 +150,10 @@ public class MySqlMiembroDAO implements IMiembroDAO{
     }
     
 
-    @Override
     public Miembro readMiembroDAO() {
         return null;
     }
     
-    @Override
     public void updateMiembroDAO(Miembro miembro, int miembroIdViejo, int opcioncambiotipomiembro) throws SQLException {
     	
 
@@ -256,7 +253,6 @@ public class MySqlMiembroDAO implements IMiembroDAO{
     }
 
     
-    @Override
     public void deleteMiembroDAO(Miembro miembro)throws SQLException {
     	
     	Conexion nuevaConexion = new Conexion();
@@ -328,7 +324,7 @@ public class MySqlMiembroDAO implements IMiembroDAO{
 		Connection newConnection = sesionSql.conectarBD(nuevaConexion);    	
     	Statement selectStmt = newConnection.createStatement();
     	
-    	ResultSet rs = selectStmt.executeQuery("SELECT * FROM producto3.miembros inner join voluntario on idMiembro=idVoluntario inner join direccionesUsuarios on direccion=idDireccion ");
+    	ResultSet rs = selectStmt.executeQuery("SELECT * FROM ong.miembros inner join voluntario on idMiembro=idVoluntario inner join direccionesUsuarios on direccion=idDireccion ");
         while(rs.next()){
             	miembro=new Miembro();
             	direccion=new Direccion();
@@ -392,7 +388,7 @@ public class MySqlMiembroDAO implements IMiembroDAO{
         }
         newConnection = sesionSql.conectarBD(nuevaConexion);    	
     	Statement selectStmt1 = newConnection.createStatement();
-        ResultSet rs1 = selectStmt1.executeQuery("SELECT * FROM producto3.miembros inner join personal on idMiembro=idPersonal inner join direccionesUsuarios on direccion=idDireccion ");
+        ResultSet rs1 = selectStmt1.executeQuery("SELECT * FROM ong.miembros inner join personal on idMiembro=idPersonal inner join direccionesUsuarios on direccion=idDireccion ");
         while(rs1.next()){
         		miembro=new Miembro();
         		direccion=new Direccion();
@@ -447,7 +443,7 @@ public class MySqlMiembroDAO implements IMiembroDAO{
         }
         newConnection = sesionSql.conectarBD(nuevaConexion);    	
     	Statement selectStmt2 = newConnection.createStatement();
-        ResultSet rs2 = selectStmt2.executeQuery("SELECT * FROM producto3.miembros inner join colaborador on idMiembro=idColaborador inner join direccionesUsuarios on direccion=idDireccion");
+        ResultSet rs2 = selectStmt2.executeQuery("SELECT * FROM ong.miembros inner join colaborador on idMiembro=idColaborador inner join direccionesUsuarios on direccion=idDireccion");
         while(rs2.next()){
             	miembro=new Miembro();
             	direccion=new Direccion();
