@@ -22,6 +22,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 /**
  * FXML Controller class
@@ -45,12 +46,19 @@ public class MainController implements Initializable {
 
     @FXML
     private void handleButtonAction(ActionEvent event ) throws IOException {
-      Parent parent = FXMLLoader.load(getClass().getResource("/Ong/Views/miembros.fxml"));
+        //Parent parent = FXMLLoader.load(getClass().getResource("/Ong/Views/miembros.fxml"));
+        
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Ong/Views/miembros.fxml"));
+    	Parent root = loader.load();
+    	MiembrosController controlador = loader.getController();
+    	Scene scene = new Scene(root);
     	Stage stage = new Stage();
-    	Scene scene = new Scene(parent);
+    	stage.initModality(Modality.APPLICATION_MODAL);
     	stage.setTitle("Gestion de miembros de EntreCulturas");
     	stage.getIcons().add(new Image("/images/ong.jpg"));
-    	stage.show();
+    	stage.setScene(scene);
+    	stage.showAndWait();
+
 
     }
     
