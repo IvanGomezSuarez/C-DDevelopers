@@ -17,7 +17,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 /**
  * FXML Controller class
@@ -29,27 +33,34 @@ public class MainController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+	
+
+    @FXML
+    private ImageView imageOng;
+    
     
     @FXML
     private Button btnAcceso;
-    
-    @FXML
-    private Label label;
-    
+   
 
     @FXML
     private void handleButtonAction(ActionEvent event ) throws IOException {
       Parent parent = FXMLLoader.load(getClass().getResource("/Ong/Views/miembros.fxml"));
     	Stage stage = new Stage();
     	Scene scene = new Scene(parent);
+    	stage.setTitle("Gestion de miembros de EntreCulturas");
     	stage.getIcons().add(new Image("/images/ong.jpg"));
     	stage.show();
 
-
-
     }
+    
+
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
+
+
 }
+    
