@@ -303,46 +303,46 @@ public class MiembroDAO{
 		
 		idmiembro=MySqlMiembroDAO.consultarIdGenerado()+1;
 		nuevoMiembro.setIdMiembro(String.valueOf(idmiembro));
-		System.out.println("\nIntroduce el nombre del miembro: ");
+		//System.out.println("\nIntroduce el nombre del miembro: ");
 		nuevoMiembro.setNombreMiembro(br.readLine());
-		System.out.println("\nIntroduce el primer apellido del miembro: ");
+		//System.out.println("\nIntroduce el primer apellido del miembro: ");
 		nuevoMiembro.setApellido1(br.readLine());
-		System.out.println("\nIntroduce el segundo apellido del trabajador: ");
+		//System.out.println("\nIntroduce el segundo apellido del trabajador: ");
 		nuevoMiembro.setApellido2(br.readLine());
-		System.out.println("\nIntroduce el DNI del miembro: ");
+		//System.out.println("\nIntroduce el DNI del miembro: ");
 		nuevoMiembro.setDni(br.readLine());
-		System.out.println("\nIntroduce la direccion de su domicilio: ");
+		//System.out.println("\nIntroduce la direccion de su domicilio: ");
 		nuevoMiembro.setDireccion(Direccion.addDireccion());
-		System.out.println("\nIntroduce el numero de movil del miembro: ");
+		//System.out.println("\nIntroduce el numero de movil del miembro: ");
 		nuevoMiembro.setTelefono(br.readLine());
-		System.out.println("\nIntroduce el nombre que desee como usuario: ");
+		//System.out.println("\nIntroduce el nombre que desee como usuario: ");
 		nuevoMiembro.setNombreUsuario(br.readLine());
-		System.out.println("\nIntroduce tu contraseña: ");
+		//System.out.println("\nIntroduce tu contraseña: ");
 		nuevoMiembro.setPassword(br.readLine());
-		System.out.println("\nIntroduce el Rol del usuario: ");
-		System.out.println("\n1.Usuario Normal: ");
-		System.out.println("\n2.Usuario Admin: ");
-		seleccion=recuperado.nextInt();
-		if (seleccion==1) {
-			nuevoMiembro.setRol("MIEMBRO");
-		}else if (seleccion==2) {
-			nuevoMiembro.setRol("ADMINISTRADOR");
-		}else {
-			System.out.println("Opcion No valida ");
-		}
-		System.out.println("\nIntroduce el Tipo de usuario que va a ser: ");
-		System.out.println("\n1.Persona Contratada: ");
-		System.out.println("\n2.Voluntario: ");
-		System.out.println("\n3.Colaborador: ");
-		seleccion=recuperado.nextInt();
-		if (seleccion==1) {
-			nuevoMiembro.setPersonal(addPersonal());
-		}else if (seleccion==2) {
-			nuevoMiembro.setVoluntario(addVoluntario());
-		}else if (seleccion==3) {
-			nuevoMiembro.setColaborador(addColaborador());
-		}else
-			System.out.println("Opcion No valida ");
+		//System.out.println("\nIntroduce el Rol del usuario: ");
+		//System.out.println("\n1.Usuario Normal: ");
+		//System.out.println("\n2.Usuario Admin: ");
+		//seleccion=recuperado.nextInt();
+		//if (seleccion==1) {
+			//nuevoMiembro.setRol("MIEMBRO");
+		//}else if (seleccion==2) {
+			//nuevoMiembro.setRol("ADMINISTRADOR");
+		//}else {
+			//System.out.println("Opcion No valida ");
+		//}
+		//System.out.println("\nIntroduce el Tipo de usuario que va a ser: ");
+		//System.out.println("\n1.Persona Contratada: ");
+		//System.out.println("\n2.Voluntario: ");
+		//System.out.println("\n3.Colaborador: ");
+		//seleccion=recuperado.nextInt();
+		//if (seleccion==1) {
+			//nuevoMiembro.setPersonal(addPersonal());
+		//}else if (seleccion==2) {
+		//	nuevoMiembro.setVoluntario(addVoluntario());
+		//}else if (seleccion==3) {
+		//	nuevoMiembro.setColaborador(addColaborador());
+		//}else
+			//System.out.println("Opcion No valida ");
 		
 		return nuevoMiembro;
 

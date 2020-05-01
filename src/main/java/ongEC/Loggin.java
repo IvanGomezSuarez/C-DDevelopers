@@ -28,6 +28,8 @@ public class Loggin extends Miembro {
 
 	private static final String ivan = null;
 	private String usuario;
+	private String nombreUsuario;
+	private String password;
 	private String pass;
 	static Delegacion nuevaDelegacion= new Delegacion();
 	static Delegaciones nuevasDelegaciones=new Delegaciones();
@@ -53,8 +55,8 @@ public class Loggin extends Miembro {
 	 * @param password recoge el password que ha de coincidir con la del nombreUsuario de la clase padre
 	 *
 	 */
-	public Loggin(String nombreUsuario, String password, String usuario, String pass) throws JAXBException {
-		super(nombreUsuario, password);
+	public Loggin( String usuario, String pass) throws JAXBException {
+		
 		this.usuario = usuario;
 		this.pass = pass;
 	}

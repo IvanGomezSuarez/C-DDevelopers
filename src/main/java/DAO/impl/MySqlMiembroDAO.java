@@ -322,7 +322,7 @@ public class MySqlMiembroDAO implements IMiembroDAO{
     	Nacional nacional=new Nacional();
     	Internacional internacional=new Internacional();
     	
-	   	System.out.println("Recogemos los datos Relacionados con los Miembros y los almacenamos en un XML");
+	   //	System.out.println("Recogemos los datos Relacionados con los Miembros y los almacenamos en un XML");
 	   	Conexion nuevaConexion = new Conexion();
 		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
 		Connection newConnection = sesionSql.conectarBD(nuevaConexion);    	
@@ -509,11 +509,11 @@ public class MySqlMiembroDAO implements IMiembroDAO{
 		UtilitySql sesionSql = new UtilitySql(nuevaConexion);
 		Connection newConnection = sesionSql.conectarBD(nuevaConexion);    	
     	Statement selectStmt = newConnection.createStatement();
-    	System.out.println("Recogemos el ultimo id de miembros");
+    	//System.out.println("Recogemos el ultimo id de miembros");
     	ResultSet rs = selectStmt.executeQuery("Select MAX(idMiembro) from miembros");
     	while (rs.next()) {
     		idGenerado=rs.getInt(1);
-    		System.out.println(idGenerado);
+    		//System.out.println(idGenerado);
     	}
     	return(idGenerado);
     }

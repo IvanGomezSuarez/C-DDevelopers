@@ -46,8 +46,7 @@ public class MainController implements Initializable {
 
     @FXML
     private void handleButtonAction(ActionEvent event ) throws IOException {
-        //Parent parent = FXMLLoader.load(getClass().getResource("/Ong/Views/miembros.fxml"));
-        
+        //	con este método cargamos el form de gestión de miembros
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Ong/Views/miembros.fxml"));
     	Parent root = loader.load();
     	MiembrosController controlador = loader.getController();
