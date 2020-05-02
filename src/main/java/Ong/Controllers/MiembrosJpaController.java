@@ -12,6 +12,8 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+
+import DAO.JPA.DAOJpa;
 import Ong.Models.Colaborador;
 import Ong.Models.Personal;
 import Ong.Models.Voluntario;
@@ -27,7 +29,7 @@ import javax.persistence.Persistence;
  *
  * @author Ivan
  */
-public class MiembrosJpaController implements Serializable {
+public abstract class MiembrosJpaController implements DAOJpa {
 
     public MiembrosJpaController(EntityManagerFactory emf) {
         this.emf = emf;
@@ -272,21 +274,7 @@ public class MiembrosJpaController implements Serializable {
         return findMiembrosEntities(false, maxResults, firstResult);
     }
 
-    private List<Miembros> findMiembrosEntities(boolean all, int maxResults, int firstResult) {
-        EntityManager em = getEntityManager();
-        try {
-            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Miembros.class));
-            Query q = em.createQuery(cq);
-            if (!all) {
-                q.setMaxResults(maxResults);
-                q.setFirstResult(firstResult);
-            }
-            return q.getResultList();
-        } finally {
-            em.close();
-        }
-    }
+
 
     public Miembros findMiembros(Integer id) {
         EntityManager em = getEntityManager();

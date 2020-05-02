@@ -13,8 +13,6 @@ package DAO.JPA;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.hibernate.SessionFactory;
-
 public class jpaUtil {
 	private static final String PERSISTENCE_UNIT_NAME = "persistencia";
 	private static EntityManagerFactory factory;
