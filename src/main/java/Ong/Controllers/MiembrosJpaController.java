@@ -29,7 +29,7 @@ import javax.persistence.Persistence;
  *
  * @author Ivan
  */
-public abstract class MiembrosJpaController implements DAOJpa {
+public class MiembrosJpaController implements DAOJpa {
 
     public MiembrosJpaController(EntityManagerFactory emf) {
         this.emf = emf;
@@ -265,7 +265,7 @@ public abstract class MiembrosJpaController implements DAOJpa {
             }
         }
     }
-
+/*
     public List<Miembros> findMiembrosEntities() {
         return findMiembrosEntities(true, -1, -1);
     }
@@ -274,7 +274,7 @@ public abstract class MiembrosJpaController implements DAOJpa {
         return findMiembrosEntities(false, maxResults, firstResult);
     }
 
-
+*/
 
     public Miembros findMiembros(Integer id) {
         EntityManager em = getEntityManager();
@@ -296,6 +296,18 @@ public abstract class MiembrosJpaController implements DAOJpa {
         } finally {
             em.close();
         }
+    }
+
+    public List<Miembros> findMiembrosEntities() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public List<Miembros> findMiembrosEntities(int maxResults, int firstResult) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public List<Miembros> findMiembrosEntities(boolean all, int maxResults, int firstResult) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

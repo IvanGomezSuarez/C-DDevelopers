@@ -28,10 +28,8 @@ public class FXMain extends Application {
     @Override
     public void start(Stage  stage) throws IOException {
 
-      Parent root = FXMLLoader.load(getClass().getResource("/Ong/Views/main.fxml"));
-        
+        Parent root = FXMLLoader.load(getClass().getResource("/Ong/Views/main.fxml"));
         Scene scene = new Scene(root);
-        
         //String css = FXMain.class.getResource("myCss.css").toExternalForm();
         //scene.getStylesheets().add(css);
         stage.setScene(scene);
