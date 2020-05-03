@@ -43,6 +43,7 @@ public class MainController implements Initializable {
     private Button btnAcceso;
    
 public static EntityManagerFactory emf;
+
     @FXML
     private void handleButtonAction(ActionEvent event ) throws IOException {
         emf= Persistence.createEntityManagerFactory("persistencia");

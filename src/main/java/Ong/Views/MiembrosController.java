@@ -156,9 +156,7 @@ public class MiembrosController  {
         secondApellCol.setCellValueFactory(cell -> cell.getValue().getApellido2Property());
         dniCol.setCellValueFactory(cell -> cell.getValue().getDniProperty());
         rolCol.setCellValueFactory(cell -> cell.getValue().getRolProperty());
-        telCol.setCellValueFactory(cell -> cell.getValue().getTelefonoProperty());
-        
-        
+        telCol.setCellValueFactory(cell -> cell.getValue().getTelefonoProperty()); 
     }
     
   

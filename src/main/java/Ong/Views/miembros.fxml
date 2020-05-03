@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
@@ -17,9 +18,9 @@
 <GridPane id="formMiembros" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Ong.Views.MiembrosController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="0.0" prefWidth="184.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="236.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="188.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="186.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.0" minWidth="10.0" prefWidth="269.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -39,13 +40,13 @@
       </MenuButton>
       <TableView id="tablaMiembros" editable="true" prefHeight="88.0" prefWidth="671.0" stylesheets="@../../CSS/myCss.css" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1">
         <columns>
-          <TableColumn id="idMember" prefWidth="33.0" text="Id" />
-          <TableColumn id="nameMember" prefWidth="117.0" text="Nombre" />
-            <TableColumn prefWidth="116.0" text="1er Apellido" />
-            <TableColumn prefWidth="118.0" text="2do Apellido" />
-            <TableColumn minWidth="1.0" prefWidth="72.0" text="Dni" />
-            <TableColumn text="Rol" />
-            <TableColumn prefWidth="113.0" text="Telefono" />
+          <TableColumn id="idMemberCol" prefWidth="33.0" text="Id" />
+          <TableColumn id="nameMemberCol" prefWidth="117.0" text="Nombre" />
+            <TableColumn id="firstApellCol" prefWidth="116.0" text="1er Apellido" />
+            <TableColumn id="secondApellCol" prefWidth="118.0" text="2do Apellido" />
+            <TableColumn id="dniCol" minWidth="1.0" prefWidth="72.0" text="Dni" />
+            <TableColumn id="rolCol" text="Rol" />
+            <TableColumn id="telCol" prefWidth="113.0" text="Telefono" />
         </columns>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -56,11 +57,11 @@
       </TableView>
       <TableView id="tablaMiembros2" prefHeight="122.0" prefWidth="737.0" stylesheets="@../../CSS/myCss.css" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
         <columns>
-          <TableColumn prefWidth="156.0" text="Nombre Usuario" />
-          <TableColumn minWidth="9.0" prefWidth="133.0" text="Password" />
-            <TableColumn prefWidth="117.0" text="Fecha de alta" />
-            <TableColumn prefWidth="134.0" text="Fecha de Baja" />
-            <TableColumn prefWidth="104.0" text="Pais Origen" />
+          <TableColumn id="userNameCol" prefWidth="156.0" text="Nombre Usuario" />
+          <TableColumn id="passCol" minWidth="9.0" prefWidth="133.0" text="Password" />
+            <TableColumn id="dateAltaCol" prefWidth="117.0" text="Fecha de alta" />
+            <TableColumn id="dateBajaCol" prefWidth="134.0" text="Fecha de Baja" />
+            <TableColumn id="paisOrigenCol" prefWidth="104.0" text="Pais Origen" />
         </columns>
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -68,14 +69,14 @@
       </TableView>
       <TableView id="direccion" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../CSS/myCss.css" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3">
         <columns>
-          <TableColumn prefWidth="140.0" text="Via" />
-          <TableColumn minWidth="0.0" prefWidth="46.0" text="Nº" />
-            <TableColumn prefWidth="58.0" text="Piso" />
-            <TableColumn prefWidth="56.0" text="Puerta" />
-            <TableColumn prefWidth="95.0" text="Localidad" />
-            <TableColumn prefWidth="94.0" text="Provincia" />
-            <TableColumn prefWidth="67.0" text="CP" />
-            <TableColumn prefWidth="89.0" text="Pais" />
+          <TableColumn id="viaCol" prefWidth="140.0" text="Via" />
+          <TableColumn id="numberCol" minWidth="0.0" prefWidth="46.0" text="Nº" />
+            <TableColumn id="pisoCol" prefWidth="58.0" text="Piso" />
+            <TableColumn id="puertaCol" prefWidth="56.0" text="Puerta" />
+            <TableColumn id="localidadCol" prefWidth="95.0" text="Localidad" />
+            <TableColumn id="provinciaCol" prefWidth="94.0" text="Provincia" />
+            <TableColumn id="cpCol" prefWidth="67.0" text="CP" />
+            <TableColumn id="paisCol" prefWidth="89.0" text="Pais" />
         </columns>
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -89,7 +90,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
          <children>
-            <ScrollPane id="scrollPane" prefHeight="305.0" prefWidth="164.0">
+            <ScrollPane id="scrollPane" prefHeight="305.0" prefWidth="139.0">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
               </content>
@@ -99,6 +100,7 @@
             <BoxBlur />
          </effect>
       </VBox>
+      <ChoiceBox id="tipoMiembro" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
