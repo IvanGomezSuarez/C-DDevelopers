@@ -37,12 +37,7 @@ public class MiembrosController  {
     /**
      * Initializes the controller class.
      * 
-     */
-    private static final String PREFIX = "( ";
-    private static final String POSTFIX = " )";
-    public static MiembrosJpaController Service;
-    public static List<Miembros> listMiembros;
-    
+     */    
     //cremos un entity Manager em
 	EntityManager em;
 	
