@@ -2,6 +2,9 @@ package Ong.Models;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
 /**
@@ -14,6 +17,7 @@ import javax.persistence.*;
 public class Miembro implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@GeneratedValue
 	@Id
 	private int idMiembro;
 

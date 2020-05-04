@@ -3,6 +3,8 @@ package Ong.Models;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
+import javax.persistence.GeneratedValue;
+import javax.persistence.OneToMany;
 
 
 /**
@@ -22,6 +24,7 @@ public class DireccionesUsuario implements Serializable {
 
 	private String escalera;
 
+	@GeneratedValue
 	private String localidad;
 
 	private int numero;

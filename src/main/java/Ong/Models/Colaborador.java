@@ -3,6 +3,8 @@ package Ong.Models;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import javax.persistence.GeneratedValue;
+import javax.persistence.OneToOne;
 
 
 /**
@@ -14,6 +16,7 @@ import java.util.Date;
 public class Colaborador implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@GeneratedValue
 	@Id
 	private int idColaborador;
 
