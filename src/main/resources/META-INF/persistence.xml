@@ -6,7 +6,7 @@
     <class>Ong.Models.DireccionesUsuario</class>
     <class>Ong.Models.Miembro</class>
     <class>Ong.Models.Personal</class>
-    <class>Ong.Models.Voluntario</class>
+<class>Ong.Models.Voluntario</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ong?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
@@ -14,5 +14,5 @@
       <property name="javax.persistence.jdbc.password" value="tesTed4a"/>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
     </properties>
-  </persistence-unit>
+  </persistence-unit> 
 </persistence>
