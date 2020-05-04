@@ -19,6 +19,19 @@
     <artifactId>javax.annotation-api</artifactId>
 </dependency>
 
+<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-search -->
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-search</artifactId>
+    <version>5.8.0.Final</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/com.jfoenix/jfoenix -->
+<dependency>
+    <groupId>com.jfoenix</groupId>
+    <artifactId>jfoenix</artifactId>
+    <version>9.0.8</version>
+</dependency>
 
   <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.containers/jersey-container-servlet -->
 <dependency>
