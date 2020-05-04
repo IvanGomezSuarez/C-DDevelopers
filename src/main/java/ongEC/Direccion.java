@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import sql.UtilitySql;
 
 /**
@@ -13,9 +16,12 @@ import sql.UtilitySql;
  *
  *
  */
+@Entity
 public class Direccion {
 
 	//ATRIBUTOS
+	@Id
+	@GeneratedValue
 	int idDireccion;
 	String tipoVia;
 	int numero;

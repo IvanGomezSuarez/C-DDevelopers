@@ -1,12 +1,14 @@
 package ongEC;
 
 import java.sql.Date;
+import javax.persistence.Entity;
 
 /*
  * esta clase contiene la informaci�n del origen nacional del voluntario
  * 
  * 
  * */
+@Entity
 public class Nacional{
 
 	//Definiendo atributos

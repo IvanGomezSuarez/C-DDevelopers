@@ -9,8 +9,10 @@ package ongEC;
 //import java.sql.Date;
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.xml.bind.annotation.XmlElement;
 
+@Entity
 public class Personal extends Miembro{
 
 	//Definicion de los Atributos

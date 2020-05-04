@@ -8,6 +8,7 @@ package ongEC;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
+import javax.persistence.Entity;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlElement;
 
@@ -20,6 +21,7 @@ import ongEC.Miembro;
  * Yosu, Ivan
  */
 
+@Entity
 public class Colaborador extends Miembro{
 
 	// ATRIBUTOS

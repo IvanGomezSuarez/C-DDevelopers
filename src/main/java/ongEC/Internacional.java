@@ -1,11 +1,13 @@
 package ongEC;
 
 import java.sql.Date;
+import javax.persistence.Entity;
 /*
  * esta clase contiene la informaci�n del origen internacional del voluntario
  * 
  * 
  * */
+@Entity
 public class Internacional{
 
 	

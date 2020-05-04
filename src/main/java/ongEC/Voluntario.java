@@ -2,12 +2,15 @@ package ongEC;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlElement;
 /*
  * esta clase contiene la informaci�n de los datos de fechas de los voluntarios
  * 
  * 
  * */
+@Entity
 public class Voluntario extends Miembro{
 	
 	//Definendo los Atributos
@@ -18,7 +21,9 @@ public class Voluntario extends Miembro{
 	@XmlElement(name = "fechaBajaVol")
 	public  Date fechaBaja;
 
+	@ManyToOne
 	Nacional nacional;
+	@ManyToOne
 	Internacional internacional;
 	
 	

@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -16,6 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * 
  * 
  * */
+@Entity
 @XmlRootElement(name ="Miembro")
 @XmlAccessorType(XmlAccessType.FIELD)
 
@@ -23,6 +28,8 @@ public class Miembro {
 
 // atributos
 	
+	@Id
+	@GeneratedValue
 	@XmlElement(name = "IdMiembro")
 	private String idMiembro;
 	@XmlElement(name = "Nombre")
@@ -37,6 +44,7 @@ public class Miembro {
 	private String apellido2;
 	@XmlElement(name = "Dni")
 	private String dni;
+	@ManyToOne
 	@XmlElement(name = "Direccion")
 	public Direccion direccion;
 	@XmlElement(name = "Rol")
@@ -44,10 +52,13 @@ public class Miembro {
 	@XmlElement(name = "Telefono")
 	private String telefono;
 	
+	@ManyToOne
 	@XmlElement(name = "Personal")
 	Personal personal;
+	@ManyToOne
 	@XmlElement(name = "Voluntario")
 	Voluntario voluntario;
+	@ManyToOne
 	@XmlElement(name = "Colaborador")
 	Colaborador colaborador;
 	
