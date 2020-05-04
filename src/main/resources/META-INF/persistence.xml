@@ -6,12 +6,11 @@
 
   <persistence-unit name="aplicacion">
     <properties>
-        <property name="javax.persistence.jdbc.driver" value="" />
-        <property name="javax.persistence.jdbc.url" value="127.0.0.1:3306" />
-        <property name="javax.persistence.jdbc.user" value="root" />
-        <property name="javax.persistence.jdbc.password" value="tesTed4a" />
-        <property name="hibernate.dialect" value="" />
-        <property name="hibernate.hbm2ddl.auto" value="" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ong?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="tesTed4a"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
     </properties>
   </persistence-unit>
 
