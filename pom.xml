@@ -19,6 +19,14 @@
     <artifactId>javax.annotation-api</artifactId>
 </dependency>
 
+<!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.0-api -->
+<dependency>
+    <groupId>org.hibernate.javax.persistence</groupId>
+    <artifactId>hibernate-jpa-2.0-api</artifactId>
+    <version>1.0.1.Final</version>
+</dependency>
+
+
 <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-search -->
 <dependency>
     <groupId>org.hibernate</groupId>

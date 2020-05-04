@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * 
  * 
  * */
-@Entity
+
 @XmlRootElement(name ="Miembro")
 @XmlAccessorType(XmlAccessType.FIELD)
 

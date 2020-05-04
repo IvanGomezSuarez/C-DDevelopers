@@ -8,7 +8,7 @@ import javax.persistence.Entity;
  * 
  * 
  * */
-@Entity
+
 public class Nacional{
 
 	//Definiendo atributos

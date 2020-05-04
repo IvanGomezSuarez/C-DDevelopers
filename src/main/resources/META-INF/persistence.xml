@@ -7,6 +7,8 @@
     <class>Ong.Models.Voluntario</class>
     <class>Ong.Models.Direccionesusuarios</class>
     <class>Ong.Models.Colaborador</class>
+    <class>Ong.Models.DireccionesUsuario</class>
+    <class>Ong.Models.Miembro</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ong?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

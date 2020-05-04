@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlElement;
  * 
  * 
  * */
-@Entity
+
 public class Voluntario extends Miembro{
 	
 	//Definendo los Atributos

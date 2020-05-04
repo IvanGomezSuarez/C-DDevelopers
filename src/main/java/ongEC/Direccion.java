@@ -16,7 +16,7 @@ import sql.UtilitySql;
  *
  *
  */
-@Entity
+
 public class Direccion {
 
 	//ATRIBUTOS
