@@ -3,6 +3,7 @@ package Ong.Models;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import javax.persistence.OneToOne;
 
 
 /**
@@ -17,10 +18,10 @@ public class Colaborador implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
 	private int idColaborador;
-
+	@Column
 	@Temporal(TemporalType.DATE)
 	private Date fechaAlta;
-
+	@Column
 	@Temporal(TemporalType.DATE)
 	private Date fechaBaja;
 
