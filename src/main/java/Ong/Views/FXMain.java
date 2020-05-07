@@ -3,31 +3,46 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ong.Controller;
+package Ong.Views;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javafx.stage.Stage;
+
 
 /**
  *
  * @author Usuario
  */
-public class NewFXMain extends Application {
+public class FXMain extends Application {
+    
+    private final Image imageOng = new Image("/images/ong.jpg");
+    private final BorderPane container = new BorderPane();
+	
+    public static EntityManagerFactory emf;
     
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {       
+        
         Button btn = new Button();
         btn.setText("Say 'Hello World'");
         btn.setOnAction(new EventHandler<ActionEvent>() {
             
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
+           @Override
+           public void handle(ActionEvent event) {
+               System.out.println("Hello World!");
             }
         });
         
