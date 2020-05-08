@@ -20,15 +20,7 @@ public class MySqlConectionO {
     System.out.println("\n**********************************");
     System.out.println("Conectando con la base de datos...");
     System.out.println("**********************************");
-    try(Connection connection = DriverManager.getConnection(url, user,pass)){
-    System.out.println("\nConectado!!\n");
-    Loggin.pulsaIntroParaContinuar();
-
-
-    }catch(SQLException e){
-        System.out.println(e.getMessage());
-        //UtilitySql.truncateAllContentDB();// esta puesto para las pruebas parta que borre los datos insertados si hay error
-    }
+    Connection connection = DriverManager.getConnection(url, user,pass);
     }
     public static Connection getcon(){
         try{
