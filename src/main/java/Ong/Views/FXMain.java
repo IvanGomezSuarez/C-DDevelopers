@@ -37,7 +37,7 @@ public class FXMain extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {  
-        emf = Persistence.createEntityManagerFactory("persistencia");
+        emf = Persistence.createEntityManagerFactory("persistencia2");
     	Parent root = FXMLLoader.load(getClass().getResource("/Ong/Views/main.fxml"));
         
         Scene scene = new Scene(root);
@@ -53,24 +53,24 @@ public class FXMain extends Application {
         imageView.setFitHeight(240);
         imageView.setFitWidth(320);
         container.getChildren().add(imageView);
-//        primaryStage.show();
-//        
-//        primaryStage.setOnCloseRequest(e ->{
-//        	emf.close();
-//        	Platform.exit();
-//        	System.exit(0);
-//        });       
-//        
-//        Button btn = new Button();
-//        btn.setText("Say 'Hello World'");
-//        btn.setOnAction(new EventHandler<ActionEvent>() {
-//            
-//           @Override
-//           public void handle(ActionEvent event) {
-//               System.out.println("Hello World!");
-//            }
-//        });
-//        
+        primaryStage.show();
+        
+        primaryStage.setOnCloseRequest(e ->{
+        	emf.close();
+        	Platform.exit();
+        	System.exit(0);
+        });       
+        
+        Button btn = new Button();
+        btn.setText("Say 'Hello World'");
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+            
+           @Override
+           public void handle(ActionEvent event) {
+               System.out.println("Hello World!");
+            }
+        });
+        
 //        StackPane root = new StackPane();
 //        root.getChildren().add(btn);
 //        
