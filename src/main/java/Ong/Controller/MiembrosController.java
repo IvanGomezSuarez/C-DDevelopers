@@ -180,8 +180,13 @@ public class MiembrosController {
 
     @FXML
     void deleteMiembro(ActionEvent event) throws NonexistentEntityException {
+    	list.clear();
+    	listaRellenar.getItems().clear();
     	Integer i=(Integer) primeraTabla.getColumns().get(0).getCellData(0);
     	System.out.println(primeraTabla.getColumns().get(0).getCellData(0));
+    	primeraTabla.setItems(null);
+    	segundaTabla.setItems(null);
+    	terceraTabla.setItems(null);
     	miembro=new MiembroJpaController(emf);
     	voluntario=new VoluntarioJpaController(emf);
     	colaborador=new ColaboradorJpaController(emf);
