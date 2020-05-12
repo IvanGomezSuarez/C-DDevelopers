@@ -26,6 +26,7 @@ import Ong.Controller.exceptions.NonexistentEntityException;
 import Ong.Controller.MiembroJpaController;
 import Ong.Controller.ColaboradorJpaController;
 import Ong.Controller.PersonalJpaController;
+import Ong.Controller.DireccionesUsuarioJpaController;
 import Ong.Models.Miembro;
 import Ong.Controller.MiembroJpaController;
 import Ong.Models.ModeloPrimeraTabla;
@@ -49,6 +50,7 @@ public class MiembrosController {
 	private ColaboradorJpaController colaborador;
 	private MiembroJpaController miembro;
 	private PersonalJpaController personal;
+	private DireccionesUsuarioJpaController direccion;
 	
     @FXML
     private TableView<ModeloPrimeraTabla> primeraTabla;
@@ -181,7 +183,27 @@ public class MiembrosController {
     	Integer i=(Integer) primeraTabla.getColumns().get(0).getCellData(0);
     	System.out.println(primeraTabla.getColumns().get(0).getCellData(0));
     	miembro=new MiembroJpaController(emf);
+    	voluntario=new VoluntarioJpaController(emf);
+    	colaborador=new ColaboradorJpaController(emf);
+    	personal=new PersonalJpaController(emf);
+    	direccion=new DireccionesUsuarioJpaController(emf);
+    	try {
+    		voluntario.destroy(i);
+    	}catch(Exception e) {
+    		
+    	}
+    	try {
+    	colaborador.destroy(i);
+    	}catch(Exception e) {
+    		
+    	}
+    	
+    	try {
+    		personal.destroy(i);
+    	}catch(Exception e) {
+    	}
     	miembro.destroy(i);
+    	direccion.destroy(i);
     }
 
     @FXML
