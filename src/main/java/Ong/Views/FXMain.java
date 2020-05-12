@@ -30,7 +30,7 @@ import javafx.stage.Stage;
  */
 public class FXMain extends Application {
     
-    private final Image imageOng = new Image("/images/ong.jpg");
+    //private final Image imageOng = new Image("/images/ong.jpg");
     private final BorderPane container = new BorderPane();
 	
     public static EntityManagerFactory emf;
@@ -41,44 +41,21 @@ public class FXMain extends Application {
     	Parent root = FXMLLoader.load(getClass().getResource("/Ong/Views/main.fxml"));
         
         Scene scene = new Scene(root);
-//        String css = FXMain.class.getResource("myCss.css").toExternalForm();
-//        scene.getStylesheets().add(css);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Bienvenido a EntreCulturas");
         primaryStage.getIcons().add(new Image("/images/ong.jpg"));
-        //Image image = new Image(getClass().getResourceAsStream("/images/ong.jpg")); 
-        // A?ado imagen de fondo a la ventana PERO NO CONSIGO QUE SALGA
-        ImageView imageView = new ImageView();
-        //imageView.setImage(imageOng);
-        imageView.setFitHeight(240);
-        imageView.setFitWidth(320);
-        container.getChildren().add(imageView);
+        //ImageView imageView = new ImageView();
+        //imageView.setFitHeight(240);
+        //imageView.setFitWidth(320);
+        //container.getChildren().add(imageView);
+        primaryStage.setResizable(false);
         primaryStage.show();
         
         primaryStage.setOnCloseRequest(e ->{
         	emf.close();
         	Platform.exit();
         	System.exit(0);
-        });       
-        
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-           @Override
-           public void handle(ActionEvent event) {
-               System.out.println("Hello World!");
-            }
-        });
-        
-//        StackPane root = new StackPane();
-//        root.getChildren().add(btn);
-//        
-//        Scene scene = new Scene(root, 300, 250);
-//        
-//        primaryStage.setTitle("Hello World!");
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
+        });              
     }
 
     /**

@@ -1,88 +1,153 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Ong.Models;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
-
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * The persistent class for the voluntario database table.
- * 
+ *
+ * @author Ivan
  */
 @Entity
-@NamedQuery(name="Voluntario.findAll", query="SELECT v FROM Voluntario v")
+@Table(name = "voluntario")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Voluntario.findAll", query = "SELECT v FROM Voluntario v")
+    , @NamedQuery(name = "Voluntario.findByIdVoluntario", query = "SELECT v FROM Voluntario v WHERE v.idVoluntario = :idVoluntario")
+    , @NamedQuery(name = "Voluntario.findByFechaAlta", query = "SELECT v FROM Voluntario v WHERE v.fechaAlta = :fechaAlta")
+    , @NamedQuery(name = "Voluntario.findByFechaBaja", query = "SELECT v FROM Voluntario v WHERE v.fechaBaja = :fechaBaja")
+    , @NamedQuery(name = "Voluntario.findByOrigen", query = "SELECT v FROM Voluntario v WHERE v.origen = :origen")
+    , @NamedQuery(name = "Voluntario.findByPaisOrigen", query = "SELECT v FROM Voluntario v WHERE v.paisOrigen = :paisOrigen")})
 public class Voluntario implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
-	private int idVoluntario;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "idVoluntario")
+    private Integer idVoluntario;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "fechaAlta")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaAlta;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "fechaBaja")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaBaja;
+    @Size(max = 45)
+    @Column(name = "origen")
+    private String origen;
+    @Size(max = 45)
+    @Column(name = "paisOrigen")
+    private String paisOrigen;
+    @JoinColumn(name = "idVoluntario", referencedColumnName = "idMiembro", insertable = false, updatable = false)
+    @OneToOne(optional = false)
+    private Miembro miembros;
 
-	@Temporal(TemporalType.DATE)
-	private Date fechaAlta;
+    public Voluntario() {
+    }
 
-	@Temporal(TemporalType.DATE)
-	private Date fechaBaja;
+    public Voluntario(Integer idVoluntario) {
+        this.idVoluntario = idVoluntario;
+    }
 
-	private String origen;
+    public Voluntario(Integer idVoluntario, Date fechaAlta, Date fechaBaja) {
+        this.idVoluntario = idVoluntario;
+        this.fechaAlta = fechaAlta;
+        this.fechaBaja = fechaBaja;
+    }
 
-	private String paisOrigen;
+    public Integer getIdVoluntario() {
+        return idVoluntario;
+    }
 
-	//bi-directional one-to-one association to Miembro
-	@OneToOne
-	@JoinColumn(name="idVoluntario")
-	private Miembro miembro;
+    public void setIdVoluntario(Integer idVoluntario) {
+        this.idVoluntario = idVoluntario;
+    }
 
-	public Voluntario() {
-	}
+    public Date getFechaAlta() {
+        return fechaAlta;
+    }
 
-	public int getIdVoluntario() {
-		return this.idVoluntario;
-	}
+    public void setFechaAlta(Date fechaAlta) {
+        this.fechaAlta = fechaAlta;
+    }
 
-	public void setIdVoluntario(int idVoluntario) {
-		this.idVoluntario = idVoluntario;
-	}
+    public Date getFechaBaja() {
+        return fechaBaja;
+    }
 
-	public Date getFechaAlta() {
-		return this.fechaAlta;
-	}
+    public void setFechaBaja(Date fechaBaja) {
+        this.fechaBaja = fechaBaja;
+    }
 
-	public void setFechaAlta(Date fechaAlta) {
-		this.fechaAlta = fechaAlta;
-	}
+    public String getOrigen() {
+        return origen;
+    }
 
-	public Date getFechaBaja() {
-		return this.fechaBaja;
-	}
+    public void setOrigen(String origen) {
+        this.origen = origen;
+    }
 
-	public void setFechaBaja(Date fechaBaja) {
-		this.fechaBaja = fechaBaja;
-	}
+    public String getPaisOrigen() {
+        return paisOrigen;
+    }
 
-	public String getOrigen() {
-		return this.origen;
-	}
+    public void setPaisOrigen(String paisOrigen) {
+        this.paisOrigen = paisOrigen;
+    }
 
-	public void setOrigen(String origen) {
-		this.origen = origen;
-	}
+    public Miembro getMiembros() {
+        return miembros;
+    }
 
-	public String getPaisOrigen() {
-		return this.paisOrigen;
-	}
+    public void setMiembros(Miembro miembros) {
+        this.miembros = miembros;
+    }
 
-	public void setPaisOrigen(String paisOrigen) {
-		this.paisOrigen = paisOrigen;
-	}
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (idVoluntario != null ? idVoluntario.hashCode() : 0);
+        return hash;
+    }
 
-	public Miembro getMiembro() {
-		return this.miembro;
-	}
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Voluntario)) {
+            return false;
+        }
+        Voluntario other = (Voluntario) object;
+        if ((this.idVoluntario == null && other.idVoluntario != null) || (this.idVoluntario != null && !this.idVoluntario.equals(other.idVoluntario))) {
+            return false;
+        }
+        return true;
+    }
 
-	public void setMiembro(Miembro miembro) {
-		this.miembro = miembro;
-	}
-
+    @Override
+    public String toString() {
+        return "Ong.Models.Voluntario[ idVoluntario=" + idVoluntario + " ]";
+    }
+    
 }

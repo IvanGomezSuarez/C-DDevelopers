@@ -23,7 +23,10 @@ import javax.persistence.EntityManagerFactory;
  */
 public class VoluntarioJpaController implements Serializable {
 
-    public VoluntarioJpaController(EntityManagerFactory emf) {
+    /**
+	 * 
+	 */
+	public VoluntarioJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -37,16 +40,16 @@ public class VoluntarioJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Miembro miembro = voluntario.getMiembro();
+            Miembro miembro = voluntario.getMiembros();
             if (miembro != null) {
                 miembro = em.getReference(miembro.getClass(), miembro.getIdMiembro());
-                voluntario.setMiembro(miembro);
+                voluntario.setMiembros(miembro);
             }
             em.persist(voluntario);
             if (miembro != null) {
                 Voluntario oldVoluntarioOfMiembro = miembro.getVoluntario();
                 if (oldVoluntarioOfMiembro != null) {
-                    oldVoluntarioOfMiembro.setMiembro(null);
+                    oldVoluntarioOfMiembro.setMiembros(null);
                     oldVoluntarioOfMiembro = em.merge(oldVoluntarioOfMiembro);
                 }
                 miembro.setVoluntario(voluntario);
@@ -66,11 +69,11 @@ public class VoluntarioJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Voluntario persistentVoluntario = em.find(Voluntario.class, voluntario.getIdVoluntario());
-            Miembro miembroOld = persistentVoluntario.getMiembro();
-            Miembro miembroNew = voluntario.getMiembro();
+            Miembro miembroOld = persistentVoluntario.getMiembros();
+            Miembro miembroNew = voluntario.getMiembros();
             if (miembroNew != null) {
                 miembroNew = em.getReference(miembroNew.getClass(), miembroNew.getIdMiembro());
-                voluntario.setMiembro(miembroNew);
+                voluntario.setMiembros(miembroNew);
             }
             voluntario = em.merge(voluntario);
             if (miembroOld != null && !miembroOld.equals(miembroNew)) {
@@ -80,7 +83,7 @@ public class VoluntarioJpaController implements Serializable {
             if (miembroNew != null && !miembroNew.equals(miembroOld)) {
                 Voluntario oldVoluntarioOfMiembro = miembroNew.getVoluntario();
                 if (oldVoluntarioOfMiembro != null) {
-                    oldVoluntarioOfMiembro.setMiembro(null);
+                    oldVoluntarioOfMiembro.setMiembros(null);
                     oldVoluntarioOfMiembro = em.merge(oldVoluntarioOfMiembro);
                 }
                 miembroNew.setVoluntario(voluntario);
@@ -115,7 +118,7 @@ public class VoluntarioJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The voluntario with id " + id + " no longer exists.", enfe);
             }
-            Miembro miembro = voluntario.getMiembro();
+            Miembro miembro = voluntario.getMiembros();
             if (miembro != null) {
                 miembro.setVoluntario(null);
                 miembro = em.merge(miembro);

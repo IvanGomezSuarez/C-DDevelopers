@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<GridPane id="formMiembros" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Ong.Controller.MiembrosController">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="0.0" prefWidth="184.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="188.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="186.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.0" minWidth="10.0" prefWidth="269.0" />
+  </columnConstraints>
+  <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="124.0" minHeight="10.0" prefHeight="101.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="168.0" minHeight="10.0" prefHeight="95.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="160.0" minHeight="10.0" prefHeight="93.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="102.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <MenuButton id="menu" mnemonicParsing="false" text="Seleccione Para Listar">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#listarMiembros" text="Miembros" />
+          <MenuItem mnemonicParsing="false" onAction="#listarVoluntarios" text="Voluntarios" />
+          <MenuItem mnemonicParsing="false" onAction="#listarContratados" text="Contratados" />
+        </items>
+      </MenuButton>
+      <TableView id="tablaMiembros" fx:id="primeraTabla" editable="true" prefHeight="88.0" prefWidth="671.0" stylesheets="@../../CSS/myCss.css" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1">
+        <columns>
+          <TableColumn id="idMemberCol" fx:id="col_Id" prefWidth="33.0" text="Id" />
+          <TableColumn id="nameMemberCol" fx:id="col_Nombre" prefWidth="117.0" text="Nombre" />
+            <TableColumn id="firstApellCol" fx:id="col_1Apellido" prefWidth="116.0" text="1erApellido" />
+            <TableColumn id="secondApellCol" fx:id="col_2Apellido" prefWidth="118.0" text="2doApellido" />
+            <TableColumn id="dniCol" fx:id="col_Dni" minWidth="1.0" prefWidth="72.0" text="Dni" />
+            <TableColumn id="rolCol" fx:id="col_Rol" text="Rol" />
+            <TableColumn id="telCol" fx:id="col_Telefono" prefWidth="113.0" text="Telefono" />
+        </columns>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </TableView>
+      <TableView id="tablaMiembros2" fx:id="segundaTabla" prefHeight="122.0" prefWidth="737.0" stylesheets="@../../CSS/myCss.css" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
+        <columns>
+          <TableColumn id="userNameCol" fx:id="col_nombreUsuario" prefWidth="121.0" text="Nombre Usuario" />
+          <TableColumn id="passCol" fx:id="col_Password" minWidth="9.0" prefWidth="108.0" text="Password" />
+            <TableColumn id="dateAltaCol" fx:id="col_FechaAlta" prefWidth="114.0" text="Fecha de alta" />
+            <TableColumn id="dateBajaCol" fx:id="col_FechaBaja" prefWidth="131.0" text="Fecha de Baja" />
+            <TableColumn id="paisOrigenCol" fx:id="col_paisOrigenPais" prefWidth="170.0" text="Pais Origen/Origen" />
+        </columns>
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </TableView>
+      <TableView id="direccion" fx:id="terceraTabla" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../CSS/myCss.css" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3">
+        <columns>
+          <TableColumn id="viaCol" fx:id="col_Via" prefWidth="140.0" text="Via" />
+          <TableColumn id="numberCol" fx:id="col_N" minWidth="0.0" prefWidth="46.0" text="Nº" />
+            <TableColumn id="pisoCol" fx:id="col_Piso" prefWidth="58.0" text="Piso" />
+            <TableColumn id="puertaCol" fx:id="col_Puerta" prefWidth="56.0" text="Puerta" />
+            <TableColumn id="localidadCol" fx:id="col_Localidad" prefWidth="95.0" text="Localidad" />
+            <TableColumn id="provinciaCol" fx:id="col_Provincia" prefWidth="94.0" text="Provincia" />
+            <TableColumn id="cpCol" fx:id="col_CP" prefWidth="67.0" text="CP" />
+            <TableColumn id="paisCol" fx:id="col_Pais" prefWidth="89.0" text="Pais" />
+        </columns>
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </TableView>
+      <Button id="alta" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#altaMiembro" prefHeight="31.0" prefWidth="134.0" text="Dar de alta" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Button id="editar" mnemonicParsing="false" onAction="#editarMiembro" prefHeight="31.0" prefWidth="109.0" text="Editar" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <Button id="delete" mnemonicParsing="false" onAction="#deleteMiembro" prefHeight="43.0" prefWidth="113.0" text="Eliminar" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+      <ChoiceBox id="tipoMiembro" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <VBox id="vbox" prefHeight="200.0" prefWidth="100.0" stylesheets="@../../CSS/vBox.css" GridPane.rowIndex="2" GridPane.rowSpan="4">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ScrollPane id="scrollPane" prefHeight="305.0" prefWidth="139.0">
+                     <content>
+                        <ListView fx:id="listaRellenar" editable="true" onMouseClicked="#cargarDatos" prefHeight="289.0" prefWidth="154.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione el Dni del usuario::" wrappingWidth="159.13671875" GridPane.rowIndex="1" />
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</GridPane>

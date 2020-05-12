@@ -43,6 +43,28 @@ public class MainController implements Initializable {
     
     public static EntityManagerFactory emf;
     
+    @FXML
+    private void lanzarSegundaVentana(ActionEvent event ) throws IOException {
+        emf= Persistence.createEntityManagerFactory("persistencia2");
+        //	con este mtodo cargamos el form de gestin de miembros
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Ong/Views/miembros.fxml"));
+    	Parent root = loader.load();
+    	MiembrosController controlador = loader.getController();
+    	Scene scene = new Scene(root);
+    	Stage stage = new Stage();
+    	stage.initModality(Modality.APPLICATION_MODAL);
+    	stage.setTitle("Gestion de miembros de EntreCulturas");
+    	stage.getIcons().add(new Image("/images/ong.jpg"));
+    	stage.setScene(scene);
+    	stage.showAndWait();
+        
+        stage.setOnCloseRequest(e ->{
+        emf.close();
+        Platform.exit();
+        System.exit(0);
+        });
+    }
+    
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    

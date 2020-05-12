@@ -50,7 +50,7 @@ public class Miembro implements Serializable {
 	private Personal personal;
 
 	//bi-directional one-to-one association to Voluntario
-	@OneToOne(mappedBy="miembro")
+	@OneToOne(mappedBy="miembros")
 	private Voluntario voluntario;
 
 	public Miembro() {

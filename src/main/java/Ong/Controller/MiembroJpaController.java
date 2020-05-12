@@ -84,12 +84,12 @@ public class MiembroJpaController implements Serializable {
                 personal = em.merge(personal);
             }
             if (voluntario != null) {
-                Miembro oldMiembroOfVoluntario = voluntario.getMiembro();
+                Miembro oldMiembroOfVoluntario = voluntario.getMiembros();
                 if (oldMiembroOfVoluntario != null) {
                     oldMiembroOfVoluntario.setVoluntario(null);
                     oldMiembroOfVoluntario = em.merge(oldMiembroOfVoluntario);
                 }
-                voluntario.setMiembro(miembro);
+                voluntario.setMiembros(miembro);
                 voluntario = em.merge(voluntario);
             }
             em.getTransaction().commit();
@@ -166,16 +166,16 @@ public class MiembroJpaController implements Serializable {
                 personalNew = em.merge(personalNew);
             }
             if (voluntarioOld != null && !voluntarioOld.equals(voluntarioNew)) {
-                voluntarioOld.setMiembro(null);
+                voluntarioOld.setMiembros(null);
                 voluntarioOld = em.merge(voluntarioOld);
             }
             if (voluntarioNew != null && !voluntarioNew.equals(voluntarioOld)) {
-                Miembro oldMiembroOfVoluntario = voluntarioNew.getMiembro();
+                Miembro oldMiembroOfVoluntario = voluntarioNew.getMiembros();
                 if (oldMiembroOfVoluntario != null) {
                     oldMiembroOfVoluntario.setVoluntario(null);
                     oldMiembroOfVoluntario = em.merge(oldMiembroOfVoluntario);
                 }
-                voluntarioNew.setMiembro(miembro);
+                voluntarioNew.setMiembros(miembro);
                 voluntarioNew = em.merge(voluntarioNew);
             }
             em.getTransaction().commit();
@@ -224,7 +224,7 @@ public class MiembroJpaController implements Serializable {
             }
             Voluntario voluntario = miembro.getVoluntario();
             if (voluntario != null) {
-                voluntario.setMiembro(null);
+                voluntario.setMiembros(null);
                 voluntario = em.merge(voluntario);
             }
             em.remove(miembro);
