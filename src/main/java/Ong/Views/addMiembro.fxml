@@ -2,7 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -56,8 +57,24 @@
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Si es voluntario selecciona si es Nacional o Internacional" GridPane.rowIndex="6" />
       <TextField fx:id="text_Origen" GridPane.columnIndex="2" GridPane.rowIndex="7" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Introduzca si es necesario el origen" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-      <ChoiceBox fx:id="choice_tipoMiembro" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-      <ChoiceBox fx:id="choice_origenSeleccion" prefWidth="150.0" GridPane.rowIndex="7" />
-      <ChoiceBox fx:id="choice_Rol" prefWidth="150.0" GridPane.rowIndex="3" />
+      <MenuButton mnemonicParsing="false" prefHeight="25.0" prefWidth="185.0" text="Selecciona el tipo de Rol" GridPane.rowIndex="3">
+        <items>
+          <MenuItem mnemonicParsing="false" text="ADMINISTRADOR" />
+          <MenuItem mnemonicParsing="false" text="MIEMBRO" />
+        </items>
+      </MenuButton>
+      <MenuButton mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" text="Selecciona el tipo de Miembro" GridPane.columnIndex="2" GridPane.rowIndex="5">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Colaborador" />
+          <MenuItem mnemonicParsing="false" text="Voluntario" />
+            <MenuItem mnemonicParsing="false" text="Trabajador" />
+        </items>
+      </MenuButton>
+      <MenuButton mnemonicParsing="false" prefHeight="25.0" prefWidth="184.0" text="Selecciona el Origen" GridPane.rowIndex="7">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Nacional" />
+          <MenuItem mnemonicParsing="false" text="Internacional" />
+        </items>
+      </MenuButton>
    </children>
 </GridPane>

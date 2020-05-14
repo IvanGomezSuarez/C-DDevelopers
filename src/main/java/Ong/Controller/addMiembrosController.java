@@ -46,7 +46,8 @@ public class addMiembrosController {
     private TextField text_Origen;
 
     @FXML
-    private ChoiceBox<?> choice_tipoMiembro;
+    private ChoiceBox<String> choice_tipoMiembro;
+    
 
     @FXML
     private ChoiceBox<?> choice_origenSeleccion;
