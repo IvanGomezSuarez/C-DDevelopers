@@ -2,6 +2,7 @@ package Ong.Controller;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -16,6 +17,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -174,8 +176,8 @@ public class MiembrosController {
     }
 
     @FXML
-    void altaMiembro(ActionEvent event) {
-
+    void altaMiembro(ActionEvent event) {	
+    	
     }
 
     @FXML
@@ -213,6 +215,7 @@ public class MiembrosController {
 
     @FXML
     void editarMiembro(ActionEvent event) {
+    	
     	
 
     }
