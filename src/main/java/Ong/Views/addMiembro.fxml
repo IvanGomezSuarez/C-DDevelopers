@@ -57,7 +57,7 @@
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Si es voluntario selecciona si es Nacional o Internacional" GridPane.rowIndex="6" />
       <TextField GridPane.columnIndex="2" GridPane.rowIndex="7" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Introduzca si es necesario el origen" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-      <ChoiceBox prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-      <ChoiceBox prefWidth="150.0" GridPane.rowIndex="7" />
+      <ChoiceBox fx:id="choice_tipoMiembro" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <ChoiceBox fx:id="choice_origenSeleccion" prefWidth="150.0" GridPane.rowIndex="7" />
    </children>
 </GridPane>
