@@ -57,7 +57,7 @@ public class MainController implements Initializable {
     	stage.getIcons().add(new Image("/images/ong.jpg"));
     	stage.setScene(scene);
     	stage.showAndWait();
-        
+    	
         stage.setOnCloseRequest(e ->{
         emf.close();
         Platform.exit();
