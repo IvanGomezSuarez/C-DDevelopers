@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane id="formMiembros" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Ong.Controller.MiembrosController">
+<GridPane id="formMiembros" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Ong.Controller.addMiembrosController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="0.0" prefWidth="184.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="188.0" />
@@ -31,18 +31,17 @@
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <children>
-      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="208.0" text="Guardar el nuevo Usuario" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="248.0" text="Cancelar" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-      <TextField GridPane.rowIndex="1" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <TextField GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" />
-      <TextField GridPane.rowIndex="3" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <TextField GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <TextField GridPane.columnIndex="3" GridPane.rowIndex="3" />
-      <TextField GridPane.rowIndex="5" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Button fx:id="button_Guardar" mnemonicParsing="false" onAction="#guardarCambios" prefHeight="25.0" prefWidth="208.0" text="Guardar el nuevo Usuario" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <Button fx:id="button_Cancelar" mnemonicParsing="false" onAction="#boton_Cancelar" prefHeight="25.0" prefWidth="248.0" text="Cancelar" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+      <TextField fx:id="text_Nombre" GridPane.rowIndex="1" />
+      <TextField fx:id="text_Apellido1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="text_Apellido2" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <TextField fx:id="text_Dni" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+      <TextField fx:id="text_Telefono" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField fx:id="text_Usuario" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <TextField fx:id="text_Password" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+      <TextField fx:id="text_FechaAlta" GridPane.rowIndex="5" />
+      <TextField fx:id="text_FechaBaja" GridPane.columnIndex="1" GridPane.rowIndex="5" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido1" GridPane.columnIndex="1" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido 2" GridPane.columnIndex="2" />
@@ -55,9 +54,10 @@
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Baja" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Selecciona el tipo de miembro:" GridPane.columnIndex="2" GridPane.rowIndex="4" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Si es voluntario selecciona si es Nacional o Internacional" GridPane.rowIndex="6" />
-      <TextField GridPane.columnIndex="2" GridPane.rowIndex="7" />
+      <TextField fx:id="text_Origen" GridPane.columnIndex="2" GridPane.rowIndex="7" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Introduzca si es necesario el origen" GridPane.columnIndex="2" GridPane.rowIndex="6" />
       <ChoiceBox fx:id="choice_tipoMiembro" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
       <ChoiceBox fx:id="choice_origenSeleccion" prefWidth="150.0" GridPane.rowIndex="7" />
+      <ChoiceBox fx:id="choice_Rol" prefWidth="150.0" GridPane.rowIndex="3" />
    </children>
 </GridPane>
