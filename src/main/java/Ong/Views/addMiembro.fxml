@@ -69,17 +69,17 @@
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero" GridPane.columnIndex="1" GridPane.rowIndex="8" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Puerta" GridPane.columnIndex="2" GridPane.rowIndex="8" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Escalera" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-      <TextField GridPane.rowIndex="9" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="9" />
-      <TextField GridPane.columnIndex="2" GridPane.rowIndex="9" />
-      <TextField GridPane.columnIndex="3" GridPane.rowIndex="9" />
+      <TextField fx:id="text_Via" GridPane.rowIndex="9" />
+      <TextField fx:id="text_Numero" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <TextField fx:id="text_Puerta" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+      <TextField fx:id="text_Escalera" GridPane.columnIndex="3" GridPane.rowIndex="9" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Localidad" GridPane.rowIndex="10" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Provincia" GridPane.columnIndex="1" GridPane.rowIndex="10" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CP" GridPane.columnIndex="2" GridPane.rowIndex="10" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pais" GridPane.columnIndex="3" GridPane.rowIndex="10" />
-      <TextField GridPane.rowIndex="11" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="11" />
-      <TextField GridPane.columnIndex="2" GridPane.rowIndex="11" />
-      <TextField GridPane.columnIndex="3" GridPane.rowIndex="11" />
+      <TextField fx:id="text_Localidad" GridPane.rowIndex="11" />
+      <TextField fx:id="text_Provincia" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+      <TextField fx:id="text_CP" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+      <TextField fx:id="text_Pais" GridPane.columnIndex="3" GridPane.rowIndex="11" />
    </children>
 </GridPane>

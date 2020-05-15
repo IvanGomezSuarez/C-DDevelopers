@@ -3,6 +3,9 @@ package Ong.Controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +25,13 @@ public class addMiembrosController {
 	ObservableList<String> listaRol=FXCollections.observableArrayList("ADMINISTRADOR", "MIEMBRO");
 	ObservableList<String> listaTipoMiembros=FXCollections.observableArrayList("TRABAJADOR", "COLABORADOR","VOLUNTARIO");
 	ObservableList<String> seleccionNacionalInternacional=FXCollections.observableArrayList("NACIONAL", "INTERNACIONAL");
+	
+	private VoluntarioJpaController voluntario;
+	private ColaboradorJpaController colaborador;
+	private MiembroJpaController miembro;
+	private PersonalJpaController personal;
+	private DireccionesUsuarioJpaController direccion;
+	public static EntityManagerFactory emf;
 	
     @FXML
     private Button button_Guardar;
@@ -75,6 +85,31 @@ public class addMiembrosController {
     private Text etiquetaOrigen;
     
     @FXML
+    private TextField text_Via;
+
+    @FXML
+    private TextField text_Numero;
+
+    @FXML
+    private TextField text_Puerta;
+
+    @FXML
+    private TextField text_Escalera;
+
+    @FXML
+    private TextField text_Localidad;
+
+    @FXML
+    private TextField text_Provincia;
+
+    @FXML
+    private TextField text_CP;
+
+    @FXML
+    private TextField text_Pais;
+
+    
+    @FXML
     private ComboBox<String> choice_comprobacion_Miembro;
 
     @FXML
@@ -85,8 +120,25 @@ public class addMiembrosController {
 
     @FXML
     void guardarCambios(ActionEvent event) {
+    	emf = Persistence.createEntityManagerFactory("persistencia2");
+    	direccion=new DireccionesUsuarioJpaController(emf);
     	
-    	
+    	if(choice_comprobacion_Miembro.getValue().equals("VOLUNTARIO")){
+    		
+    	}else{
+    		Ong.Models.DireccionesUsuario direccionNueva = new Ong.Models.DireccionesUsuario();
+    		direccionNueva.setIdDireccion(5);
+    		direccionNueva.setCp(text_CP.getText());
+    		direccionNueva.setEscalera(text_Escalera.getText());
+    		//direccionNueva.setIdDireccion(text_I);
+    		direccionNueva.setLocalidad(text_Localidad.getText());
+    		direccionNueva.setNumero(Integer.parseInt(text_Numero.getText()));
+    		direccionNueva.setPais(text_Pais.getText());
+    		direccionNueva.setProvincia(text_Provincia.getText());
+    		direccionNueva.setPuerta(text_Puerta.getText());
+    		direccionNueva.setTipoVia(text_Via.getText());
+    		direccion.create(direccionNueva);
+    	}
 
     }
     
@@ -98,7 +150,7 @@ public class addMiembrosController {
     @FXML
     private void comprobacion_Miembro(ActionEvent event) {
     	System.out.println(choice_comprobacion_Miembro.getValue());
-    	if(choice_comprobacion_Miembro.getValue().equals("TRABAJADOR")){
+    	if(choice_comprobacion_Miembro.getValue().equals("VOLUNTARIO")){
     		text_Origen.setVisible(true);
         	etiquetaOrigen.setVisible(true);
         	etiquetaVoluntario.setVisible(true);
