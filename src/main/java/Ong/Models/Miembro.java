@@ -1,9 +1,18 @@
 package Ong.Models;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 /**
@@ -23,148 +32,108 @@ public class Miembro implements Serializable {
 	public static final String FIND_BY_ID = "Miembro.findById";
 	public static final String FIND_BY_DNI = "Miembro.findByDni";
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
 	private int idMiembro;
-
-	private String apellido1;
-
-	private String apellido2;
-
-	private String dni;
-
 	private String nombreMiembro;
-
 	private String nombreUsuario;
-
 	private String pass;
-
+	private String apellido1;
+	private String apellido2;
+	private String dni;
 	private String rol;
-
 	private String telefono;
-
-	//bi-directional one-to-one association to Colaborador
-	@OneToOne(mappedBy="miembro")
-	private Colaborador colaborador;
-
-	//bi-directional many-to-one association to DireccionesUsuario
-	@ManyToOne
-	@JoinColumn(name="direccion")
 	private DireccionesUsuario direccionesUsuario;
 
-	//bi-directional one-to-one association to Personal
-	@OneToOne(mappedBy="miembro")
-	private Personal personal;
-
-	//bi-directional one-to-one association to Voluntario
-	@OneToOne(mappedBy="miembros")
-	private Voluntario voluntario;
-
-	public Miembro() {
-	}
-
+	@Id
+	@GeneratedValue(strategy=GenerationType.TABLE)
+	@Column(name = "idMiembro")
 	public int getIdMiembro() {
-		return this.idMiembro;
+		return idMiembro;
 	}
 
 	public void setIdMiembro(int idMiembro) {
 		this.idMiembro = idMiembro;
 	}
 
-	public String getApellido1() {
-		return this.apellido1;
-	}
-
-	public void setApellido1(String apellido1) {
-		this.apellido1 = apellido1;
-	}
-
-	public String getApellido2() {
-		return this.apellido2;
-	}
-
-	public void setApellido2(String apellido2) {
-		this.apellido2 = apellido2;
-	}
-
-	public String getDni() {
-		return this.dni;
-	}
-
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-
+	@Column(name = "nombreMiembro")
 	public String getNombreMiembro() {
-		return this.nombreMiembro;
+		return nombreMiembro;
 	}
 
 	public void setNombreMiembro(String nombreMiembro) {
 		this.nombreMiembro = nombreMiembro;
 	}
-
+	
+	@Column(name = "nombreUsuario")
 	public String getNombreUsuario() {
-		return this.nombreUsuario;
+		return nombreUsuario;
 	}
 
 	public void setNombreUsuario(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
 	}
 
+	@Column(name = "pass")
 	public String getPass() {
-		return this.pass;
+		return pass;
 	}
 
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
 
+	@Column(name = "apellido1")
+	public String getApellido1() {
+		return apellido1;
+	}
+
+	public void setApellido1(String apellido1) {
+		this.apellido1 = apellido1;
+	}
+
+	@Column(name = "apellido2")
+	public String getApellido2() {
+		return apellido2;
+	}
+
+	public void setApellido2(String apellido2) {
+		this.apellido2 = apellido2;
+	}
+
+	@Column(name = "dni")
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	@Column(name = "rol")
 	public String getRol() {
-		return this.rol;
+		return rol;
 	}
 
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
 
+	@Column(name = "telefono")
 	public String getTelefono() {
-		return this.telefono;
+		return telefono;
 	}
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-
-	public Colaborador getColaborador() {
-		return this.colaborador;
-	}
-
-	public void setColaborador(Colaborador colaborador) {
-		this.colaborador = colaborador;
-	}
-
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "direccion")
 	public DireccionesUsuario getDireccionesUsuario() {
-		return this.direccionesUsuario;
+		return direccionesUsuario;
 	}
 
 	public void setDireccionesUsuario(DireccionesUsuario direccionesUsuario) {
 		this.direccionesUsuario = direccionesUsuario;
-	}
-
-	public Personal getPersonal() {
-		return this.personal;
-	}
-
-	public void setPersonal(Personal personal) {
-		this.personal = personal;
-	}
-
-	public Voluntario getVoluntario() {
-		return this.voluntario;
-	}
-
-	public void setVoluntario(Voluntario voluntario) {
-		this.voluntario = voluntario;
 	}
 
 }
