@@ -1,11 +1,18 @@
 package Ong.Controller;
 
+import java.sql.Date;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import DAO.impl.MySqlMiembroDAO;
+import Ong.Models.Miembro;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -119,18 +126,22 @@ public class addMiembrosController {
     }
 
     @FXML
-    void guardarCambios(ActionEvent event) {
+    void guardarCambios(ActionEvent event) throws ParseException, SQLException {
     	emf = Persistence.createEntityManagerFactory("persistencia2");
     	miembro=new MiembroJpaController(emf);
     	voluntario=new VoluntarioJpaController(emf);
     	colaborador=new ColaboradorJpaController(emf);
     	personal=new PersonalJpaController(emf);
     	direccion=new DireccionesUsuarioJpaController(emf);
-    	
+    	int idmiembroMAX;
     	Ong.Models.DireccionesUsuario direccionNueva = new Ong.Models.DireccionesUsuario();
 		Ong.Models.Miembro miembroNuevo=new Ong.Models.Miembro();
 		Ong.Models.Personal personalNuevo=new Ong.Models.Personal();
+		List<Miembro> miembros=new ArrayList<Miembro>();
 		
+		
+		idmiembroMAX=MySqlMiembroDAO.consultarIdGenerado()+1;
+		miembroNuevo.setIdMiembro(idmiembroMAX);
 		miembroNuevo.setNombreMiembro(text_Nombre.getText());
 		miembroNuevo.setApellido1(text_Apellido1.getText());
 		miembroNuevo.setApellido2(text_Apellido2.getText());
@@ -140,7 +151,7 @@ public class addMiembrosController {
 		miembroNuevo.setPass(text_Password.getText());
 		miembroNuevo.setRol(choice_Rol.getTypeSelector());
 
-		direccionNueva.setIdDireccion(5);
+		direccionNueva.setIdDireccion(1);
 		direccionNueva.setCp(text_CP.getText());
 		direccionNueva.setEscalera(text_Escalera.getText());
 		direccionNueva.setLocalidad(text_Localidad.getText());
@@ -149,14 +160,29 @@ public class addMiembrosController {
 		direccionNueva.setProvincia(text_Provincia.getText());
 		direccionNueva.setPuerta(text_Puerta.getText());
 		direccionNueva.setTipoVia(text_Via.getText());
+		
+		
+		SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
+		String antesConversionFecha;
+		Date conversionaFecha= new Date(01/01/2020);
     	
     	if(choice_comprobacion_Miembro.getValue().equals("VOLUNTARIO")){
     		
     	}else if (choice_comprobacion_Miembro.getValue().equals("TRABAJADOR")){
-    		personalNuevo.setFechaAlta(text_FechaAlta.getText());
-    		personalNuevo.setFechaBaja(text_FechaBaja.getText());
-    		
-    		direccion.create(direccionNueva);
+    		String sDateAntes=text_FechaAlta.getText();
+    		String sDateAntes1=text_FechaBaja.getText();
+    		personalNuevo.setIdPersonal(1);
+    		personalNuevo.setFechaAlta(convertirStringaFecha.parse(sDateAntes));
+    		personalNuevo.setFechaBaja(convertirStringaFecha.parse(sDateAntes1));
+    		personalNuevo.setMiembro(miembroNuevo);
+//    		personal.create(personalNuevo);
+    		miembroNuevo.setPersonal(personalNuevo);
+    		miembroNuevo.setDireccionesUsuario(direccionNueva);
+    		miembroNuevo.setRol("ADMINISTRADOR");
+    		miembros.add(miembroNuevo);
+    		direccionNueva.setMiembros(miembros);
+    		miembro.create(miembroNuevo);
+    		//direccion.create(direccionNueva);
     	}else {
     		
     	}

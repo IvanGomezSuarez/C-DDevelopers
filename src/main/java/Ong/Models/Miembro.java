@@ -12,9 +12,16 @@ import javax.persistence.OneToOne;
  */
 @Entity
 @Table(name="miembros")
-@NamedQuery(name="Miembro.findAll", query="SELECT m FROM Miembro m")
+@NamedQueries({
+	@NamedQuery(name= Miembro.FIND_BY_ID, query="SELECT m FROM Miembro m WHERE m.idMiembro=:id"),
+	@NamedQuery(name= Miembro.FIND_BY_DNI, query="SELECT m FROM Miembro m WHERE m.dni=:dni")
+})
+
 public class Miembro implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
+	public static final String FIND_BY_ID = "Miembro.findById";
+	public static final String FIND_BY_DNI = "Miembro.findByDni";
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)

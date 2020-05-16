@@ -35,7 +35,7 @@
    <children>
       <MenuButton id="menu" mnemonicParsing="false" text="Seleccione Para Listar">
         <items>
-          <MenuItem mnemonicParsing="false" onAction="#listarMiembros" text="Miembros" />
+          <MenuItem mnemonicParsing="false" onAction="#listarMiembros" text="Personal" />
           <MenuItem mnemonicParsing="false" onAction="#listarVoluntarios" text="Voluntarios" />
           <MenuItem mnemonicParsing="false" onAction="#listarContratados" text="Contratados" />
         </items>

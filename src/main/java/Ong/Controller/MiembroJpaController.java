@@ -5,36 +5,36 @@
  */
 package Ong.Controller;
 
-import Ong.Controller.exceptions.NonexistentEntityException;
 import java.io.Serializable;
-import javax.persistence.Query;
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+
+import DAO.hibernate.interfaces.IMiembrosDao;
+import Ong.Controller.exceptions.NonexistentEntityException;
 import Ong.Models.Colaborador;
 import Ong.Models.DireccionesUsuario;
 import Ong.Models.Miembro;
 import Ong.Models.Personal;
 import Ong.Models.Voluntario;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 
-/**
- *
- * @author Usuario
- */
 public class MiembroJpaController implements Serializable {
+	
+	 public MiembroJpaController(EntityManagerFactory emf) {
+	        this.emf = emf;
+	    }
+	    private EntityManagerFactory emf = null;
 
-    public MiembroJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
-    }
-    private EntityManagerFactory emf = null;
-
-    public EntityManager getEntityManager() {
-        return emf.createEntityManager();
-    }
-
+	    public EntityManager getEntityManager() {
+	        return emf.createEntityManager();
+	    }
     public void create(Miembro miembro) {
         EntityManager em = null;
         try {
@@ -47,20 +47,25 @@ public class MiembroJpaController implements Serializable {
             }
             DireccionesUsuario direccionesUsuario = miembro.getDireccionesUsuario();
             if (direccionesUsuario != null) {
-                direccionesUsuario = em.getReference(direccionesUsuario.getClass(), direccionesUsuario.getIdDireccion());
+                direccionesUsuario = em.getReference(direccionesUsuario.getClass(), direccionesUsuario.getIdDireccion());            	
                 miembro.setDireccionesUsuario(direccionesUsuario);
+                //direccionesUsuario = em.getReference(direccionesUsuario.getClass(), miembro.getIdMiembro());
+            	//miembro.setDireccionesUsuario(miembro.getDireccionesUsuario());
             }
             Personal personal = miembro.getPersonal();
             if (personal != null) {
                 personal = em.getReference(personal.getClass(), personal.getIdPersonal());
                 miembro.setPersonal(personal);
+            	//miembro.setPersonal(miembro.getPersonal());
             }
             Voluntario voluntario = miembro.getVoluntario();
             if (voluntario != null) {
                 voluntario = em.getReference(voluntario.getClass(), voluntario.getIdVoluntario());
                 miembro.setVoluntario(voluntario);
             }
+            
             em.persist(miembro);
+            
             if (colaborador != null) {
                 Miembro oldMiembroOfColaborador = colaborador.getMiembro();
                 if (oldMiembroOfColaborador != null) {
@@ -103,7 +108,6 @@ public class MiembroJpaController implements Serializable {
     public void edit(Miembro miembro) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
-            em = getEntityManager();
             em.getTransaction().begin();
             Miembro persistentMiembro = em.find(Miembro.class, miembro.getIdMiembro());
             Colaborador colaboradorOld = persistentMiembro.getColaborador();
@@ -198,7 +202,7 @@ public class MiembroJpaController implements Serializable {
     public void destroy(int id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
-            em = getEntityManager();
+        	em = getEntityManager();
             em.getTransaction().begin();
             Miembro miembro;
             try {
@@ -245,7 +249,7 @@ public class MiembroJpaController implements Serializable {
     }
 
     private List<Miembro> findMiembroEntities(boolean all, int maxResults, int firstResult) {
-        EntityManager em = getEntityManager();
+    	EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
             cq.select(cq.from(Miembro.class));
@@ -261,7 +265,7 @@ public class MiembroJpaController implements Serializable {
     }
 
     public Miembro findMiembro(int id) {
-        EntityManager em = getEntityManager();
+    	EntityManager em = getEntityManager();
         try {
             return em.find(Miembro.class, id);
         } finally {
@@ -270,7 +274,7 @@ public class MiembroJpaController implements Serializable {
     }
 
     public int getMiembroCount() {
-        EntityManager em = getEntityManager();
+    	EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
             Root<Miembro> rt = cq.from(Miembro.class);
@@ -280,6 +284,5 @@ public class MiembroJpaController implements Serializable {
         } finally {
             em.close();
         }
-    }
-    
+    }    
 }

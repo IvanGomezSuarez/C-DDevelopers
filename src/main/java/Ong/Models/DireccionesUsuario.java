@@ -37,7 +37,7 @@ public class DireccionesUsuario implements Serializable {
 	private String tipoVia;
 
 	//bi-directional many-to-one association to Miembro
-	@OneToMany(mappedBy="direccionesUsuario")
+						@OneToMany(mappedBy="direccionesUsuario")
 	private List<Miembro> miembros;
 
 	public DireccionesUsuario() {
@@ -77,7 +77,7 @@ public class DireccionesUsuario implements Serializable {
 
 	public int getNumero() {
 		return this.numero;
-	}
+	}	
 
 	public void setNumero(int numero) {
 		this.numero = numero;

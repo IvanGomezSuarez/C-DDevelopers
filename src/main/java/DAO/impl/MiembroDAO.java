@@ -27,6 +27,8 @@ import sql.UtilitySql;
 
 public class MiembroDAO{
   
+	
+	
 	public static List<Miembro> getAll() {
 		// TODO Auto-generated method stub
 		 try {
