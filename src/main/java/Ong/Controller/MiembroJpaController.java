@@ -40,62 +40,19 @@ public class MiembroJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Colaborador colaborador = miembro.getColaborador();
-            if (colaborador != null) {
-                colaborador = em.getReference(colaborador.getClass(), colaborador.getIdColaborador());
-                miembro.setColaborador(colaborador);
-            }
             DireccionesUsuario direccionesUsuario = miembro.getDireccionesUsuario();
             if (direccionesUsuario != null) {
-                direccionesUsuario = em.getReference(direccionesUsuario.getClass(), direccionesUsuario.getIdDireccion());            	
-                miembro.setDireccionesUsuario(direccionesUsuario);
+                //direccionesUsuario = em.getReference(direccionesUsuario.getClass(), direccionesUsuario.getIdDireccion());            	
+            	//direccionesUsuario = em.getReference(direccionesUsuario.getClass(), direccionesUsuario.getIdDireccion()); 
+            	//miembro.setDireccionesUsuario(direccionesUsuario);
                 //direccionesUsuario = em.getReference(direccionesUsuario.getClass(), miembro.getIdMiembro());
-            	//miembro.setDireccionesUsuario(miembro.getDireccionesUsuario());
-            }
-            Personal personal = miembro.getPersonal();
-            if (personal != null) {
-                personal = em.getReference(personal.getClass(), personal.getIdPersonal());
-                miembro.setPersonal(personal);
-            	//miembro.setPersonal(miembro.getPersonal());
-            }
-            Voluntario voluntario = miembro.getVoluntario();
-            if (voluntario != null) {
-                voluntario = em.getReference(voluntario.getClass(), voluntario.getIdVoluntario());
-                miembro.setVoluntario(voluntario);
-            }
-            
+            	miembro.setDireccionesUsuario(miembro.getDireccionesUsuario());
+            }            
             em.persist(miembro);
             
-            if (colaborador != null) {
-                Miembro oldMiembroOfColaborador = colaborador.getMiembro();
-                if (oldMiembroOfColaborador != null) {
-                    oldMiembroOfColaborador.setColaborador(null);
-                    oldMiembroOfColaborador = em.merge(oldMiembroOfColaborador);
-                }
-                colaborador.setMiembro(miembro);
-                colaborador = em.merge(colaborador);
-            }
             if (direccionesUsuario != null) {
                 direccionesUsuario.getMiembros().add(miembro);
                 direccionesUsuario = em.merge(direccionesUsuario);
-            }
-            if (personal != null) {
-                Miembro oldMiembroOfPersonal = personal.getMiembro();
-                if (oldMiembroOfPersonal != null) {
-                    oldMiembroOfPersonal.setPersonal(null);
-                    oldMiembroOfPersonal = em.merge(oldMiembroOfPersonal);
-                }
-                personal.setMiembro(miembro);
-                personal = em.merge(personal);
-            }
-            if (voluntario != null) {
-                Miembro oldMiembroOfVoluntario = voluntario.getMiembros();
-                if (oldMiembroOfVoluntario != null) {
-                    oldMiembroOfVoluntario.setVoluntario(null);
-                    oldMiembroOfVoluntario = em.merge(oldMiembroOfVoluntario);
-                }
-                voluntario.setMiembros(miembro);
-                voluntario = em.merge(voluntario);
             }
             em.getTransaction().commit();
         } finally {
@@ -110,44 +67,13 @@ public class MiembroJpaController implements Serializable {
         try {
             em.getTransaction().begin();
             Miembro persistentMiembro = em.find(Miembro.class, miembro.getIdMiembro());
-            Colaborador colaboradorOld = persistentMiembro.getColaborador();
-            Colaborador colaboradorNew = miembro.getColaborador();
             DireccionesUsuario direccionesUsuarioOld = persistentMiembro.getDireccionesUsuario();
             DireccionesUsuario direccionesUsuarioNew = miembro.getDireccionesUsuario();
-            Personal personalOld = persistentMiembro.getPersonal();
-            Personal personalNew = miembro.getPersonal();
-            Voluntario voluntarioOld = persistentMiembro.getVoluntario();
-            Voluntario voluntarioNew = miembro.getVoluntario();
-            if (colaboradorNew != null) {
-                colaboradorNew = em.getReference(colaboradorNew.getClass(), colaboradorNew.getIdColaborador());
-                miembro.setColaborador(colaboradorNew);
-            }
             if (direccionesUsuarioNew != null) {
                 direccionesUsuarioNew = em.getReference(direccionesUsuarioNew.getClass(), direccionesUsuarioNew.getIdDireccion());
                 miembro.setDireccionesUsuario(direccionesUsuarioNew);
             }
-            if (personalNew != null) {
-                personalNew = em.getReference(personalNew.getClass(), personalNew.getIdPersonal());
-                miembro.setPersonal(personalNew);
-            }
-            if (voluntarioNew != null) {
-                voluntarioNew = em.getReference(voluntarioNew.getClass(), voluntarioNew.getIdVoluntario());
-                miembro.setVoluntario(voluntarioNew);
-            }
             miembro = em.merge(miembro);
-            if (colaboradorOld != null && !colaboradorOld.equals(colaboradorNew)) {
-                colaboradorOld.setMiembro(null);
-                colaboradorOld = em.merge(colaboradorOld);
-            }
-            if (colaboradorNew != null && !colaboradorNew.equals(colaboradorOld)) {
-                Miembro oldMiembroOfColaborador = colaboradorNew.getMiembro();
-                if (oldMiembroOfColaborador != null) {
-                    oldMiembroOfColaborador.setColaborador(null);
-                    oldMiembroOfColaborador = em.merge(oldMiembroOfColaborador);
-                }
-                colaboradorNew.setMiembro(miembro);
-                colaboradorNew = em.merge(colaboradorNew);
-            }
             if (direccionesUsuarioOld != null && !direccionesUsuarioOld.equals(direccionesUsuarioNew)) {
                 direccionesUsuarioOld.getMiembros().remove(miembro);
                 direccionesUsuarioOld = em.merge(direccionesUsuarioOld);
@@ -155,32 +81,6 @@ public class MiembroJpaController implements Serializable {
             if (direccionesUsuarioNew != null && !direccionesUsuarioNew.equals(direccionesUsuarioOld)) {
                 direccionesUsuarioNew.getMiembros().add(miembro);
                 direccionesUsuarioNew = em.merge(direccionesUsuarioNew);
-            }
-            if (personalOld != null && !personalOld.equals(personalNew)) {
-                personalOld.setMiembro(null);
-                personalOld = em.merge(personalOld);
-            }
-            if (personalNew != null && !personalNew.equals(personalOld)) {
-                Miembro oldMiembroOfPersonal = personalNew.getMiembro();
-                if (oldMiembroOfPersonal != null) {
-                    oldMiembroOfPersonal.setPersonal(null);
-                    oldMiembroOfPersonal = em.merge(oldMiembroOfPersonal);
-                }
-                personalNew.setMiembro(miembro);
-                personalNew = em.merge(personalNew);
-            }
-            if (voluntarioOld != null && !voluntarioOld.equals(voluntarioNew)) {
-                voluntarioOld.setMiembros(null);
-                voluntarioOld = em.merge(voluntarioOld);
-            }
-            if (voluntarioNew != null && !voluntarioNew.equals(voluntarioOld)) {
-                Miembro oldMiembroOfVoluntario = voluntarioNew.getMiembros();
-                if (oldMiembroOfVoluntario != null) {
-                    oldMiembroOfVoluntario.setVoluntario(null);
-                    oldMiembroOfVoluntario = em.merge(oldMiembroOfVoluntario);
-                }
-                voluntarioNew.setMiembros(miembro);
-                voluntarioNew = em.merge(voluntarioNew);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -211,25 +111,10 @@ public class MiembroJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The miembro with id " + id + " no longer exists.", enfe);
             }
-            Colaborador colaborador = miembro.getColaborador();
-            if (colaborador != null) {
-                colaborador.setMiembro(null);
-                colaborador = em.merge(colaborador);
-            }
             DireccionesUsuario direccionesUsuario = miembro.getDireccionesUsuario();
             if (direccionesUsuario != null) {
                 direccionesUsuario.getMiembros().remove(miembro);
                 direccionesUsuario = em.merge(direccionesUsuario);
-            }
-            Personal personal = miembro.getPersonal();
-            if (personal != null) {
-                personal.setMiembro(null);
-                personal = em.merge(personal);
-            }
-            Voluntario voluntario = miembro.getVoluntario();
-            if (voluntario != null) {
-                voluntario.setMiembros(null);
-                voluntario = em.merge(voluntario);
             }
             em.remove(miembro);
             em.getTransaction().commit();

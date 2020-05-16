@@ -43,15 +43,6 @@ public class ColaboradorJpaController implements Serializable {
                 colaborador.setMiembro(miembro);
             }
             em.persist(colaborador);
-            if (miembro != null) {
-                Colaborador oldColaboradorOfMiembro = miembro.getColaborador();
-                if (oldColaboradorOfMiembro != null) {
-                    oldColaboradorOfMiembro.setMiembro(null);
-                    oldColaboradorOfMiembro = em.merge(oldColaboradorOfMiembro);
-                }
-                miembro.setColaborador(colaborador);
-                miembro = em.merge(miembro);
-            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -73,19 +64,6 @@ public class ColaboradorJpaController implements Serializable {
                 colaborador.setMiembro(miembroNew);
             }
             colaborador = em.merge(colaborador);
-            if (miembroOld != null && !miembroOld.equals(miembroNew)) {
-                miembroOld.setColaborador(null);
-                miembroOld = em.merge(miembroOld);
-            }
-            if (miembroNew != null && !miembroNew.equals(miembroOld)) {
-                Colaborador oldColaboradorOfMiembro = miembroNew.getColaborador();
-                if (oldColaboradorOfMiembro != null) {
-                    oldColaboradorOfMiembro.setMiembro(null);
-                    oldColaboradorOfMiembro = em.merge(oldColaboradorOfMiembro);
-                }
-                miembroNew.setColaborador(colaborador);
-                miembroNew = em.merge(miembroNew);
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -114,11 +92,6 @@ public class ColaboradorJpaController implements Serializable {
                 colaborador.getIdColaborador();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The colaborador with id " + id + " no longer exists.", enfe);
-            }
-            Miembro miembro = colaborador.getMiembro();
-            if (miembro != null) {
-                miembro.setColaborador(null);
-                miembro = em.merge(miembro);
             }
             em.remove(colaborador);
             em.getTransaction().commit();

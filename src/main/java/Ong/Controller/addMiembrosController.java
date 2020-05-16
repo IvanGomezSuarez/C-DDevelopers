@@ -176,11 +176,11 @@ public class addMiembrosController {
     		personalNuevo.setFechaBaja(convertirStringaFecha.parse(sDateAntes1));
     		personalNuevo.setMiembro(miembroNuevo);
 //    		personal.create(personalNuevo);
-    		miembroNuevo.setPersonal(personalNuevo);
+    		//miembroNuevo.setPersonal(personalNuevo);
     		miembroNuevo.setDireccionesUsuario(direccionNueva);
     		miembroNuevo.setRol("ADMINISTRADOR");
     		miembros.add(miembroNuevo);
-    		direccionNueva.setMiembros(miembros);
+    		direccion.create(direccionNueva);
     		miembro.create(miembroNuevo);
     		//direccion.create(direccionNueva);
     	}else {

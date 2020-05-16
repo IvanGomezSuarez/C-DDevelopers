@@ -10,6 +10,7 @@ import Ong.Models.DireccionesUsuario;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import Ong.Models.Miembro;
@@ -34,29 +35,13 @@ public class DireccionesUsuarioJpaController implements Serializable {
     }
 
     public void create(DireccionesUsuario direccionesUsuario) {
-        if (direccionesUsuario.getMiembros() == null) {
-            direccionesUsuario.setMiembros(new ArrayList<Miembro>());
-        }
         EntityManager em = null;
         try {
-            em = getEntityManager();
+        	emf = Persistence.createEntityManagerFactory("persistencia2");
+            //em = getEntityManager();
+            em=emf.createEntityManager();
             em.getTransaction().begin();
-            List<Miembro> attachedMiembros = new ArrayList<Miembro>();
-            for (Miembro miembrosMiembroToAttach : direccionesUsuario.getMiembros()) {
-                miembrosMiembroToAttach = em.getReference(miembrosMiembroToAttach.getClass(), miembrosMiembroToAttach.getIdMiembro());
-                attachedMiembros.add(miembrosMiembroToAttach);
-            }
-            direccionesUsuario.setMiembros(attachedMiembros);
-            em.persist(direccionesUsuario);
-            for (Miembro miembrosMiembro : direccionesUsuario.getMiembros()) {
-                DireccionesUsuario oldDireccionesUsuarioOfMiembrosMiembro = miembrosMiembro.getDireccionesUsuario();
-                miembrosMiembro.setDireccionesUsuario(direccionesUsuario);
-                miembrosMiembro = em.merge(miembrosMiembro);
-                if (oldDireccionesUsuarioOfMiembrosMiembro != null) {
-                    oldDireccionesUsuarioOfMiembrosMiembro.getMiembros().remove(miembrosMiembro);
-                    oldDireccionesUsuarioOfMiembrosMiembro = em.merge(oldDireccionesUsuarioOfMiembrosMiembro);
-                }
-            }
+            em.merge(direccionesUsuario);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
