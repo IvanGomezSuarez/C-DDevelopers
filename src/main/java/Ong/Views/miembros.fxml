@@ -43,7 +43,7 @@
       <TableView id="tablaMiembros" fx:id="primeraTabla" editable="true" prefHeight="88.0" prefWidth="671.0" stylesheets="@../../CSS/myCss.css" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1">
         <columns>
           <TableColumn id="idMemberCol" fx:id="col_Id" prefWidth="33.0" text="Id" />
-          <TableColumn id="nameMemberCol" fx:id="col_Nombre" prefWidth="117.0" text="Nombre" />
+          <TableColumn id="nameMemberCol" fx:id="col_Nombre" onEditCommit="#onEditName" prefWidth="117.0" text="Nombre" />
             <TableColumn id="firstApellCol" fx:id="col_1Apellido" prefWidth="116.0" text="1erApellido" />
             <TableColumn id="secondApellCol" fx:id="col_2Apellido" prefWidth="118.0" text="2doApellido" />
             <TableColumn id="dniCol" fx:id="col_Dni" minWidth="1.0" prefWidth="72.0" text="Dni" />

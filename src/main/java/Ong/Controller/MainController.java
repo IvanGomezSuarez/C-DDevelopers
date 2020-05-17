@@ -21,8 +21,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import Ong.Launcher.JpaUtil;
 /**
  * FXML Controller class
  *
@@ -45,7 +49,7 @@ public class MainController implements Initializable {
     
     @FXML
     private void lanzarSegundaVentana(ActionEvent event ) throws IOException {
-        emf= Persistence.createEntityManagerFactory("persistencia2");
+    	EntityManager emf = JpaUtil.getEntityManagerFactory().createEntityManager();
         //	con este mtodo cargamos el form de gestin de miembros
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Ong/Views/miembros.fxml"));
     	Parent root = loader.load();

@@ -19,8 +19,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import Ong.Launcher.JpaUtil;
 import javafx.stage.Stage;
 
 
@@ -37,9 +41,8 @@ public class FXMain extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {  
-        emf = Persistence.createEntityManagerFactory("persistencia2");
+        EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
     	Parent root = FXMLLoader.load(getClass().getResource("/Ong/Views/main.fxml"));
-        
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Bienvenido a EntreCulturas");

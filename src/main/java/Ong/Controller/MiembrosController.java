@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -27,6 +28,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -34,6 +36,7 @@ import java.text.SimpleDateFormat;
 import ongEC.Voluntario;
 import Ong.Controller.VoluntarioJpaController;
 import Ong.Controller.exceptions.NonexistentEntityException;
+import Ong.Launcher.JpaUtil;
 import Ong.Controller.MiembroJpaController;
 import Ong.Controller.ColaboradorJpaController;
 import Ong.Controller.PersonalJpaController;
@@ -55,6 +58,7 @@ public class MiembrosController {
 	ObservableList<ModeloSegundaTabla> tabla2=FXCollections.observableArrayList();
 	//Lista observable de la tercera tabla con la misma forma
 	ObservableList<ModeloTerceraTabla> tabla3=FXCollections.observableArrayList();
+	
     public static EntityManagerFactory emf;
     
 	private VoluntarioJpaController voluntario;
@@ -186,7 +190,7 @@ public class MiembrosController {
 
     @FXML
     void altaMiembro(ActionEvent event) throws IOException {   	
-    	 emf= Persistence.createEntityManagerFactory("persistencia2");
+    	EntityManager emf = JpaUtil.getEntityManagerFactory().createEntityManager();
          //	con este mtodo cargamos el form de gestin de miembros
      	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Ong/Views/addMiembro.fxml"));
      	Parent root = loader.load();
@@ -243,9 +247,41 @@ public class MiembrosController {
     @FXML
     void editarMiembro(ActionEvent event) {
     	
+    	primeraTabla.setEditable(true);
+    	segundaTabla.setEditable(true);
+    	terceraTabla.setEditable(true);
+    	emf = Persistence.createEntityManagerFactory("persistencia2");
     	
-
+    			//Activamos todos los campos de las tablas 1
+    			col_Id.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+    			col_Nombre.setCellFactory(TextFieldTableCell.forTableColumn());
+    			col_1Apellido.setCellFactory(TextFieldTableCell.forTableColumn());
+    			col_2Apellido.setCellFactory(TextFieldTableCell.forTableColumn());
+    			col_Dni.setCellFactory(TextFieldTableCell.forTableColumn());
+    			col_Rol.setCellFactory(TextFieldTableCell.forTableColumn());
+    			col_Telefono.setCellFactory(TextFieldTableCell.forTableColumn());
+    			
+    			//Activamos todos los campos de las tablas 2
+    			/*col_nombreUsuario.setCellFactory(TextFieldTableCell.forTableColumn());
+    			col_Password.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+    			col_FechaAlta.setCellFactory(TextFieldTableCell.forTableColumn());
+    			col_FechaBaja.setCellFactory(TextFieldTableCell.forTableColumn());
+    			col_paisOrigenPais.setCellFactory(TextFieldTableCell.forTableColumn());*/
+    			
+    			//Activamos todos los campos de las tablas 3
+    			col_Via.setCellFactory(TextFieldTableCell.forTableColumn());
+    			col_N.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+    			col_Piso.setCellFactory(TextFieldTableCell.forTableColumn());
+    			col_Puerta.setCellFactory(TextFieldTableCell.forTableColumn());
+    			col_Localidad.setCellFactory(TextFieldTableCell.forTableColumn());
+    			col_Provincia.setCellFactory(TextFieldTableCell.forTableColumn());
+    			col_CP.setCellFactory(TextFieldTableCell.forTableColumn());
+    			col_Pais.setCellFactory(TextFieldTableCell.forTableColumn());
+    			
+    			
     }
+
+    
 
     @FXML
     void listarContratados(ActionEvent event) {
@@ -314,6 +350,17 @@ public class MiembrosController {
     	listaRellenar.getItems().addAll(list);
     	listaVoluntarios.clear();	
     }
+    
+    public void onEditName(TableColumn.CellEditEvent<ModeloPrimeraTabla, String> modeloPrimeraTablaStringCellEditEvent) {
+    	EntityManager emf = JpaUtil.getEntityManagerFactory().createEntityManager();
+    	ModeloPrimeraTabla modeloPrimeraTabla = primeraTabla.getSelectionModel().getSelectedItem();
+    	modeloPrimeraTabla.setNombre(modeloPrimeraTablaStringCellEditEvent.getNewValue());
+    	emf.getTransaction().begin();
+    	emf.persist(modeloPrimeraTabla);
+    	emf.getTransaction().commit();
+    	
+    	
+}
 
 }
 
