@@ -16,18 +16,21 @@ public class Colaborador implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "IdColaborador")
 	private int idColaborador;
-	@Column
+	
+	@Column(name = "fechaAlta")
 	@Temporal(TemporalType.DATE)
 	private Date fechaAlta;
-	@Column
+	@Column(name = "fechaBaja")
 	@Temporal(TemporalType.DATE)
 	private Date fechaBaja;
 
 	//bi-directional one-to-one association to Miembro
 	@OneToOne
 	@JoinColumn(name="idColaborador")
+	
 	private Miembro miembro;
 
 	public Colaborador() {
