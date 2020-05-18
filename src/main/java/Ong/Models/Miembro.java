@@ -14,6 +14,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
+
+import ongEC.Colaborador;
+import ongEC.Personal;
+import ongEC.Voluntario;
 
 
 /**
@@ -45,6 +50,41 @@ public class Miembro implements Serializable {
 	private String rol;
 	private String telefono;
 	private DireccionesUsuario direccionesUsuario;
+	
+	
+	public Personal getPersonal() {
+		return personal;
+	}
+
+	public void setPersonal(Personal personal) {
+		this.personal = personal;
+	}
+
+	public Voluntario getVoluntario() {
+		return voluntario;
+	}
+
+	public void setVoluntario(Voluntario voluntario) {
+		this.voluntario = voluntario;
+	}
+
+	public Colaborador getColaborador() {
+		return colaborador;
+	}
+
+	public void setColaborador(Colaborador colaborador) {
+		this.colaborador = colaborador;
+	}
+
+	@ManyToOne
+	@XmlElement(name = "Personal")
+	Personal personal;
+	@ManyToOne
+	@XmlElement(name = "Voluntario")
+	Voluntario voluntario;
+	@ManyToOne
+	@XmlElement(name = "Colaborador")
+	Colaborador colaborador;
 
 	@Column(name = "idMiembro")
 	public int getIdMiembro() {

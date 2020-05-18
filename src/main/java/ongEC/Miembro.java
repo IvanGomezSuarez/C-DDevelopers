@@ -51,7 +51,6 @@ public class Miembro {
 	private String rol;
 	@XmlElement(name = "Telefono")
 	private String telefono;
-	
 	@ManyToOne
 	@XmlElement(name = "Personal")
 	Personal personal;
@@ -61,6 +60,7 @@ public class Miembro {
 	@ManyToOne
 	@XmlElement(name = "Colaborador")
 	Colaborador colaborador;
+	
 	
 	
 
