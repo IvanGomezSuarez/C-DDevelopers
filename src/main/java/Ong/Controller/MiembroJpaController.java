@@ -47,16 +47,16 @@ public class MiembroJpaController implements Serializable {
             }
             DireccionesUsuario direccionesUsuario = miembro.getDireccionesUsuario();
             if (direccionesUsuario != null) {
-                direccionesUsuario = em.getReference(direccionesUsuario.getClass(), direccionesUsuario.getIdDireccion());            	
-                miembro.setDireccionesUsuario(direccionesUsuario);
+                //direccionesUsuario = em.getReference(direccionesUsuario.getClass(), direccionesUsuario.getIdDireccion());            	
+                //miembro.setDireccionesUsuario(direccionesUsuario);
                 //direccionesUsuario = em.getReference(direccionesUsuario.getClass(), miembro.getIdMiembro());
-            	//miembro.setDireccionesUsuario(miembro.getDireccionesUsuario());
+            	miembro.setDireccionesUsuario(miembro.getDireccionesUsuario());
             }
             Personal personal = miembro.getPersonal();
             if (personal != null) {
-                personal = em.getReference(personal.getClass(), personal.getIdPersonal());
-                miembro.setPersonal(personal);
-            	//miembro.setPersonal(miembro.getPersonal());
+                //personal = em.getReference(personal.getClass(), personal.getIdPersonal());
+                //miembro.setPersonal(personal);
+            	miembro.setPersonal(miembro.getPersonal());
             }
             Voluntario voluntario = miembro.getVoluntario();
             if (voluntario != null) {
@@ -64,7 +64,7 @@ public class MiembroJpaController implements Serializable {
                 miembro.setVoluntario(voluntario);
             }
             
-            em.persist(miembro);
+            em.merge(miembro);
             
             if (colaborador != null) {
                 Miembro oldMiembroOfColaborador = colaborador.getMiembro();
