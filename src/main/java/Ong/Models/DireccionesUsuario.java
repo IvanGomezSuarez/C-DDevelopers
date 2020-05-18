@@ -19,9 +19,12 @@ import javax.persistence.Table;
 @NamedQuery(name="DireccionesUsuario.findAll", query="SELECT d FROM DireccionesUsuario d")
 public class DireccionesUsuario implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idDireccion;
+	@Column(name = "idDireccion")
+	private int idDireccion=0;
+	
 	private String cp;
 	private String escalera;
 	private String localidad;
@@ -31,9 +34,9 @@ public class DireccionesUsuario implements Serializable {
 	private String puerta;
 	private String tipoVia;
 				
-	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
-	@Column(name = "idDireccion")
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.TABLE)
+//@Column(name = "idDireccion")
 	public int getIdDireccion() {
 		return this.idDireccion;
 	}

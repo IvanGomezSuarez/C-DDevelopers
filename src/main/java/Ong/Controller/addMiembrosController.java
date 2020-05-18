@@ -151,7 +151,7 @@ public class addMiembrosController {
 		miembroNuevo.setPass(text_Password.getText());
 		miembroNuevo.setRol(choice_Rol.getTypeSelector());
 
-		direccionNueva.setIdDireccion(1);
+		direccionNueva.setIdDireccion(2);
 		direccionNueva.setCp(text_CP.getText());
 		direccionNueva.setEscalera(text_Escalera.getText());
 		direccionNueva.setLocalidad(text_Localidad.getText());

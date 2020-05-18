@@ -56,33 +56,7 @@ public class DireccionesUsuarioJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             DireccionesUsuario persistentDireccionesUsuario = em.find(DireccionesUsuario.class, direccionesUsuario.getIdDireccion());
-            List<Miembro> miembrosOld = persistentDireccionesUsuario.getMiembros();
-            List<Miembro> miembrosNew = direccionesUsuario.getMiembros();
-            List<Miembro> attachedMiembrosNew = new ArrayList<Miembro>();
-            for (Miembro miembrosNewMiembroToAttach : miembrosNew) {
-                miembrosNewMiembroToAttach = em.getReference(miembrosNewMiembroToAttach.getClass(), miembrosNewMiembroToAttach.getIdMiembro());
-                attachedMiembrosNew.add(miembrosNewMiembroToAttach);
-            }
-            miembrosNew = attachedMiembrosNew;
-            direccionesUsuario.setMiembros(miembrosNew);
             direccionesUsuario = em.merge(direccionesUsuario);
-            for (Miembro miembrosOldMiembro : miembrosOld) {
-                if (!miembrosNew.contains(miembrosOldMiembro)) {
-                    miembrosOldMiembro.setDireccionesUsuario(null);
-                    miembrosOldMiembro = em.merge(miembrosOldMiembro);
-                }
-            }
-            for (Miembro miembrosNewMiembro : miembrosNew) {
-                if (!miembrosOld.contains(miembrosNewMiembro)) {
-                    DireccionesUsuario oldDireccionesUsuarioOfMiembrosNewMiembro = miembrosNewMiembro.getDireccionesUsuario();
-                    miembrosNewMiembro.setDireccionesUsuario(direccionesUsuario);
-                    miembrosNewMiembro = em.merge(miembrosNewMiembro);
-                    if (oldDireccionesUsuarioOfMiembrosNewMiembro != null && !oldDireccionesUsuarioOfMiembrosNewMiembro.equals(direccionesUsuario)) {
-                        oldDireccionesUsuarioOfMiembrosNewMiembro.getMiembros().remove(miembrosNewMiembro);
-                        oldDireccionesUsuarioOfMiembrosNewMiembro = em.merge(oldDireccionesUsuarioOfMiembrosNewMiembro);
-                    }
-                }
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -111,11 +85,6 @@ public class DireccionesUsuarioJpaController implements Serializable {
                 direccionesUsuario.getIdDireccion();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The direccionesUsuario with id " + id + " no longer exists.", enfe);
-            }
-            List<Miembro> miembros = direccionesUsuario.getMiembros();
-            for (Miembro miembrosMiembro : miembros) {
-                miembrosMiembro.setDireccionesUsuario(null);
-                miembrosMiembro = em.merge(miembrosMiembro);
             }
             em.remove(direccionesUsuario);
             em.getTransaction().commit();
