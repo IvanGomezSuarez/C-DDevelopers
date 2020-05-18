@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -31,7 +32,9 @@ public class Miembro implements Serializable {
 	private static final long serialVersionUID = 1L;
 	public static final String FIND_BY_ID = "Miembro.findById";
 	public static final String FIND_BY_DNI = "Miembro.findByDni";
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idMiembro;
 	private String nombreMiembro;
 	private String nombreUsuario;
@@ -43,8 +46,6 @@ public class Miembro implements Serializable {
 	private String telefono;
 	private DireccionesUsuario direccionesUsuario;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Column(name = "idMiembro")
 	public int getIdMiembro() {
 		return idMiembro;
@@ -126,7 +127,8 @@ public class Miembro implements Serializable {
 		this.telefono = telefono;
 	}
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "direccion")
 	public DireccionesUsuario getDireccionesUsuario() {
 		return direccionesUsuario;

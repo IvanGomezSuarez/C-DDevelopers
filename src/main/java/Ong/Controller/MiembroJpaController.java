@@ -46,14 +46,8 @@ public class MiembroJpaController implements Serializable {
             	//direccionesUsuario = em.getReference(direccionesUsuario.getClass(), direccionesUsuario.getIdDireccion()); 
             	//miembro.setDireccionesUsuario(direccionesUsuario);
                 //direccionesUsuario = em.getReference(direccionesUsuario.getClass(), miembro.getIdMiembro());
-            	miembro.setDireccionesUsuario(miembro.getDireccionesUsuario());
-            }            
+            	miembro.setDireccionesUsuario(miembro.getDireccionesUsuario());            }            
             em.persist(miembro);
-            
-            if (direccionesUsuario != null) {
-                direccionesUsuario.getMiembros().add(miembro);
-                direccionesUsuario = em.merge(direccionesUsuario);
-            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -74,14 +68,6 @@ public class MiembroJpaController implements Serializable {
                 miembro.setDireccionesUsuario(direccionesUsuarioNew);
             }
             miembro = em.merge(miembro);
-            if (direccionesUsuarioOld != null && !direccionesUsuarioOld.equals(direccionesUsuarioNew)) {
-                direccionesUsuarioOld.getMiembros().remove(miembro);
-                direccionesUsuarioOld = em.merge(direccionesUsuarioOld);
-            }
-            if (direccionesUsuarioNew != null && !direccionesUsuarioNew.equals(direccionesUsuarioOld)) {
-                direccionesUsuarioNew.getMiembros().add(miembro);
-                direccionesUsuarioNew = em.merge(direccionesUsuarioNew);
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -112,10 +98,6 @@ public class MiembroJpaController implements Serializable {
                 throw new NonexistentEntityException("The miembro with id " + id + " no longer exists.", enfe);
             }
             DireccionesUsuario direccionesUsuario = miembro.getDireccionesUsuario();
-            if (direccionesUsuario != null) {
-                direccionesUsuario.getMiembros().remove(miembro);
-                direccionesUsuario = em.merge(direccionesUsuario);
-            }
             em.remove(miembro);
             em.getTransaction().commit();
         } finally {

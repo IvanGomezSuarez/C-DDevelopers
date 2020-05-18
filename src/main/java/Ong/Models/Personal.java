@@ -3,7 +3,6 @@ package Ong.Models;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
-import javax.persistence.OneToOne;
 
 
 /**
@@ -16,12 +15,13 @@ public class Personal implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idPersonal;
-
+	
+	@Column(name = "fechaAlta")
 	@Temporal(TemporalType.DATE)
 	private Date fechaAlta;
-
+	@Column(name = "fechaBaja")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaBaja;
 
