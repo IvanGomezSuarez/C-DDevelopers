@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
 
 
 /**
@@ -42,6 +43,16 @@ public class Miembro implements Serializable {
 	private String rol;
 	private String telefono;
 	private DireccionesUsuario direccionesUsuario;
+	@ManyToOne
+	@XmlElement(name = "Personal")
+	Personal personal;
+	@ManyToOne
+	@XmlElement(name = "Voluntario")
+	Voluntario voluntario;
+	@ManyToOne
+	@XmlElement(name = "Colaborador")
+	Colaborador colaborador;
+	
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
@@ -135,5 +146,31 @@ public class Miembro implements Serializable {
 	public void setDireccionesUsuario(DireccionesUsuario direccionesUsuario) {
 		this.direccionesUsuario = direccionesUsuario;
 	}
+
+	public Personal getPersonal() {
+		return personal;
+	}
+
+	public void setPersonal(Personal personal) {
+		this.personal = personal;
+	}
+
+	public Voluntario getVoluntario() {
+		return voluntario;
+	}
+
+	public void setVoluntario(Voluntario voluntario) {
+		this.voluntario = voluntario;
+	}
+
+	public Colaborador getColaborador() {
+		return colaborador;
+	}
+
+	public void setColaborador(Colaborador colaborador) {
+		this.colaborador = colaborador;
+	}
+	
+	
 
 }
