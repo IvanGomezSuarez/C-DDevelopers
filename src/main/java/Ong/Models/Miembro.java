@@ -51,6 +51,16 @@ public class Miembro implements Serializable {
 	private String telefono;
 	private DireccionesUsuario direccionesUsuario;
 	
+	@ManyToOne
+	@XmlElement(name = "Personal")
+	Personal personal;
+	@ManyToOne
+	@XmlElement(name = "Voluntario")
+	Voluntario voluntario;
+	@ManyToOne
+	@XmlElement(name = "Colaborador")
+	Colaborador colaborador;
+	
 	
 	public Personal getPersonal() {
 		return personal;
@@ -76,15 +86,6 @@ public class Miembro implements Serializable {
 		this.colaborador = colaborador;
 	}
 
-	@ManyToOne
-	@XmlElement(name = "Personal")
-	Personal personal;
-	@ManyToOne
-	@XmlElement(name = "Voluntario")
-	Voluntario voluntario;
-	@ManyToOne
-	@XmlElement(name = "Colaborador")
-	Colaborador colaborador;
 
 	@Column(name = "idMiembro")
 	public int getIdMiembro() {
