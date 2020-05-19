@@ -11,7 +11,7 @@ import java.util.Date;
  */
 @Entity
 @NamedQuery(name="Colaborador.findAll", query="SELECT c FROM Colaborador c")
-public class Colaborador implements Serializable {
+public class ColaboradorSinRelaciones implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

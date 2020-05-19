@@ -22,6 +22,7 @@ import Ong.Controller.exceptions.NonexistentEntityException;
 import Ong.Models.Colaborador;
 import Ong.Models.DireccionesUsuario;
 import Ong.Models.Miembro;
+import Ong.Models.MiembroSinRelaciones;
 import Ong.Models.Personal;
 import Ong.Models.Voluntario;
 
@@ -46,8 +47,9 @@ public class MiembroJpaController implements Serializable {
             	//direccionesUsuario = em.getReference(direccionesUsuario.getClass(), direccionesUsuario.getIdDireccion()); 
             	//miembro.setDireccionesUsuario(direccionesUsuario);
                 //direccionesUsuario = em.getReference(direccionesUsuario.getClass(), miembro.getIdMiembro());
-            	miembro.setDireccionesUsuario(miembro.getDireccionesUsuario());            }            
-            em.persist(miembro);
+            	//miembro.setDireccionesUsuario(miembro.getDireccionesUsuario());            
+            	}            
+            em.merge(miembro);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -55,7 +57,26 @@ public class MiembroJpaController implements Serializable {
             }
         }
     }
-
+    
+    public int createMiembroSinRelacioens(MiembroSinRelaciones miembro) {
+        EntityManager em = null;
+        MiembroSinRelaciones miembros;
+        int i=0;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();        
+            miembros=em.merge(miembro);
+            i=miembros.getIdMiembro();
+            em.getTransaction().commit();
+        } finally {
+            if (em != null) {
+                em.close();
+                return(i);
+            }
+        }
+		return i;
+    }
+    
     public void edit(Miembro miembro) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {

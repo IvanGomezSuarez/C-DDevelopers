@@ -20,10 +20,8 @@ import javax.persistence.Table;
 public class DireccionesUsuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idDireccion")
-	private int idDireccion=0;
+
+	private int idDireccion;
 	
 	private String cp;
 	private String escalera;
@@ -37,6 +35,9 @@ public class DireccionesUsuario implements Serializable {
 //	@Id
 //	@GeneratedValue(strategy=GenerationType.TABLE)
 //@Column(name = "idDireccion")
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idDireccion")
 	public int getIdDireccion() {
 		return this.idDireccion;
 	}

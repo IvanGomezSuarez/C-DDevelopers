@@ -30,16 +30,12 @@ import Ong.Models.Voluntario;
 @Entity
 @Table(name="miembros")
 @NamedQueries({
-	@NamedQuery(name= Miembro.FIND_BY_ID, query="SELECT m FROM Miembro m WHERE m.idMiembro=:id"),
-	@NamedQuery(name= Miembro.FIND_BY_DNI, query="SELECT m FROM Miembro m WHERE m.dni=:dni")
 })
 
-public class Miembro implements Serializable {
+public class MiembroSinRelaciones implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	public static final String FIND_BY_ID = "Miembro.findById";
-	public static final String FIND_BY_DNI = "Miembro.findByDni";
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idMiembro;
@@ -47,48 +43,13 @@ public class Miembro implements Serializable {
 	private String nombreUsuario;
 	private String pass;
 	private String apellido1;
+	private int direccion;
 	private String apellido2;
 	private String dni;
 	private String rol;
 	private String telefono;
-	private DireccionesUsuario direccionesUsuario;
+//	private DireccionesUsuario direccionesUsuario;
 	
-	@OneToOne
-	@XmlElement(name = "personal")
-	Personal personal;
-	@OneToOne
-	@XmlElement(name = "voluntario")
-	Voluntario voluntario;
-	@OneToOne
-	@XmlElement(name = "colaborador")
-	Colaborador colaborador;
-	
-	
-	public Personal getPersonal() {
-		return personal;
-	}
-
-	public void setPersonal(Personal personal) {
-		this.personal = personal;
-	}
-
-	public Voluntario getVoluntario() {
-		return voluntario;
-	}
-
-	public void setVoluntario(Voluntario voluntario) {
-		this.voluntario = voluntario;
-	}
-
-	public Colaborador getColaborador() {
-		return colaborador;
-	}
-
-	public void setColaborador(Colaborador colaborador) {
-		this.colaborador = colaborador;
-	}
-
-
 	@Column(name = "idMiembro")
 	public int getIdMiembro() {
 		return idMiembro;
@@ -169,16 +130,24 @@ public class Miembro implements Serializable {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "direccion")
-	public DireccionesUsuario getDireccionesUsuario() {
-		return direccionesUsuario;
+	@Column(name = "direccion")
+	public int getDireccion() {
+		return direccion;
 	}
 
-	public void setDireccionesUsuario(DireccionesUsuario direccionesUsuario) {
-		this.direccionesUsuario = direccionesUsuario;
+	public void setDireccion(int direccion) {
+		this.direccion = direccion;
 	}
 
+	
+	
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "direccion")
+//	public DireccionesUsuario getDireccionesUsuario() {
+//		return direccionesUsuario;
+//	}
+//
+//	public void setDireccionesUsuario(DireccionesUsuario direccionesUsuario) {
+//		this.direccionesUsuario = direccionesUsuario;
+//	}
 }

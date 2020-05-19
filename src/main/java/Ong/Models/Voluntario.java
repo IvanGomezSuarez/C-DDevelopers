@@ -149,5 +149,6 @@ public class Voluntario implements Serializable {
     public String toString() {
         return "Ong.Models.Voluntario[ idVoluntario=" + idVoluntario + " ]";
     }
+
     
 }

@@ -12,6 +12,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import DAO.impl.MySqlMiembroDAO;
+import Ong.Models.DireccionesUsuario;
 import Ong.Models.Miembro;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -134,24 +135,27 @@ public class addMiembrosController {
     	personal=new PersonalJpaController(emf);
     	direccion=new DireccionesUsuarioJpaController(emf);
     	int idmiembroMAX;
-    	Ong.Models.DireccionesUsuario direccionNueva = new Ong.Models.DireccionesUsuario();
+    	int idDireccionMax;
+    	DireccionesUsuario direccionNueva = new Ong.Models.DireccionesUsuario();
 		Ong.Models.Miembro miembroNuevo=new Ong.Models.Miembro();
 		Ong.Models.Personal personalNuevo=new Ong.Models.Personal();
+		Ong.Models.MiembroSinRelaciones miembroNuevoSin=new Ong.Models.MiembroSinRelaciones();
 		List<Miembro> miembros=new ArrayList<Miembro>();
 		
 		
 		idmiembroMAX=MySqlMiembroDAO.consultarIdGenerado()+1;
-		miembroNuevo.setIdMiembro(idmiembroMAX);
-		miembroNuevo.setNombreMiembro(text_Nombre.getText());
-		miembroNuevo.setApellido1(text_Apellido1.getText());
-		miembroNuevo.setApellido2(text_Apellido2.getText());
-		miembroNuevo.setDni(text_Dni.getText());
-		miembroNuevo.setNombreUsuario(text_Usuario.getText());
-		miembroNuevo.setTelefono(text_Telefono.getText());
-		miembroNuevo.setPass(text_Password.getText());
-		miembroNuevo.setRol(choice_Rol.getTypeSelector());
+		miembroNuevoSin.setNombreMiembro(text_Nombre.getText());
+		miembroNuevoSin.setApellido1(text_Apellido1.getText());
+		miembroNuevoSin.setApellido2(text_Apellido2.getText());
+		miembroNuevoSin.setDni(text_Dni.getText());
+		miembroNuevoSin.setNombreUsuario(text_Usuario.getText());
+		miembroNuevoSin.setTelefono(text_Telefono.getText());
+		miembroNuevoSin.setPass(text_Password.getText());
+		miembroNuevoSin.setRol(choice_Rol.getTypeSelector());
+		miembroNuevoSin.setRol("ADMINISTRADOR");
 
-		direccionNueva.setIdDireccion(2);
+		
+
 		direccionNueva.setCp(text_CP.getText());
 		direccionNueva.setEscalera(text_Escalera.getText());
 		direccionNueva.setLocalidad(text_Localidad.getText());
@@ -161,6 +165,10 @@ public class addMiembrosController {
 		direccionNueva.setPuerta(text_Puerta.getText());
 		direccionNueva.setTipoVia(text_Via.getText());
 		
+		idDireccionMax=direccion.create(direccionNueva);
+		miembroNuevoSin.setDireccion(idDireccionMax);
+		
+		idmiembroMAX=miembro.createMiembroSinRelacioens(miembroNuevoSin);
 		
 		SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
 		String antesConversionFecha;
@@ -171,18 +179,11 @@ public class addMiembrosController {
     	}else if (choice_comprobacion_Miembro.getValue().equals("TRABAJADOR")){
     		String sDateAntes=text_FechaAlta.getText();
     		String sDateAntes1=text_FechaBaja.getText();
-    		personalNuevo.setIdPersonal(1);
-    		personalNuevo.setFechaAlta(convertirStringaFecha.parse(sDateAntes));
-    		personalNuevo.setFechaBaja(convertirStringaFecha.parse(sDateAntes1));
-    		personalNuevo.setMiembro(miembroNuevo);
-//    		personal.create(personalNuevo);
-    		//miembroNuevo.setPersonal(personalNuevo);
-    		miembroNuevo.setDireccionesUsuario(direccionNueva);
-    		miembroNuevo.setRol("ADMINISTRADOR");
-    		miembros.add(miembroNuevo);
-    		direccion.create(direccionNueva);
-    		miembro.create(miembroNuevo);
-    		//direccion.create(direccionNueva);
+//    		personalNuevo.setIdPersonal(idmiembroMAX);
+//    		personalNuevo.setFechaAlta(convertirStringaFecha.parse(sDateAntes));
+//    		personalNuevo.setFechaBaja(convertirStringaFecha.parse(sDateAntes1));
+//    		personalNuevo.setMiembro(miembroNuevo);
+    		
     	}else {
     		
     	}

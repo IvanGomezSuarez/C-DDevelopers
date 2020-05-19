@@ -162,10 +162,10 @@ public class MiembrosController {
 				if(!(miembro.getVoluntario()==null)) {
 					java.sql.Date sDate = new java.sql.Date(miembro.getVoluntario().getFechaAlta().getTime());
 					java.sql.Date sDate2 = new java.sql.Date(miembro.getVoluntario().getFechaBaja().getTime());
-					if (!(miembro.getVoluntario().getNacional().getOrigen().isEmpty())) {
-						tabla2.add(new ModeloSegundaTabla(miembro.getNombreUsuario(),miembro.getPass(),sDate,sDate2,miembro.getVoluntario().getNacional().getOrigen()));
+					if (!(miembro.getVoluntario().getOrigen().isEmpty())) {
+						tabla2.add(new ModeloSegundaTabla(miembro.getNombreUsuario(),miembro.getPass(),sDate,sDate2,miembro.getVoluntario().getOrigen()));
 					}else {
-						tabla2.add(new ModeloSegundaTabla(miembro.getNombreUsuario(),miembro.getPass(),sDate,sDate2,miembro.getVoluntario().getInternacional().getPaisOrigen()));
+						tabla2.add(new ModeloSegundaTabla(miembro.getNombreUsuario(),miembro.getPass(),sDate,sDate2,miembro.getVoluntario().getPaisOrigen()));
 					}
 						
 				}else if (!(miembro.getColaborador()==null)) {

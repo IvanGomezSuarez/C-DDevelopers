@@ -34,20 +34,25 @@ public class DireccionesUsuarioJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(DireccionesUsuario direccionesUsuario) {
+    public int create(DireccionesUsuario direccionesUsuario) {
         EntityManager em = null;
+        int i=0;
         try {
         	emf = Persistence.createEntityManagerFactory("persistencia2");
+        	DireccionesUsuario direcciones;
             //em = getEntityManager();
             em=emf.createEntityManager();
             em.getTransaction().begin();
-            em.merge(direccionesUsuario);
+            direcciones=em.merge(direccionesUsuario);
+            i=direcciones.getIdDireccion();
             em.getTransaction().commit();
         } finally {
             if (em != null) {
                 em.close();
+                return(i);
             }
         }
+		return i;
     }
 
     public void edit(DireccionesUsuario direccionesUsuario) throws NonexistentEntityException, Exception {
