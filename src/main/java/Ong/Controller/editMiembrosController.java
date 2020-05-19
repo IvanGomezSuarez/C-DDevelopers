@@ -14,6 +14,9 @@ import javax.persistence.Persistence;
 import DAO.impl.MySqlMiembroDAO;
 import Ong.Models.DireccionesUsuario;
 import Ong.Models.Miembro;
+import Ong.Models.ModeloPrimeraTabla;
+import Ong.Models.ModeloSegundaTabla;
+import Ong.Models.ModeloTerceraTabla;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -247,5 +250,99 @@ public class editMiembrosController {
     	choice_NacionalInternacional.setVisible(false);
     	choice_NacionalInternacional.hide();
     }
-    
+
+	public void transferMessage(String message) {
+		// TODO Auto-generated method stub
+		text_Dni.setText(message);
+		
+		emf= Persistence.createEntityManagerFactory("persistencia2");
+		personal= new PersonalJpaController(emf);
+    	miembro=new MiembroJpaController(emf);
+    	direccion=new DireccionesUsuarioJpaController(emf);
+    	voluntario=new VoluntarioJpaController(emf);
+    	colaborador=new ColaboradorJpaController(emf);
+    	
+		List<Ong.Models.PersonalSinRelaciones> listaPersonal = personal.findPersonalEntitiesSin();
+    	List<Ong.Models.MiembroSinRelaciones> listaMiembros = miembro.findMiembroEntitiesSin();
+    	List<Ong.Models.DireccionesUsuario> listaDirecciones = direccion.findDireccionesUsuarioEntities();
+    	List<Ong.Models.VoluntarioSinRelaciones> listaVoluntarios = voluntario.findVoluntarioEntitiesSin();
+    	List<Ong.Models.ColaboradorSinRelaciones> listaColaboradores = colaborador.findColaboradorEntitiesSin();
+    	int idMiembroActua=0;
+		SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
+		String antesConversionFecha;
+		Date conversionaFecha= new Date(01/01/2020);
+		
+
+    	
+		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
+			if(miembrox.getDni().equals(text_Dni.getText())) {
+				idMiembroActua=miembrox.getIdMiembro();
+				text_Nombre.setText(miembrox.getNombreMiembro());
+				text_Apellido1.setText(miembrox.getApellido1());
+				text_Apellido2.setText(miembrox.getApellido2());
+				text_Dni.setText(miembrox.getDni());
+				//ROL?miembrox.getRol()
+				text_Telefono.setText(miembrox.getTelefono());
+				text_Usuario.setText(miembrox.getNombreUsuario());
+				text_Password.setText(miembrox.getPass());
+			}
+		}
+		
+		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
+			for(Ong.Models.DireccionesUsuario direccionesUsuarior : listaDirecciones) {
+				if(miembrox.getDireccion()==direccionesUsuarior.getIdDireccion() && miembrox.getIdMiembro()==idMiembroActua) {
+					text_CP.setText(direccionesUsuarior.getCp());
+					text_Escalera.setText(direccionesUsuarior.getEscalera());
+					text_Localidad.setText(direccionesUsuarior.getLocalidad());
+					text_Numero.setText(String.valueOf(direccionesUsuarior.getNumero()));
+					text_Pais.setText(direccionesUsuarior.getPais());
+					text_Provincia.setText(direccionesUsuarior.getProvincia());
+					text_Puerta.setText(direccionesUsuarior.getPuerta());
+					text_Via.setText(direccionesUsuarior.getTipoVia());
+				}			
+			}
+		}
+		
+		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
+			for(Ong.Models.ColaboradorSinRelaciones colaboradorr : listaColaboradores) {
+				if(colaboradorr.getIdColaborador()==miembrox.getIdMiembro() && miembrox.getIdMiembro()==idMiembroActua) {
+					java.sql.Date sDate = new java.sql.Date(colaboradorr.getFechaAlta().getTime());
+					java.sql.Date sDate2 = new java.sql.Date(colaboradorr.getFechaBaja().getTime());
+					text_FechaBaja.setText(colaboradorr.getFechaBaja().toString());
+					text_FechaAlta.setText(colaboradorr.getFechaAlta().toString());
+					
+					
+				}
+			}
+		}
+		
+		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
+			for(Ong.Models.VoluntarioSinRelaciones voluntarior : listaVoluntarios) {
+				if(voluntarior.getIdVoluntario()==miembrox.getIdMiembro() && miembrox.getIdMiembro()==idMiembroActua) {
+					java.sql.Date sDate = new java.sql.Date(voluntarior.getFechaAlta().getTime());
+					java.sql.Date sDate2 = new java.sql.Date(voluntarior.getFechaBaja().getTime());
+					if (!(voluntarior.getOrigen().isEmpty())) {
+						text_FechaBaja.setText(voluntarior.getFechaBaja().toString());
+						text_FechaAlta.setText(voluntarior.getFechaAlta().toString());
+					}else {
+						text_FechaBaja.setText(voluntarior.getFechaBaja().toString());
+						text_FechaAlta.setText(voluntarior.getFechaAlta().toString());
+					}
+					
+				}
+			}			
+		}		
+		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
+			for(Ong.Models.PersonalSinRelaciones personalr : listaPersonal) {
+				if(personalr.getIdPersonal()==miembrox.getIdMiembro() && miembrox.getIdMiembro()==idMiembroActua) {
+					java.sql.Date sDate = new java.sql.Date(personalr.getFechaAlta().getTime());
+					java.sql.Date sDate2 = new java.sql.Date(personalr.getFechaBaja().getTime());
+					//tabla2.add(new ModeloSegundaTabla(miembrox.getNombreUsuario(),miembrox.getPass(),sDate,sDate2,""));
+					text_FechaBaja.setText(personalr.getFechaBaja().toString());
+					text_FechaAlta.setText(personalr.getFechaAlta().toString());
+				}
+				
+			}
+		}	
+	}
 }

@@ -308,8 +308,27 @@ public class MiembrosController {
     }
 
     @FXML
-    void editarMiembro(ActionEvent event) {
-    	
+    void editarMiembro(ActionEvent event) throws IOException {
+    	 emf= Persistence.createEntityManagerFactory("persistencia2");
+         //	con este mtodo cargamos el form de gestin de miembros
+     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Ong/Views/editMiembro.fxml"));
+     	Parent root = loader.load();
+     	//MiembrosController controlador = loader.getController();
+     	editMiembrosController editMiembrosController2=loader.getController();
+     	editMiembrosController2.transferMessage(String.valueOf(listUsuarios.get(0)));
+     	Scene scene = new Scene(root);
+     	Stage stage = new Stage();
+     	stage.initModality(Modality.APPLICATION_MODAL);
+     	stage.setTitle("Gestion de miembros de EntreCulturas");
+     	stage.getIcons().add(new Image("/images/ong.jpg"));
+     	stage.setScene(scene);
+     	stage.showAndWait();
+         
+         stage.setOnCloseRequest(e ->{
+         emf.close();
+         Platform.exit();
+         System.exit(0);
+         });
     	
 
     }
