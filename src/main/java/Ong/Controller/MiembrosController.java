@@ -119,9 +119,11 @@ public class MiembrosController {
 	
 	@FXML
     void cargarDatos(MouseEvent event) {
+		
 		tabla1.clear();
 		tabla2.clear();
 		tabla3.clear();
+
 		//Definicion de priemra tabla de campos
 		col_Id.setCellValueFactory(new PropertyValueFactory<>("Id"));
 		col_Nombre.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
@@ -149,40 +151,105 @@ public class MiembrosController {
 		col_Pais.setCellValueFactory(new PropertyValueFactory<>("Pais"));
 		
 		listUsuarios=listaRellenar.getSelectionModel().getSelectedItems();
-		List<Miembro> listaMiembros = miembro.findMiembroEntities();
 		
+		//List<Miembro> listaMiembros = miembro.findMiembroEntities();
+		emf= Persistence.createEntityManagerFactory("persistencia2");
+		personal= new PersonalJpaController(emf);
+    	miembro=new MiembroJpaController(emf);
+    	direccion=new DireccionesUsuarioJpaController(emf);
+    	voluntario=new VoluntarioJpaController(emf);
+    	colaborador=new ColaboradorJpaController(emf);
+    	
+		List<Ong.Models.PersonalSinRelaciones> listaPersonal = personal.findPersonalEntitiesSin();
+    	List<Ong.Models.MiembroSinRelaciones> listaMiembros = miembro.findMiembroEntitiesSin();
+    	List<Ong.Models.DireccionesUsuario> listaDirecciones = direccion.findDireccionesUsuarioEntities();
+    	List<Ong.Models.VoluntarioSinRelaciones> listaVoluntarios = voluntario.findVoluntarioEntitiesSin();
+    	List<Ong.Models.ColaboradorSinRelaciones> listaColaboradores = colaborador.findColaboradorEntitiesSin();
+    	int idMiembroActua=0;
 		SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
 		String antesConversionFecha;
 		Date conversionaFecha= new Date(01/01/2020);
 		
-		for(Miembro miembro : listaMiembros) {
-			if(miembro.getDni().equals(String.valueOf(listUsuarios.get(0)))) {
-				tabla1.add(new ModeloPrimeraTabla(miembro.getIdMiembro(),miembro.getNombreMiembro(),miembro.getApellido1(),miembro.getApellido2(),miembro.getDni(),miembro.getRol(),miembro.getTelefono()));
-				tabla3.add(new ModeloTerceraTabla(miembro.getDireccionesUsuario().getTipoVia(),miembro.getDireccionesUsuario().getNumero(),miembro.getDireccionesUsuario().getEscalera(),miembro.getDireccionesUsuario().getPuerta(),miembro.getDireccionesUsuario().getLocalidad(),miembro.getDireccionesUsuario().getProvincia(),miembro.getDireccionesUsuario().getCp(),miembro.getDireccionesUsuario().getPais()));
-				if(!(miembro.getVoluntario()==null)) {
-					java.sql.Date sDate = new java.sql.Date(miembro.getVoluntario().getFechaAlta().getTime());
-					java.sql.Date sDate2 = new java.sql.Date(miembro.getVoluntario().getFechaBaja().getTime());
-					if (!(miembro.getVoluntario().getOrigen().isEmpty())) {
-						tabla2.add(new ModeloSegundaTabla(miembro.getNombreUsuario(),miembro.getPass(),sDate,sDate2,miembro.getVoluntario().getOrigen()));
-					}else {
-						tabla2.add(new ModeloSegundaTabla(miembro.getNombreUsuario(),miembro.getPass(),sDate,sDate2,miembro.getVoluntario().getPaisOrigen()));
-					}
-						
-				}else if (!(miembro.getColaborador()==null)) {
-					java.sql.Date sDate = new java.sql.Date(miembro.getColaborador().getFechaAlta().getTime());
-					java.sql.Date sDate2 = new java.sql.Date(miembro.getColaborador().getFechaBaja().getTime());
-					tabla2.add(new ModeloSegundaTabla(miembro.getNombreUsuario(),miembro.getPass(),sDate,sDate2,""));					
-				}else {
-					java.sql.Date sDate = new java.sql.Date(miembro.getPersonal().getFechaAlta().getTime());
-					java.sql.Date sDate2 = new java.sql.Date(miembro.getPersonal().getFechaBaja().getTime());
-					tabla2.add(new ModeloSegundaTabla(miembro.getNombreUsuario(),miembro.getPass(),sDate,sDate2,""));		
+		
+		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
+			if(miembrox.getDni().equals(String.valueOf(listUsuarios.get(0)))) {
+				tabla1.add(new ModeloPrimeraTabla(miembrox.getIdMiembro(),miembrox.getNombreMiembro(),miembrox.getApellido1(),miembrox.getApellido2(),miembrox.getDni(),miembrox.getRol(),miembrox.getTelefono()));
+				idMiembroActua=miembrox.getIdMiembro();
+			}
+		}
+		
+		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
+			for(Ong.Models.DireccionesUsuario direccionesUsuarior : listaDirecciones) {
+				if(miembrox.getDireccion()==direccionesUsuarior.getIdDireccion() && miembrox.getIdMiembro()==idMiembroActua) {
+					tabla3.add(new ModeloTerceraTabla(direccionesUsuarior.getTipoVia(),direccionesUsuarior.getNumero(),direccionesUsuarior.getEscalera(),direccionesUsuarior.getPuerta(),direccionesUsuarior.getLocalidad(),direccionesUsuarior.getProvincia(),direccionesUsuarior.getCp(),direccionesUsuarior.getPais()));
+				}			
+			}
+		}
+		
+		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
+			for(Ong.Models.ColaboradorSinRelaciones colaboradorr : listaColaboradores) {
+				if(colaboradorr.getIdColaborador()==miembrox.getIdMiembro() && miembrox.getIdMiembro()==idMiembroActua) {
+					java.sql.Date sDate = new java.sql.Date(colaboradorr.getFechaAlta().getTime());
+					java.sql.Date sDate2 = new java.sql.Date(colaboradorr.getFechaBaja().getTime());
+					tabla2.add(new ModeloSegundaTabla(miembrox.getNombreUsuario(),miembrox.getPass(),sDate,sDate2,""));
 				}
 			}
+		}
+		
+		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
+			for(Ong.Models.VoluntarioSinRelaciones voluntarior : listaVoluntarios) {
+				if(voluntarior.getIdVoluntario()==miembrox.getIdMiembro() && miembrox.getIdMiembro()==idMiembroActua) {
+					java.sql.Date sDate = new java.sql.Date(voluntarior.getFechaAlta().getTime());
+					java.sql.Date sDate2 = new java.sql.Date(voluntarior.getFechaBaja().getTime());
+					if (!(voluntarior.getOrigen().isEmpty())) {
+						tabla2.add(new ModeloSegundaTabla(miembrox.getNombreUsuario(),miembrox.getPass(),sDate,sDate2,voluntarior.getOrigen()));
+					}else {
+						tabla2.add(new ModeloSegundaTabla(miembrox.getNombreUsuario(),miembrox.getPass(),sDate,sDate2,voluntarior.getPaisOrigen()));
+					}
+					
+				}
+			}			
+		}
+		
+		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
+			for(Ong.Models.PersonalSinRelaciones personalr : listaPersonal) {
+				if(personalr.getIdPersonal()==miembrox.getIdMiembro() && miembrox.getIdMiembro()==idMiembroActua) {
+					java.sql.Date sDate = new java.sql.Date(personalr.getFechaAlta().getTime());
+					java.sql.Date sDate2 = new java.sql.Date(personalr.getFechaBaja().getTime());
+					tabla2.add(new ModeloSegundaTabla(miembrox.getNombreUsuario(),miembrox.getPass(),sDate,sDate2,""));
+				}
+				
+			}
+			
+		}		
+//		for(Ong.Models.MiembroSinRelaciones miembro : listaMiembros) {
+//			if(miembro.getDni().equals(String.valueOf(listUsuarios.get(0)))) {
+//				tabla1.add(new ModeloPrimeraTabla(miembro.getIdMiembro(),miembro.getNombreMiembro(),miembro.getApellido1(),miembro.getApellido2(),miembro.getDni(),miembro.getRol(),miembro.getTelefono()));
+//				tabla3.add(new ModeloTerceraTabla(miembro.getDireccionesUsuario().getTipoVia(),miembro.getDireccionesUsuario().getNumero(),miembro.getDireccionesUsuario().getEscalera(),miembro.getDireccionesUsuario().getPuerta(),miembro.getDireccionesUsuario().getLocalidad(),miembro.getDireccionesUsuario().getProvincia(),miembro.getDireccionesUsuario().getCp(),miembro.getDireccionesUsuario().getPais()));
+//				if(!(miembro.getVoluntario()==null)) {
+//					java.sql.Date sDate = new java.sql.Date(miembro.getVoluntario().getFechaAlta().getTime());
+//					java.sql.Date sDate2 = new java.sql.Date(miembro.getVoluntario().getFechaBaja().getTime());
+//					if (!(miembro.getVoluntario().getOrigen().isEmpty())) {
+//						tabla2.add(new ModeloSegundaTabla(miembro.getNombreUsuario(),miembro.getPass(),sDate,sDate2,miembro.getVoluntario().getOrigen()));
+//					}else {
+//						tabla2.add(new ModeloSegundaTabla(miembro.getNombreUsuario(),miembro.getPass(),sDate,sDate2,miembro.getVoluntario().getPaisOrigen()));
+//					}
+//						
+//				}else if (!(miembro.getColaborador()==null)) {
+//					java.sql.Date sDate = new java.sql.Date(miembro.getColaborador().getFechaAlta().getTime());
+//					java.sql.Date sDate2 = new java.sql.Date(miembro.getColaborador().getFechaBaja().getTime());
+//					tabla2.add(new ModeloSegundaTabla(miembro.getNombreUsuario(),miembro.getPass(),sDate,sDate2,""));					
+//				}else {
+//					java.sql.Date sDate = new java.sql.Date(miembro.getPersonal().getFechaAlta().getTime());
+//					java.sql.Date sDate2 = new java.sql.Date(miembro.getPersonal().getFechaBaja().getTime());
+//					tabla2.add(new ModeloSegundaTabla(miembro.getNombreUsuario(),miembro.getPass(),sDate,sDate2,""));		
+//				}
+//			}
 		primeraTabla.setItems(tabla1);
 		segundaTabla.setItems(tabla2);
 		terceraTabla.setItems(tabla3);
 		}
-    }
+ 
 
     @FXML
     void altaMiembro(ActionEvent event) throws IOException {   	
@@ -254,9 +321,10 @@ public class MiembrosController {
     	emf = Persistence.createEntityManagerFactory("persistencia2");
     	personal= new PersonalJpaController(emf);
     	miembro=new MiembroJpaController(emf);
-    	List<Ong.Models.Personal> listaPersonal = personal.findPersonalEntities();
-    	List<Ong.Models.Miembro> listaMiembros = miembro.findMiembroEntities();
-    	//list.add(listaVoluntarios.get(1).getIdVoluntario());
+    	direccion=new DireccionesUsuarioJpaController(emf);
+    	List<Ong.Models.PersonalSinRelaciones> listaPersonal = personal.findPersonalEntitiesSin();
+    	List<Ong.Models.MiembroSinRelaciones> listaMiembros = miembro.findMiembroEntitiesSin();
+    	List<Ong.Models.DireccionesUsuario> listaDirecciones = direccion.findDireccionesUsuarioEntities();
     	for(int i=0;i<listaPersonal.size();i++) {
     		for(int x=0;x<listaMiembros.size();x++) {
     			if (listaMiembros.get(x).getIdMiembro()==listaPersonal.get(i).getIdPersonal()) {
@@ -277,10 +345,8 @@ public class MiembrosController {
     	emf = Persistence.createEntityManagerFactory("persistencia2");
     	colaborador= new ColaboradorJpaController(emf);
     	miembro=new MiembroJpaController(emf);
-     	List<Ong.Models.Colaborador> listaColaboradores = colaborador.findColaboradorEntities();
-    	List<Ong.Models.Miembro> listaMiembros = miembro.findMiembroEntities();
-
-    	
+    	List<Ong.Models.MiembroSinRelaciones> listaMiembros = miembro.findMiembroEntitiesSin();
+     	List<Ong.Models.ColaboradorSinRelaciones> listaColaboradores = colaborador.findColaboradorEntitiesSin();	
     	for(int i=0;i<listaColaboradores.size();i++) {
     		for(int x=0;x<listaMiembros.size();x++) {
     			if (listaMiembros.get(x).getIdMiembro()==listaColaboradores.get(i).getIdColaborador()) {
@@ -301,8 +367,8 @@ public class MiembrosController {
     	emf = Persistence.createEntityManagerFactory("persistencia2");
     	voluntario= new VoluntarioJpaController(emf);
     	miembro=new MiembroJpaController(emf);
-    	List<Ong.Models.Voluntario> listaVoluntarios = voluntario.findVoluntarioEntities();
-    	List<Ong.Models.Miembro> listaMiembros = miembro.findMiembroEntities();
+    	List<Ong.Models.MiembroSinRelaciones> listaMiembros = miembro.findMiembroEntitiesSin();
+    	List<Ong.Models.VoluntarioSinRelaciones> listaVoluntarios = voluntario.findVoluntarioEntitiesSin();	
     	//list.add(listaVoluntarios.get(1).getIdVoluntario());
     	for(int i=0;i<listaVoluntarios.size();i++) {
     		for(int x=0;x<listaMiembros.size();x++) {

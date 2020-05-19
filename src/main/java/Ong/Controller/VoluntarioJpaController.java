@@ -13,6 +13,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import Ong.Models.Miembro;
 import Ong.Models.Voluntario;
+import Ong.Models.VoluntarioSinRelaciones;
+
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -158,6 +160,26 @@ public class VoluntarioJpaController implements Serializable {
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
             cq.select(cq.from(Voluntario.class));
+            Query q = em.createQuery(cq);
+            if (!all) {
+                q.setMaxResults(maxResults);
+                q.setFirstResult(firstResult);
+            }
+            return q.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public List<Ong.Models.VoluntarioSinRelaciones> findVoluntarioEntitiesSin() {
+        return findVoluntarioEntitiesSin(true, -1, -1);
+    }
+    
+    private List<Ong.Models.VoluntarioSinRelaciones> findVoluntarioEntitiesSin(boolean all, int maxResults, int firstResult) {
+        EntityManager em = getEntityManager();
+        try {
+            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+            cq.select(cq.from(VoluntarioSinRelaciones.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);

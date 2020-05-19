@@ -7,6 +7,8 @@ package Ong.Controller;
 
 import Ong.Controller.exceptions.NonexistentEntityException;
 import Ong.Models.Colaborador;
+import Ong.Models.ColaboradorSinRelaciones;
+
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
@@ -129,20 +131,42 @@ public class ColaboradorJpaController implements Serializable {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
             cq.select(cq.from(Colaborador.class));
             Query q = em.createQuery(cq);
+            	
             if (!all) {
                 q.setMaxResults(maxResults);
                 q.setFirstResult(firstResult);
             }
+            q.getResultList();
             return q.getResultList();
         } finally {
             em.close();
         }
+    }
+    public List<Ong.Models.ColaboradorSinRelaciones> findColaboradorEntitiesSin() {
+        return findColaboradorEntitiesSin(true, -1, -1);
     }
 
     public Colaborador findColaborador(int id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Colaborador.class, id);
+        } finally {
+            em.close();
+        }
+    }
+    private List<Ong.Models.ColaboradorSinRelaciones> findColaboradorEntitiesSin(boolean all, int maxResults, int firstResult) {
+        EntityManager em = getEntityManager();
+        try {
+            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+            cq.select(cq.from(ColaboradorSinRelaciones.class));
+            Query q = em.createQuery(cq);
+            	
+            if (!all) {
+                q.setMaxResults(maxResults);
+                q.setFirstResult(firstResult);
+            }
+            q.getResultList();
+            return q.getResultList();
         } finally {
             em.close();
         }

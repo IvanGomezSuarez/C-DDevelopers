@@ -52,6 +52,4 @@ public class PersonalSinRelaciones implements Serializable {
 	public void setFechaBaja(Date fechaBaja) {
 		this.fechaBaja = fechaBaja;
 	}
-
-
 }

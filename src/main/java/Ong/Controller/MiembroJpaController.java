@@ -151,7 +151,27 @@ public class MiembroJpaController implements Serializable {
             em.close();
         }
     }
-
+    
+    public List<Ong.Models.MiembroSinRelaciones> findMiembroEntitiesSin() {
+        return findMiembroEntitiesSin(true, -1, -1);
+    }
+    
+    private List<Ong.Models.MiembroSinRelaciones> findMiembroEntitiesSin(boolean all, int maxResults, int firstResult) {
+    	EntityManager em = getEntityManager();
+        try {
+            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+            cq.select(cq.from(MiembroSinRelaciones.class));
+            Query q = em.createQuery(cq);
+            if (!all) {
+                q.setMaxResults(maxResults);
+                q.setFirstResult(firstResult);
+            }
+            return q.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    
     public Miembro findMiembro(int id) {
     	EntityManager em = getEntityManager();
         try {
