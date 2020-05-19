@@ -281,7 +281,7 @@ public class editMiembrosController {
 				text_Apellido1.setText(miembrox.getApellido1());
 				text_Apellido2.setText(miembrox.getApellido2());
 				text_Dni.setText(miembrox.getDni());
-				//ROL?miembrox.getRol()
+				choice_Rol.setValue(miembrox.getRol());
 				text_Telefono.setText(miembrox.getTelefono());
 				text_Usuario.setText(miembrox.getNombreUsuario());
 				text_Password.setText(miembrox.getPass());
@@ -306,10 +306,9 @@ public class editMiembrosController {
 		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
 			for(Ong.Models.ColaboradorSinRelaciones colaboradorr : listaColaboradores) {
 				if(colaboradorr.getIdColaborador()==miembrox.getIdMiembro() && miembrox.getIdMiembro()==idMiembroActua) {
-					java.sql.Date sDate = new java.sql.Date(colaboradorr.getFechaAlta().getTime());
-					java.sql.Date sDate2 = new java.sql.Date(colaboradorr.getFechaBaja().getTime());
 					text_FechaBaja.setText(colaboradorr.getFechaBaja().toString());
 					text_FechaAlta.setText(colaboradorr.getFechaAlta().toString());
+					choice_comprobacion_Miembro.setValue("COLABORADOR");
 					
 					
 				}
@@ -319,14 +318,27 @@ public class editMiembrosController {
 		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
 			for(Ong.Models.VoluntarioSinRelaciones voluntarior : listaVoluntarios) {
 				if(voluntarior.getIdVoluntario()==miembrox.getIdMiembro() && miembrox.getIdMiembro()==idMiembroActua) {
-					java.sql.Date sDate = new java.sql.Date(voluntarior.getFechaAlta().getTime());
-					java.sql.Date sDate2 = new java.sql.Date(voluntarior.getFechaBaja().getTime());
 					if (!(voluntarior.getOrigen().isEmpty())) {
 						text_FechaBaja.setText(voluntarior.getFechaBaja().toString());
 						text_FechaAlta.setText(voluntarior.getFechaAlta().toString());
+						choice_comprobacion_Miembro.setValue("VOLUNTARIO");
+						text_Origen.setVisible(true);
+			        	etiquetaOrigen.setVisible(true);
+			        	etiquetaVoluntario.setVisible(true);
+			        	choice_NacionalInternacional.setVisible(true);
+			        	choice_NacionalInternacional.setValue("NACIONAL");
+			        	text_Origen.setText(voluntarior.getOrigen());
+			        	
 					}else {
 						text_FechaBaja.setText(voluntarior.getFechaBaja().toString());
 						text_FechaAlta.setText(voluntarior.getFechaAlta().toString());
+						choice_comprobacion_Miembro.setValue("VOLUNTARIO");
+						text_Origen.setVisible(true);
+			        	etiquetaOrigen.setVisible(true);
+			        	etiquetaVoluntario.setVisible(true);
+			        	choice_NacionalInternacional.setVisible(true);
+			        	choice_NacionalInternacional.setValue("INTERNACIONAL");
+			        	text_Origen.setText(voluntarior.getPaisOrigen());
 					}
 					
 				}
@@ -335,11 +347,9 @@ public class editMiembrosController {
 		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
 			for(Ong.Models.PersonalSinRelaciones personalr : listaPersonal) {
 				if(personalr.getIdPersonal()==miembrox.getIdMiembro() && miembrox.getIdMiembro()==idMiembroActua) {
-					java.sql.Date sDate = new java.sql.Date(personalr.getFechaAlta().getTime());
-					java.sql.Date sDate2 = new java.sql.Date(personalr.getFechaBaja().getTime());
-					//tabla2.add(new ModeloSegundaTabla(miembrox.getNombreUsuario(),miembrox.getPass(),sDate,sDate2,""));
 					text_FechaBaja.setText(personalr.getFechaBaja().toString());
 					text_FechaAlta.setText(personalr.getFechaAlta().toString());
+					choice_comprobacion_Miembro.setValue("TRABAJADOR");
 				}
 				
 			}
