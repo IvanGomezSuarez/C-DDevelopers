@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<GridPane id="formMiembros" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Ong.Controller.editMiembrosController">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="0.0" prefWidth="184.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="188.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="186.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.0" minWidth="10.0" prefWidth="269.0" />
+  </columnConstraints>
+  <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="124.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="124.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="168.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="236.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="245.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="312.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="217.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="217.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="180.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="180.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="144.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <children>
+      <Button fx:id="button_Guardar" mnemonicParsing="false" onAction="#guardarCambios" prefHeight="25.0" prefWidth="208.0" text="Guardar el nuevo Usuario" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+      <Button fx:id="button_Cancelar" mnemonicParsing="false" onAction="#boton_Cancelar" prefHeight="25.0" prefWidth="248.0" text="Cancelar" GridPane.columnIndex="3" GridPane.rowIndex="12" />
+      <TextField fx:id="text_Nombre" prefHeight="31.0" prefWidth="184.0" GridPane.rowIndex="1" />
+      <TextField fx:id="text_Apellido1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="text_Apellido2" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <TextField fx:id="text_Dni" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+      <TextField fx:id="text_Telefono" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField fx:id="text_Usuario" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <TextField fx:id="text_Password" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+      <TextField fx:id="text_FechaAlta" GridPane.rowIndex="5" />
+      <TextField fx:id="text_FechaBaja" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido1" GridPane.columnIndex="1" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido 2" GridPane.columnIndex="2" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DNI" GridPane.columnIndex="3" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rol" GridPane.rowIndex="2" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de Usuario" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Alta" GridPane.rowIndex="4" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Baja" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Selecciona el tipo de miembro:" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <Text fx:id="etiquetaVoluntario" strokeType="OUTSIDE" strokeWidth="0.0" text="Si es voluntario selecciona si es Nacional o Internacional" GridPane.rowIndex="6" />
+      <TextField fx:id="text_Origen" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+      <Text fx:id="etiquetaOrigen" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduzca si es necesario el origen" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+      <ChoiceBox fx:id="choice_Rol" prefWidth="150.0" GridPane.rowIndex="3" />
+      <ChoiceBox fx:id="choice_NacionalInternacional" prefWidth="150.0" GridPane.rowIndex="7" />
+      <ChoiceBox fx:id="choice_Miembro" onTouchReleased="#seleccionTipoMiembro" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+      <ComboBox fx:id="choice_comprobacion_Miembro" onAction="#comprobacion_Miembro" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Via" wrappingWidth="66.46484375" GridPane.rowIndex="8" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Puerta" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Escalera" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+      <TextField fx:id="text_Via" GridPane.rowIndex="9" />
+      <TextField fx:id="text_Numero" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <TextField fx:id="text_Puerta" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+      <TextField fx:id="text_Escalera" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Localidad" GridPane.rowIndex="10" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Provincia" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CP" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pais" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+      <TextField fx:id="text_Localidad" GridPane.rowIndex="11" />
+      <TextField fx:id="text_Provincia" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+      <TextField fx:id="text_CP" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+      <TextField fx:id="text_Pais" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+   </children>
+</GridPane>

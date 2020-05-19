@@ -2,6 +2,10 @@ package Ong.Models;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import java.util.Date;
 
 
@@ -27,9 +31,11 @@ public class Colaborador implements Serializable {
 	
 	@OneToOne
 	@JoinColumn(name="idColaborador")
+	@NotFound(action=NotFoundAction.IGNORE)
 	private Miembro miembro;
 
 	@Column(name = "idColaborador")
+	@NotFound(action=NotFoundAction.IGNORE)
 	public int getIdColaborador() {
 		return this.idColaborador;
 	}

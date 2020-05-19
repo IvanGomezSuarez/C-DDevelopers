@@ -277,9 +277,10 @@ public class MiembrosController {
     	emf = Persistence.createEntityManagerFactory("persistencia2");
     	colaborador= new ColaboradorJpaController(emf);
     	miembro=new MiembroJpaController(emf);
-    	List<Ong.Models.Colaborador> listaColaboradores = colaborador.findColaboradorEntities();
+     	List<Ong.Models.Colaborador> listaColaboradores = colaborador.findColaboradorEntities();
     	List<Ong.Models.Miembro> listaMiembros = miembro.findMiembroEntities();
-    	//list.add(listaVoluntarios.get(1).getIdVoluntario());
+
+    	
     	for(int i=0;i<listaColaboradores.size();i++) {
     		for(int x=0;x<listaMiembros.size();x++) {
     			if (listaMiembros.get(x).getIdMiembro()==listaColaboradores.get(i).getIdColaborador()) {

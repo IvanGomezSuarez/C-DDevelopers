@@ -18,6 +18,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlElement;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import Ong.Models.Colaborador;
 import Ong.Models.Personal;
 import Ong.Models.Voluntario;
@@ -31,7 +34,7 @@ import Ong.Models.Voluntario;
 @Table(name="miembros")
 @NamedQueries({
 	@NamedQuery(name= Miembro.FIND_BY_ID, query="SELECT m FROM Miembro m WHERE m.idMiembro=:id"),
-	@NamedQuery(name= Miembro.FIND_BY_DNI, query="SELECT m FROM Miembro m WHERE m.dni=:dni")
+	@NamedQuery(name = "Miembro.findAll", query = "SELECT m FROM Miembro m")
 })
 
 public class Miembro implements Serializable {
@@ -55,13 +58,17 @@ public class Miembro implements Serializable {
 	
 	@OneToOne
 	@XmlElement(name = "personal")
+	@NotFound(action=NotFoundAction.IGNORE)
 	Personal personal;
 	@OneToOne
 	@XmlElement(name = "voluntario")
+	@NotFound(action=NotFoundAction.IGNORE)
 	Voluntario voluntario;
 	@OneToOne
 	@XmlElement(name = "colaborador")
+	@NotFound(action=NotFoundAction.IGNORE)
 	Colaborador colaborador;
+
 	
 	
 	public Personal getPersonal() {
