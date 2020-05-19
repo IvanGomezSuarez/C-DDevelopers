@@ -50,7 +50,20 @@ public class ColaboradorJpaController implements Serializable {
             }
         }
     }
-
+    
+    public void createSinRelaciones(Ong.Models.ColaboradorSinRelaciones colaborador) {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            em.merge(colaborador);
+            em.getTransaction().commit();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
     public void edit(Colaborador colaborador) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {

@@ -31,14 +31,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "voluntario")
-@NamedQueries({
-})
 public class VoluntarioSinRelaciones implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idVoluntario")
     private Integer idVoluntario;
     

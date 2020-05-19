@@ -10,12 +10,12 @@ import java.util.Date;
  * 
  */
 @Entity
-@NamedQuery(name="Personal.findAll", query="SELECT p FROM Personal p")
+@Table(name = "personal")
 public class PersonalSinRelaciones implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idPersonal;
 	
 	@Column(name = "fechaAlta")
@@ -25,10 +25,6 @@ public class PersonalSinRelaciones implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaBaja;
 
-	//bi-directional one-to-one association to Miembro
-	@OneToOne
-	@JoinColumn(name="idPersonal")
-	private Miembro miembro;
 
 	public PersonalSinRelaciones() {
 	}
@@ -57,12 +53,5 @@ public class PersonalSinRelaciones implements Serializable {
 		this.fechaBaja = fechaBaja;
 	}
 
-	public Miembro getMiembro() {
-		return this.miembro;
-	}
-
-	public void setMiembro(Miembro miembro) {
-		this.miembro = miembro;
-	}
 
 }

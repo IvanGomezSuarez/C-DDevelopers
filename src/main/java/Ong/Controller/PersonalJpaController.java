@@ -59,6 +59,20 @@ public class PersonalJpaController implements Serializable {
             }
         }
     }
+    
+    public void createSinRelaciones(Ong.Models.PersonalSinRelaciones personal) {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            em.merge(personal);
+            em.getTransaction().commit();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+}
 
     public void edit(Personal personal) throws NonexistentEntityException, Exception {
         EntityManager em = null;
@@ -174,5 +188,6 @@ public class PersonalJpaController implements Serializable {
             em.close();
         }
     }
+    
     
 }

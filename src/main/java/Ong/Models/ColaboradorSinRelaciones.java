@@ -10,23 +10,19 @@ import java.util.Date;
  * 
  */
 @Entity
-@NamedQuery(name="Colaborador.findAll", query="SELECT c FROM Colaborador c")
+@Table(name = "colaborador")
 public class ColaboradorSinRelaciones implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idColaborador;
 	
 	private Date fechaAlta;
 	
 	private Date fechaBaja;
 
-	//bi-directional one-to-one association to Miembro
 	
-	@OneToOne
-	@JoinColumn(name="idColaborador")
-	private Miembro miembro;
 
 	@Column(name = "idColaborador")
 	public int getIdColaborador() {
@@ -38,7 +34,6 @@ public class ColaboradorSinRelaciones implements Serializable {
 	}
 	
 	@Column(name = "fechaAlta")
-	@Temporal(TemporalType.DATE)
 	public Date getFechaAlta() {
 		return this.fechaAlta;
 	}
@@ -49,21 +44,12 @@ public class ColaboradorSinRelaciones implements Serializable {
 	}
 
 	@Column(name = "fechaBaja")
-	@Temporal(TemporalType.DATE)
 	public Date getFechaBaja() {
 		return this.fechaBaja;
 	}
 	
 	public void setFechaBaja(Date fechaBaja) {
 		this.fechaBaja = fechaBaja;
-	}
-
-	public Miembro getMiembro() {
-		return this.miembro;
-	}
-
-	public void setMiembro(Miembro miembro) {
-		this.miembro = miembro;
 	}
 
 }

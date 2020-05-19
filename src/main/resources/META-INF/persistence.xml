@@ -5,14 +5,14 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
   	<persistence-unit name="persistencia2" transaction-type="RESOURCE_LOCAL">
 	    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 	    <class>Ong.Models.Colaborador</class>
+	    <class>Ong.Models.ColaboradorSinRelaciones</class>
 	    <class>Ong.Models.DireccionesUsuario</class>
 	    <class>Ong.Models.Miembro</class>
-	    <class>Ong.Models.Personal</class>
-	    <class>Ong.Models.Voluntario</class>
 	    <class>Ong.Models.MiembroSinRelaciones</class>
-	    <class>Ong.Models.VoluntarioSinRelaciones</class>
-	    <class>Ong.Models.ColaboradorSinRelaciones</class>
+	    <class>Ong.Models.Personal</class>
 	    <class>Ong.Models.PersonalSinRelaciones</class>
+	    <class>Ong.Models.Voluntario</class>
+	    <class>Ong.Models.VoluntarioSinRelaciones</class>
 	    <properties>
 		    <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ong?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
 		    <property name="javax.persistence.jdbc.user" value="root"/>

@@ -62,6 +62,19 @@ public class VoluntarioJpaController implements Serializable {
             }
         }
     }
+    public void createSinRelaciones(Ong.Models.VoluntarioSinRelaciones voluntario) {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            em.merge(voluntario);
+            em.getTransaction().commit();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
 
     public void edit(Voluntario voluntario) throws NonexistentEntityException, Exception {
         EntityManager em = null;

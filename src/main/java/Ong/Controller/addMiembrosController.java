@@ -140,6 +140,9 @@ public class addMiembrosController {
 		Ong.Models.Miembro miembroNuevo=new Ong.Models.Miembro();
 		Ong.Models.Personal personalNuevo=new Ong.Models.Personal();
 		Ong.Models.MiembroSinRelaciones miembroNuevoSin=new Ong.Models.MiembroSinRelaciones();
+		Ong.Models.PersonalSinRelaciones personalNuevoSin=new Ong.Models.PersonalSinRelaciones();
+		Ong.Models.ColaboradorSinRelaciones colaboradorNuevoSin=new Ong.Models.ColaboradorSinRelaciones();
+		Ong.Models.VoluntarioSinRelaciones voluntarioNuevoSin=new Ong.Models.VoluntarioSinRelaciones();
 		List<Miembro> miembros=new ArrayList<Miembro>();
 		
 		
@@ -151,8 +154,7 @@ public class addMiembrosController {
 		miembroNuevoSin.setNombreUsuario(text_Usuario.getText());
 		miembroNuevoSin.setTelefono(text_Telefono.getText());
 		miembroNuevoSin.setPass(text_Password.getText());
-		miembroNuevoSin.setRol(choice_Rol.getTypeSelector());
-		miembroNuevoSin.setRol("ADMINISTRADOR");
+		miembroNuevoSin.setRol(choice_Rol.getSelectionModel().getSelectedItem());
 
 		
 
@@ -175,18 +177,37 @@ public class addMiembrosController {
 		Date conversionaFecha= new Date(01/01/2020);
     	
     	if(choice_comprobacion_Miembro.getValue().equals("VOLUNTARIO")){
+    		String sDateAntes=text_FechaAlta.getText();
+    		String sDateAntes1=text_FechaBaja.getText();
+    		voluntarioNuevoSin.setIdVoluntario(idmiembroMAX);
+    		voluntarioNuevoSin.setFechaAlta(convertirStringaFecha.parse(sDateAntes));
+    		voluntarioNuevoSin.setFechaBaja(convertirStringaFecha.parse(sDateAntes1));
+    		if (choice_NacionalInternacional.getSelectionModel().getSelectedItem().equals("NACIONAL")) {
+    			voluntarioNuevoSin.setOrigen(text_Origen.getText());
+    			voluntario.createSinRelaciones(voluntarioNuevoSin);
+    		}else {
+    			voluntarioNuevoSin.setPaisOrigen(text_Origen.getText());
+    			voluntario.createSinRelaciones(voluntarioNuevoSin);
+    		}
     		
     	}else if (choice_comprobacion_Miembro.getValue().equals("TRABAJADOR")){
     		String sDateAntes=text_FechaAlta.getText();
     		String sDateAntes1=text_FechaBaja.getText();
-//    		personalNuevo.setIdPersonal(idmiembroMAX);
-//    		personalNuevo.setFechaAlta(convertirStringaFecha.parse(sDateAntes));
-//    		personalNuevo.setFechaBaja(convertirStringaFecha.parse(sDateAntes1));
-//    		personalNuevo.setMiembro(miembroNuevo);
+    		personalNuevoSin.setIdPersonal(idmiembroMAX);
+    		personalNuevoSin.setFechaAlta(convertirStringaFecha.parse(sDateAntes));
+    		personalNuevoSin.setFechaBaja(convertirStringaFecha.parse(sDateAntes1));
+    		personal.createSinRelaciones(personalNuevoSin);
     		
     	}else {
-    		
+    		String sDateAntes=text_FechaAlta.getText();
+    		String sDateAntes1=text_FechaBaja.getText();
+    		colaboradorNuevoSin.setIdColaborador(idmiembroMAX);
+    		colaboradorNuevoSin.setFechaAlta(convertirStringaFecha.parse(sDateAntes));
+    		colaboradorNuevoSin.setFechaBaja(convertirStringaFecha.parse(sDateAntes1));
+    		colaborador.createSinRelaciones(colaboradorNuevoSin);    		
     	}
+    	//Stage stage = (Stage) button_Cancelar.getScene().getWindow();
+    	//stage.close();
 
     }
     
