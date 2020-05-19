@@ -30,8 +30,7 @@ public class DireccionesUsuario implements Serializable {
 	private String pais;
 	private String provincia;
 	private String puerta;
-	private String tipoVia;
-				
+	private String tipoVia;				
 //	@Id
 //	@GeneratedValue(strategy=GenerationType.TABLE)
 //@Column(name = "idDireccion")
