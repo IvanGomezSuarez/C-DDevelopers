@@ -206,8 +206,8 @@ public class addMiembrosController {
     		colaboradorNuevoSin.setFechaBaja(convertirStringaFecha.parse(sDateAntes1));
     		colaborador.createSinRelaciones(colaboradorNuevoSin);    		
     	}
-    	//Stage stage = (Stage) button_Cancelar.getScene().getWindow();
-    	//stage.close();
+    	Stage stage = (Stage) button_Cancelar.getScene().getWindow();
+    	stage.close();
 
     }
     
