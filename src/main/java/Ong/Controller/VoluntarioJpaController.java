@@ -190,6 +190,27 @@ public class VoluntarioJpaController implements Serializable {
             em.close();
         }
     }
+    
+    public void destroySin(int id) throws NonexistentEntityException {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            VoluntarioSinRelaciones voluntario;
+            try {
+                voluntario = em.getReference(VoluntarioSinRelaciones.class, id);
+                voluntario.getIdVoluntario();
+            } catch (EntityNotFoundException enfe) {
+                throw new NonexistentEntityException("The voluntario with id " + id + " no longer exists.", enfe);
+            }
+            em.remove(voluntario);
+            em.getTransaction().commit();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
 
     public Voluntario findVoluntario(int id) {
         EntityManager em = getEntityManager();

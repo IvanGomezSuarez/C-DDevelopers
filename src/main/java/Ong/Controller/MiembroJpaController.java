@@ -127,6 +127,27 @@ public class MiembroJpaController implements Serializable {
             }
         }
     }
+    
+    public void destroySin(int id) throws NonexistentEntityException {
+        EntityManager em = null;
+        try {
+        	em = getEntityManager();
+            em.getTransaction().begin();
+            MiembroSinRelaciones miembro;
+            try {
+                miembro = em.getReference(MiembroSinRelaciones.class, id);
+                miembro.getIdMiembro();
+            } catch (EntityNotFoundException enfe) {
+                throw new NonexistentEntityException("The miembro with id " + id + " no longer exists.", enfe);
+            }
+            em.remove(miembro);
+            em.getTransaction().commit();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
 
     public List<Miembro> findMiembroEntities() {
         return findMiembroEntities(true, -1, -1);

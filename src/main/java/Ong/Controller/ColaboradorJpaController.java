@@ -116,6 +116,27 @@ public class ColaboradorJpaController implements Serializable {
             }
         }
     }
+    
+    public void destroySin(int id) throws NonexistentEntityException {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            ColaboradorSinRelaciones colaborador;
+            try {
+                colaborador = em.getReference(ColaboradorSinRelaciones.class, id);
+                colaborador.getIdColaborador();
+            } catch (EntityNotFoundException enfe) {
+                throw new NonexistentEntityException("The colaborador with id " + id + " no longer exists.", enfe);
+            }
+            em.remove(colaborador);
+            em.getTransaction().commit();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
 
     public List<Colaborador> findColaboradorEntities() {
         return findColaboradorEntities(true, -1, -1);

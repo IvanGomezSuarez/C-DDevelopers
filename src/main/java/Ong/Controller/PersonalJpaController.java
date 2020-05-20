@@ -144,6 +144,27 @@ public class PersonalJpaController implements Serializable {
             }
         }
     }
+    
+    public void destroySin(int id) throws NonexistentEntityException {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            PersonalSinRelaciones personal;
+            try {
+                personal = em.getReference(PersonalSinRelaciones.class, id);
+                personal.getIdPersonal();
+            } catch (EntityNotFoundException enfe) {
+                throw new NonexistentEntityException("The personal with id " + id + " no longer exists.", enfe);
+            }
+            em.remove(personal);
+            em.getTransaction().commit();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
 
     public List<Personal> findPersonalEntities() {
         return findPersonalEntities(true, -1, -1);

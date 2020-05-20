@@ -289,21 +289,21 @@ public class MiembrosController {
     	personal=new PersonalJpaController(emf);
     	direccion=new DireccionesUsuarioJpaController(emf);
     	try {
-    		voluntario.destroy(i);
+    		voluntario.destroySin(i);
     	}catch(Exception e) {
     		
     	}
     	try {
-    	colaborador.destroy(i);
+    	colaborador.destroySin(i);
     	}catch(Exception e) {
     		
     	}
     	
     	try {
-    		personal.destroy(i);
+    		personal.destroySin(i);
     	}catch(Exception e) {
     	}
-    	miembro.destroy(i);
+    	miembro.destroySin(i);
     	direccion.destroy(i);
     }
 
