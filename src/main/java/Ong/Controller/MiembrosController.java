@@ -165,11 +165,11 @@ public class MiembrosController {
     	List<Ong.Models.DireccionesUsuario> listaDirecciones = direccion.findDireccionesUsuarioEntities();
     	List<Ong.Models.VoluntarioSinRelaciones> listaVoluntarios = voluntario.findVoluntarioEntitiesSin();
     	List<Ong.Models.ColaboradorSinRelaciones> listaColaboradores = colaborador.findColaboradorEntitiesSin();
+    	int idDireccionG=0;
     	int idMiembroActua=0;
 		SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
 		String antesConversionFecha;
 		Date conversionaFecha= new Date(01/01/2020);
-		
 		
 		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
 			if(miembrox.getDni().equals(String.valueOf(listUsuarios.get(0)))) {
@@ -182,6 +182,7 @@ public class MiembrosController {
 			for(Ong.Models.DireccionesUsuario direccionesUsuarior : listaDirecciones) {
 				if(miembrox.getDireccion()==direccionesUsuarior.getIdDireccion() && miembrox.getIdMiembro()==idMiembroActua) {
 					tabla3.add(new ModeloTerceraTabla(direccionesUsuarior.getTipoVia(),direccionesUsuarior.getNumero(),direccionesUsuarior.getEscalera(),direccionesUsuarior.getPuerta(),direccionesUsuarior.getLocalidad(),direccionesUsuarior.getProvincia(),direccionesUsuarior.getCp(),direccionesUsuarior.getPais()));
+					idDireccionG=direccionesUsuarior.getIdDireccion();
 				}			
 			}
 		}
@@ -309,10 +310,12 @@ public class MiembrosController {
 
     @FXML
     void editarMiembro(ActionEvent event) throws IOException {
-    	 emf= Persistence.createEntityManagerFactory("persistencia2");
+    	emf= Persistence.createEntityManagerFactory("persistencia2");
+    	//int idireccion=0;
          //	con este mtodo cargamos el form de gestin de miembros
      	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Ong/Views/editMiembro.fxml"));
      	Parent root = loader.load();
+     	//idireccion=Integer.valueOf(idDireccionG);
      	//MiembrosController controlador = loader.getController();
      	editMiembrosController editMiembrosController2=loader.getController();
      	editMiembrosController2.transferMessage(String.valueOf(listUsuarios.get(0)));

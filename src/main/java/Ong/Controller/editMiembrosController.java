@@ -147,10 +147,33 @@ public class editMiembrosController {
 		Ong.Models.PersonalSinRelaciones personalNuevoSin=new Ong.Models.PersonalSinRelaciones();
 		Ong.Models.ColaboradorSinRelaciones colaboradorNuevoSin=new Ong.Models.ColaboradorSinRelaciones();
 		Ong.Models.VoluntarioSinRelaciones voluntarioNuevoSin=new Ong.Models.VoluntarioSinRelaciones();
-		List<Miembro> miembros=new ArrayList<Miembro>();
+		
+    	List<Ong.Models.MiembroSinRelaciones> listaMiembros = miembro.findMiembroEntitiesSin();
+    	List<Ong.Models.DireccionesUsuario> listaDirecciones = direccion.findDireccionesUsuarioEntities();
+    	
+		int idDireccionG=0;
+		int idMiembroG=0;
+		
+		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
+			for(Ong.Models.DireccionesUsuario direccionesUsuarior : listaDirecciones) {
+				if(miembrox.getDni().equals(text_Dni.getText())) {
+					idDireccionG=direccionesUsuarior.getIdDireccion();
+					direccionNueva.setIdDireccion(idDireccionG);
+					miembroNuevoSin.setDireccion(idDireccionG);
+				}			
+			}
+		}
+		
+		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
+			if(miembrox.getDni().equals(text_Dni.getText())) {
+				idMiembroG=miembrox.getIdMiembro();
+				miembroNuevoSin.setIdMiembro(idMiembroG);
+			}
+		}
 		
 		
 		idmiembroMAX=MySqlMiembroDAO.consultarIdGenerado()+1;
+		
 		miembroNuevoSin.setNombreMiembro(text_Nombre.getText());
 		miembroNuevoSin.setApellido1(text_Apellido1.getText());
 		miembroNuevoSin.setApellido2(text_Apellido2.getText());
@@ -173,16 +196,24 @@ public class editMiembrosController {
 		
 		direccion.edit(direccionNueva);
 		
-		miembro.createMiembroSinRelacioens(miembroNuevoSin);
+		miembro.editSin(miembroNuevoSin);
 		
 		SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
 		String antesConversionFecha;
 		Date conversionaFecha= new Date(01/01/2020);
     	
     	if(choice_comprobacion_Miembro.getValue().equals("VOLUNTARIO")){
+    		try{
+    			colaborador.destroySin(idMiembroG);
+    		}catch(Exception e) {
+    		}
+    		try{
+    			personal.destroySin(idMiembroG);
+    		}catch(Exception e) {
+    		}
     		String sDateAntes=text_FechaAlta.getText();
     		String sDateAntes1=text_FechaBaja.getText();
-    		voluntarioNuevoSin.setIdVoluntario(idmiembroMAX);
+    		voluntarioNuevoSin.setIdVoluntario(idMiembroG);
     		voluntarioNuevoSin.setFechaAlta(convertirStringaFecha.parse(sDateAntes));
     		voluntarioNuevoSin.setFechaBaja(convertirStringaFecha.parse(sDateAntes1));
     		if (choice_NacionalInternacional.getSelectionModel().getSelectedItem().equals("NACIONAL")) {
@@ -194,17 +225,34 @@ public class editMiembrosController {
     		}
     		
     	}else if (choice_comprobacion_Miembro.getValue().equals("TRABAJADOR")){
+    		try{
+    			voluntario.destroySin(idMiembroG);
+    		}catch(Exception e) {
+    		}
+    		try{
+    			colaborador.destroySin(idMiembroG);
+    		}catch(Exception e) {
+    		}
     		String sDateAntes=text_FechaAlta.getText();
     		String sDateAntes1=text_FechaBaja.getText();
-    		personalNuevoSin.setIdPersonal(idmiembroMAX);
+    		personalNuevoSin.setIdPersonal(idMiembroG);
     		personalNuevoSin.setFechaAlta(convertirStringaFecha.parse(sDateAntes));
     		personalNuevoSin.setFechaBaja(convertirStringaFecha.parse(sDateAntes1));
     		personal.createSinRelaciones(personalNuevoSin);
     		
     	}else {
+    		try {
+    			voluntario.destroySin(idMiembroG);
+    			personal.destroySin(idMiembroG);
+    		}catch(Exception e) {
+    		}
+    		try {
+        		personal.destroySin(idMiembroG);
+        		}catch(Exception e) {
+        		}
     		String sDateAntes=text_FechaAlta.getText();
     		String sDateAntes1=text_FechaBaja.getText();
-    		colaboradorNuevoSin.setIdColaborador(idmiembroMAX);
+    		colaboradorNuevoSin.setIdColaborador(idMiembroG);
     		colaboradorNuevoSin.setFechaAlta(convertirStringaFecha.parse(sDateAntes));
     		colaboradorNuevoSin.setFechaBaja(convertirStringaFecha.parse(sDateAntes1));
     		colaborador.createSinRelaciones(colaboradorNuevoSin);    		
@@ -271,7 +319,6 @@ public class editMiembrosController {
 		SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
 		String antesConversionFecha;
 		Date conversionaFecha= new Date(01/01/2020);
-		
 
     	
 		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {

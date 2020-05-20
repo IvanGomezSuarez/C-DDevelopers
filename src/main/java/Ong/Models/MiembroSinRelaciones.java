@@ -30,11 +30,13 @@ import Ong.Models.Voluntario;
 @Entity
 @Table(name="miembros")
 @NamedQueries({
+	@NamedQuery(name= MiembroSinRelaciones.FIND_BY_ID2, query="SELECT m FROM Miembro m WHERE m.idMiembro=:id")
 })
 
 public class MiembroSinRelaciones implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	public static final String FIND_BY_ID2 = "Miembro.findById2";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

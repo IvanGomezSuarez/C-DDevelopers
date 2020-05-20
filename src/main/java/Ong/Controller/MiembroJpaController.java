@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
@@ -106,6 +107,33 @@ public class MiembroJpaController implements Serializable {
         }
     }
 
+    public void editSin(MiembroSinRelaciones miembro) throws NonexistentEntityException, Exception {
+        EntityManager em = null;
+        emf = Persistence.createEntityManagerFactory("persistencia2");
+        em=emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            MiembroSinRelaciones persistentMiembro = em.find(MiembroSinRelaciones.class, miembro.getIdMiembro());
+            miembro = em.merge(miembro);
+            em.getTransaction().commit();
+        } catch (Exception ex) {
+            String msg = ex.getLocalizedMessage();
+            if (msg == null || msg.length() == 0) {
+                int id = miembro.getIdMiembro();
+                if (findMiembro(id) == null) {
+                    throw new NonexistentEntityException("The miembro with id " + id + " no longer exists.");
+                }
+            }
+            throw ex;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+    
+
+    
     public void destroy(int id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
