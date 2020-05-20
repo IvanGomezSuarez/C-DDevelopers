@@ -129,6 +129,7 @@ public class editMiembrosController {
     	Stage stage = (Stage) button_Cancelar.getScene().getWindow();
     	stage.close();
     }
+    private String DniOld;
 
     @FXML
     void guardarCambios(ActionEvent event) throws NonexistentEntityException, Exception {
@@ -156,7 +157,7 @@ public class editMiembrosController {
 		
 		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
 			for(Ong.Models.DireccionesUsuario direccionesUsuarior : listaDirecciones) {
-				if(miembrox.getDni().equals(text_Dni.getText())) {
+				if(miembrox.getDni().equals(DniOld)) {
 					idDireccionG=direccionesUsuarior.getIdDireccion();
 					direccionNueva.setIdDireccion(idDireccionG);
 					miembroNuevoSin.setDireccion(idDireccionG);
@@ -165,7 +166,7 @@ public class editMiembrosController {
 		}
 		
 		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
-			if(miembrox.getDni().equals(text_Dni.getText())) {
+			if(miembrox.getDni().equals(DniOld)) {
 				idMiembroG=miembrox.getIdMiembro();
 				miembroNuevoSin.setIdMiembro(idMiembroG);
 			}
@@ -332,6 +333,7 @@ public class editMiembrosController {
 				text_Telefono.setText(miembrox.getTelefono());
 				text_Usuario.setText(miembrox.getNombreUsuario());
 				text_Password.setText(miembrox.getPass());
+				DniOld=miembrox.getDni();
 			}
 		}
 		
