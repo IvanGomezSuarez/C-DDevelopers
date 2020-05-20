@@ -172,9 +172,9 @@ public class addMiembrosController {
 		
 		idmiembroMAX=miembro.createMiembroSinRelacioens(miembroNuevoSin);
 		
-		SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("yyyy-MM-dd");
 		String antesConversionFecha;
-		Date conversionaFecha= new Date(01/01/2020);
+		Date conversionaFecha= new Date(2020-01-01);
     	
     	if(choice_comprobacion_Miembro.getValue().equals("VOLUNTARIO")){
     		String sDateAntes=text_FechaAlta.getText();
