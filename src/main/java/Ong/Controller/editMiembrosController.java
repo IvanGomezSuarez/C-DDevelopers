@@ -12,6 +12,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import DAO.impl.MySqlMiembroDAO;
+import Ong.Controller.exceptions.NonexistentEntityException;
 import Ong.Models.DireccionesUsuario;
 import Ong.Models.Miembro;
 import Ong.Models.ModeloPrimeraTabla;
@@ -130,7 +131,7 @@ public class editMiembrosController {
     }
 
     @FXML
-    void guardarCambios(ActionEvent event) throws ParseException, SQLException {
+    void guardarCambios(ActionEvent event) throws NonexistentEntityException, Exception {
     	emf = Persistence.createEntityManagerFactory("persistencia2");
     	miembro=new MiembroJpaController(emf);
     	voluntario=new VoluntarioJpaController(emf);
@@ -170,10 +171,9 @@ public class editMiembrosController {
 		direccionNueva.setPuerta(text_Puerta.getText());
 		direccionNueva.setTipoVia(text_Via.getText());
 		
-		idDireccionMax=direccion.create(direccionNueva);
-		miembroNuevoSin.setDireccion(idDireccionMax);
+		direccion.edit(direccionNueva);
 		
-		idmiembroMAX=miembro.createMiembroSinRelacioens(miembroNuevoSin);
+		miembro.createMiembroSinRelacioens(miembroNuevoSin);
 		
 		SimpleDateFormat convertirStringaFecha = new SimpleDateFormat("dd/MM/yyyy");
 		String antesConversionFecha;
