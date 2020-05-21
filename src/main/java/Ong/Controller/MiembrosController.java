@@ -284,11 +284,21 @@ public class MiembrosController {
     	primeraTabla.setItems(null);
     	segundaTabla.setItems(null);
     	terceraTabla.setItems(null);
+    	int iddirecccionBorrar=0;
     	miembro=new MiembroJpaController(emf);
     	voluntario=new VoluntarioJpaController(emf);
     	colaborador=new ColaboradorJpaController(emf);
     	personal=new PersonalJpaController(emf);
     	direccion=new DireccionesUsuarioJpaController(emf);
+    	List<Ong.Models.MiembroSinRelaciones> listaMiembros = miembro.findMiembroEntitiesSin();
+    	List<Ong.Models.DireccionesUsuario> listaDirecciones = direccion.findDireccionesUsuarioEntities();
+		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
+			for(Ong.Models.DireccionesUsuario direccionesUsuarior : listaDirecciones) {
+				if(miembrox.getDireccion()==direccionesUsuarior.getIdDireccion()) {
+					iddirecccionBorrar=direccionesUsuarior.getIdDireccion();
+				}			
+			}
+		}
     	try {
     		voluntario.destroySin(i);
     	}catch(Exception e) {
@@ -305,7 +315,7 @@ public class MiembrosController {
     	}catch(Exception e) {
     	}
     	miembro.destroySin(i);
-    	direccion.destroy(i);
+    	direccion.destroy(iddirecccionBorrar);
     }
 
     @FXML
