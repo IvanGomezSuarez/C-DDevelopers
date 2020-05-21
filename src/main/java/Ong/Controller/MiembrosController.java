@@ -294,7 +294,7 @@ public class MiembrosController {
     	List<Ong.Models.DireccionesUsuario> listaDirecciones = direccion.findDireccionesUsuarioEntities();
 		for(Ong.Models.MiembroSinRelaciones miembrox : listaMiembros) {
 			for(Ong.Models.DireccionesUsuario direccionesUsuarior : listaDirecciones) {
-				if(miembrox.getDireccion()==direccionesUsuarior.getIdDireccion()) {
+				if(miembrox.getDireccion()==direccionesUsuarior.getIdDireccion()&& i==miembrox.getIdMiembro()) {
 					iddirecccionBorrar=direccionesUsuarior.getIdDireccion();
 				}			
 			}
