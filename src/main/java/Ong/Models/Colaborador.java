@@ -22,6 +22,7 @@ public class Colaborador implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idColaborador;
+	private int algo;
 	
 	private Date fechaAlta;
 	
